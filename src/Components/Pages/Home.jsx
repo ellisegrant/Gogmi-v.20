@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -14,49 +14,58 @@ import {
 } from 'lucide-react';
 
 const Home = () => {
+  // Google Drive video IDs - All 4 videos are unique and verified
+  const videoIds = [
+    '18PFtwSc3rbfOetzHaOnbagjuSA9UobHV', // Video 1
+    '1ioOdQbaMQtxLF1pisyJNIQZT8V5KvOCo', // Video 2
+    '13JqEfYsYiBnHEepgPSOyA_XBiXyxJ0O4', // Video 3
+    '1p_cmjos3Y8QV17pI1sPo6YyeyV-bwvSh'  // Video 4
+  ];
+
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  // Auto-cycle through videos every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoIds.length);
+    }, 30000); // Change video every 30 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="w-full overflow-x-hidden scroll-smooth">
 
       {/* HERO */}
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        {/* Video Background - Four Videos Playing in Sequence */}
+        {/* Google Drive Video Background - Cycling through 4 different videos */}
         <div className="absolute inset-0">
-          <video
-            id="heroVideo"
-            autoPlay
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-            onEnded={() => {
-              // When video ends, switch to the next video
-              const video = document.getElementById('heroVideo');
-              const source = video.querySelector('source');
-              const currentSrc = source.src;
-              
-              // Cycle through all 4 videos
-              if (currentSrc.includes('video1.mp4')) {
-                source.src = '/src/assets/videos/video2.mp4';
-              } else if (currentSrc.includes('video2.mp4')) {
-                source.src = '/src/assets/videos/video3.mp4';
-              } else if (currentSrc.includes('video3.mp4')) {
-                source.src = '/src/assets/videos/video4.mp4';
-              } else {
-                // After video4, go back to video1
-                source.src = '/src/assets/videos/video1.mp4';
-              }
-              
-              video.load();
-              video.play();
+          <iframe
+            key={currentVideoIndex}
+            src={`https://drive.google.com/file/d/${videoIds[currentVideoIndex]}/preview`}
+            className="w-full h-full"
+            style={{ 
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              minWidth: '100%',
+              minHeight: '100%',
+              width: 'auto',
+              height: 'auto',
+              transform: 'translate(-50%, -50%)',
+              pointerEvents: 'none'
             }}
-          >
-            <source src="/src/assets/videos/video1.mp4" type="video/mp4" />
-            {/* Fallback image if video doesn't load */}
-            <img
-              src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&auto=format&fit=crop"
-              alt="Maritime background"
-              className="w-full h-full object-cover"
-            />
-          </video>
+            allow="autoplay"
+            frameBorder="0"
+          />
+          {/* Fallback background image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&auto=format&fit=crop')`,
+              zIndex: -1
+            }}
+          />
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
           {/* Animated wave overlay */}
@@ -160,43 +169,51 @@ const Home = () => {
                 Driving Maritime Excellence in West Africa
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
-                The Gulf of Guinea Maritime Institute (GOGMI) is a leading non-profit think tank dedicated to advancing maritime security, safety, and sustainable blue economy development across West Africa.
+                The Gulf of Guinea Maritime Institute (GoGMI) is a leading non-profit think tank dedicated to advancing maritime security, safety, and sustainable blue economy development across West Africa.
               </p>
               <p className="text-gray-600 text-lg leading-relaxed">
                 Through strategic research, policy advocacy, and capacity building programs, we empower stakeholders to make informed decisions that drive positive change in the maritime sector.
               </p>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:scale-105"
+                className="inline-flex items-center gap-2 text-yellow-600 font-bold hover:gap-4 transition-all text-lg"
               >
                 <span>Learn More About Us</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-6 text-white">
-                  <Ship className="w-12 h-12 mb-4" />
-                  <h3 className="font-bold text-xl mb-2">Maritime Security</h3>
-                  <p className="text-sm text-white/80">Enhanced regional cooperation</p>
+            <div className="grid grid-cols-2 gap-6">
+              <div className="space-y-6">
+                <div className="bg-blue-50 rounded-2xl p-6 hover:shadow-lg transition">
+                  <Ship className="w-12 h-12 text-blue-900 mb-4" />
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Maritime Security</h3>
+                  <p className="text-gray-600">
+                    Strengthening regional capacity to combat piracy and maritime crime
+                  </p>
                 </div>
-                <div className="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl p-6 text-gray-900">
-                  <BookOpen className="w-12 h-12 mb-4" />
-                  <h3 className="font-bold text-xl mb-2">Research</h3>
-                  <p className="text-sm text-gray-800">Evidence-based insights</p>
+                <div className="bg-yellow-50 rounded-2xl p-6 hover:shadow-lg transition">
+                  <TrendingUp className="w-12 h-12 text-yellow-600 mb-4" />
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Blue Economy</h3>
+                  <p className="text-gray-600">
+                    Promoting sustainable economic growth in maritime sectors
+                  </p>
                 </div>
               </div>
-              <div className="space-y-4 mt-8">
-                <div className="bg-gradient-to-br from-teal-600 to-cyan-700 rounded-2xl p-6 text-white">
-                  <Waves className="w-12 h-12 mb-4" />
-                  <h3 className="font-bold text-xl mb-2">Blue Economy</h3>
-                  <p className="text-sm text-white/80">Sustainable development</p>
+              <div className="space-y-6 mt-12">
+                <div className="bg-green-50 rounded-2xl p-6 hover:shadow-lg transition">
+                  <BookOpen className="w-12 h-12 text-green-600 mb-4" />
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Research</h3>
+                  <p className="text-gray-600">
+                    Producing indigenous insights on Gulf of Guinea maritime affairs
+                  </p>
                 </div>
-                <div className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-6 text-white">
-                  <Users className="w-12 h-12 mb-4" />
-                  <h3 className="font-bold text-xl mb-2">Capacity Building</h3>
-                  <p className="text-sm text-white/80">Professional training</p>
+                <div className="bg-purple-50 rounded-2xl p-6 hover:shadow-lg transition">
+                  <Users className="w-12 h-12 text-purple-600 mb-4" />
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Capacity Building</h3>
+                  <p className="text-gray-600">
+                    Training the next generation of maritime professionals
+                  </p>
                 </div>
               </div>
             </div>
@@ -204,14 +221,14 @@ const Home = () => {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* SERVICES / WHAT WE DO */}
       <section className="py-20 md:py-28 bg-gray-50">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">What We Do</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mt-4 mb-6">Our Core Services</h2>
+            <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Our Services</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mt-4 mb-6">What We Do</h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Comprehensive maritime solutions tailored to the unique challenges of the Gulf of Guinea region
+              Comprehensive maritime solutions addressing the critical needs of the Gulf of Guinea region
             </p>
           </div>
 
@@ -219,33 +236,50 @@ const Home = () => {
             {[
               {
                 icon: <Ship className="w-12 h-12" />,
-                title: 'Maritime Security',
-                desc: 'Strategic security assessments, threat analysis, and policy frameworks for safe maritime operations',
-                color: 'from-blue-600 to-blue-800'
+                title: 'Maritime Security Research',
+                desc: 'In-depth analysis of security challenges, threats, and opportunities in the Gulf of Guinea maritime domain.',
+                color: 'blue'
+              },
+              {
+                icon: <Users className="w-12 h-12" />,
+                title: 'Policy Advocacy',
+                desc: 'Strategic engagement with policymakers to shape effective maritime governance frameworks.',
+                color: 'yellow'
+              },
+              {
+                icon: <BookOpen className="w-12 h-12" />,
+                title: 'Capacity Building',
+                desc: 'Professional training programs and workshops for maritime stakeholders and youth.',
+                color: 'green'
+              },
+              {
+                icon: <Globe className="w-12 h-12" />,
+                title: 'International Collaboration',
+                desc: 'Facilitating partnerships between African and international maritime organizations.',
+                color: 'purple'
               },
               {
                 icon: <Waves className="w-12 h-12" />,
                 title: 'Blue Economy Development',
-                desc: 'Sustainable ocean economy initiatives promoting economic growth and marine conservation',
-                color: 'from-teal-600 to-cyan-800'
+                desc: 'Promoting sustainable economic opportunities in fisheries, shipping, and marine resources.',
+                color: 'cyan'
               },
               {
-                icon: <BookOpen className="w-12 h-12" />,
-                title: 'Research & Policy',
-                desc: 'Cutting-edge maritime research and expert policy advisory services for informed decision-making',
-                color: 'from-purple-600 to-indigo-800'
+                icon: <TrendingUp className="w-12 h-12" />,
+                title: 'Youth Mentorship',
+                desc: 'The Blue Mentorship Programme connecting young professionals with maritime career opportunities.',
+                color: 'pink'
               }
             ].map((service, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
-                <div className={`bg-gradient-to-br ${service.color} w-16 h-16 rounded-xl flex items-center justify-center text-white mb-6`}>
+              <div
+                key={idx}
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 group"
+              >
+                <div className={`text-${service.color}-600 mb-4 group-hover:scale-110 transition-transform`}>
                   {service.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-blue-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
-                <Link to="/services" className="text-yellow-600 font-semibold flex items-center hover:gap-3 transition-all">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
+                <p className="text-gray-600 leading-relaxed">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -263,32 +297,32 @@ const Home = () => {
       </section>
 
       {/* IMPACT SECTION */}
-      <section className="py-20 md:py-28 bg-blue-900 text-white">
+      <section className="py-20 md:py-28 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <span className="text-yellow-400 font-semibold text-sm uppercase tracking-wider">Our Impact</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">Creating Lasting Change</h2>
+            <span className="text-yellow-300 font-semibold text-sm uppercase tracking-wider">Our Impact</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">Making a Difference</h2>
             <p className="text-white/90 text-lg max-w-3xl mx-auto">
-              Transforming the maritime landscape through strategic initiatives and collaborative partnerships
+              Transforming the maritime landscape of West Africa through research, advocacy, and action
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               {
-                title: 'Enhanced Security',
-                desc: '30% reduction in maritime incidents through regional cooperation',
-                icon: '🛡️'
+                icon: '🛡️',
+                title: 'Enhanced Maritime Security',
+                desc: 'Contributing to the reduction of piracy incidents through coordinated regional responses and information sharing platforms.'
               },
               {
-                title: 'Capacity Built',
-                desc: '500+ professionals trained in maritime security and management',
-                icon: '🎓'
+                icon: '🎓',
+                title: 'Youth Empowerment',
+                desc: 'Training hundreds of young professionals through the Blue Mentorship Programme and capacity building initiatives.'
               },
               {
-                title: 'Research Published',
-                desc: '150+ policy briefs and research reports informing decisions',
-                icon: '📊'
+                icon: '🤝',
+                title: 'Regional Cooperation',
+                desc: 'Facilitating dialogue between governments, navies, and industry stakeholders across 25+ countries.'
               }
             ].map((impact, idx) => (
               <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all">
@@ -316,7 +350,7 @@ const Home = () => {
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
             <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Trusted By</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mt-4 mb-6">Our Partners</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mt-4 mb-6">Our Strategic Partners</h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
               Working alongside leading organizations to advance maritime excellence across West Africa
             </p>
@@ -324,16 +358,19 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
             {[
-              { name: 'UNESCO', initial: 'U' },
-              { name: 'IMO', initial: 'I' },
-              { name: 'ECOWAS', initial: 'E' },
-              { name: 'African Union', initial: 'AU' },
-              { name: 'World Bank', initial: 'WB' },
-              { name: 'European Union', initial: 'EU' }
+              { name: 'UNESCO', initial: 'UNESCO' },
+              { name: 'IMO', initial: 'IMO' },
+              { name: 'ECOWAS', initial: 'ECOWAS' },
+              { name: 'ECCAS', initial: 'ECCAS' },
+              { name: 'EU', initial: 'EU' },
+              { name: 'GGC', initial: 'GGC' }
             ].map((partner, idx) => (
               <div key={idx} className="flex items-center justify-center p-6 bg-gray-50 rounded-xl hover:bg-blue-50 transition-all hover:shadow-lg group">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform">
-                  {partner.initial}
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center text-white font-bold text-xs group-hover:scale-110 transition-transform mx-auto mb-2">
+                    {partner.initial}
+                  </div>
+                  <p className="text-xs text-gray-600 font-medium">{partner.name}</p>
                 </div>
               </div>
             ))}
@@ -367,7 +404,7 @@ const Home = () => {
               {
                 category: 'Security',
                 title: 'Regional Maritime Security Conference 2024',
-                excerpt: 'GOGMI hosts 200+ maritime professionals from 15 countries to discuss emerging security challenges.',
+                excerpt: 'GoGMI hosts 200+ maritime professionals from 15 countries to discuss emerging security challenges.',
                 date: 'November 15, 2024',
                 image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&fit=crop'
               },
