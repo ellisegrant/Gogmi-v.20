@@ -80,19 +80,19 @@ const Home = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 animate-slide-up">
+          <h1 className="text-4xl lg:text-6xl md:text-6xl font-extrabold leading-tight mb-3 animate-slide-up">
             Shaping West Africa's
             <span className="block mt-3 text-yellow-300 drop-shadow-lg">
               Blue Economy
             </span>
           </h1>
 
-          <p className="mt-2 text-lg sm:text-xl md:text-2xl text-white/95 max-w-3xl leading-relaxed drop-shadow-md">
+          <p className="mt-2 text-xl text-white/95 max-w-3xl leading-relaxed drop-shadow-md">
             Pioneering sustainable maritime initiatives that drive economic growth
             and environmental stewardship across the Gulf of Guinea
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center items-center">
+          <div className="mt-6 flex flex-col sm:flex-row gap-5 justify-center items-center">
             <Link
               to="/about"
               className="inline-flex items-center gap-3 bg-yellow-500 text-gray-900 px-8 md:px-10 py-4 rounded-xl font-bold hover:bg-yellow-600 transition-all shadow-2xl hover:shadow-yellow-500/50 hover:scale-105"

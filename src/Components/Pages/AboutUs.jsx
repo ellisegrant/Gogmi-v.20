@@ -14,7 +14,7 @@ const AboutUs = () => {
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">About GOGMI</h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
             Championing Maritime Excellence Since 2008
           </p>
         </div>

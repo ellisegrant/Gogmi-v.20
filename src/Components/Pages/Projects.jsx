@@ -118,7 +118,7 @@ const Projects = () => {
           </div>
           
           <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight">Our Projects</h1>
-          <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Driving real change through innovative maritime initiatives across West Africa
           </p>
         </div>
