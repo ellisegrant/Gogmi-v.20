@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Waves, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+// Import GoGMI Logo from assets - path goes UP one level from Components to src
+//import GoGMI_PNG from "../assets/images/GoGMI_PNG.png";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -58,18 +60,18 @@ const Navbar = () => {
       }`}
     >
       <div className="w-full flex items-center justify-between px-12">
-        {/* Logo Section */}
+        {/* Logo Section - UPDATED WITH REAL LOGO */}
         <button
           onClick={() => handleNavClick("/")}
           className="flex items-center space-x-3 group flex-shrink-0"
           aria-label="Go to home"
         >
-          <div className="relative">
-            <div className="absolute inset-0 bg-yellow-500 rounded-xl blur-sm opacity-50 group-hover:opacity-70 transition-opacity"></div>
-            <div className="relative w-12 h-12 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center transform group-hover:scale-105 transition-transform shadow-lg">
-              <Waves className="w-7 h-7 text-yellow-400" strokeWidth={2.5} />
-            </div>
-          </div>
+          {/* GoGMI REAL LOGO - Located in /public folder */}
+          <img 
+            src="/GoGMI_PNG.png"
+            alt="GoGMI Logo" 
+            className="h-14 w-14 md:h-16 md:w-16 object-contain transform group-hover:scale-105 transition-transform"
+          />
           <div className="">
             <div
               className={`text-xl md:text-2xl font-bold tracking-tight whitespace-nowrap ${

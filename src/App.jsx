@@ -13,6 +13,8 @@ import Resources from './Components/Pages/Resources';
 import NotFound from './Components/Pages/NotFound';
 import CareersOpportunities from './Components/Pages/CareersOpportunities'
 import Careers from './Components/Pages/CareersOpportunities';
+import Membership from './Components/Pages/Membership';
+import MediaGallery from './Components/Pages/MediaGallery';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/membership" element={<Membership />} />
+            <Route path="/mediagallery" element={<MediaGallery />} />
             <Route path="/CareersOpportunities" element={<Careers />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
