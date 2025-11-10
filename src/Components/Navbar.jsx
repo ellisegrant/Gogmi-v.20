@@ -27,7 +27,7 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Services", path: "/services" },
-    { name: "Projects", path: "/projects" },
+    // { name: "Projects", path: "/projects" },
     {
       name: "Resources",
       path: "/resources",
@@ -85,7 +85,7 @@ const Navbar = () => {
                 scrolled ? "text-gray-600" : "text-white/80"
               }`}
             >
-              Maritime Institute
+              Gulf Of Guinea Maritime Institute 
             </div>
           </div>
         </button>

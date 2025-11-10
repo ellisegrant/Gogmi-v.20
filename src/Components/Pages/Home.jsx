@@ -76,7 +76,7 @@ const Home = () => {
           <div className="inline-flex items-center gap-3 bg-yellow-500/20 backdrop-blur-sm px-5 py-2 rounded-full border border-yellow-500/30 mb-6 animate-fade-in">
             <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
             <span className="text-yellow-200 font-semibold text-sm">
-              Leading West Africa's Maritime Future
+              Leading Maritime Future in the Gulf of Guinea
             </span>
           </div>
 
@@ -101,30 +101,30 @@ const Home = () => {
               <ArrowRight className="w-5 h-5" />
             </Link>
 
-            <Link
+            {/* <Link
               to="/projects"
               className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-white/40 text-white px-8 md:px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition-all hover:scale-105 shadow-xl"
             >
               <Globe className="w-5 h-5" />
               <span>View Our Projects</span>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Additional quick links */}
           <div className="mt-12 flex flex-wrap justify-center gap-4 text-sm">
             <Link to="/services" className="text-white/80 hover:text-yellow-300 transition-colors flex items-center gap-2">
               <Ship className="w-4 h-4" />
-              <span>Maritime Security</span>
+              <span>Advocacy</span>
             </Link>
             <span className="text-white/30">•</span>
             <Link to="/services" className="text-white/80 hover:text-yellow-300 transition-colors flex items-center gap-2">
               <Waves className="w-4 h-4" />
-              <span>Blue Economy</span>
+              <span>Research</span>
             </Link>
             <span className="text-white/30">•</span>
             <Link to="/services" className="text-white/80 hover:text-yellow-300 transition-colors flex items-center gap-2">
               <BookOpen className="w-4 h-4" />
-              <span>Research & Policy</span>
+              <span>Capacity Building</span>
             </Link>
           </div>
         </div>
@@ -187,14 +187,14 @@ const Home = () => {
               <div className="space-y-6">
                 <div className="bg-blue-50 rounded-2xl p-6 hover:shadow-lg transition">
                   <Ship className="w-12 h-12 text-blue-900 mb-4" />
-                  <h3 className="text-xl font-bold text-blue-900 mb-2">Maritime Security</h3>
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Advocacy</h3>
                   <p className="text-gray-600">
                     Strengthening regional capacity to combat piracy and maritime crime
                   </p>
                 </div>
                 <div className="bg-yellow-50 rounded-2xl p-6 hover:shadow-lg transition">
                   <TrendingUp className="w-12 h-12 text-yellow-600 mb-4" />
-                  <h3 className="text-xl font-bold text-blue-900 mb-2">Blue Economy</h3>
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Capacity Building</h3>
                   <p className="text-gray-600">
                     Promoting sustainable economic growth in maritime sectors
                   </p>
@@ -210,7 +210,7 @@ const Home = () => {
                 </div>
                 <div className="bg-purple-50 rounded-2xl p-6 hover:shadow-lg transition">
                   <Users className="w-12 h-12 text-purple-600 mb-4" />
-                  <h3 className="text-xl font-bold text-blue-900 mb-2">Capacity Building</h3>
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">Secretariate Services</h3>
                   <p className="text-gray-600">
                     Training the next generation of maritime professionals
                   </p>

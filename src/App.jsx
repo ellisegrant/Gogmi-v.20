@@ -6,7 +6,7 @@ import ScrollToTop from './Components/ScrollToTop';
 import Home from './Components/Pages/Home';
 import AboutUs from './Components/Pages/AboutUs';
 import Services from './Components/Pages/Services';
-import Projects from './Components/Pages/Projects';
+//import Projects from './Components/Pages/Projects';
 import Contact from './Components/Pages/Contact';
 import Blog from './Components/Pages/Blog';
 import Resources from './Components/Pages/Resources';
@@ -26,7 +26,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/projects" element={<Projects />} />
+            {/* <Route path="/projects" element={<Projects />} /> */}
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/resources" element={<Resources />} />

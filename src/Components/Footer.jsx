@@ -18,9 +18,9 @@ const Footer = () => {
                 <div className="text-sm text-gray-400">Gulf of Guinea Maritime Institute</div>
               </div>
             </div>
-            <p className="text-gray-400 leading-relaxed mb-6">
+            {/* <p className="text-gray-400 leading-relaxed mb-6">
               Leading maritime excellence through research, advocacy, and capacity building across West Africa's blue economy.
-            </p>
+            </p> */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-400">
                 <MapPin className="w-5 h-5 text-yellow-500 flex-shrink-0" />
@@ -45,7 +45,7 @@ const Footer = () => {
                 { name: 'Home', path: '/' },
                 { name: 'About Us', path: '/about' },
                 { name: 'Services', path: '/services' },
-                { name: 'Projects', path: '/projects' },
+                // { name: 'Projects', path: '/projects' },
                 { name: 'Blog', path: '/blog' }
               ].map((item) => (
                 <li key={item.path}>
