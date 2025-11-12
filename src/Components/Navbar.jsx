@@ -27,13 +27,14 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Services", path: "/services" },
+    { name: "Executive Chairman", path: "/ExecutiveChairman" },
     // { name: "Projects", path: "/projects" },
     {
-      name: "Resources",
-      path: "/resources",
+      name: "Resources", path: "/resources",
       dropdown: [
-        { name: "Publications", path: "/resources/publications" },
+        { name: "Library", path: "/resources" },
         { name: "Blog & News", path: "/blog" },
+        { name: "Membership", path: "/Membership" },
       ],
     },
     { name: "Contact", path: "/contact" },
@@ -78,14 +79,14 @@ const Navbar = () => {
                 scrolled ? "text-blue-900" : "text-white"
               }`}
             >
-              GOGMI
+              GoGMI
             </div>
             <div
               className={`text-xs font-medium whitespace-nowrap ${
                 scrolled ? "text-gray-600" : "text-white/80"
               }`}
             >
-              Gulf Of Guinea Maritime Institute 
+              Gulf Of Guinea <div>Maritime Institute </div>
             </div>
           </div>
         </button>

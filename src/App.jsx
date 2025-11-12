@@ -15,6 +15,9 @@ import CareersOpportunities from './Components/Pages/CareersOpportunities'
 import Careers from './Components/Pages/CareersOpportunities';
 import Membership from './Components/Pages/Membership';
 import MediaGallery from './Components/Pages/MediaGallery';
+import ExecutiveChairman from './Components/Pages/ExecutiveChairman';
+import Partners from './Components/Pages/Partners';
+
 
 function App() {
   return (
@@ -32,7 +35,9 @@ function App() {
             <Route path="/resources" element={<Resources />} />
             <Route path="/membership" element={<Membership />} />
             <Route path="/mediagallery" element={<MediaGallery />} />
+             <Route path="/Partners" element={<Partners />} />
             <Route path="/CareersOpportunities" element={<Careers />} />
+            <Route path="/ExecutiveChairman" element={<ExecutiveChairman />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

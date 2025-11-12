@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, Linkedin, Twitter, Facebook, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Linkedin, Twitter, Facebook, CheckCircle, Youtube, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -88,7 +88,7 @@ const Contact = () => {
       <section className="relative py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            backgroundImage: `url("https://i.pinimg.com/736x/00/8f/e6/008fe6a0f849690bc9f2d61052d6d5de.jpg")`
           }}></div>
         </div>
 
@@ -113,8 +113,8 @@ const Contact = () => {
               {
                 icon: <Phone className="w-8 h-8" />,
                 title: 'Call Us',
-                info: '+233 XXX XXX XXX',
-                subinfo: 'Mon-Fri 8am-5pm GMT',
+                info: '+233 50 4953400',
+                subinfo: 'Mon-Fri 8:30 am-5pm GMT',
                 color: 'from-blue-600 to-blue-800'
               },
               {
@@ -172,7 +172,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="John Doe"
+                      placeholder="Jonas Boss"
                     />
                   </div>
                   <div>
@@ -184,7 +184,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="john@example.com"
+                      placeholder="jonas@example.com"
                     />
                   </div>
                 </div>
@@ -251,7 +251,7 @@ const Contact = () => {
                 <div className="space-y-4">
                   {[
                     { days: 'Monday - Friday', hours: '8:00 AM - 5:00 PM' },
-                    { days: 'Saturday', hours: '9:00 AM - 1:00 PM' },
+                    { days: 'Saturday', hours: 'closed' },
                     { days: 'Sunday', hours: 'Closed' }
                   ].map((schedule, idx) => (
                     <div key={idx} className="flex items-center justify-between py-3 border-b border-gray-200 last:border-b-0">
@@ -283,18 +283,26 @@ const Contact = () => {
               <div className="bg-blue-900 rounded-2xl p-8 text-white">
                 <h3 className="text-2xl font-bold mb-4">Connect With Us</h3>
                 <p className="text-white/80 mb-6">Follow us on social media for updates and insights</p>
-                <div className="flex space-x-4">
+                <div className="flex flex-wrap gap-4">
                   {[
-                    { icon: <Linkedin />, link: '#' },
-                    { icon: <Twitter />, link: '#' },
-                    { icon: <Facebook />, link: '#' }
+                    { icon: <Linkedin className="w-5 h-5" />, link: '#', name: 'LinkedIn', color: 'hover:bg-blue-600' },
+                    { icon: <Twitter className="w-5 h-5" />, link: '#', name: 'Twitter', color: 'hover:bg-sky-500' },
+                    { icon: <Facebook className="w-5 h-5" />, link: '#', name: 'Facebook', color: 'hover:bg-blue-700' },
+                    { icon: <Youtube className="w-5 h-5" />, link: '#', name: 'YouTube', color: 'hover:bg-red-600' },
+                    { icon: <MessageCircle className="w-5 h-5" />, link: '#', name: 'WhatsApp', color: 'hover:bg-green-500' }
                   ].map((social, idx) => (
                     <a
                       key={idx}
                       href={social.link}
-                      className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-yellow-500 hover:text-gray-900 transition-all hover:scale-110"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center ${social.color} transition-all hover:scale-110 group relative`}
+                      title={social.name}
                     >
                       {social.icon}
+                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        {social.name}
+                      </span>
                     </a>
                   ))}
                 </div>

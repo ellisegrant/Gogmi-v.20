@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Waves, MapPin, Mail, Phone, Linkedin, Twitter, Facebook, ArrowRight } from 'lucide-react';
+import { Waves, MapPin, Mail, Phone, Linkedin, Twitter, Facebook, ArrowRight, Youtube, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -14,7 +14,7 @@ const Footer = () => {
                 <Waves className="w-6 h-6 text-yellow-400" />
               </div>
               <div>
-                <div className="font-bold text-xl">GOGMI</div>
+                <div className="font-bold text-xl">GoGMI</div>
                 <div className="text-sm text-gray-400">Gulf of Guinea Maritime Institute</div>
               </div>
             </div>
@@ -32,7 +32,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
                 <Phone className="w-5 h-5 text-yellow-500 flex-shrink-0" />
-                <span>+233 XXX XXX XXX</span>
+                <span>+233 50 4953400</span>
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@ const Footer = () => {
                 { name: 'Home', path: '/' },
                 { name: 'About Us', path: '/about' },
                 { name: 'Services', path: '/services' },
-                // { name: 'Projects', path: '/projects' },
+                { name: 'Membership', path: '/Membership' },
                 { name: 'Blog', path: '/blog' }
               ].map((item) => (
                 <li key={item.path}>
@@ -66,11 +66,11 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Resources</h3>
             <ul className="space-y-3">
               {[
-                { name: 'Publications', path: '/resources' },
+                { name: 'Library', path: '/' },
                 { name: 'News & Updates', path: '/blog' },
                 { name: 'Contact', path: '/contact' },
                 { name: 'Careers', path: '/CareersOpportunities' },
-                { name: 'Partners', path: '/about' }
+                { name: 'Partners', path: '/partners' }
               ].map((item) => (
                 <li key={item.path}>
                   <Link 
@@ -92,14 +92,40 @@ const Footer = () => {
             <div className="mb-6 md:mb-0">
               <h3 className="font-bold text-lg mb-4">Connect With Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-yellow-500 hover:text-gray-900 transition-all hover:scale-110">
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all hover:scale-110"
+                  aria-label="LinkedIn"
+                >
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-yellow-500 hover:text-gray-900 transition-all hover:scale-110">
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-sky-500 hover:text-white transition-all hover:scale-110"
+                  aria-label="Twitter"
+                >
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-yellow-500 hover:text-gray-900 transition-all hover:scale-110">
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all hover:scale-110"
+                  aria-label="Facebook"
+                >
                   <Facebook className="w-5 h-5" />
+                </a>
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-red-600 hover:text-white transition-all hover:scale-110"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="w-5 h-5" />
+                </a>
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110"
+                  aria-label="WhatsApp"
+                >
+                  <MessageCircle className="w-5 h-5" />
                 </a>
               </div>
             </div>

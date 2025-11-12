@@ -1,89 +1,64 @@
 import React, { useState } from 'react';
-import { Ship, Waves, BookOpen, Users, Shield, Anchor, Globe, TrendingUp, CheckCircle, ArrowRight, Award } from 'lucide-react';
+import { Ship, Waves, BookOpen, Users, Shield, Anchor, Globe, TrendingUp, CheckCircle, ArrowRight, Award, Megaphone, FileSearch, GraduationCap, Building2 } from 'lucide-react';
 
 const Services = () => {
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState('advocacy');
 
   const services = [
     {
       id: 1,
-      category: 'security',
-      icon: <Ship className="w-12 h-12 md:w-16 md:h-16" />,
-      title: 'Maritime Security Solutions',
-      shortDesc: 'Comprehensive security frameworks for safe maritime operations',
-      fullDesc: 'We provide strategic maritime security assessments, threat analysis, and policy frameworks to ensure safe operations across the Gulf of Guinea region.',
-      features: ['Risk Assessment', 'Security Training', 'Policy Development', 'Emergency Response'],
-      image: 'https://images.unsplash.com/photo-1605379399642-870262d3d051?w=800&fit=crop',
+      category: 'advocacy',
+      icon: <Megaphone className="w-12 h-12 md:w-16 md:h-16" />,
+      title: 'Advocacy',
+      shortDesc: 'Championing policy reforms and sustainable maritime practices',
+      fullDesc: 'Championing policy reforms and sustainable maritime practices across the Gulf of Guinea. We serve as the authoritative voice for maritime stakeholders, bridging the gap between maritime realities and policy action through evidence-based advocacy that shapes regional and international governance frameworks.',
+      features: ['Maritime Security Advocacy', 'Blue Economy Promotion', 'Policy Development', 'Regional Collaboration'],
+      image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&fit=crop',
       color: 'from-blue-600 to-blue-800'
     },
     {
       id: 2,
-      category: 'economy',
-      icon: <Waves className="w-12 h-12 md:w-16 md:h-16" />,
-      title: 'Blue Economy Development',
-      shortDesc: 'Sustainable ocean economy initiatives and strategies',
-      fullDesc: 'Our blue economy programs promote sustainable use of ocean resources for economic growth while preserving marine ecosystems.',
-      features: ['Fisheries Management', 'Marine Conservation', 'Coastal Development', 'Sustainability Planning'],
-      image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&fit=crop',
-      color: 'from-teal-600 to-cyan-800'
-    },
-    {
-      id: 3,
       category: 'research',
-      icon: <BookOpen className="w-12 h-12 md:w-16 md:h-16" />,
-      title: 'Research & Policy Advisory',
-      shortDesc: 'Evidence-based research driving maritime policy',
-      fullDesc: 'We conduct cutting-edge maritime research and provide expert policy advisory services to governments and organizations.',
-      features: ['Policy Research', 'Data Analysis', 'Strategic Planning', 'Impact Assessment'],
+      icon: <FileSearch className="w-12 h-12 md:w-16 md:h-16" />,
+      title: 'Research',
+      shortDesc: 'Indigenous maritime research and strategic analysis',
+      fullDesc: 'Providing indigenous maritime research and strategic analysis that addresses security, safety, and blue economy challenges. Our research informs policy decisions and delivers solutions from a West African perspective, filling the critical gap in regional maritime studies and ensuring local interests are well-represented.',
+      features: ['Strategic Maritime Research', 'Policy Advisory', 'Threat Analysis', 'Data-Driven Insights'],
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&fit=crop',
       color: 'from-purple-600 to-indigo-800'
     },
     {
-      id: 4,
-      category: 'training',
-      icon: <Users className="w-12 h-12 md:w-16 md:h-16" />,
-      title: 'Capacity Building Programs',
-      shortDesc: 'Professional training and skill development',
-      fullDesc: 'Comprehensive training programs that empower maritime professionals with the knowledge and skills needed for excellence.',
-      features: ['Professional Workshops', 'Certification Programs', 'Online Courses', 'Mentorship'],
+      id: 3,
+      category: 'capacity',
+      icon: <GraduationCap className="w-12 h-12 md:w-16 md:h-16" />,
+      title: 'Capacity Building',
+      shortDesc: 'Empowering maritime professionals and youth',
+      fullDesc: 'Empowering the next generation of maritime professionals through comprehensive training programs, mentorship initiatives, and knowledge-sharing platforms. From our flagship Blue Mentorship Programme to specialized workshops, we equip youth, practitioners, and stakeholders with the skills and knowledge needed to thrive in the blue economy.',
+      features: ['Blue Mentorship Programme', 'Professional Training', 'Youth Engagement', 'Skills Development'],
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&fit=crop',
       color: 'from-orange-600 to-red-800'
     },
     {
-      id: 5,
-      category: 'security',
-      icon: <Shield className="w-12 h-12 md:w-16 md:h-16" />,
-      title: 'Port Security Assessment',
-      shortDesc: 'Comprehensive port and harbor security evaluation',
-      fullDesc: 'Detailed security assessments of port facilities to identify vulnerabilities and implement best practices.',
-      features: ['Facility Inspection', 'Compliance Review', 'Security Protocols', 'Staff Training'],
-      image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&fit=crop',
-      color: 'from-slate-600 to-gray-800'
-    },
-    {
-      id: 6,
-      category: 'research',
-      icon: <Anchor className="w-12 h-12 md:w-16 md:h-16" />,
-      title: 'Maritime Intelligence Reports',
-      shortDesc: 'Strategic intelligence and analysis services',
-      fullDesc: 'Detailed maritime intelligence reports providing insights into regional trends, threats, and opportunities.',
-      features: ['Threat Analysis', 'Market Intelligence', 'Risk Forecasting', 'Custom Reports'],
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&fit=crop',
-      color: 'from-emerald-600 to-green-800'
+      id: 4,
+      category: 'secretariat',
+      icon: <Building2 className="w-12 h-12 md:w-16 md:h-16" />,
+      title: 'Secretariat Services',
+      shortDesc: 'Institutional backbone for maritime coordination',
+      fullDesc: 'Serving as the institutional backbone for regional maritime coordination and collaboration. We provide professional secretariat support to the International Maritime Security Working Group (IMSWG) and other maritime forums, facilitating dialogue, managing operations, and ensuring effective implementation of regional maritime initiatives.',
+      features: ['IMSWG Coordination', 'Forum Management', 'Stakeholder Engagement', 'Programme Implementation'],
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&fit=crop',
+      color: 'from-teal-600 to-cyan-800'
     }
   ];
 
   const categories = [
-    { id: 'all', name: 'All Services', icon: <Globe className="w-4 h-4" /> },
-    { id: 'security', name: 'Security', icon: <Shield className="w-4 h-4" /> },
-    { id: 'economy', name: 'Blue Economy', icon: <Waves className="w-4 h-4" /> },
-    { id: 'research', name: 'Research', icon: <BookOpen className="w-4 h-4" /> },
-    { id: 'training', name: 'Training', icon: <Users className="w-4 h-4" /> }
+    { id: 'advocacy', name: 'Advocacy', icon: <Megaphone className="w-4 h-4" /> },
+    { id: 'research', name: 'Research', icon: <FileSearch className="w-4 h-4" /> },
+    { id: 'capacity', name: 'Capacity Building', icon: <GraduationCap className="w-4 h-4" /> },
+    { id: 'secretariat', name: 'Secretariat Services', icon: <Building2 className="w-4 h-4" /> }
   ];
 
-  const filteredServices = activeTab === 'all' 
-    ? services 
-    : services.filter(service => service.category === activeTab);
+  const filteredServices = services.filter(service => service.category === activeTab);
 
   return (
     <div className="w-full overflow-x-hidden">
@@ -103,7 +78,7 @@ const Services = () => {
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">Our Services</h1>
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
-            Delivering excellence across maritime security, blue economy development, research, and capacity building
+            Your Hub For Maritime Security, Safety and Advocacy for Sustainable Blue Economy
           </p>
         </div>
       </section>
@@ -133,7 +108,7 @@ const Services = () => {
       {/* Services Grid */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
             {filteredServices.map((service) => (
               <div
                 key={service.id}
@@ -178,7 +153,7 @@ const Services = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-16 md:py-20 bg-blue-900 text-white">
+      {/* <section className="py-16 md:py-20 bg-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             {[
@@ -195,7 +170,7 @@ const Services = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-white">

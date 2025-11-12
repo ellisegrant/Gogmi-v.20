@@ -10,7 +10,8 @@ import {
   Waves,
   BookOpen,
   Play,
-  ChevronDown
+  ChevronDown,
+  Shield
 } from 'lucide-react';
 
 const Home = () => {
@@ -97,17 +98,9 @@ const Home = () => {
               to="/about"
               className="inline-flex items-center gap-3 bg-yellow-500 text-gray-900 px-8 md:px-10 py-4 rounded-xl font-bold hover:bg-yellow-600 transition-all shadow-2xl hover:shadow-yellow-500/50 hover:scale-105"
             >
-              <span>Discover Our Mission</span>
+              <span>Discover The GoGMI Journey</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
-
-            {/* <Link
-              to="/projects"
-              className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border-2 border-white/40 text-white px-8 md:px-10 py-4 rounded-xl font-bold hover:bg-white/20 transition-all hover:scale-105 shadow-xl"
-            >
-              <Globe className="w-5 h-5" />
-              <span>View Our Projects</span>
-            </Link> */}
           </div>
 
           {/* Additional quick links */}
@@ -144,7 +137,7 @@ const Home = () => {
               { number: '50+', label: 'Projects', icon: <Award className="w-6 h-6 md:w-8 md:h-8" /> },
               { number: '200+', label: 'Partners', icon: <Users className="w-6 h-6 md:w-8 md:h-8" /> },
               { number: '15+', label: 'Years', icon: <TrendingUp className="w-6 h-6 md:w-8 md:h-8" /> },
-              { number: '25', label: 'Countries', icon: <Globe className="w-6 h-6 md:w-8 md:h-8" /> }
+              { number: '25', label: 'Members', icon: <Globe className="w-6 h-6 md:w-8 md:h-8" /> }
             ].map((stat, idx) => (
               <div
                 key={idx}
@@ -221,73 +214,277 @@ const Home = () => {
         </div>
       </section>
 
-      {/* SERVICES / WHAT WE DO */}
-      <section className="py-20 md:py-28 bg-gray-50">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Our Services</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mt-4 mb-6">What We Do</h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Comprehensive maritime solutions addressing the critical needs of the Gulf of Guinea region
-            </p>
+      {/* GULF OF GUINEA SECTION - 2 Rows with Glass Effect Flags */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-blue-900 to-blue-800 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute w-96 h-96 bg-yellow-400 rounded-full blur-3xl -top-48 -left-48"></div>
+          <div className="absolute w-96 h-96 bg-blue-400 rounded-full blur-3xl -bottom-48 -right-48"></div>
+        </div>
+
+        <div className="container mx-auto max-w-7xl px-6 relative z-10">
+          
+          {/* Main Content Grid - Map + Description */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start mb-8">
+            
+            {/* Left: Gulf of Guinea Map */}
+            <div className="relative group">
+              {/* Map Container */}
+              <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+                <img 
+                  src="public\Nigerian Pirates Extend Reach in Gulf of Guinea.jpg"
+                  alt="Gulf of Guinea Map showing member countries from Senegal to Angola"
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                
+                {/* Label Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900/95 to-transparent p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+                    <div>
+                      <p className="text-xs text-white/90 uppercase tracking-wide">Maritime Region</p>
+                      <p className="text-2xl font-bold text-white">Gulf of Guinea</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Top Badge */}
+                <div className="absolute top-6 right-6 bg-yellow-400 text-blue-900 px-5 py-2 rounded-full text-sm font-bold shadow-lg">
+                  West & Central Africa
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Description & Stats */}
+            <div className="space-y-8">
+              {/* Title */}
+              <div>
+                <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+                  The Gulf of Guinea
+                </h2>
+              </div>
+
+              {/* Description */}
+              <div className="space-y-6 text-white/90 text-lg leading-relaxed">
+                <p className="text-xl leading-relaxed">
+                  A pivotal maritime region stretching along the Atlantic coastline from Senegal to Angola. This strategic waterway serves as a critical gateway for international trade, connecting <strong className="text-yellow-300">eighteen coastal nations</strong> to the global economy.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  Rich in natural resources including oil, gas, and abundant fisheries, the Gulf of Guinea plays a vital 
+                  role in regional economic development. However, it also faces significant challenges in maritime security, 
+                  environmental sustainability, and governance.
+                </p>
+              </div>
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-3 gap-4 pt-6">
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+                  <div className="text-4xl font-bold text-yellow-300 mb-2">18</div>
+                  <div className="text-xs text-white/80 font-semibold uppercase tracking-wide">Countries</div>
+                </div>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+                  <div className="text-4xl font-bold text-yellow-300 mb-2">6K<span className="text-xl">km</span></div>
+                  <div className="text-xs text-white/80 font-semibold uppercase tracking-wide">Coastline</div>
+                </div>
+                <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 hover:bg-white/20 transition-all">
+                  <div className="text-4xl font-bold text-yellow-300 mb-2">$2T+</div>
+                  <div className="text-xs text-white/80 font-semibold uppercase tracking-wide">GDP</div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Member Countries - 2 Rows of 9 Flags Each */}
+          <div className="mt-8">
+            {/* Section Header */}
+          
+
+            {/* Flags Grid - 2 Rows x 9 Columns */}
+            <div className="space-y-4">
+              {/* Row 1 */}
+              <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-3">
+                {[
+                  { name: 'Senegal', code: 'sn' },
+                  { name: 'Gambia', code: 'gm' },
+                  { name: 'Guinea-Bissau', code: 'gw' },
+                  { name: 'Guinea', code: 'gn' },
+                  { name: 'Sierra Leone', code: 'sl' },
+                  { name: 'Liberia', code: 'lr' },
+                  { name: 'Côte d\'Ivoire', code: 'ci' },
+                  { name: 'Ghana', code: 'gh' },
+                  { name: 'Togo', code: 'tg' }
+                ].map((country, idx) => (
+                  <div
+                    key={idx}
+                    className="group bg-white/10 backdrop-blur-sm rounded-xl border-2 border-white/20 hover:bg-white/20 hover:border-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer"
+                  >
+                    {/* Flag Image with Padding */}
+                    <div className="w-full p-3">
+                      <div className="w-full h-16 rounded-lg overflow-hidden shadow-lg">
+                        <img 
+                          src={`https://flagcdn.com/w320/${country.code}.png`}
+                          alt={`${country.name} flag`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Country Name */}
+                    <div className="px-2 pb-3 text-center">
+                      <p className="text-white font-bold text-xs leading-tight">{country.name}</p>
+                    </div>
+
+                    {/* Hover Accent */}
+                    <div className="h-1 bg-gradient-to-r from-blue-400 via-yellow-400 to-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Row 2 */}
+              <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-3">
+                {[
+                  { name: 'Benin', code: 'bj' },
+                  { name: 'Nigeria', code: 'ng' },
+                  { name: 'Cameroon', code: 'cm' },
+                  { name: 'Equatorial Guinea', code: 'gq' },
+                  { name: 'São Tomé', code: 'st' },
+                  { name: 'Gabon', code: 'ga' },
+                  { name: 'Congo', code: 'cg' },
+                  { name: 'DR Congo', code: 'cd' },
+                  { name: 'Angola', code: 'ao' }
+                ].map((country, idx) => (
+                  <div
+                    key={idx}
+                    className="group bg-white/10 backdrop-blur-sm rounded-xl border-2 border-white/20 hover:bg-white/20 hover:border-yellow-400 transition-all duration-300 overflow-hidden cursor-pointer"
+                  >
+                    {/* Flag Image with Padding */}
+                    <div className="w-full p-3">
+                      <div className="w-full h-16 rounded-lg overflow-hidden shadow-lg">
+                        <img 
+                          src={`https://flagcdn.com/w320/${country.code}.png`}
+                          alt={`${country.name} flag`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Country Name */}
+                    <div className="px-2 pb-3 text-center">
+                      <p className="text-white font-bold text-xs leading-tight">{country.name}</p>
+                    </div>
+
+                    {/* Hover Accent */}
+                    <div className="h-1 bg-gradient-to-r from-blue-400 via-yellow-400 to-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            
+            
+          </div>
+
+        </div>
+
+        {/* Bottom Wave Transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+      </section>
+
+      {/* SERVICES / WHAT WE DO - Ultra Minimal Tech-Savvy Design */}
+      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto max-w-7xl px-6">
+          {/* Section Header - Minimal */}
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-blue-900 mb-3 tracking-tight">
+              Our Scope Of Work
+            </h2>
+          </div>
+
+          {/* Services Grid - Clean Minimal Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               {
-                icon: <Ship className="w-12 h-12" />,
-                title: 'Maritime Security Research',
-                desc: 'In-depth analysis of security challenges, threats, and opportunities in the Gulf of Guinea maritime domain.',
-                color: 'blue'
-              },
-              {
                 icon: <Users className="w-12 h-12" />,
-                title: 'Policy Advocacy',
-                desc: 'Strategic engagement with policymakers to shape effective maritime governance frameworks.',
-                color: 'yellow'
+                title: 'Facilitation of Regional and International Partnerships',
+                desc: 'Foster Maritime Safety and Security in the Gulf of Guinea Region through strategic collaboration and partnership building.',
+                iconColor: 'text-blue-600',
+                iconBg: 'bg-white',
+                borderColor: 'hover:border-blue-600'
               },
               {
                 icon: <BookOpen className="w-12 h-12" />,
-                title: 'Capacity Building',
-                desc: 'Professional training programs and workshops for maritime stakeholders and youth.',
-                color: 'green'
+                title: 'Analysis of National, Regional and International Policies',
+                desc: 'On Ocean Governance and Maritime Security to inform strategic decision-making and policy development.',
+                iconColor: 'text-purple-600',
+                iconBg: 'bg-white',
+                borderColor: 'hover:border-purple-600'
+              },
+              {
+                icon: <Shield className="w-12 h-12" />,
+                title: 'Development, Audit and Validation Of Corporate Maritime Security Plans',
+                desc: 'Comprehensive security planning and assessment services for maritime organizations and facilities.',
+                iconColor: 'text-green-600',
+                iconBg: 'bg-white',
+                borderColor: 'hover:border-green-600'
               },
               {
                 icon: <Globe className="w-12 h-12" />,
-                title: 'International Collaboration',
-                desc: 'Facilitating partnerships between African and international maritime organizations.',
-                color: 'purple'
+                title: 'Organization of International Ocean Governance And Maritime Security Conferences',
+                desc: 'And Exhibitions bringing together experts, practitioners, and stakeholders across the Gulf of Guinea.',
+                iconColor: 'text-orange-600',
+                iconBg: 'bg-white',
+                borderColor: 'hover:border-orange-600'
               },
               {
                 icon: <Waves className="w-12 h-12" />,
-                title: 'Blue Economy Development',
-                desc: 'Promoting sustainable economic opportunities in fisheries, shipping, and marine resources.',
-                color: 'cyan'
+                title: 'Analysis of Activities In the Region\'s Maritime Domain',
+                desc: 'Strategic research and monitoring of maritime activities, threats, and opportunities in the Gulf of Guinea.',
+                iconColor: 'text-cyan-600',
+                iconBg: 'bg-white',
+                borderColor: 'hover:border-cyan-600'
               },
               {
                 icon: <TrendingUp className="w-12 h-12" />,
-                title: 'Youth Mentorship',
-                desc: 'The Blue Mentorship Programme connecting young professionals with maritime career opportunities.',
-                color: 'pink'
+                title: 'Development of Policy Briefs, Articles and Other Relevant Publications',
+                desc: 'Producing high-quality research outputs and publications that shape maritime discourse and policy.',
+                iconColor: 'text-yellow-600',
+                iconBg: 'bg-white',
+                borderColor: 'hover:border-yellow-600'
               }
             ].map((service, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 group"
+                className={`group relative bg-white rounded-2xl p-10 border-2 border-gray-100 ${service.borderColor} transition-all duration-500 hover:shadow-2xl hover:-translate-y-2`}
               >
-                <div className={`text-${service.color}-600 mb-4 group-hover:scale-110 transition-transform`}>
-                  {service.icon}
+                {/* Icon - Clean & Minimal */}
+                <div className="mb-8">
+                  <div className={`${service.iconColor} transition-transform duration-300 group-hover:scale-110`}>
+                    {service.icon}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-blue-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.desc}</p>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-blue-900 mb-4 leading-tight">
+                  {service.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-600 text-[15px] leading-relaxed">
+                  {service.desc}
+                </p>
+
+                {/* Minimal Bottom Accent */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 ${service.iconColor.replace('text-', 'bg-')} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl`}></div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          {/* CTA Button - Minimal */}
+          <div className="text-center mt-16">
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:scale-105"
+              className="inline-flex items-center gap-3 bg-blue-900 text-white px-10 py-4 rounded-xl font-semibold hover:bg-blue-800 transition-all duration-300 hover:shadow-2xl hover:scale-105 group"
             >
               <span>View All Services</span>
               <ArrowRight className="w-5 h-5" />
@@ -296,53 +493,132 @@ const Home = () => {
         </div>
       </section>
 
-      {/* IMPACT SECTION */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
-        <div className="container mx-auto max-w-7xl px-6">
+      {/* IMPACT SECTION - SDG GOALS */}
+      <section className="py-20 md:py-28 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute w-96 h-96 bg-yellow-400 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
+          <div className="absolute w-96 h-96 bg-blue-400 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        </div>
+
+        <div className="container mx-auto max-w-7xl px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="text-yellow-300 font-semibold text-sm uppercase tracking-wider">Our Impact</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">Making a Difference</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">Contributing to Global Goals</h2>
             <p className="text-white/90 text-lg max-w-3xl mx-auto">
-              Transforming the maritime landscape of West Africa through research, advocacy, and action
+              Aligning our mission with the United Nations Sustainable Development Goals to create lasting impact in the Gulf Of Guinea maritime sector
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {/* SDG Goals Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
               {
-                icon: '🛡️',
-                title: 'Enhanced Maritime Security',
-                desc: 'Contributing to the reduction of piracy incidents through coordinated regional responses and information sharing platforms.'
+                number: 14,
+                title: 'Life Below Water',
+                desc: 'Conserve and sustainably use the oceans, seas and marine resources for sustainable development',
+                color: 'from-blue-400 to-blue-600',
+                icon: '🌊',
+                impact: 'Leading maritime security research and blue economy initiatives across 25 countries in the Gulf of Guinea region'
               },
               {
-                icon: '🎓',
-                title: 'Youth Empowerment',
-                desc: 'Training hundreds of young professionals through the Blue Mentorship Programme and capacity building initiatives.'
+                number: 8,
+                title: 'Decent Work and Economic Growth',
+                desc: 'Promote sustained, inclusive and sustainable economic growth, full and productive employment',
+                color: 'from-red-500 to-red-700',
+                icon: '💼',
+                impact: 'Creating pathways for 500+ professionals through our Blue Mentorship Programme and capacity building initiatives'
               },
               {
+                number: 16,
+                title: 'Peace, Justice and Strong Institutions',
+                desc: 'Promote peaceful and inclusive societies, provide access to justice and build effective institutions',
+                color: 'from-blue-600 to-blue-800',
+                icon: '⚖️',
+                impact: 'Strengthening regional maritime security frameworks through IMSWG and policy advocacy across West Africa'
+              },
+              {
+                number: 17,
+                title: 'Partnerships for the Goals',
+                desc: 'Strengthen the means of implementation and revitalize global partnerships for sustainable development',
+                color: 'from-blue-700 to-blue-900',
                 icon: '🤝',
-                title: 'Regional Cooperation',
-                desc: 'Facilitating dialogue between governments, navies, and industry stakeholders across 25+ countries.'
+                impact: 'Collaborating with 200+ strategic partners including UNESCO, IMO, ECOWAS, and international maritime organizations'
+              },
+              {
+                number: 4,
+                title: 'Quality Education',
+                desc: 'Ensure inclusive and equitable quality education and promote lifelong learning opportunities',
+                color: 'from-red-600 to-red-800',
+                icon: '📚',
+                impact: 'Delivering comprehensive training programs and workshops that empower maritime stakeholders with cutting-edge knowledge'
+              },
+              {
+                number: 5,
+                title: 'Gender Equality',
+                desc: 'Achieve gender equality and empower all women and girls',
+                color: 'from-orange-500 to-red-600',
+                icon: '⚖️',
+                impact: 'Championing gender mainstreaming in Ghana\'s maritime sector through targeted advocacy and youth engagement programs'
               }
-            ].map((impact, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all">
-                <div className="text-5xl mb-4">{impact.icon}</div>
-                <h3 className="text-2xl font-bold mb-3">{impact.title}</h3>
-                <p className="text-white/80">{impact.desc}</p>
+            ].map((sdg, idx) => (
+              <div
+                key={idx}
+                className="group bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/20 hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/20"
+              >
+                {/* SDG Header with Number */}
+                <div className={`bg-gradient-to-r ${sdg.color} p-6 relative overflow-hidden`}>
+                  <div className="absolute top-0 right-0 text-white/10 text-9xl font-bold leading-none">
+                    {sdg.number}
+                  </div>
+                  <div className="relative z-10 flex items-start justify-between">
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-4xl">{sdg.icon}</span>
+                        <span className="text-white/90 font-bold text-lg">SDG {sdg.number}</span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">{sdg.title}</h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SDG Content */}
+                <div className="p-6 space-y-4">
+                  <p className="text-white/70 text-sm leading-relaxed italic border-l-2 border-yellow-400 pl-3">
+                    "{sdg.desc}"
+                  </p>
+                  
+                  <div className="pt-4 border-t border-white/10">
+                    <p className="text-yellow-300 font-semibold text-xs uppercase tracking-wider mb-2">
+                      GoGMI's Contribution
+                    </p>
+                    <p className="text-white/90 text-sm leading-relaxed">
+                      {sdg.impact}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Animated Bottom Border */}
+                <div className="h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
+          {/* UN SDG Logo Section */}
+          <div className="text-center mt-16 space-y-6">
+            
             <Link
-              to="/projects"
+              to="/about"
               className="inline-flex items-center gap-2 bg-yellow-500 text-gray-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-600 transition-all shadow-lg hover:scale-105"
             >
-              <span>Explore Our Projects</span>
+              <span>Learn More About Our Impact</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
+
+        {/* Decorative Wave Pattern */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
       {/* PARTNERS SECTION */}
@@ -378,7 +654,7 @@ const Home = () => {
 
           <div className="text-center mt-12">
             <Link
-              to="/partners"
+              to="/Partners"
               className="text-blue-900 font-semibold hover:text-yellow-600 transition-colors inline-flex items-center gap-2"
             >
               <span>View All Partners</span>
@@ -393,7 +669,7 @@ const Home = () => {
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
             <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Stay Informed</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mt-4 mb-6">Latest News & Updates</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mt-4 mb-6">Upcoming Events, News and Update</h2>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto">
               Insights, research findings, and maritime developments from across the Gulf of Guinea
             </p>
@@ -402,14 +678,14 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                category: 'Security',
+                category: 'Upcoming Events',
                 title: 'Regional Maritime Security Conference 2024',
                 excerpt: 'GoGMI hosts 200+ maritime professionals from 15 countries to discuss emerging security challenges.',
                 date: 'November 15, 2024',
                 image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&fit=crop'
               },
               {
-                category: 'Research',
+                category: 'News and Updates',
                 title: 'New Blue Economy Investment Report Released',
                 excerpt: 'Latest research explores untapped opportunities in sustainable fisheries and marine tourism.',
                 date: 'November 10, 2024',
@@ -449,16 +725,6 @@ const Home = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              to="/blog"
-              className="inline-flex items-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg hover:scale-105"
-            >
-              <span>View All News</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
           </div>
         </div>
       </section>

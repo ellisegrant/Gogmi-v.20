@@ -15,7 +15,7 @@ const AboutUs = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">About GOGMI</h1>
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
-            Championing Maritime Excellence Since 2008
+            Championing Maritime Excellence Since 2010
           </p>
         </div>
       </section>
@@ -28,7 +28,7 @@ const AboutUs = () => {
               <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Our Story</span>
               <h2 className="text-3xl sm:text-4xl font-bold text-blue-900">Who We Are</h2>
               <p className="text-gray-600 leading-relaxed">
-                Founded in 2008, the Gulf of Guinea Maritime Institute (GOGMI) emerged as a response to the growing need for specialized maritime expertise in West Africa.
+                Founded in 2010, the Gulf of Guinea Maritime Institute (GOGMI) emerged as a response to the growing need for specialized maritime expertise in West Africa.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 We are a non-profit think tank that brings together maritime strategic thinkers, practitioners, and experts to research and address critical maritime challenges in the Gulf of Guinea region.
@@ -95,22 +95,28 @@ const AboutUs = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
-            <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Our Team</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-900 mt-4">Leadership</h2>
+            {/* <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Our Team</span> */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-900 mt-4">Advisory Board Members</h2>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {[
-              { name: 'Dr. Kofi Mensah', role: 'Executive Director', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&fit=crop' },
-              { name: 'Admiral Grace Okoro', role: 'Director of Research', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&fit=crop' },
-              { name: 'Prof. Jean Baptiste', role: 'Head of Policy', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&fit=crop' }
+              { name: 'AIR VICE MARSHAL FRANK HANSON (RTD)', role: 'Board Chair', img: '/frank.jpg' },
+              { name: 'JEFFREY LANDSMAN', role: 'ASSOCIATE PROFESSOR, U.S. NAVAL WAR COLLEGE (Rtd), CAPT, USN (RTD)', img: '/jeffrey.jpg' },
+              { name: 'Mrs. KATHLEEN QUARTEY AYENSU, ESQ', role: '', img: '/kathleen.jpg' },
+              { name: 'COMMODORE JAMES OSEI KONTOH (RTD)', role: '', img: '/jamesO.jpg' },
+              { name: 'REAR ADMIRAL SOLOMON AGADA (RTD)', role: '', img: '/solomon.jpg' }
             ].map((member, idx) => (
               <div key={idx} className="group text-center">
-                <div className="relative overflow-hidden rounded-2xl mb-4">
+                <div className="relative overflow-hidden rounded-2xl mb-4 bg-gray-100 aspect-[3/4]">
                   <img 
                     src={member.img} 
                     alt={member.name} 
-                    className="w-full h-80 object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" 
+                    className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" 
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center text-gray-400"><span>Image not found</span></div>';
+                    }}
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold text-blue-900">{member.name}</h3>
