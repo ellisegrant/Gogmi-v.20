@@ -15,21 +15,21 @@ import {
 } from 'lucide-react';
 
 const Home = () => {
-  // Google Drive video IDs - All 4 videos are unique and verified
-  const videoIds = [
-    '18PFtwSc3rbfOetzHaOnbagjuSA9UobHV', // Video 1
-    '1ioOdQbaMQtxLF1pisyJNIQZT8V5KvOCo', // Video 2
-    '13JqEfYsYiBnHEepgPSOyA_XBiXyxJ0O4', // Video 3
-    '1p_cmjos3Y8QV17pI1sPo6YyeyV-bwvSh'  // Video 4
-  ];
-
+  // State for cycling through 3 YouTube videos
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  
+  // Your 3 YouTube video IDs
+  const videoIds = [
+    'V1f0Rfq7Jzs',   // Video 1
+    'tfC34J8Yh-c',   // Video 2
+    'XgzCbENPQn0'    // Video 3
+  ];
 
   // Auto-cycle through videos every 30 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoIds.length);
-    }, 30000); // Change video every 30 seconds
+    }, 30000); // 30 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -39,56 +39,59 @@ const Home = () => {
 
       {/* HERO */}
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        {/* Google Drive Video Background - Cycling through 4 different videos */}
+        {/* YouTube Video Background - Cycling through 3 videos */}
         <div className="absolute inset-0">
           <iframe
             key={currentVideoIndex}
-            src={`https://drive.google.com/file/d/${videoIds[currentVideoIndex]}/preview`}
-            className="w-full h-full"
+            src={`https://www.youtube.com/embed/${videoIds[currentVideoIndex]}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playlist=${videoIds[currentVideoIndex]}`}
+            title="Maritime Background Video"
+            className="absolute top-1/2 left-1/2 w-screen h-screen"
             style={{ 
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
               minWidth: '100%',
               minHeight: '100%',
-              width: 'auto',
-              height: 'auto',
+              width: '177.77vh', // 16:9 aspect ratio
+              height: '56.25vw',
               transform: 'translate(-50%, -50%)',
-              pointerEvents: 'none'
+              pointerEvents: 'none',
+              border: 'none'
             }}
-            allow="autoplay"
             frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
           />
-          {/* Fallback background image */}
+          
+          {/* Fallback background image in case video doesn't load */}
           <div 
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center -z-10"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&auto=format&fit=crop')`,
-              zIndex: -1
+              backgroundImage: `url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&auto=format&fit=crop&q=80')`,
             }}
           />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-blue-900/90"></div>
-          {/* Animated wave overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
+          
+          {/* Lighter overlay for better video visibility */}
+          <div className="absolute inset-0 bg-black/20"></div>
+          {/* Subtle gradient overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15"></div>
         </div>
 
         <div className="relative z-10 container mx-auto max-w-6xl px-6 py-20 flex flex-col items-center text-center text-white">
-          <div className="inline-flex items-center gap-3 bg-yellow-500/20 backdrop-blur-sm px-5 py-2 rounded-full border border-yellow-500/30 mb-6 animate-fade-in">
-            <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
-            <span className="text-yellow-200 font-semibold text-sm">
+          <div className="inline-flex items-center gap-3 bg-yellow-500/30 backdrop-blur-md px-5 py-2 rounded-full border border-yellow-400/40 mb-6 animate-fade-in shadow-lg shadow-yellow-500/20">
+            <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse shadow-lg shadow-yellow-400/50"></span>
+            <span className="text-yellow-100 font-semibold text-sm drop-shadow-lg">
               Leading Maritime Future in the Gulf of Guinea
             </span>
           </div>
 
-          <h1 className="text-4xl lg:text-6xl md:text-6xl font-extrabold leading-tight mb-3 animate-slide-up">
-            Shaping West Africa's
-            <span className="block mt-3 text-yellow-300 drop-shadow-lg">
-              Blue Economy
+          <h1 className="hero-heading">
+            <span className="block mb-3 text-white">
+              Shaping Maritime Security and Safety in the
+            </span>
+            <span className="block gradient-text">
+              Gulf Of Guinea
             </span>
           </h1>
 
-          <p className="mt-2 text-xl text-white/95 max-w-3xl leading-relaxed drop-shadow-md">
+          <p className="hero-subheading mt-6 text-white max-w-3xl leading-relaxed" style={{ textShadow: '0 2px 15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.6)' }}>
             Pioneering sustainable maritime initiatives that drive economic growth
             and environmental stewardship across the Gulf of Guinea
           </p>
@@ -105,17 +108,17 @@ const Home = () => {
 
           {/* Additional quick links */}
           <div className="mt-12 flex flex-wrap justify-center gap-4 text-sm">
-            <Link to="/services" className="text-white/80 hover:text-yellow-300 transition-colors flex items-center gap-2">
+            <Link to="/services" className="text-white/90 hover:text-yellow-300 transition-colors flex items-center gap-2 drop-shadow-lg">
               <Ship className="w-4 h-4" />
               <span>Advocacy</span>
             </Link>
-            <span className="text-white/30">•</span>
-            <Link to="/services" className="text-white/80 hover:text-yellow-300 transition-colors flex items-center gap-2">
+            <span className="text-white/40">•</span>
+            <Link to="/services" className="text-white/90 hover:text-yellow-300 transition-colors flex items-center gap-2 drop-shadow-lg">
               <Waves className="w-4 h-4" />
               <span>Research</span>
             </Link>
-            <span className="text-white/30">•</span>
-            <Link to="/services" className="text-white/80 hover:text-yellow-300 transition-colors flex items-center gap-2">
+            <span className="text-white/40">•</span>
+            <Link to="/services" className="text-white/90 hover:text-yellow-300 transition-colors flex items-center gap-2 drop-shadow-lg">
               <BookOpen className="w-4 h-4" />
               <span>Capacity Building</span>
             </Link>
@@ -232,7 +235,7 @@ const Home = () => {
               {/* Map Container */}
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
                 <img 
-                  src="public\Nigerian Pirates Extend Reach in Gulf of Guinea.jpg"
+                  src="/Nigerian Pirates Extend Reach in Gulf of Guinea.jpg"
                   alt="Gulf of Guinea Map showing member countries from Senegal to Angola"
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                 />

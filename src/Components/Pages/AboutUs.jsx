@@ -13,7 +13,7 @@ const AboutUs = () => {
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">About GOGMI</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">About GoGMI</h1>
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
             Championing Maritime Excellence Since 2010
           </p>
@@ -28,7 +28,7 @@ const AboutUs = () => {
               <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Our Story</span>
               <h2 className="text-3xl sm:text-4xl font-bold text-blue-900">Who We Are</h2>
               <p className="text-gray-600 leading-relaxed">
-                Founded in 2010, the Gulf of Guinea Maritime Institute (GOGMI) emerged as a response to the growing need for specialized maritime expertise in West Africa.
+                Founded in 2010, the Gulf of Guinea Maritime Institute (GoGMI) emerged as a response to the growing need for specialized maritime expertise in West Africa.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 We are a non-profit think tank that brings together maritime strategic thinkers, practitioners, and experts to research and address critical maritime challenges in the Gulf of Guinea region.
@@ -101,7 +101,7 @@ const AboutUs = () => {
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {[
-              { name: 'AIR VICE MARSHAL FRANK HANSON (RTD)', role: 'Board Chair', img: '/frank.jpg' },
+              { name: 'AIR VICE MARSHAL FRANK HANSON (RTD)', role: 'Advisory Board Chair', img: '/frank.jpg' },
               { name: 'JEFFREY LANDSMAN', role: 'ASSOCIATE PROFESSOR, U.S. NAVAL WAR COLLEGE (Rtd), CAPT, USN (RTD)', img: '/jeffrey.jpg' },
               { name: 'Mrs. KATHLEEN QUARTEY AYENSU, ESQ', role: '', img: '/kathleen.jpg' },
               { name: 'COMMODORE JAMES OSEI KONTOH (RTD)', role: '', img: '/jamesO.jpg' },
@@ -131,7 +131,7 @@ const AboutUs = () => {
       <section className="py-16 md:py-24 bg-blue-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Join Our Mission</h2>
-          <p className="text-lg md:text-xl text-white/90 mb-10">Partner with us to transform West Africa's maritime future</p>
+          <p className="text-lg md:text-xl text-white/90 mb-10">Partner with us to transform the future of maritime in the Gulf Of Guinea</p>
           <button className="bg-yellow-500 text-gray-900 px-10 py-4 rounded-xl font-bold text-lg hover:bg-yellow-600 transition-all shadow-xl hover:scale-105">
             Get Involved
           </button>

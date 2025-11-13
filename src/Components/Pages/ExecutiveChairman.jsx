@@ -113,7 +113,7 @@ const ExecutiveChairman = () => {
 
                 {/* CTA Button */}
                 <button className="group relative inline-flex items-center gap-3 bg-yellow-400 text-blue-950 px-8 py-4 rounded-full font-bold hover:bg-yellow-300 transition-all duration-300 hover:shadow-xl hover:shadow-yellow-400/50 hover:scale-105">
-                  <span>Read Full Biography</span>
+                  <span>The Admiral's Blog</span>
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>

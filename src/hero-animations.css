@@ -1,0 +1,341 @@
+/* Custom animations for the hero section and other components */
+
+/* Slow zoom animation for background */
+@keyframes slow-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+/* Slide up animation */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out 0.2s both;
+}
+
+/* Pulse animation for dots */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Bounce animation for scroll indicator */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== MODERN PROFESSIONAL HERO TEXT STYLING ===== */
+/* Inspired by Stripe, Vercel, Next.js, Apple - 2024/2025 Trends */
+
+/* Animated Gradient Text Effect */
+.gradient-text {
+  background: linear-gradient(
+    120deg,
+    #ffd700 0%,
+    #ffed4e 25%,
+    #ffffff 50%,
+    #ffed4e 75%,
+    #ffd700 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s ease infinite;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  position: relative;
+  display: inline-block;
+}
+
+/* Animated gradient movement */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glowing effect underneath gradient text */
+.gradient-text::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 215, 0, 0.3) 0%,
+    rgba(255, 237, 78, 0.2) 30%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  z-index: -1;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Modern Typography Enhancement */
+.hero-heading {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+  padding: 0;
+}
+
+/* Subheading modern styling */
+.hero-subheading {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+/* Text shimmer effect on hover (optional) */
+.text-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Modern text stroke effect (alternative style) */
+.text-stroke {
+  -webkit-text-stroke: 2px rgba(255, 215, 0, 0.3);
+  text-stroke: 2px rgba(255, 215, 0, 0.3);
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-weight: 900;
+}
+
+/* Layered text effect (3D-like) */
+.layered-text {
+  text-shadow:
+    0 1px 0 #ffd700,
+    0 2px 0 #ffed4e,
+    0 3px 0 #ffdb58,
+    0 4px 0 #f0e68c,
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Split color text effect */
+.split-color {
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #ffffff 50%,
+    #ffd700 50%,
+    #ffd700 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Neon glow effect */
+.neon-glow {
+  color: #fff;
+  text-shadow:
+    0 0 10px #ffd700,
+    0 0 20px #ffd700,
+    0 0 30px #ffd700,
+    0 0 40px #ffed4e,
+    0 0 70px #ffed4e,
+    0 0 80px #ffed4e,
+    0 0 100px #ffed4e,
+    0 0 150px #ffed4e;
+  animation: neon-flicker 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow:
+      0 0 10px #ffd700,
+      0 0 20px #ffd700,
+      0 0 30px #ffd700,
+      0 0 40px #ffed4e,
+      0 0 70px #ffed4e,
+      0 0 80px #ffed4e,
+      0 0 100px #ffed4e,
+      0 0 150px #ffed4e;
+  }
+  50% {
+    text-shadow:
+      0 0 5px #ffd700,
+      0 0 10px #ffd700,
+      0 0 15px #ffd700,
+      0 0 20px #ffed4e,
+      0 0 35px #ffed4e,
+      0 0 40px #ffed4e,
+      0 0 50px #ffed4e,
+      0 0 75px #ffed4e;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gradient-text::before {
+    filter: blur(20px);
+  }
+  
+  .hero-heading {
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ===== PURE CSS TYPEWRITER EFFECT ===== */
+.typewriter {
+  display: inline-block;
+  position: relative;
+  font-weight: 800;
+}
+
+.typewriter::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background-color: #FCD34D;
+  margin-left: 4px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.typewriter::before {
+  content: '';
+  animation: typewriter 12s steps(20) infinite;
+}
+
+@keyframes typewriter {
+  0%, 8.33% { content: 'G'; }
+  8.34%, 16.66% { content: 'Gu'; }
+  16.67%, 20.83% { content: 'Gul'; }
+  20.84%, 25% { content: 'Gulf'; }
+  25.01%, 29.16% { content: 'Gulf '; }
+  29.17%, 33.33% { content: 'Gulf O'; }
+  33.34%, 37.5% { content: 'Gulf Of'; }
+  37.51%, 41.66% { content: 'Gulf Of '; }
+  41.67%, 45.83% { content: 'Gulf Of G'; }
+  45.84%, 50% { content: 'Gulf Of Gu'; }
+  50.01%, 54.16% { content: 'Gulf Of Gui'; }
+  54.17%, 58.33% { content: 'Gulf Of Guin'; }
+  58.34%, 62.5% { content: 'Gulf Of Guine'; }
+  62.51%, 70.83% { content: 'Gulf Of Guinea'; }
+  70.84%, 75% { content: 'Gulf Of Guine'; }
+  75.01%, 79.16% { content: 'Gulf Of Guin'; }
+  79.17%, 83.33% { content: 'Gulf Of Gui'; }
+  83.34%, 87.5% { content: 'Gulf Of Gu'; }
+  87.51%, 91.66% { content: 'Gulf Of G'; }
+  91.67%, 95.83% { content: 'Gulf Of'; }
+  95.84%, 100% { content: ''; }
+}
+
