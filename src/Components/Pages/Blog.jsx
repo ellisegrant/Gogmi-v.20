@@ -6,30 +6,7 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const articles = [
-    {
-      id: 1,
-      title: 'GOGMI Hosts Regional Maritime Security Conference 2024',
-      excerpt: 'Over 200 maritime professionals from 15 countries gathered in Accra to discuss emerging security challenges and collaborative solutions for the Gulf of Guinea region.',
-      content: 'The conference highlighted critical maritime security issues...',
-      category: 'Events',
-      author: 'Dr. Kofi Mensah',
-      date: 'November 15, 2024',
-      readTime: '5 min read',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&fit=crop',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'New Research: Blue Economy Opportunities in West Africa',
-      excerpt: 'Our latest research report explores untapped opportunities in sustainable fisheries, marine tourism, and renewable ocean energy across the region.',
-      content: 'The comprehensive 100-page report...',
-      category: 'Research',
-      author: 'Prof. Jean Baptiste',
-      date: 'November 10, 2024',
-      readTime: '8 min read',
-      image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&fit=crop',
-      featured: true
-    },
+    
     {
       id: 3,
       title: 'Capacity Building Program Graduates 50+ Maritime Professionals',
@@ -80,7 +57,7 @@ const Blog = () => {
     }
   ];
 
-  const categories = ['all', 'Events', 'Research', 'Training', 'Partnerships', 'Projects', 'Impact Stories'];
+  const categories = [, 'Events', 'News', 'Blogs', 'Technical note'];
 
   const filteredArticles = articles.filter(article => {
     const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;

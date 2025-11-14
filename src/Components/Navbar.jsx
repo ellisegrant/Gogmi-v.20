@@ -7,7 +7,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(null); // Changed to track which dropdown is open
+  const [closeTimeout, setCloseTimeout] = useState(null); // Add timeout for delayed closing
   const location = useLocation();
   const navigate = useNavigate();
   const [currentPath, setCurrentPath] = useState("/");
@@ -26,7 +27,16 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
-    { name: "Services", path: "/services" },
+    { 
+      name: "Services", 
+      path: "/services",
+      dropdown: [
+        { name: "Advocacy", path: "/services/advocacy" },
+        { name: "Research", path: "/services/research" },
+        { name: "Capacity Building", path: "/services/capacity-building" },
+        { name: "Secretariat Services", path: "/services/secretariat-services" },
+      ],
+    },
     { name: "Executive Chairman", path: "/ExecutiveChairman" },
     // { name: "Projects", path: "/projects" },
     {
@@ -42,6 +52,23 @@ const Navbar = () => {
 
   const isActive = (path) => currentPath === path;
 
+  // Handle dropdown open with immediate opening
+  const handleDropdownEnter = (itemName) => {
+    if (closeTimeout) {
+      clearTimeout(closeTimeout);
+      setCloseTimeout(null);
+    }
+    setDropdownOpen(itemName);
+  };
+
+  // Handle dropdown close with delay
+  const handleDropdownLeave = () => {
+    const timeout = setTimeout(() => {
+      setDropdownOpen(null);
+    }, 300); // 300ms delay before closing
+    setCloseTimeout(timeout);
+  };
+
   // Use router navigation
   const handleNavClick = (path) => {
     // If same path, still close mobile menu
@@ -49,15 +76,15 @@ const Navbar = () => {
       navigate(path);
     }
     setMobileMenuOpen(false);
-    setDropdownOpen(false);
+    setDropdownOpen(null);
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-lg py-3"
-          : "bg-blue-900/90 backdrop-blur-md py-5"
+          ? "bg-[#F5F7FA]/95 backdrop-blur-lg shadow-lg py-3"
+          : "bg-[#132552]/90 backdrop-blur-md py-5"
       }`}
     >
       <div className="w-full flex items-center justify-between px-12">
@@ -73,20 +100,22 @@ const Navbar = () => {
             alt="GoGMI Logo" 
             className="h-14 w-14 md:h-16 md:w-16 object-contain transform group-hover:scale-105 transition-transform"
           />
-          <div className="">
+          <div>
             <div
               className={`text-xl md:text-2xl font-bold tracking-tight whitespace-nowrap ${
-                scrolled ? "text-blue-900" : "text-white"
+                scrolled ? "text-[#132552]" : "text-[#F5F7FA]"
               }`}
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
               GoGMI
             </div>
             <div
               className={`text-xs font-medium whitespace-nowrap ${
-                scrolled ? "text-gray-600" : "text-white/80"
+                scrolled ? "text-[#1F2933]" : "text-[#F5F7FA]/80"
               }`}
+              style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
             >
-              Gulf Of Guinea <div>Maritime Institute </div>
+              Gulf Of Guinea Maritime Institute
             </div>
           </div>
         </button>
@@ -99,32 +128,34 @@ const Navbar = () => {
                 <div
                   key={item.path}
                   className="relative"
-                  onMouseEnter={() => setDropdownOpen(true)}
-                  onMouseLeave={() => setDropdownOpen(false)}
+                  onMouseEnter={() => handleDropdownEnter(item.name)}
+                  onMouseLeave={handleDropdownLeave}
                 >
                   <button
                     type="button"
                     className={`px-4 py-2 cursor-pointer rounded-lg font-medium transition-all flex items-center gap-1 hover:-translate-y-0.5 ${
                       isActive(item.path) || currentPath.startsWith(item.path)
                         ? scrolled
-                          ? "bg-blue-900 text-white"
-                          : "bg-white/30 text-white"
+                          ? "bg-[#132552] text-[#F5F7FA]"
+                          : "bg-[#F5F7FA]/30 text-[#F5F7FA]"
                         : scrolled
-                        ? "text-gray-700 hover:bg-blue-50 hover:text-blue-900"
-                        : "text-white hover:bg-white/20"
+                        ? "text-[#1F2933] hover:bg-[#C1A875]/10 hover:text-[#132552]"
+                        : "text-[#F5F7FA] hover:bg-[#F5F7FA]/20"
                     }`}
+                    style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
                   >
                     <span>{item.name}</span>
                     <ChevronDown className="w-4 h-4" />
                   </button>
 
-                  {dropdownOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl py-2 border border-gray-100 z-50">
+                  {dropdownOpen === item.name && (
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-[#132552] rounded-xl shadow-2xl py-2 border border-[#C1A875]/30 z-50">
                       {item.dropdown.map((subItem) => (
                         <button
                           key={subItem.path}
                           onClick={() => handleNavClick(subItem.path)}
-                          className="block w-full text-left px-4 py-2.5 text-gray-700 hover:bg-blue-50 hover:text-blue-900 transition-colors"
+                          className="block w-full text-left px-4 py-2.5 text-[#F5F7FA] hover:bg-[#C1A875] hover:text-[#132552] transition-colors"
+                          style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
                         >
                           {subItem.name}
                         </button>
@@ -140,12 +171,13 @@ const Navbar = () => {
                   className={`px-4 py-2 rounded-lg cursor-pointer font-medium transition-all hover:-translate-y-0.5 whitespace-nowrap ${
                     isActive(item.path)
                       ? scrolled
-                        ? "bg-blue-900 text-white"
-                        : "bg-white/30 text-white"
+                        ? "bg-[#132552] text-[#F5F7FA]"
+                        : "bg-[#F5F7FA]/30 text-[#F5F7FA]"
                       : scrolled
-                      ? "text-gray-700 hover:bg-blue-50 hover:text-blue-900"
-                      : "text-white hover:bg-white/20"
+                      ? "text-[#1F2933] hover:bg-[#C1A875]/10 hover:text-[#132552]"
+                      : "text-[#F5F7FA] hover:bg-[#F5F7FA]/20"
                   }`}
+                  style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
                 >
                   {item.name}
                 </button>
@@ -158,7 +190,8 @@ const Navbar = () => {
         <div className="hidden lg:block flex-shrink-0 mr-4">
           <button
             onClick={() => handleNavClick("/contact")}
-            className="bg-yellow-500 text-gray-900 px-6 py-2.5 rounded-lg font-semibold hover:bg-yellow-600 transition-all shadow-lg hover:scale-105 whitespace-nowrap"
+            className="bg-[#C1A875] text-[#132552] px-6 py-2.5 rounded-lg font-semibold hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all shadow-lg hover:scale-105 whitespace-nowrap"
+            style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
           >
             Get Started
           </button>
@@ -167,7 +200,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           className={`lg:hidden transition-colors p-2 ${
-            scrolled ? "text-gray-900" : "text-white"
+            scrolled ? "text-[#132552]" : "text-[#F5F7FA]"
           }`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
@@ -178,26 +211,28 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/98 backdrop-blur-xl border-t border-gray-200 shadow-2xl">
+        <div className="lg:hidden bg-[#F5F7FA]/98 backdrop-blur-xl border-t border-gray-200 shadow-2xl">
           <div className="px-6 py-4 space-y-2">
             {navItems.map((item) =>
               item.dropdown ? (
                 <div key={item.path}>
                   <button
                     type="button"
-                    onClick={() => setDropdownOpen((s) => !s)}
-                    className="flex items-center justify-between w-full text-left py-3 px-4 text-gray-700 font-medium rounded-lg hover:bg-blue-50"
+                    onClick={() => setDropdownOpen(dropdownOpen === item.name ? null : item.name)}
+                    className="flex items-center justify-between w-full text-left py-3 px-4 text-[#1F2933] font-medium rounded-lg hover:bg-[#C1A875]/10"
+                    style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
                   >
                     {item.name}
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen === item.name ? 'rotate-180' : ''}`} />
                   </button>
-                  {dropdownOpen && (
-                    <div className="pl-4 space-y-1">
+                  {dropdownOpen === item.name && (
+                    <div className="pl-4 space-y-1 mt-2 bg-[#132552] rounded-lg p-2">
                       {item.dropdown.map((subItem) => (
                         <button
                           key={subItem.path}
                           onClick={() => handleNavClick(subItem.path)}
-                          className="block w-full text-left py-2.5 px-4 text-gray-600 hover:text-blue-900 text-sm rounded-lg hover:bg-blue-50"
+                          className="block w-full text-left py-2.5 px-4 text-[#F5F7FA] hover:bg-[#C1A875] hover:text-[#132552] text-sm rounded-lg transition-colors"
+                          style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
                         >
                           {subItem.name}
                         </button>
@@ -211,9 +246,10 @@ const Navbar = () => {
                   onClick={() => handleNavClick(item.path)}
                   className={`block w-full text-left py-3 px-4 rounded-lg font-medium transition-all ${
                     isActive(item.path)
-                      ? "bg-blue-900 text-white"
-                      : "text-gray-700 hover:bg-blue-50"
+                      ? "bg-[#132552] text-[#F5F7FA]"
+                      : "text-[#1F2933] hover:bg-[#C1A875]/10"
                   }`}
+                  style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
                 >
                   {item.name}
                 </button>
@@ -223,7 +259,8 @@ const Navbar = () => {
             {/* Mobile Get Started Button */}
             <button
               onClick={() => handleNavClick("/contact")}
-              className="block w-full text-center bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-all shadow-lg"
+              className="block w-full text-center bg-[#C1A875] text-[#132552] px-6 py-3 rounded-lg font-semibold hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all shadow-lg"
+              style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
             >
               Get Started
             </button>

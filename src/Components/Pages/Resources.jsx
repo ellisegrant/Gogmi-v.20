@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FileText, Download, Search, Filter, Calendar, Eye, BookOpen, Video, Image as ImageIcon } from 'lucide-react';
 
 const Resources = () => {
-  const [selectedType, setSelectedType] = useState('all');
+  const [selectedType, setSelectedType] = useState('Reports & Reviews');
   const [searchTerm, setSearchTerm] = useState('');
 
   const resources = [
@@ -10,7 +10,7 @@ const Resources = () => {
       id: 1,
       title: 'Maritime Security Framework for West Africa 2024',
       description: 'Comprehensive policy framework for enhancing maritime security cooperation across the Gulf of Guinea region.',
-      type: 'Report',
+      type: 'Reports & Reviews',
       category: 'Security',
       size: '2.5 MB',
       pages: 85,
@@ -23,7 +23,7 @@ const Resources = () => {
       id: 2,
       title: 'Blue Economy Investment Opportunities Guide',
       description: 'Detailed analysis of investment opportunities in sustainable fisheries, marine tourism, and renewable ocean energy.',
-      type: 'Report',
+      type: 'Reports & Reviews',
       category: 'Blue Economy',
       size: '4.8 MB',
       pages: 120,
@@ -36,7 +36,7 @@ const Resources = () => {
       id: 3,
       title: 'Maritime Training Curriculum 2024',
       description: 'Complete training curriculum for maritime security professionals including modules, assessments, and certifications.',
-      type: 'Guide',
+      type: 'Strategy Documents',
       category: 'Training',
       size: '1.8 MB',
       pages: 45,
@@ -62,7 +62,7 @@ const Resources = () => {
       id: 5,
       title: 'Policy Brief: Port Digitalization',
       description: 'Strategic recommendations for digital transformation of port operations in West African countries.',
-      type: 'Policy Brief',
+      type: 'Academic Papers',
       category: 'Technology',
       size: '850 KB',
       pages: 12,
@@ -83,24 +83,24 @@ const Resources = () => {
       thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&fit=crop',
       fileType: 'PNG'
     },
-    {
-      id: 7,
-      title: 'Sustainable Fisheries Best Practices Manual',
-      description: 'Practical guide for implementing sustainable fishing practices in coastal communities.',
-      type: 'Manual',
-      category: 'Blue Economy',
-      size: '2.1 MB',
-      pages: 68,
-      date: 'June 2024',
-      downloads: 920,
-      thumbnail: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&fit=crop',
-      fileType: 'PDF'
-    },
+    // {
+    //   id: 7,
+    //   title: 'Sustainable Fisheries Best Practices Manual',
+    //   description: 'Practical guide for implementing sustainable fishing practices in coastal communities.',
+    //   type: 'Maritime Governance Index',
+    //   category: 'Blue Economy',
+    //   size: '2.1 MB',
+    //   pages: 68,
+    //   date: 'June 2024',
+    //   downloads: 920,
+    //   thumbnail: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&fit=crop',
+    //   fileType: 'PDF'
+    // },
     {
       id: 8,
       title: 'Annual Report 2023',
       description: 'Comprehensive annual report highlighting our achievements, financial statements, and impact metrics.',
-      type: 'Report',
+      type: 'Reports & Reviews',
       category: 'Organizational',
       size: '5.6 MB',
       pages: 95,
@@ -108,13 +108,52 @@ const Resources = () => {
       downloads: 1580,
       thumbnail: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&fit=crop',
       fileType: 'PDF'
+    },
+    {
+      id: 9,
+      title: 'Ocean Governance Framework Analysis',
+      description: 'Academic analysis of ocean governance frameworks and their implementation in the Gulf of Guinea region.',
+      type: 'Academic Papers',
+      category: 'Governance',
+      size: '1.5 MB',
+      pages: 32,
+      date: 'May 2024',
+      downloads: 540,
+      thumbnail: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&fit=crop',
+      fileType: 'PDF'
+    },
+    {
+      id: 10,
+      title: 'Regional Maritime Strategy 2024-2030',
+      description: 'Strategic document outlining maritime development goals and implementation roadmap for the next six years.',
+      type: 'Strategy Documents',
+      category: 'Policy',
+      size: '3.2 MB',
+      pages: 78,
+      date: 'April 2024',
+      downloads: 980,
+      thumbnail: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&fit=crop',
+      fileType: 'PDF'
     }
+    // {
+    //   id: 11,
+    //   title: 'West African Maritime Governance Index 2023',
+    //   description: 'Comprehensive index measuring maritime governance effectiveness across 18 coastal nations in the region.',
+    //   type: 'Maritime Governance Index',
+    //   category: 'Governance',
+    //   size: '4.5 MB',
+    //   pages: 105,
+    //   date: 'March 2024',
+    //   downloads: 1320,
+    //   thumbnail: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&fit=crop',
+    //   fileType: 'PDF'
+    // }
   ];
 
-  const types = ['all', 'Report', 'Guide', 'Policy Brief', 'Video', 'Infographic', 'Manual'];
+  const types = ['Reports & Reviews', 'Strategy Documents', 'Academic Papers', 'Video', 'Infographic'];
 
   const filteredResources = resources.filter(resource => {
-    const matchesType = selectedType === 'all' || resource.type === selectedType;
+    const matchesType = resource.type === selectedType;
     const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          resource.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesType && matchesSearch;
@@ -123,21 +162,28 @@ const Resources = () => {
   return (
     <div className="w-full pt-20">
       {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
-          }}></div>
+      <section className="relative py-24 overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1920&auto=format&fit=crop&q=80"
+            alt="Maritime library and resources"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for text visibility */}
+          <div className="absolute inset-0 bg-[#132552]/80"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-yellow-500/20 backdrop-blur-sm px-6 py-3 rounded-full border border-yellow-500/30 mb-6">
-            <BookOpen className="w-5 h-5 text-yellow-300" />
-            <span className="text-yellow-200 font-semibold text-sm">Knowledge Hub</span>
+          <div className="inline-flex items-center space-x-2 bg-[#C1A875]/20 backdrop-blur-sm px-6 py-3 rounded-full border border-[#C1A875]/30 mb-6">
+            <BookOpen className="w-5 h-5 text-[#C1A875]" />
+            <span className="text-[#F5F7FA] font-semibold text-sm" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Knowledge Hub</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Resources & Publications</h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#F5F7FA] mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+            Resources & Publications
+          </h1>
+          <p className="text-xl text-[#F5F7FA]/90 max-w-3xl mx-auto" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
             Access our library of research reports, policy briefs, training materials, and multimedia content
           </p>
         </div>
@@ -153,10 +199,10 @@ const Resources = () => {
               { icon: <Video />, number: '25+', label: 'Videos' },
               { icon: <ImageIcon />, number: '50+', label: 'Infographics' }
             ].map((stat, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-6 shadow-xl text-center hover:shadow-2xl transition-all hover:-translate-y-1">
-                <div className="text-yellow-500 flex justify-center mb-3">{stat.icon}</div>
-                <div className="text-3xl font-bold text-blue-900 mb-1">{stat.number}</div>
-                <p className="text-gray-600 text-sm font-medium">{stat.label}</p>
+              <div key={idx} className="bg-[#F5F7FA] rounded-2xl p-6 shadow-xl text-center hover:shadow-2xl transition-all hover:-translate-y-1">
+                <div className="text-[#C1A875] flex justify-center mb-3">{stat.icon}</div>
+                <div className="text-3xl font-bold text-[#132552] mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>{stat.number}</div>
+                <p className="text-[#1F2933] text-sm font-medium" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>{stat.label}</p>
               </div>
             ))}
           </div>
@@ -164,17 +210,18 @@ const Resources = () => {
       </section>
 
       {/* Search and Filter */}
-      <section className="py-12 bg-white border-b sticky top-20 z-30">
+      <section className="py-12 bg-[#F5F7FA] border-b sticky top-20 z-30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="relative w-full md:w-96">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#1F2933]/60" />
               <input
                 type="text"
                 placeholder="Search resources..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C1A875] focus:border-[#C1A875]"
+                style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
               />
             </div>
 
@@ -185,11 +232,12 @@ const Resources = () => {
                   onClick={() => setSelectedType(type)}
                   className={`px-5 py-2 rounded-lg font-medium transition-all ${
                     selectedType === type
-                      ? 'bg-blue-900 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-[#132552] text-[#F5F7FA] shadow-lg'
+                      : 'bg-white text-[#1F2933] hover:bg-[#C1A875]/10 border border-gray-200'
                   }`}
+                  style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
                 >
-                  {type === 'all' ? 'All Resources' : type}
+                  {type}
                 </button>
               ))}
             </div>
@@ -198,17 +246,19 @@ const Resources = () => {
       </section>
 
       {/* Resources Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           {filteredResources.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-2xl text-gray-500">No resources found matching your criteria</p>
+              <p className="text-2xl text-[#1F2933]" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                No resources found matching your criteria
+              </p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredResources.map((resource) => (
-                <div key={resource.id} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
-                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-100 to-blue-50">
+                <div key={resource.id} className="group bg-[#F5F7FA] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100">
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[#132552]/10 to-[#C1A875]/10">
                     <img 
                       src={resource.thumbnail} 
                       alt={resource.title}
@@ -216,19 +266,19 @@ const Resources = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     <div className="absolute top-4 left-4">
-                      <span className="bg-blue-900 text-white px-3 py-1 rounded-full text-xs font-bold">
+                      <span className="bg-[#132552] text-[#F5F7FA] px-3 py-1 rounded-full text-xs font-bold" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                         {resource.type}
                       </span>
                     </div>
                     <div className="absolute top-4 right-4">
-                      <span className="bg-yellow-500 text-gray-900 px-3 py-1 rounded-full text-xs font-bold">
+                      <span className="bg-[#C1A875] text-[#132552] px-3 py-1 rounded-full text-xs font-bold" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                         {resource.fileType}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <div className="flex items-center text-xs text-gray-500 mb-3 space-x-4">
+                    <div className="flex items-center text-xs text-[#1F2933]/70 mb-3 space-x-4" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                       <span className="flex items-center">
                         <Calendar className="w-3 h-3 mr-1" />
                         {resource.date}
@@ -239,21 +289,21 @@ const Resources = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-blue-900 mb-3 group-hover:text-yellow-600 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-bold text-[#132552] mb-3 group-hover:text-[#C1A875] transition-colors line-clamp-2" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {resource.title}
                     </h3>
                     
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    <p className="text-[#1F2933] text-sm mb-4 line-clamp-3" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                       {resource.description}
                     </p>
 
-                    <div className="flex items-center justify-between text-sm text-gray-600 mb-4 pb-4 border-b border-gray-100">
+                    <div className="flex items-center justify-between text-sm text-[#1F2933]/70 mb-4 pb-4 border-b border-gray-200" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                       <span className="font-medium">{resource.size}</span>
                       {resource.pages && <span>{resource.pages} pages</span>}
                       {resource.duration && <span>{resource.duration}</span>}
                     </div>
 
-                    <button className="w-full bg-blue-900 text-white py-3 rounded-lg font-semibold hover:bg-yellow-500 hover:text-gray-900 transition-all flex items-center justify-center space-x-2 group-hover:shadow-lg">
+                    <button className="w-full bg-[#132552] text-[#F5F7FA] py-3 rounded-lg font-semibold hover:bg-[#C1A875] hover:text-[#132552] transition-all flex items-center justify-center space-x-2 group-hover:shadow-lg" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                       <Download className="w-5 h-5" />
                       <span>Download</span>
                     </button>
@@ -266,15 +316,15 @@ const Resources = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-gradient-to-br from-[#F5F7FA] to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-blue-900 mb-6">
+          <h2 className="text-4xl font-bold text-[#132552] mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
             Need Custom Research?
           </h2>
-          <p className="text-xl text-gray-600 mb-10">
+          <p className="text-xl text-[#1F2933] mb-10" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
             We offer customized research and consulting services tailored to your specific maritime needs
           </p>
-          <button className="bg-yellow-500 text-gray-900 px-10 py-4 rounded-xl font-bold text-lg hover:bg-yellow-600 transition-all shadow-lg hover:shadow-xl hover:scale-105">
+          <button className="bg-[#C1A875] text-[#132552] px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all shadow-lg hover:shadow-xl hover:scale-105" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
             Request Custom Research
           </button>
         </div>

@@ -66,7 +66,7 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Resources</h3>
             <ul className="space-y-3">
               {[
-                { name: 'Library', path: '/' },
+                { name: 'Library', path: '/Resources' },
                 { name: 'News & Updates', path: '/blog' },
                 { name: 'Contact', path: '/contact' },
                 { name: 'Careers', path: '/CareersOpportunities' },
@@ -149,7 +149,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>© 2023 GOGMI. All rights reserved.</p>
+          <p>© 2025 GoGMI. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/privacy" className="hover:text-yellow-400 transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-yellow-400 transition-colors">Terms of Service</Link>
