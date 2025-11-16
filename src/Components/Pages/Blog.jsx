@@ -6,7 +6,6 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const articles = [
-    
     {
       id: 3,
       title: 'Capacity Building Program Graduates 50+ Maritime Professionals',
@@ -17,7 +16,6 @@ const Blog = () => {
       date: 'November 5, 2024',
       readTime: '4 min read',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&fit=crop',
-      featured: false
     },
     {
       id: 4,
@@ -29,7 +27,6 @@ const Blog = () => {
       date: 'October 28, 2024',
       readTime: '3 min read',
       image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&fit=crop',
-      featured: false
     },
     {
       id: 5,
@@ -41,7 +38,6 @@ const Blog = () => {
       date: 'October 20, 2024',
       readTime: '6 min read',
       image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&fit=crop',
-      featured: false
     },
     {
       id: 6,
@@ -53,11 +49,10 @@ const Blog = () => {
       date: 'October 15, 2024',
       readTime: '7 min read',
       image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&fit=crop',
-      featured: false
     }
   ];
 
-  const categories = [, 'Events', 'News', 'Blogs', 'Technical note'];
+  const categories = ['all', 'Events', 'News', 'Blogs', 'Technical note'];
 
   const filteredArticles = articles.filter(article => {
     const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
@@ -66,103 +61,75 @@ const Blog = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const featuredArticles = articles.filter(article => article.featured);
-
   return (
     <div className="w-full">
-      {/* Hero - Add proper padding top */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden">
+      {/* Hero Section with Image */}
+      <section className="relative pt-32 pb-24 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1516849677043-ef67c9557e16?w=1600&fit=crop" 
+            alt="Maritime Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#132552]/40 via-[#1A336C]/30 to-[#132552]/40"></div>
+        </div>
+
+        {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
-          }}></div>
+          <div className="absolute w-96 h-96 bg-[#C1A875] rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
+          <div className="absolute w-96 h-96 bg-[#7A4E3A] rounded-full blur-3xl -bottom-48 -right-48 animate-pulse delay-1000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-yellow-500/20 backdrop-blur-sm px-6 py-3 rounded-full border border-yellow-500/30 mb-6">
-            <Tag className="w-5 h-5 text-yellow-300" />
-            <span className="text-yellow-200 font-semibold text-sm">Latest Updates & Insights</span>
+          <div className="inline-flex items-center space-x-2 bg-[#C1A875]/20 backdrop-blur-sm px-6 py-3 rounded-full border border-[#C1A875]/30 mb-6">
+            <Tag className="w-5 h-5 text-[#C1A875]" />
+            <span className="text-[#F5F7FA] font-semibold text-sm" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Latest Updates & Insights</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">News & Blog</h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold text-[#F5F7FA] mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+            News & Blog
+          </h1>
+          <p className="text-xl text-[#F5F7FA]/90 max-w-3xl mx-auto" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
             Stay updated with the latest maritime news, research insights, and success stories from across West Africa
           </p>
         </div>
       </section>
 
-      {/* Featured Articles - Fix spacing */}
-      <section className="py-16 bg-gray-50">
+      {/* Search and Categories Section - Improved Layout */}
+      <section className="py-12 bg-gradient-to-br from-[#132552] to-[#1A336C]">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-blue-900 mb-8">Featured Articles</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {featuredArticles.map((article) => (
-              <div key={article.id} className="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2">
-                <div className="relative h-80 overflow-hidden">
-                  <img 
-                    src={article.image} 
-                    alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute top-6 left-6">
-                    <span className="bg-yellow-500 text-gray-900 px-4 py-2 rounded-full text-sm font-bold">
-                      Featured
-                    </span>
-                  </div>
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <span className="text-yellow-400 text-sm font-semibold mb-2 block">{article.category}</span>
-                    <h3 className="text-2xl font-bold text-white mb-2">{article.title}</h3>
-                    <div className="flex items-center space-x-4 text-white/80 text-sm">
-                      <span className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {article.date}
-                      </span>
-                      <span className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {article.readTime}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4">{article.excerpt}</p>
-                  <button className="text-blue-900 font-semibold flex items-center hover:text-yellow-600 transition-colors">
-                    <span>Read More</span>
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Search and Categories - Remove sticky, fix spacing */}
-      <section className="py-8 bg-white border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          {/* Search Bar */}
+          <div className="mb-8">
+            <div className="relative max-w-2xl mx-auto">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#C1A875]" />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-12 pr-4 py-4 bg-[#F5F7FA] border-2 border-[#C1A875]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C1A875] focus:border-transparent text-[#132552] placeholder-[#132552]/50"
+                style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
               />
             </div>
+          </div>
 
-            <div className="flex flex-wrap gap-2 justify-center">
+          {/* Categories - Improved Grid Layout */}
+          <div>
+            <h3 className="text-center text-[#C1A875] font-semibold text-sm uppercase tracking-wider mb-6" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+              Filter by Category
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-5 py-2 rounded-lg font-medium transition-all ${
+                  className={`px-6 py-4 rounded-xl font-semibold transition-all ${
                     selectedCategory === category
-                      ? 'bg-blue-900 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-[#C1A875] text-[#132552] shadow-lg'
+                      : 'bg-[#F5F7FA]/10 text-[#F5F7FA] border-2 border-[#C1A875]/30 hover:bg-[#F5F7FA]/20 hover:border-[#C1A875]/50'
                   }`}
+                  style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
                 >
                   {category === 'all' ? 'All Articles' : category}
                 </button>
@@ -172,57 +139,77 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Articles Grid - Fix spacing */}
-      <section className="py-16 bg-gray-50">
+      {/* Articles Grid */}
+      <section className="py-20 bg-gradient-to-br from-[#F5F7FA] to-gray-100">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-blue-900 mb-8">All Articles</h2>
+          <div className="flex items-center gap-3 mb-12">
+            <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+            <h2 className="text-4xl font-bold text-[#132552]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              {selectedCategory === 'all' ? 'All Articles' : selectedCategory}
+            </h2>
+          </div>
+
           {filteredArticles.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-2xl text-gray-500">No articles found matching your criteria</p>
+              <div className="inline-block p-6 bg-white rounded-2xl shadow-lg">
+                <Search className="w-16 h-16 text-[#C1A875] mx-auto mb-4" />
+                <p className="text-2xl text-[#132552] font-semibold mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  No articles found
+                </p>
+                <p className="text-[#132552]/70" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                  Try adjusting your search or filter criteria
+                </p>
+              </div>
             </div>
           ) : (
             <div className="grid md:grid-cols-3 gap-8">
-              {filteredArticles.filter(a => !a.featured).map((article) => (
-                <div key={article.id} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2">
+              {filteredArticles.map((article) => (
+                <div 
+                  key={article.id} 
+                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-[#C1A875]/30"
+                >
                   <div className="relative h-56 overflow-hidden">
                     <img 
                       src={article.image} 
                       alt={article.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#132552]/80 via-[#132552]/40 to-transparent"></div>
                     <div className="absolute top-4 left-4">
-                      <span className="bg-blue-900 text-white px-3 py-1 rounded-full text-xs font-bold">
+                      <span className="bg-[#C1A875] text-[#132552] px-4 py-2 rounded-full text-xs font-bold shadow-lg" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                         {article.category}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-blue-900 mb-3 group-hover:text-yellow-600 transition-colors line-clamp-2">
+                    <h3 className="text-xl font-bold text-[#132552] mb-3 group-hover:text-[#C1A875] transition-colors line-clamp-2" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {article.title}
                     </h3>
                     
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    <p className="text-[#132552]/70 text-sm mb-4 line-clamp-3" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                       {article.excerpt}
                     </p>
 
-                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <div className="flex items-center justify-between text-sm text-[#132552]/60 mb-4" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                       <span className="flex items-center">
-                        <User className="w-4 h-4 mr-1" />
+                        <User className="w-4 h-4 mr-1 text-[#C1A875]" />
                         {article.author}
                       </span>
                       <span className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
+                        <Clock className="w-4 h-4 mr-1 text-[#C1A875]" />
                         {article.readTime}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <span className="text-sm text-gray-500">{article.date}</span>
-                      <button className="text-blue-900 font-semibold text-sm flex items-center hover:text-yellow-600 transition-colors">
-                        <span>Read</span>
-                        <ArrowRight className="w-4 h-4 ml-1" />
+                    <div className="flex items-center justify-between pt-4 border-t border-[#C1A875]/20">
+                      <span className="text-sm text-[#132552]/60 flex items-center" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                        <Calendar className="w-4 h-4 mr-1 text-[#C1A875]" />
+                        {article.date}
+                      </span>
+                      <button className="text-[#C1A875] font-semibold text-sm flex items-center hover:text-[#7A4E3A] transition-colors group/btn" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                        <span>Read More</span>
+                        <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
                       </button>
                     </div>
                   </div>
@@ -233,33 +220,71 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Newsletter - Fix spacing */}
-      <section className="py-20 bg-blue-900 relative overflow-hidden">
+      {/* Newsletter Section */}
+      <section className="py-20 relative overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#132552] via-[#1A336C] to-[#132552]"></div>
+        
+        {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%)'
-          }}></div>
+          <div className="absolute w-96 h-96 bg-[#C1A875] rounded-full blur-3xl top-1/2 left-1/4 animate-pulse"></div>
+          <div className="absolute w-96 h-96 bg-[#7A4E3A] rounded-full blur-3xl top-1/2 right-1/4 animate-pulse delay-500"></div>
         </div>
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <div className="inline-block mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+              <span className="text-[#C1A875] font-semibold tracking-wider text-sm uppercase" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Newsletter</span>
+              <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+            </div>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-[#F5F7FA] mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
             Stay Updated
           </h2>
-          <p className="text-xl text-white/90 mb-10">
+          <p className="text-xl text-[#F5F7FA]/90 mb-10" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
             Subscribe to our newsletter for the latest maritime insights and updates
           </p>
+          
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
             <input
               type="email"
               placeholder="Enter your email address"
-              className="flex-1 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="flex-1 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C1A875] bg-[#F5F7FA] text-[#132552] placeholder-[#132552]/50"
+              style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
             />
-            <button className="bg-yellow-500 text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-yellow-600 transition-all shadow-xl hover:scale-105 whitespace-nowrap">
+            <button className="bg-[#C1A875] text-[#132552] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all shadow-xl hover:scale-105 whitespace-nowrap" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
               Subscribe
             </button>
           </div>
         </div>
       </section>
+
+      <style>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.5;
+            transform: scale(1.05);
+          }
+        }
+        
+        .animate-pulse {
+          animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .delay-500 {
+          animation-delay: 500ms;
+        }
+        
+        .delay-1000 {
+          animation-delay: 1000ms;
+        }
+      `}</style>
     </div>
   );
 };

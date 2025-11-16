@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe, Users, Award, TrendingUp, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const Partners = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -113,42 +113,79 @@ const Partners = () => {
     : partners.filter(partner => partner.category === selectedCategory);
 
   return (
-    <div className="w-full pt-20">
-      {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%)'
-          }}></div>
+    <div className="w-full">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Background Image - Minimal overlay */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&fit=crop" 
+            alt="Partners"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#132552]/20 via-[#1A336C]/15 to-[#132552]/20"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-yellow-500/20 backdrop-blur-sm px-6 py-3 rounded-full border border-yellow-500/30 mb-6">
-            <Users className="w-5 h-5 text-yellow-300" />
-            <span className="text-yellow-200 font-semibold text-sm">Global Collaboration Network</span>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Our Partners
+            </h1>
+            <p className="text-xl text-white/95 leading-relaxed" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+              Working together with leading organizations to advance maritime excellence across West Africa
+            </p>
           </div>
-          
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Our Partners</h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Working together with leading organizations to advance maritime excellence across West Africa
-          </p>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="relative -mt-16 z-20 px-6 pb-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* About Partnerships Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+                <span className="text-[#C1A875] font-semibold tracking-wider text-sm uppercase" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Our Network</span>
+              </div>
+              <h2 className="text-4xl font-bold text-[#132552] mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Strategic Partnerships for Maritime Excellence
+              </h2>
+            </div>
+
+            <div className="prose prose-lg max-w-none" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+              <p className="text-[#132552]/80 text-lg leading-relaxed mb-6">
+                GoGMI's partnerships represent a diverse network of international organizations, regional bodies, government agencies, academic institutions, and private sector entities committed to advancing maritime security and sustainable blue economy development in the Gulf of Guinea.
+              </p>
+
+              <p className="text-[#132552]/80 text-lg leading-relaxed mb-6">
+                Through strategic collaborations, we leverage collective expertise, resources, and networks to address complex maritime challenges, build regional capacity, and promote evidence-based policymaking. Our partnerships enable joint research initiatives, knowledge sharing platforms, training programs, and policy advocacy that benefit maritime stakeholders across West and Central Africa.
+              </p>
+
+              <p className="text-[#132552]/80 text-lg leading-relaxed">
+                Each partnership is built on shared values of transparency, mutual respect, and commitment to advancing the blue economy. Together with our partners, we work to strengthen maritime governance, enhance regional cooperation, and create sustainable opportunities for communities dependent on ocean resources.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnership Statistics */}
+      <section className="py-16 bg-[#F5F7FA]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
-              { icon: <Globe />, number: '50+', label: 'Global Partners' },
-              { icon: <Users />, number: '15+', label: 'Countries' },
-              { icon: <Award />, number: '100+', label: 'Joint Projects' },
-              { icon: <TrendingUp />, number: '10 Years', label: 'Collaboration' }
+              { number: '50+', label: 'Global Partners' },
+              { number: '15+', label: 'Countries' },
+              { number: '100+', label: 'Joint Projects' },
+              { number: '10 Years', label: 'Collaboration' }
             ].map((stat, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-6 shadow-xl text-center hover:shadow-2xl transition-all hover:-translate-y-1">
-                <div className="text-yellow-500 flex justify-center mb-3">{stat.icon}</div>
-                <div className="text-3xl font-bold text-blue-900 mb-1">{stat.number}</div>
-                <p className="text-gray-600 text-sm font-medium">{stat.label}</p>
+              <div key={idx} className="bg-white rounded-lg p-6 shadow-sm border border-[#C1A875]/20">
+                <div className="text-4xl font-bold text-[#132552] mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  {stat.number}
+                </div>
+                <p className="text-[#132552]/70 font-medium" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
@@ -156,18 +193,27 @@ const Partners = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="py-12 bg-white border-b sticky top-20 z-30">
+      <section className="py-12 bg-white border-b border-[#C1A875]/20">
         <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+              <span className="text-[#C1A875] font-semibold tracking-wider text-sm uppercase" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Filter by Category</span>
+              <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+            </div>
+          </div>
+          
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
                   selectedCategory === category
-                    ? 'bg-blue-900 text-white shadow-lg scale-105'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-[#C1A875] text-[#132552] shadow-lg'
+                    : 'bg-[#F5F7FA] text-[#132552] border-2 border-[#C1A875]/20 hover:border-[#C1A875]/50'
                 }`}
+                style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
               >
                 {category === 'all' ? 'All Partners' : category}
               </button>
@@ -177,23 +223,23 @@ const Partners = () => {
       </section>
 
       {/* Partners Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#F5F7FA]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPartners.map((partner) => (
               <div
                 key={partner.id}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                className="bg-white rounded-xl overflow-hidden shadow-sm border-2 border-[#C1A875]/20 hover:border-[#C1A875]/50 hover:shadow-lg transition-all"
               >
                 {/* Logo */}
-                <div className="bg-gradient-to-br from-blue-50 to-gray-50 p-8 flex items-center justify-center h-40 relative overflow-hidden">
+                <div className="bg-[#F5F7FA] p-8 flex items-center justify-center h-40 relative">
                   <img 
                     src={partner.logo} 
                     alt={partner.name}
-                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                    className="max-w-full max-h-full object-contain"
                   />
                   <div className="absolute top-4 right-4">
-                    <span className="bg-blue-900 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    <span className="bg-[#C1A875] text-[#132552] px-3 py-1 rounded-full text-xs font-bold" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                       {partner.category}
                     </span>
                   </div>
@@ -202,7 +248,7 @@ const Partners = () => {
                 {/* Content */}
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-bold text-blue-900 group-hover:text-yellow-600 transition-colors">
+                    <h3 className="text-xl font-bold text-[#132552]" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {partner.name}
                     </h3>
                     {partner.website !== '#' && (
@@ -210,7 +256,7 @@ const Partners = () => {
                         href={partner.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-blue-900 transition-colors"
+                        className="text-[#C1A875] hover:text-[#7A4E3A] transition-colors"
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
@@ -218,25 +264,25 @@ const Partners = () => {
                   </div>
 
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-500">Type:</span>
-                      <span className="font-semibold text-gray-700">{partner.type}</span>
+                    <div className="flex items-center justify-between text-sm" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                      <span className="text-[#132552]/60">Type:</span>
+                      <span className="font-semibold text-[#132552]">{partner.type}</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-500">Since:</span>
-                      <span className="font-semibold text-gray-700">{partner.since}</span>
+                    <div className="flex items-center justify-between text-sm" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                      <span className="text-[#132552]/60">Since:</span>
+                      <span className="font-semibold text-[#132552]">{partner.since}</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-500">Projects:</span>
-                      <span className="font-semibold text-yellow-600">{partner.projects}</span>
+                    <div className="flex items-center justify-between text-sm" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                      <span className="text-[#132552]/60">Projects:</span>
+                      <span className="font-semibold text-[#C1A875]">{partner.projects}</span>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  <p className="text-[#132552]/70 text-sm mb-4 leading-relaxed" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                     {partner.description}
                   </p>
 
-                  <button className="w-full bg-blue-900 text-white py-3 rounded-lg font-semibold hover:bg-yellow-500 hover:text-gray-900 transition-all group-hover:shadow-lg">
+                  <button className="w-full bg-[#C1A875] text-[#132552] py-3 rounded-lg font-semibold hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                     View Partnership
                   </button>
                 </div>
@@ -246,18 +292,36 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-white">
+      {/* Become a Partner CTA */}
+      <section className="py-20 bg-gradient-to-br from-[#132552] to-[#1A336C] text-[#F5F7FA]">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-blue-900 mb-6">
+          <div className="mb-8">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+              <span className="text-[#C1A875] font-semibold tracking-wider text-sm uppercase" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Join Our Network</span>
+              <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+            </div>
+          </div>
+
+          <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
             Become a Partner
           </h2>
-          <p className="text-xl text-gray-600 mb-10">
-            Join our network of leading organizations driving maritime excellence in West Africa
+          <p className="text-xl text-[#F5F7FA]/90 mb-10 leading-relaxed" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+            Join our network of leading organizations driving maritime excellence in West Africa. Together, we can create sustainable solutions for the Gulf of Guinea's blue economy.
           </p>
-          <button className="bg-yellow-500 text-gray-900 px-10 py-4 rounded-xl font-bold text-lg hover:bg-yellow-600 transition-all shadow-lg hover:shadow-xl hover:scale-105">
-            Partnership Opportunities
-          </button>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 inline-block mb-8">
+            <p className="font-semibold mb-2" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Contact Partnerships Team</p>
+            <a href="mailto:partnerships@gogmi.org.gh" className="text-[#C1A875] hover:underline text-lg" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+              partnerships@gogmi.org.gh
+            </a>
+          </div>
+
+          <div>
+            <button className="bg-[#C1A875] text-[#132552] px-10 py-4 rounded-lg font-bold text-lg hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all shadow-lg" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+              Partnership Opportunities
+            </button>
+          </div>
         </div>
       </section>
     </div>

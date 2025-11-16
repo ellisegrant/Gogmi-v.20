@@ -17,6 +17,8 @@ import Membership from './Components/Pages/Membership';
 import MediaGallery from './Components/Pages/MediaGallery';
 import ExecutiveChairman from './Components/Pages/ExecutiveChairman';
 import Partners from './Components/Pages/Partners';
+import Advocacy from './Components/Pages/Advocacy';
+import Research from './Components/Pages/Research';
 
 
 function App() {
@@ -29,13 +31,15 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/services" element={<Services />} />
-            {/* <Route path="/projects" element={<Projects />} /> */}
+            {/* FIXED: Changed from /Advocacy to /services/advocacy to match navbar */}
+            <Route path="/services/advocacy" element={<Advocacy />} />
+            <Route path="/services/research" element={<Research />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/membership" element={<Membership />} />
             <Route path="/mediagallery" element={<MediaGallery />} />
-             <Route path="/Partners" element={<Partners />} />
+            <Route path="/Partners" element={<Partners />} />
             <Route path="/CareersOpportunities" element={<Careers />} />
             <Route path="/ExecutiveChairman" element={<ExecutiveChairman />} />
             <Route path="*" element={<NotFound />} />
