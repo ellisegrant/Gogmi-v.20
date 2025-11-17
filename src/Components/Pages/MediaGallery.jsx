@@ -254,27 +254,8 @@ const MediaGallery = () => {
         </div>
       </section>
 
-      {/* STATS SECTION */}
-      <section className="relative -mt-16 z-20 px-6 pb-12">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { icon: <ImageIcon className="w-7 h-7" />, number: '500+', label: 'Photos' },
-              { icon: <Video className="w-7 h-7" />, number: '50+', label: 'Videos' },
-              { icon: <FileText className="w-7 h-7" />, number: '100+', label: 'Infographics' },
-              { icon: <Newspaper className="w-7 h-7" />, number: '200+', label: 'Press Features' }
-            ].map((stat, idx) => (
-              <div key={idx} className="bg-white rounded-3xl p-8 shadow-xl text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-                   style={{ border: '1px solid rgba(19, 37, 82, 0.05)' }}>
-                <div className="flex justify-center mb-4" style={{ color: '#C1A875' }}>{stat.icon}</div>
-                <div className="text-4xl font-black mb-2" 
-                     style={{ fontFamily: "'Playfair Display', serif", color: '#132552' }}>{stat.number}</div>
-                <p className="text-sm font-semibold" style={{ color: '#4B5563' }}>{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
+      
 
       {/* SEARCH AND FILTER */}
       <section className="py-12 bg-white border-b sticky top-0 z-30 shadow-sm">

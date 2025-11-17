@@ -178,7 +178,7 @@ const Research = () => {
   ];
 
   return (
-    <div className="w-full overflow-x-hidden" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+    <div className="w-full overflow-x-hidden" style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
       
       {/* HERO */}
       <section className="relative text-white py-24 md:py-40 overflow-hidden">
@@ -194,35 +194,35 @@ const Research = () => {
         <div className="container mx-auto max-w-6xl px-6 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border mb-8"
-                 style={{ backgroundColor: 'rgba(193, 168, 117, 0.2)', borderColor: 'rgba(193, 168, 117, 0.3)', backdropFilter: 'blur(8px)' }}>
-              <Microscope className="w-4 h-4" style={{ color: '#C1A875' }} />
-              <span className="font-semibold text-sm" style={{ color: '#C1A875' }}>Research & Innovation</span>
+                 style={{ backgroundColor: 'rgba(142, 52, 0, 0.2)', borderColor: 'rgba(142, 52, 0, 0.3)', backdropFilter: 'blur(8px)' }}>
+              <Microscope className="w-4 h-4" style={{ color: '#8E3400' }} />
+              <span className="text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontWeight: 700 }}>Research & Innovation</span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-8"
-                style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.02em' }}>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl leading-tight mb-8"
+                style={{ fontWeight: 900, letterSpacing: '-0.03em' }}>
               Answering the Big Questions in Maritime Security
             </h1>
 
-            <p className="text-xl md:text-2xl leading-relaxed mb-10" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
+            <p className="text-xl md:text-2xl leading-relaxed mb-10" style={{ color: 'rgba(255, 255, 255, 0.95)', fontWeight: 400 }}>
               Our research doesn't just study problems—it solves them. From AI-powered piracy prevention to unlocking billions in blue economy potential.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="#themes"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold transition-all shadow-xl hover:scale-105"
-                style={{ backgroundColor: '#C1A875', color: 'white' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7A4E3A'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#C1A875'}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl transition-all shadow-xl hover:scale-105"
+                style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
               >
                 <span>Explore Our Research</span>
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a
                 href="#team"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold transition-all"
-                style={{ border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)' }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl transition-all"
+                style={{ border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', fontWeight: 700 }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
               >
@@ -239,25 +239,25 @@ const Research = () => {
           <div className="bg-white rounded-3xl p-8 shadow-2xl" style={{ border: '2px solid #F5F7FA' }}>
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: '#C1A875' }}></div>
-                <h3 className="text-2xl font-bold" style={{ fontFamily: "'Playfair Display', serif", color: '#132552' }}>
+                <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: '#8E3400' }}></div>
+                <h3 className="text-2xl" style={{ fontWeight: 900, color: '#132552' }}>
                   Live Research Dashboard
                 </h3>
               </div>
-              <span className="text-sm font-semibold" style={{ color: '#4B5563' }}>Updated 2 min ago</span>
+              <span className="text-sm" style={{ fontWeight: 600, color: '#4B5563' }}>Updated 2 min ago</span>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {liveData.map((item, idx) => (
                 <div key={idx} className="text-center p-6 rounded-2xl transition-all hover:scale-105" 
                      style={{ backgroundColor: '#F5F7FA' }}>
-                  <div className="text-4xl font-black mb-2" 
-                       style={{ fontFamily: "'Playfair Display', serif", color: '#132552' }}>
+                  <div className="text-4xl mb-2" 
+                       style={{ fontWeight: 900, color: '#132552' }}>
                     {item.value}
                   </div>
-                  <p className="text-sm font-semibold mb-2" style={{ color: '#4B5563' }}>{item.label}</p>
-                  <span className="text-xs font-bold px-3 py-1 rounded-full" 
-                        style={{ backgroundColor: '#C1A875', color: 'white' }}>
+                  <p className="text-sm mb-2" style={{ fontWeight: 600, color: '#4B5563' }}>{item.label}</p>
+                  <span className="text-xs px-3 py-1 rounded-full" 
+                        style={{ fontWeight: 700, backgroundColor: '#8E3400', color: 'white' }}>
                     {item.change} today
                   </span>
                 </div>
@@ -271,12 +271,12 @@ const Research = () => {
       <section id="themes" className="py-20 md:py-32 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#C1A875' }}>Research Themes</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6"
-                style={{ fontFamily: "'Playfair Display', serif", color: '#132552', letterSpacing: '-0.02em' }}>
+            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Research Themes</span>
+            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
+                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
               The Big Questions We're Answering
             </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563' }}>
+            <p className="text-lg max-w-3xl mx-auto" style={{ fontWeight: 400, color: '#4B5563' }}>
               Ambitious research tackling the most pressing challenges in West African maritime security
             </p>
           </div>
@@ -298,47 +298,47 @@ const Research = () => {
 
                   <div className="md:col-span-3 p-10">
                     <div className="flex items-center gap-3 mb-6">
-                      <Lightbulb className="w-6 h-6" style={{ color: '#C1A875' }} />
-                      <span className="text-sm font-bold uppercase" style={{ color: '#C1A875' }}>
+                      <Lightbulb className="w-6 h-6" style={{ color: '#8E3400' }} />
+                      <span className="text-sm uppercase" style={{ fontWeight: 700, color: '#8E3400' }}>
                         Research Theme {idx + 1}
                       </span>
                     </div>
 
-                    <h3 className="text-3xl md:text-4xl font-black mb-6 leading-tight"
-                        style={{ fontFamily: "'Playfair Display', serif", color: '#132552' }}>
+                    <h3 className="text-3xl md:text-4xl mb-6 leading-tight"
+                        style={{ fontWeight: 900, color: '#132552' }}>
                       {theme.question}
                     </h3>
 
-                    <p className="text-lg leading-relaxed mb-6" style={{ color: '#4B5563' }}>
+                    <p className="text-lg leading-relaxed mb-6" style={{ fontWeight: 400, color: '#4B5563' }}>
                       {theme.description}
                     </p>
 
                     <div className="grid grid-cols-2 gap-4 mb-6">
                       <div className="p-4 rounded-2xl" style={{ backgroundColor: '#F5F7FA' }}>
-                        <p className="text-sm font-semibold mb-1" style={{ color: '#4B5563' }}>Research Lead</p>
-                        <p className="font-bold" style={{ color: '#132552' }}>{theme.lead}</p>
+                        <p className="text-sm mb-1" style={{ fontWeight: 600, color: '#4B5563' }}>Research Lead</p>
+                        <p style={{ fontWeight: 700, color: '#132552' }}>{theme.lead}</p>
                       </div>
                       <div className="p-4 rounded-2xl" style={{ backgroundColor: '#F5F7FA' }}>
-                        <p className="text-sm font-semibold mb-1" style={{ color: '#4B5563' }}>Team Size</p>
-                        <p className="font-bold" style={{ color: '#132552' }}>{theme.team} Researchers</p>
+                        <p className="text-sm mb-1" style={{ fontWeight: 600, color: '#4B5563' }}>Team Size</p>
+                        <p style={{ fontWeight: 700, color: '#132552' }}>{theme.team} Researchers</p>
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between pt-6" style={{ borderTop: '2px solid #F5F7FA' }}>
                       <div>
-                        <p className="text-xs font-semibold mb-2" style={{ color: '#4B5563' }}>Key Partners</p>
+                        <p className="text-xs mb-2" style={{ fontWeight: 600, color: '#4B5563' }}>Key Partners</p>
                         <div className="flex gap-2">
                           {theme.partners.map((partner, i) => (
-                            <span key={i} className="px-3 py-1 rounded-full text-xs font-bold"
-                                  style={{ backgroundColor: '#132552', color: 'white' }}>
+                            <span key={i} className="px-3 py-1 rounded-full text-xs"
+                                  style={{ fontWeight: 700, backgroundColor: '#132552', color: 'white' }}>
                               {partner}
                             </span>
                           ))}
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-xs font-semibold mb-1" style={{ color: '#4B5563' }}>Impact</p>
-                        <p className="font-bold text-lg" style={{ color: '#C1A875' }}>{theme.impact}</p>
+                        <p className="text-xs mb-1" style={{ fontWeight: 600, color: '#4B5563' }}>Impact</p>
+                        <p className="text-lg" style={{ fontWeight: 700, color: '#8E3400' }}>{theme.impact}</p>
                       </div>
                     </div>
                   </div>
@@ -349,77 +349,15 @@ const Research = () => {
         </div>
       </section>
 
-      {/* RESEARCH CENTERS */}
-      <section className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#C1A875' }}>Our Labs</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6"
-                style={{ fontFamily: "'Playfair Display', serif", color: '#132552', letterSpacing: '-0.02em' }}>
-              Research Centers & Labs
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {researchCenters.map((center, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-              >
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={center.image}
-                    alt={center.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                  
-                  <div className="absolute top-4 left-4">
-                    <span className="px-4 py-2 rounded-full text-xs font-bold text-white"
-                          style={{ backgroundColor: 'rgba(193, 168, 117, 0.9)' }}>
-                      {center.focus}
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-4 left-4 right-4 flex justify-between text-white text-sm font-semibold">
-                    <div className="flex items-center gap-2">
-                      <Target className="w-4 h-4" />
-                      <span>{center.projects} Projects</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4" />
-                      <span>{center.researchers} Team</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4"
-                      style={{ fontFamily: "'Playfair Display', serif", color: '#132552' }}>
-                    {center.name}
-                  </h3>
-                  <p className="text-base leading-relaxed mb-6" style={{ color: '#4B5563' }}>
-                    {center.description}
-                  </p>
-                  <button className="inline-flex items-center gap-2 font-semibold transition-all hover:gap-4"
-                          style={{ color: '#C1A875' }}>
-                    <span>Explore Center</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
       {/* RESEARCHERS */}
       <section id="team" className="py-20 md:py-32 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#C1A875' }}>Our Team</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6"
-                style={{ fontFamily: "'Playfair Display', serif", color: '#132552', letterSpacing: '-0.02em' }}>
+            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Our Team</span>
+            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
+                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
               Meet Our Researchers
             </h2>
           </div>
@@ -439,11 +377,11 @@ const Research = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
                   
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold text-white mb-2"
-                        style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <h3 className="text-xl text-white mb-2"
+                        style={{ fontWeight: 900 }}>
                       {researcher.name}
                     </h3>
-                    <p className="text-sm font-semibold mb-3" style={{ color: '#C1A875' }}>
+                    <p className="text-sm mb-3" style={{ fontWeight: 600, color: '#8E3400' }}>
                       {researcher.role}
                     </p>
                     <div className="flex items-center gap-2 text-white text-xs">
@@ -454,15 +392,15 @@ const Research = () => {
                 </div>
 
                 <div className="p-6">
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: '#4B5563' }}>
+                  <p className="text-sm leading-relaxed mb-4" style={{ fontWeight: 400, color: '#4B5563' }}>
                     {researcher.bio}
                   </p>
                   <div className="space-y-2">
-                    <p className="text-xs font-bold uppercase" style={{ color: '#C1A875' }}>Expertise</p>
+                    <p className="text-xs uppercase" style={{ fontWeight: 700, color: '#8E3400' }}>Expertise</p>
                     <div className="flex flex-wrap gap-2">
                       {researcher.expertise.map((skill, i) => (
-                        <span key={i} className="px-3 py-1 rounded-full text-xs font-semibold"
-                              style={{ backgroundColor: '#F5F7FA', color: '#132552' }}>
+                        <span key={i} className="px-3 py-1 rounded-full text-xs"
+                              style={{ fontWeight: 600, backgroundColor: '#F5F7FA', color: '#132552' }}>
                           {skill}
                         </span>
                       ))}
@@ -479,9 +417,9 @@ const Research = () => {
       <section className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#C1A875' }}>Impact</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6"
-                style={{ fontFamily: "'Playfair Display', serif", color: '#132552', letterSpacing: '-0.02em' }}>
+            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Impact</span>
+            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
+                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
               Research in Action
             </h2>
           </div>
@@ -501,8 +439,8 @@ const Research = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   
                   <div className="absolute top-4 left-4">
-                    <span className="px-4 py-2 rounded-full text-xs font-bold text-white"
-                          style={{ backgroundColor: '#C1A875' }}>
+                    <span className="px-4 py-2 rounded-full text-xs text-white"
+                          style={{ fontWeight: 700, backgroundColor: '#8E3400' }}>
                       {story.category}
                     </span>
                   </div>
@@ -517,15 +455,15 @@ const Research = () => {
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-xl font-bold mb-3 line-clamp-2"
-                      style={{ fontFamily: "'Playfair Display', serif", color: '#132552' }}>
+                  <h3 className="text-xl mb-3 line-clamp-2"
+                      style={{ fontWeight: 700, color: '#132552' }}>
                     {story.title}
                   </h3>
-                  <p className="text-sm line-clamp-3 mb-4" style={{ color: '#4B5563' }}>
+                  <p className="text-sm line-clamp-3 mb-4" style={{ fontWeight: 400, color: '#4B5563' }}>
                     {story.description}
                   </p>
-                  <button className="inline-flex items-center gap-2 font-semibold transition-all hover:gap-4"
-                          style={{ color: '#C1A875' }}>
+                  <button className="inline-flex items-center gap-2 transition-all hover:gap-4"
+                          style={{ fontWeight: 600, color: '#8E3400' }}>
                     <span>Read Story</span>
                     <ChevronRight className="w-5 h-5" />
                   </button>
@@ -540,9 +478,9 @@ const Research = () => {
       <section className="py-20 md:py-32 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#C1A875' }}>Events</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6"
-                style={{ fontFamily: "'Playfair Display', serif", color: '#132552', letterSpacing: '-0.02em' }}>
+            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Events</span>
+            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
+                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
               Seminars & Webinars
             </h2>
           </div>
@@ -555,40 +493,40 @@ const Research = () => {
                 style={{ border: '2px solid #F5F7FA' }}
               >
                 <div className="flex items-center justify-between mb-6">
-                  <span className="px-4 py-2 rounded-full text-xs font-bold text-white"
-                        style={{ backgroundColor: '#132552' }}>
+                  <span className="px-4 py-2 rounded-full text-xs text-white"
+                        style={{ fontWeight: 700, backgroundColor: '#132552' }}>
                     {event.type}
                   </span>
-                  <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: '#C1A875' }}>
+                  <div className="flex items-center gap-2 text-sm" style={{ fontWeight: 600, color: '#8E3400' }}>
                     <Users className="w-4 h-4" />
                     <span>{event.attendees}+</span>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4"
-                    style={{ fontFamily: "'Playfair Display', serif", color: '#132552' }}>
+                <h3 className="text-2xl mb-4"
+                    style={{ fontWeight: 900, color: '#132552' }}>
                   {event.title}
                 </h3>
 
-                <p className="text-base font-semibold mb-4" style={{ color: '#4B5563' }}>
+                <p className="text-base mb-4" style={{ fontWeight: 600, color: '#4B5563' }}>
                   with {event.speaker}
                 </p>
 
-                <div className="space-y-2 mb-6 text-sm" style={{ color: '#4B5563' }}>
+                <div className="space-y-2 mb-6 text-sm" style={{ fontWeight: 400, color: '#4B5563' }}>
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" style={{ color: '#C1A875' }} />
+                    <Calendar className="w-4 h-4" style={{ color: '#8E3400' }} />
                     <span>{event.date}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Radio className="w-4 h-4" style={{ color: '#C1A875' }} />
+                    <Radio className="w-4 h-4" style={{ color: '#8E3400' }} />
                     <span>{event.time}</span>
                   </div>
                 </div>
 
-                <button className="w-full px-6 py-3 rounded-2xl font-bold transition-all hover:scale-105"
-                        style={{ backgroundColor: '#C1A875', color: 'white' }}
-                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7A4E3A'}
-                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#C1A875'}>
+                <button className="w-full px-6 py-3 rounded-2xl transition-all hover:scale-105"
+                        style={{ fontWeight: 700, backgroundColor: '#8E3400', color: 'white' }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}>
                   Register Now
                 </button>
               </div>
@@ -601,28 +539,28 @@ const Research = () => {
       <section className="py-20 md:py-32 relative overflow-hidden"
                style={{ background: 'linear-gradient(135deg, #132552 0%, #1A336C 100%)' }}>
         <div className="container mx-auto max-w-5xl px-6 text-center relative z-10">
-          <h2 className="text-5xl md:text-6xl font-black mb-6 text-white"
-              style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.02em' }}>
+          <h2 className="text-5xl md:text-6xl mb-6 text-white"
+              style={{ fontWeight: 900, letterSpacing: '-0.02em' }}>
             Join Our Research Community
           </h2>
-          <p className="text-xl mb-10 max-w-2xl mx-auto leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+          <p className="text-xl mb-10 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 400, color: 'rgba(255, 255, 255, 0.9)' }}>
             Collaborate with us on groundbreaking maritime research or access our publications
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl hover:scale-105"
-              style={{ backgroundColor: '#C1A875', color: 'white' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#7A4E3A'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#C1A875'}
+              className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-2xl text-lg transition-all shadow-xl hover:scale-105"
+              style={{ fontWeight: 700, backgroundColor: '#8E3400', color: 'white' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
             >
               <span>Partner With Us</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               to="/resources"
-              className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-2xl font-bold text-lg transition-all"
-              style={{ border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)' }}
+              className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-2xl text-lg transition-all"
+              style={{ fontWeight: 700, border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
             >

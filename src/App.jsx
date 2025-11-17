@@ -19,6 +19,7 @@ import ExecutiveChairman from './Components/Pages/ExecutiveChairman';
 import Partners from './Components/Pages/Partners';
 import Advocacy from './Components/Pages/Advocacy';
 import Research from './Components/Pages/Research';
+import CapacityBuilding from './Components/Pages/CapacityBuilding';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             {/* FIXED: Changed from /Advocacy to /services/advocacy to match navbar */}
             <Route path="/services/advocacy" element={<Advocacy />} />
             <Route path="/services/research" element={<Research />} />
+            <Route path="/services/capacitybuilding" element={<CapacityBuilding />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/resources" element={<Resources />} />

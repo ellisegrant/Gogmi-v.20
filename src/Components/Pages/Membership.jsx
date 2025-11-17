@@ -326,14 +326,14 @@ const Membership = () => {
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
                 <p className="font-semibold mb-2" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Email</p>
                 <a href="mailto:membership@gogmi.org.gh" className="text-[#C1A875] hover:underline" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
-                  membership@gogmi.org.gh
+                  info@gogmi.org.gh
                 </a>
               </div>
               
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
                 <p className="font-semibold mb-2" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Phone</p>
                 <a href="tel:+233546408096" className="text-[#C1A875] hover:underline" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
-                  +233 54 640 8096
+                  +233 50 495 3400
                 </a>
               </div>
               

@@ -33,7 +33,7 @@ const Navbar = () => {
       dropdown: [
         { name: "Advocacy", path: "/services/advocacy" },
         { name: "Research", path: "/services/research" },
-        { name: "Capacity Building", path: "/capacity-building" },
+        { name: "Capacity Building", path: "services/CapacityBuilding" },
         { name: "Secretariat Services", path: "/services/secretariat-services" },
       ],
     },

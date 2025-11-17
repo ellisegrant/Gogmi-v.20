@@ -245,7 +245,7 @@ const Home = () => {
             {/* Image on the right */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px] group">
               <img 
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&fit=crop" 
+                src="public\whoweare.jpg" 
                 alt="Maritime professionals at work"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -351,7 +351,7 @@ const Home = () => {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[550px] group">
               <img 
-                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1400&fit=crop&q=90" 
+                src="\HEBREWISRAELITE.jpeg" 
                 alt="Gulf of Guinea maritime view"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
