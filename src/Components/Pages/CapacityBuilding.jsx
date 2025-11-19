@@ -36,7 +36,7 @@ const CapacityBuilding = () => {
   // Core Programs
   const programs = [
     {
-      category: 'mentorship',
+      category: 'Onsite',
       badge: 'Flagship Program',
       title: 'Blue Mentorship Programme',
       description: 'An African maritime accelerator designed to encourage youth to engage in sustainable blue economy careers and offer support through business, entrepreneurial, or career progression.',
@@ -50,7 +50,7 @@ const CapacityBuilding = () => {
       nextIntake: 'March 2025'
     },
     {
-      category: 'training',
+      category: 'Hybrid',
       badge: 'Intensive Course',
       title: 'Youth in Africa\'s Blue Economy',
       description: 'Four-module training course exposing participants to career opportunities in Africa\'s Blue Economy with pathways for developing sustainable careers.',
@@ -64,7 +64,7 @@ const CapacityBuilding = () => {
       nextIntake: 'Quarterly'
     },
     {
-      category: 'event',
+      category: 'Virtual',
       badge: 'Annual Event',
       title: 'Blue Career & Business Expo',
       description: 'Multi-opportunity exchange platform connecting young people with maritime industry leaders to explore careers, businesses, and opportunities in Ghana\'s blue economy.',
@@ -78,7 +78,7 @@ const CapacityBuilding = () => {
       nextIntake: 'November 2025'
     },
     {
-      category: 'incubator',
+      category: 'Hybrid',
       badge: 'Coming Soon',
       title: 'Maritime Business Incubator',
       description: 'Comprehensive support platform partnering with global maritime industry to improve career connections, business financing, and innovation in blue start-ups.',
@@ -92,7 +92,7 @@ const CapacityBuilding = () => {
       nextIntake: 'TBA'
     },
     {
-      category: 'training',
+      category: 'Onsite',
       badge: 'Professional Development',
       title: 'Maritime Security Training',
       description: 'Specialized training courses on maritime security, piracy prevention, and regional cooperation frameworks for maritime professionals and government officials.',
@@ -106,12 +106,12 @@ const CapacityBuilding = () => {
       nextIntake: 'June 2025'
     },
     {
-      category: 'training',
+      category: 'Onsite',
       badge: 'Technical Skills',
       title: 'Blue Economy Business Development',
       description: 'Practical training on starting and scaling blue economy businesses, including fisheries, marine tourism, renewable energy, and marine biotechnology.',
       duration: '8 weeks',
-      format: 'Online',
+      format: 'In Person',
       level: 'Intermediate',
       participants: 'Open enrollment',
       image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&fit=crop',
@@ -121,41 +121,7 @@ const CapacityBuilding = () => {
     }
   ];
 
-  // Learning Pathways
-  const pathways = [
-    {
-      icon: <Ship className="w-8 h-8" />,
-      title: 'Maritime Professional',
-      description: 'For those seeking careers in maritime security, shipping, port management, and naval operations',
-      courses: ['Maritime Security Training', 'Blue Mentorship Programme', 'Professional Certifications'],
-      duration: '12-18 months',
-      color: '#132552'
-    },
-    {
-      icon: <Briefcase className="w-8 h-8" />,
-      title: 'Blue Entrepreneur',
-      description: 'For aspiring business owners in fisheries, tourism, renewable energy, and marine services',
-      courses: ['Maritime Business Incubator', 'Blue Economy Business Development', 'Blue Career Expo'],
-      duration: '6-12 months',
-      color: '#8E3400'
-    },
-    {
-      icon: <GraduationCap className="w-8 h-8" />,
-      title: 'Early Career Professional',
-      description: 'For students and recent graduates exploring maritime and blue economy opportunities',
-      courses: ['Youth in Africa\'s Blue Economy', 'Blue Mentorship Programme', 'Blue Career Expo'],
-      duration: '3-6 months',
-      color: '#1A336C'
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: 'Policy & Research',
-      description: 'For researchers, policymakers, and analysts working on maritime governance and blue economy',
-      courses: ['Research Partnerships', 'IMSWG Forum', 'Policy Dialogue Sessions'],
-      duration: 'Ongoing',
-      color: '#8E3400'
-    }
-  ];
+ 
 
   // Success Stories
   const successStories = [
@@ -195,11 +161,7 @@ const CapacityBuilding = () => {
     { label: 'Partner Organizations', value: '45+', icon: <Building2 className="w-6 h-6" /> }
   ];
 
-  // Partners
-  const partners = [
-    'IOC-UNESCO', 'NORAD', 'Canadian High Commission', 'ECOWAS', 'IMO',
-    'World Bank', 'ECCAS', 'EU', 'Gulf of Guinea Commission'
-  ];
+ 
 
   // Filter programs
   const filteredPrograms = activeCategory === 'all' 
@@ -245,18 +207,11 @@ const CapacityBuilding = () => {
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
               >
-                <span>Explore Programs</span>
+                <span>Explore Our Trainings</span>
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <a
-                href="#apply"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl transition-all"
-                style={{ fontWeight: 700, border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-              >
-                <span>Apply Now</span>
-              </a>
+             
+             
             </div>
           </div>
         </div>
@@ -294,61 +249,7 @@ const CapacityBuilding = () => {
         </div>
       </section>
 
-      {/* LEARNING PATHWAYS */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Your Journey</span>
-            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
-                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Choose Your Learning Pathway
-            </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ fontWeight: 400, color: '#4B5563' }}>
-              Tailored learning journeys designed for different career goals and experience levels
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pathways.map((pathway, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-                style={{ border: '2px solid #F5F7FA' }}
-              >
-                <div className="inline-flex p-4 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-500"
-                     style={{ backgroundColor: 'rgba(142, 52, 0, 0.1)', color: pathway.color }}>
-                  {pathway.icon}
-                </div>
-                
-                <h3 className="text-xl mb-3"
-                    style={{ fontWeight: 900, color: '#132552' }}>
-                  {pathway.title}
-                </h3>
-                
-                <p className="text-sm leading-relaxed mb-4" style={{ fontWeight: 400, color: '#4B5563' }}>
-                  {pathway.description}
-                </p>
-
-                <div className="space-y-2 mb-6">
-                  {pathway.courses.map((course, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4" style={{ color: '#8E3400' }} />
-                      <span className="text-xs" style={{ fontWeight: 600, color: '#4B5563' }}>{course}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="pt-4" style={{ borderTop: '1px solid #F5F7FA' }}>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Clock className="w-4 h-4" style={{ color: '#8E3400' }} />
-                    <span style={{ fontWeight: 600, color: '#4B5563' }}>{pathway.duration}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* PROGRAMS */}
       <section id="programs" className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
@@ -366,11 +267,11 @@ const CapacityBuilding = () => {
             {/* Filter Tabs */}
             <div className="inline-flex gap-3 p-2 rounded-2xl" style={{ backgroundColor: 'white' }}>
               {[
-                { key: 'all', label: 'All Programs' },
-                { key: 'mentorship', label: 'Mentorship' },
-                { key: 'training', label: 'Training' },
-                { key: 'event', label: 'Events' },
-                { key: 'incubator', label: 'Incubator' }
+                
+                { key: 'Onsite', label: 'Onsite' },
+                { key: 'Virtual', label: 'Virtual' },
+                { key: 'Hybrid', label: 'Hybrid' },
+              
               ].map((tab) => (
                 <button
                   key={tab.key}
@@ -544,126 +445,10 @@ const CapacityBuilding = () => {
       </section>
 
       {/* PARTNERS */}
-      <section className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-12">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Strategic Partners</span>
-            <h2 className="text-4xl md:text-5xl mt-4 mb-6"
-                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Supported by Global Leaders
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {partners.map((partner, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-2xl p-6 flex items-center justify-center hover:shadow-lg transition-all"
-                style={{ border: '2px solid #F5F7FA' }}
-              >
-                <span className="text-center text-sm" style={{ fontWeight: 700, color: '#132552' }}>
-                  {partner}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* APPLICATION PROCESS */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>How to Join</span>
-            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
-                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Simple Application Process
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                step: '01',
-                title: 'Choose Your Program',
-                description: 'Browse our programs and select the one that aligns with your career goals and experience level'
-              },
-              {
-                step: '02',
-                title: 'Submit Application',
-                description: 'Complete the online application form with your background, interests, and motivation'
-              },
-              {
-                step: '03',
-                title: 'Selection Review',
-                description: 'Our team reviews applications and notifies selected candidates within one week'
-              },
-              {
-                step: '04',
-                title: 'Start Learning',
-                description: 'Get onboarded, meet your cohort, and begin your transformation journey with GoGMI'
-              }
-            ].map((step, idx) => (
-              <div key={idx} className="relative">
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6"
-                       style={{ backgroundColor: 'rgba(142, 52, 0, 0.1)' }}>
-                    <span className="text-2xl" style={{ fontWeight: 900, color: '#8E3400' }}>
-                      {step.step}
-                    </span>
-                  </div>
-                  <h3 className="text-xl mb-3" style={{ fontWeight: 900, color: '#132552' }}>
-                    {step.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ fontWeight: 400, color: '#4B5563' }}>
-                    {step.description}
-                  </p>
-                </div>
-                {idx < 3 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5"
-                       style={{ backgroundColor: '#F5F7FA', transform: 'translateX(-50%)' }}></div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section id="apply" className="py-20 md:py-32 relative overflow-hidden"
-               style={{ background: 'linear-gradient(135deg, #132552 0%, #1A336C 100%)' }}>
-        <div className="container mx-auto max-w-5xl px-6 text-center relative z-10">
-          <h2 className="text-5xl md:text-6xl mb-6 text-white"
-              style={{ fontWeight: 900, letterSpacing: '-0.02em' }}>
-            Ready to Launch Your Maritime Career?
-          </h2>
-          <p className="text-xl mb-10 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 400, color: 'rgba(255, 255, 255, 0.9)' }}>
-            Join over 1,200 young professionals who have transformed their careers through our programs
-          </p>
-          <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <Link
-              to="/apply"
-              className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-2xl text-lg transition-all shadow-xl hover:scale-105"
-              style={{ fontWeight: 700, backgroundColor: '#8E3400', color: 'white' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
-            >
-              <span>Apply Now</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-2xl text-lg transition-all"
-              style={{ fontWeight: 700, border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            >
-              <span>Contact Admissions</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
+     
     </div>
   );
 };

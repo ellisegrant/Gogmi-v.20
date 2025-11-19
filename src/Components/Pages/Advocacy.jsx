@@ -188,123 +188,8 @@ const Advocacy = () => {
         </div>
       </section>
 
-      
 
-      {/* POLICY AREAS */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Our Focus Areas</span>
-            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
-                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              What We Advocate For
-            </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ fontWeight: 400, color: '#4B5563' }}>
-              Strategic policy interventions across key maritime sectors to drive sustainable development and regional security
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {policyAreas.map((area, idx) => (
-              <div
-                key={idx}
-                className="group relative bg-white rounded-3xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-                style={{ border: '2px solid #F5F7FA' }}
-              >
-                <div className="absolute top-0 left-0 right-0 h-2 rounded-t-3xl transition-all duration-500 transform origin-left scale-x-0 group-hover:scale-x-100"
-                     style={{ backgroundColor: area.color }}></div>
-
-                <div className="flex items-start gap-6 mb-6">
-
-                  <div className="flex-1">
-                    <h3 className="text-2xl mb-3"
-                        style={{ fontWeight: 900, color: '#132552' }}>
-                      {area.title}
-                    </h3>
-                    <p className="text-base leading-relaxed" style={{ fontWeight: 400, color: '#4B5563' }}>
-                      {area.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <p className="text-sm mb-3" style={{ fontWeight: 600, color: '#8E3400' }}>Key Initiatives:</p>
-                  {area.initiatives.map((initiative, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4" style={{ color: '#8E3400' }} />
-                      <span className="text-sm" style={{ fontWeight: 400, color: '#4B5563' }}>{initiative}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ACHIEVEMENTS */}
-      <section className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Track Record</span>
-            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
-                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Our Advocacy Wins
-            </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ fontWeight: 400, color: '#4B5563' }}>
-              Measurable policy changes and tangible impact across the Gulf of Guinea region
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            {achievements.map((achievement, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-              >
-                <div className="grid md:grid-cols-5 gap-0">
-                  <div className="md:col-span-2 relative h-80 md:h-auto overflow-hidden">
-                    <img
-                      src={achievement.image}
-                      alt={achievement.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20"></div>
-                  </div>
-
-                  <div className="md:col-span-3 p-10">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="px-5 py-2 rounded-full text-white"
-                           style={{ fontWeight: 700, backgroundColor: '#132552' }}>
-                        {achievement.year}
-                      </div>
-                      <div className="px-5 py-2 rounded-full"
-                           style={{ fontWeight: 600, backgroundColor: '#F5F7FA', color: '#8E3400' }}>
-                        {achievement.impact}
-                      </div>
-                    </div>
-
-                    <h3 className="text-3xl mb-4"
-                        style={{ fontWeight: 900, color: '#132552' }}>
-                      {achievement.title}
-                    </h3>
-
-                    <p className="text-lg leading-relaxed mb-6" style={{ fontWeight: 400, color: '#4B5563' }}>
-                      {achievement.description}
-                    </p>
-
-                    <button className="inline-flex items-center gap-2 transition-all hover:gap-4"
-                            style={{ fontWeight: 600, color: '#8E3400' }}>
-                      <span>Learn More</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ACTIVE CAMPAIGNS */}
       <section id="campaigns" className="py-20 md:py-32 bg-white">
@@ -387,137 +272,71 @@ const Advocacy = () => {
         </div>
       </section>
 
-      {/* RESOURCES & PUBLICATIONS */}
+  
+      {/* ACHIEVEMENTS */}
       <section className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Knowledge Hub</span>
+            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Track Record</span>
             <h2 className="text-5xl md:text-6xl mt-4 mb-6"
                 style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Policy Resources
+              Our Advocacy Wins
             </h2>
             <p className="text-lg max-w-3xl mx-auto" style={{ fontWeight: 400, color: '#4B5563' }}>
-              Access our research, policy briefs, and advocacy materials
+              Measurable policy changes and tangible impact across the Gulf of Guinea region
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {resources.map((resource, idx) => (
+          <div className="space-y-8">
+            {achievements.map((achievement, idx) => (
               <div
                 key={idx}
-                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <FileText className="w-6 h-6" style={{ color: '#8E3400' }} />
-                  <span className="text-xs uppercase px-3 py-1 rounded-full"
-                        style={{ fontWeight: 700, backgroundColor: '#F5F7FA', color: '#132552' }}>
-                    {resource.type}
-                  </span>
-                </div>
-
-                <h3 className="text-xl mb-4 leading-tight"
-                    style={{ fontWeight: 900, color: '#132552' }}>
-                  {resource.title}
-                </h3>
-
-                <div className="flex items-center gap-4 text-sm mb-6" style={{ fontWeight: 400, color: '#4B5563' }}>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" style={{ color: '#8E3400' }} />
-                    <span>{resource.date}</span>
+                <div className="grid md:grid-cols-5 gap-0">
+                  <div className="md:col-span-2 relative h-80 md:h-auto overflow-hidden">
+                    <img
+                      src={achievement.image}
+                      alt={achievement.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20"></div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Download className="w-4 h-4" style={{ color: '#8E3400' }} />
-                    <span>{resource.downloads}</span>
+
+                  <div className="md:col-span-3 p-10">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="px-5 py-2 rounded-full text-white"
+                           style={{ fontWeight: 700, backgroundColor: '#132552' }}>
+                        {achievement.year}
+                      </div>
+                      <div className="px-5 py-2 rounded-full"
+                           style={{ fontWeight: 600, backgroundColor: '#F5F7FA', color: '#8E3400' }}>
+                        {achievement.impact}
+                      </div>
+                    </div>
+
+                    <h3 className="text-3xl mb-4"
+                        style={{ fontWeight: 900, color: '#132552' }}>
+                      {achievement.title}
+                    </h3>
+
+                    <p className="text-lg leading-relaxed mb-6" style={{ fontWeight: 400, color: '#4B5563' }}>
+                      {achievement.description}
+                    </p>
+
+                    <button className="inline-flex items-center gap-2 transition-all hover:gap-4"
+                            style={{ fontWeight: 600, color: '#8E3400' }}>
+                      <span>Learn More</span>
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
                   </div>
                 </div>
-
-                <button className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-2xl transition-all group-hover:scale-105"
-                        style={{ fontWeight: 700, backgroundColor: '#F5F7FA', color: '#132552' }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#8E3400';
-                          e.currentTarget.style.color = 'white';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = '#F5F7FA';
-                          e.currentTarget.style.color = '#132552';
-                        }}>
-                  <Download className="w-5 h-5" />
-                  <span>Download</span>
-                </button>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              to="/resources"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl transition-all shadow-lg hover:scale-105"
-              style={{ fontWeight: 700, backgroundColor: '#132552', color: 'white' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1A336C'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#132552'}
-            >
-              <span>View All Resources</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* HOW TO GET INVOLVED */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Take Action</span>
-            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
-                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              How You Can Help
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              {
-                icon: <MessageSquare className="w-8 h-8" />,
-                title: 'Join the Conversation',
-                description: 'Participate in policy dialogues and consultations'
-              },
-              {
-                icon: <FileText className="w-8 h-8" />,
-                title: 'Submit Research',
-                description: 'Contribute evidence and case studies to inform policy'
-              },
-              {
-                icon: <Users className="w-8 h-8" />,
-                title: 'Partner With Us',
-                description: 'Collaborate on advocacy campaigns and initiatives'
-              },
-              {
-                icon: <Target className="w-8 h-8" />,
-                title: 'Support Campaigns',
-                description: 'Endorse and amplify our policy recommendations'
-              }
-            ].map((action, idx) => (
-              <div
-                key={idx}
-                className="group text-center p-8 rounded-3xl hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-                style={{ backgroundColor: '#F5F7FA' }}
-              >
-                <div className="inline-flex p-4 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-500"
-                     style={{ backgroundColor: 'white', color: '#8E3400' }}>
-                  {action.icon}
-                </div>
-                <h3 className="text-xl mb-3"
-                    style={{ fontWeight: 900, color: '#132552' }}>
-                  {action.title}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ fontWeight: 400, color: '#4B5563' }}>
-                  {action.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* CTA */}
       <section className="py-20 md:py-32 relative overflow-hidden"

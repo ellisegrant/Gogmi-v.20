@@ -77,7 +77,7 @@ const ExecutiveChairman = () => {
               </div>
             </div>
 
-            {/* RIGHT: QUOTE + BUTTON + CONNECT (ALL STACKED) */}
+            {/* RIGHT: QUOTE + CONNECT (ALL STACKED) */}
             <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
               <div className="space-y-4">
                 
@@ -87,26 +87,22 @@ const ExecutiveChairman = () => {
                   <span className="text-[#C1A875] font-semibold tracking-wider text-sm uppercase" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Quote</span>
                 </div>
 
-                {/* QUOTE TEXT */}
+                {/* QUOTE TEXT WITH ATTRIBUTION */}
                 <div className="relative pl-6 border-l-4 border-[#C1A875] py-2">
-                  <p className="text-[#F5F7FA]/90 text-lg italic leading-relaxed" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                  <p className="text-[#F5F7FA]/90 text-lg italic leading-relaxed mb-4" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
                     "Strategy is not about the abundance of resources. It is about clarity of priorities, consensus among stakeholders, and the disciplined alignment of limited means to vital ends"
                   </p>
+                  
+                  {/* Quote Attribution */}
+                  <div className="mt-4 pt-4 border-t border-[#C1A875]/30">
+                    <p className="text-[#C1A875] text-base font-semibold" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      — Vice Admiral Issah Adam Yakubu (Rtd.)
+                    </p>
+                    <p className="text-[#F5F7FA]/60 text-sm mt-1" style={{ fontFamily: "'Source Sans Pro', sans-serif", letterSpacing: '0.05em' }}>
+                      nwc(USA) psc++ nsc jdc (Nigeria) MA (USA) dpa MUSni
+                    </p>
+                  </div>
                 </div>
-
-                {/* ADMIRAL'S BLOG BUTTON */}
-                <a 
-                  href={ADMIRALS_BLOG_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center gap-3 bg-[#C1A875] text-[#132552] px-8 py-4 rounded-full font-bold hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all duration-300 hover:shadow-xl hover:shadow-[#C1A875]/50 hover:scale-105"
-                  style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
-                >
-                  <span>The Admiral's Blog</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
 
                 {/* CONNECT SECTION - IN RIGHT COLUMN */}
                 <div className="bg-gradient-to-br from-[#132552]/50 to-[#1A336C]/50 backdrop-blur-sm rounded-2xl p-6 border border-[#C1A875]/30 shadow-xl mt-6">
