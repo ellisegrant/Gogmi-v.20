@@ -84,39 +84,6 @@ const Careers = () => {
     }
   ];
 
-  const benefits = [
-    {
-      icon: <Heart className="w-8 h-8" />,
-      title: 'Health & Wellness',
-      description: 'Comprehensive health insurance and wellness programs for you and your family'
-    },
-    {
-      icon: <GraduationCap className="w-8 h-8" />,
-      title: 'Learning & Development',
-      description: 'Continuous training, conferences, and professional development opportunities'
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: 'Global Impact',
-      description: 'Work on projects that make real difference across West Africa'
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: 'Collaborative Culture',
-      description: 'Join a diverse team of passionate maritime professionals'
-    },
-    {
-      icon: <Clock className="w-8 h-8" />,
-      title: 'Work-Life Balance',
-      description: 'Flexible working arrangements and generous leave policies'
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: 'Career Growth',
-      description: 'Clear career progression paths and mentorship programs'
-    }
-  ];
-
   const coreValues = [
     {
       icon: <Target className="w-12 h-12" />,
@@ -149,23 +116,30 @@ const Careers = () => {
   });
 
   return (
-    <div className="w-full overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-24 bg-gradient-to-br from-blue-900 to-blue-700 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
-          }}></div>
+    <div className="w-full overflow-x-hidden" style={{ fontFamily: 'Inter, sans-serif' }}>
+      {/* Hero Section with Image */}
+      <section className="relative pt-40 pb-24 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&auto=format&fit=crop&q=80"
+            alt="Team collaboration"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/70"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-yellow-500/20 backdrop-blur-sm px-6 py-3 rounded-full border border-yellow-500/30 mb-8">
-            <Briefcase className="w-5 h-5 text-yellow-300" />
-            <span className="text-yellow-200 font-semibold text-sm uppercase tracking-wide">Join Our Team</span>
+          <div className="inline-flex items-center space-x-2 bg-[#8E3400]/20 backdrop-blur-sm px-6 py-3 rounded-full border border-[#8E3400]/30 mb-8">
+            <Briefcase className="w-5 h-5 text-[#8E3400]" />
+            <span className="text-white font-semibold text-sm uppercase tracking-wide" style={{ fontWeight: 600 }}>Join Our Team</span>
           </div>
           
-          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight">Careers at GOGMI</h1>
-          <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6 tracking-tight" style={{ fontWeight: 900 }}>
+            Careers at GOGMI
+          </h1>
+          <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8" style={{ fontWeight: 400 }}>
             Be part of a team transforming West Africa's maritime future
           </p>
 
@@ -178,31 +152,8 @@ const Careers = () => {
               { number: '20+', label: 'Countries' }
             ].map((stat, idx) => (
               <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <div className="text-3xl font-bold text-yellow-400 mb-1">{stat.number}</div>
-                <p className="text-white/80 text-sm">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Work With Us */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
-            <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Why GOGMI</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-blue-900 mt-4 mb-6">Work That Makes a Difference</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Join a team dedicated to creating lasting impact across West Africa's maritime sector
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, idx) => (
-              <div key={idx} className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all border border-gray-100">
-                <div className="text-yellow-500 mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-bold text-blue-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                <div className="text-3xl font-bold text-[#8E3400] mb-1" style={{ fontWeight: 900 }}>{stat.number}</div>
+                <p className="text-white/80 text-sm" style={{ fontWeight: 400 }}>{stat.label}</p>
               </div>
             ))}
           </div>
@@ -213,16 +164,16 @@ const Careers = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-16">
-            <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Our Values</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-blue-900 mt-4">What Drives Us</h2>
+            <span className="text-[#8E3400] font-semibold text-sm uppercase tracking-wider" style={{ fontWeight: 600 }}>Our Values</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#132552] mt-4" style={{ fontWeight: 900 }}>What Drives Us</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {coreValues.map((value, idx) => (
               <div key={idx} className="bg-white rounded-2xl p-8 text-center hover:shadow-xl transition-all">
-                <div className="text-yellow-500 mb-6 flex justify-center">{value.icon}</div>
-                <h3 className="text-xl font-bold text-blue-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                <div className="text-[#8E3400] mb-6 flex justify-center">{value.icon}</div>
+                <h3 className="text-xl font-bold text-[#132552] mb-3" style={{ fontWeight: 700 }}>{value.title}</h3>
+                <p className="text-gray-600 leading-relaxed" style={{ fontWeight: 400 }}>{value.description}</p>
               </div>
             ))}
           </div>
@@ -233,9 +184,9 @@ const Careers = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
-            <span className="text-yellow-500 font-semibold text-sm uppercase tracking-wider">Opportunities</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-blue-900 mt-4 mb-6">Open Positions</h2>
-            <p className="text-lg text-gray-600">Find your perfect role in our team</p>
+            <span className="text-[#8E3400] font-semibold text-sm uppercase tracking-wider" style={{ fontWeight: 600 }}>Opportunities</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#132552] mt-4 mb-6" style={{ fontWeight: 900 }}>Open Positions</h2>
+            <p className="text-lg text-gray-600" style={{ fontWeight: 400 }}>Find your perfect role in our team</p>
           </div>
 
           {/* Search and Filters */}
@@ -248,7 +199,8 @@ const Careers = () => {
                   placeholder="Search positions..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400]"
+                  style={{ fontWeight: 400 }}
                 />
               </div>
               
@@ -256,7 +208,8 @@ const Careers = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="flex-1 lg:flex-initial px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                  className="flex-1 lg:flex-initial px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400] cursor-pointer"
+                  style={{ fontWeight: 400 }}
                 >
                   {jobCategories.map(cat => (
                     <option key={cat} value={cat}>{cat}</option>
@@ -266,7 +219,8 @@ const Careers = () => {
                 <select
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
-                  className="flex-1 lg:flex-initial px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                  className="flex-1 lg:flex-initial px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400] cursor-pointer"
+                  style={{ fontWeight: 400 }}
                 >
                   {jobTypes.map(type => (
                     <option key={type} value={type}>{type}</option>
@@ -275,18 +229,19 @@ const Careers = () => {
               </div>
             </div>
 
-            <p className="text-gray-600 mt-4">
-              Showing <span className="font-bold text-blue-900">{filteredJobs.length}</span> {filteredJobs.length === 1 ? 'position' : 'positions'}
+            <p className="text-gray-600 mt-4" style={{ fontWeight: 400 }}>
+              Showing <span className="font-bold text-[#132552]" style={{ fontWeight: 700 }}>{filteredJobs.length}</span> {filteredJobs.length === 1 ? 'position' : 'positions'}
             </p>
           </div>
 
           {/* Job Listings */}
           {filteredJobs.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-xl text-gray-500 mb-4">No positions found matching your criteria</p>
+              <p className="text-xl text-gray-500 mb-4" style={{ fontWeight: 400 }}>No positions found matching your criteria</p>
               <button 
                 onClick={() => { setSearchQuery(''); setSelectedCategory('All'); setSelectedType('All'); }}
-                className="px-6 py-3 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition-all"
+                className="px-6 py-3 bg-[#8E3400] text-white rounded-lg hover:bg-[#6B2700] transition-all"
+                style={{ fontWeight: 600 }}
               >
                 Clear Filters
               </button>
@@ -298,7 +253,7 @@ const Careers = () => {
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <span className="px-4 py-1.5 bg-blue-900 text-white rounded-full text-sm font-semibold">
+                        <span className="px-4 py-1.5 bg-[#132552] text-white rounded-full text-sm font-semibold" style={{ fontWeight: 600 }}>
                           {job.category}
                         </span>
                         <span className={`px-4 py-1.5 rounded-full text-sm font-semibold ${
@@ -306,31 +261,31 @@ const Careers = () => {
                           job.type === 'Part-Time' ? 'bg-blue-100 text-blue-700' :
                           job.type === 'Internship' ? 'bg-yellow-100 text-yellow-700' :
                           'bg-purple-100 text-purple-700'
-                        }`}>
+                        }`} style={{ fontWeight: 600 }}>
                           {job.type}
                         </span>
                       </div>
 
-                      <h3 className="text-2xl font-bold text-blue-900 mb-3">{job.title}</h3>
-                      <p className="text-gray-600 leading-relaxed mb-4">{job.description}</p>
+                      <h3 className="text-2xl font-bold text-[#132552] mb-3" style={{ fontWeight: 700 }}>{job.title}</h3>
+                      <p className="text-gray-600 leading-relaxed mb-4" style={{ fontWeight: 400 }}>{job.description}</p>
 
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                      <div className="flex flex-wrap gap-4 text-sm text-gray-600" style={{ fontWeight: 400 }}>
                         <div className="flex items-center gap-2">
-                          <MapPin className="w-4 h-4 text-yellow-500" />
+                          <MapPin className="w-4 h-4 text-[#8E3400]" />
                           <span>{job.location}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Briefcase className="w-4 h-4 text-yellow-500" />
+                          <Briefcase className="w-4 h-4 text-[#8E3400]" />
                           <span>{job.experience}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4 text-yellow-500" />
+                          <Clock className="w-4 h-4 text-[#8E3400]" />
                           <span>Apply by {job.deadline}</span>
                         </div>
                       </div>
                     </div>
 
-                    <button className="lg:flex-shrink-0 bg-yellow-500 text-gray-900 px-8 py-3 rounded-xl font-bold hover:bg-yellow-600 transition-all shadow-lg hover:scale-105 flex items-center justify-center gap-2">
+                    <button className="lg:flex-shrink-0 bg-[#8E3400] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#6B2700] transition-all shadow-lg hover:scale-105 flex items-center justify-center gap-2" style={{ fontWeight: 700 }}>
                       <span>Apply Now</span>
                       <ChevronRight className="w-5 h-5" />
                     </button>
@@ -345,12 +300,12 @@ const Careers = () => {
       {/* Unsolicited Applications */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <FileText className="w-16 h-16 text-yellow-500 mx-auto mb-6" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">Don't See Your Role?</h2>
-          <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+          <FileText className="w-16 h-16 text-[#8E3400] mx-auto mb-6" />
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#132552] mb-4" style={{ fontWeight: 900 }}>Don't See Your Role?</h2>
+          <p className="text-lg text-gray-600 mb-8 leading-relaxed" style={{ fontWeight: 400 }}>
             We're always looking for talented individuals who share our passion for maritime excellence. Send us your CV and we'll keep you in mind for future opportunities.
           </p>
-          <button className="bg-blue-900 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-blue-800 transition-all shadow-xl hover:scale-105 inline-flex items-center gap-2">
+          <button className="bg-[#8E3400] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#6B2700] transition-all shadow-xl hover:scale-105 inline-flex items-center gap-2" style={{ fontWeight: 700 }}>
             <span>Submit Your CV</span>
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -358,13 +313,13 @@ const Careers = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-blue-900">
+      <section className="py-20 bg-[#132552]">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">Ready to Make an Impact?</h2>
-          <p className="text-xl text-white/90 mb-10 leading-relaxed">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6" style={{ fontWeight: 900 }}>Ready to Make an Impact?</h2>
+          <p className="text-xl text-white/90 mb-10 leading-relaxed" style={{ fontWeight: 400 }}>
             Join us in shaping the future of West Africa's maritime sector
           </p>
-          <button className="bg-yellow-500 text-gray-900 px-12 py-4 rounded-xl font-bold text-lg hover:bg-yellow-600 transition-all shadow-xl hover:scale-105">
+          <button className="bg-[#8E3400] text-white px-12 py-4 rounded-xl font-bold text-lg hover:bg-[#6B2700] transition-all shadow-xl hover:scale-105" style={{ fontWeight: 700 }}>
             Explore Opportunities
           </button>
         </div>

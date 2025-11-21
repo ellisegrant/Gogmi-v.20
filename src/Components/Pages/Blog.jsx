@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Calendar, User, Tag, ArrowRight, Search, Clock } from 'lucide-react';
 
 const Blog = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('Training');
   const [searchTerm, setSearchTerm] = useState('');
 
   const articles = [
@@ -11,7 +11,7 @@ const Blog = () => {
       title: 'Capacity Building Program Graduates 50+ Maritime Professionals',
       excerpt: 'Our latest training cohort successfully completed comprehensive maritime security and management certification programs.',
       content: 'The 6-month intensive program...',
-      category: 'Training',
+      category: 'Events',
       author: 'Admiral Grace Okoro',
       date: 'November 5, 2024',
       readTime: '4 min read',
@@ -22,7 +22,7 @@ const Blog = () => {
       title: 'Partnership Announcement: GOGMI and UNESCO Collaborate',
       excerpt: 'Strategic partnership aims to enhance maritime education and research capabilities across West African institutions.',
       content: 'The partnership will focus on...',
-      category: 'Partnerships',
+      category: 'News',
       author: 'Dr. Kofi Mensah',
       date: 'October 28, 2024',
       readTime: '3 min read',
@@ -33,7 +33,7 @@ const Blog = () => {
       title: 'Digital Transformation of Port Operations Showing Results',
       excerpt: 'Our port digitalization project in Tema has achieved a 30% improvement in operational efficiency within the first six months.',
       content: 'The digital transformation initiative...',
-      category: 'Projects',
+      category: 'Blogs',
       author: 'Tech Team',
       date: 'October 20, 2024',
       readTime: '6 min read',
@@ -44,25 +44,69 @@ const Blog = () => {
       title: 'Sustainable Fisheries: Community Impact Stories',
       excerpt: 'Hear from fishing communities in Ghana and Senegal about how sustainable practices are transforming their livelihoods.',
       content: 'Through our sustainable fisheries program...',
-      category: 'Impact Stories',
+      category: 'Technical note',
       author: 'Communications Team',
       date: 'October 15, 2024',
       readTime: '7 min read',
       image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&fit=crop',
+    },
+    {
+      id: 7,
+      title: 'Annual Maritime Security Conference 2024',
+      excerpt: 'Join us for the largest gathering of maritime professionals in West Africa, featuring keynote speakers and panel discussions.',
+      content: 'The conference will bring together...',
+      category: 'Events',
+      author: 'Events Team',
+      date: 'October 10, 2024',
+      readTime: '5 min read',
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&fit=crop',
+    },
+    {
+      id: 8,
+      title: 'New Partnership with Regional Maritime Authority',
+      excerpt: 'GoGMI announces collaboration with ECOWAS to strengthen maritime security frameworks across member states.',
+      content: 'This partnership marks...',
+      category: 'News',
+      author: 'Dr. Amina Hassan',
+      date: 'September 28, 2024',
+      readTime: '4 min read',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&fit=crop',
+    },
+    {
+      id: 9,
+      title: 'Blue Economy Project: 6-Month Progress Report',
+      excerpt: 'Our blue economy initiative has created over 200 jobs and trained 500+ individuals in sustainable maritime practices.',
+      content: 'The project has exceeded expectations...',
+      category: 'Technical note',
+      author: 'Project Team',
+      date: 'September 15, 2024',
+      readTime: '8 min read',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&fit=crop',
+    },
+    {
+      id: 10,
+      title: 'From Fisherman to Entrepreneur: Ahmed\'s Story',
+      excerpt: 'Discover how our capacity building programs helped a local fisherman transform his community through sustainable practices.',
+      content: 'Ahmed\'s journey began...',
+      category: 'Blog',
+      author: 'Communications Team',
+      date: 'September 5, 2024',
+      readTime: '6 min read',
+      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&fit=crop',
     }
   ];
 
-  const categories = ['all', 'Events', 'News', 'Blogs', 'Technical note'];
+  const categories = ['Events', 'News', 'Blogs', 'Technical note'];
 
   const filteredArticles = articles.filter(article => {
-    const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
+    const matchesCategory = article.category === selectedCategory;
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* Hero Section with Image */}
       <section className="relative pt-32 pb-24 overflow-hidden">
         {/* Background Image */}
@@ -77,61 +121,61 @@ const Blog = () => {
 
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute w-96 h-96 bg-[#C1A875] rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
-          <div className="absolute w-96 h-96 bg-[#7A4E3A] rounded-full blur-3xl -bottom-48 -right-48 animate-pulse delay-1000"></div>
+          <div className="absolute w-96 h-96 bg-[#8E3400] rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
+          <div className="absolute w-96 h-96 bg-[#6B2700] rounded-full blur-3xl -bottom-48 -right-48 animate-pulse delay-1000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-[#C1A875]/20 backdrop-blur-sm px-6 py-3 rounded-full border border-[#C1A875]/30 mb-6">
-            <Tag className="w-5 h-5 text-[#C1A875]" />
-            <span className="text-[#F5F7FA] font-semibold text-sm" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Latest Updates & Insights</span>
+          <div className="inline-flex items-center space-x-2 bg-[#8E3400]/20 backdrop-blur-sm px-6 py-3 rounded-full border border-[#8E3400]/30 mb-6">
+            <Tag className="w-5 h-5 text-[#8E3400]" />
+            <span className="text-[#F5F7FA] font-semibold text-sm" style={{ fontWeight: 600 }}>Latest Updates & Insights</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold text-[#F5F7FA] mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1 className="text-5xl md:text-6xl font-bold text-[#F5F7FA] mb-6" style={{ fontWeight: 900 }}>
             News & Blog
           </h1>
-          <p className="text-xl text-[#F5F7FA]/90 max-w-3xl mx-auto" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+          <p className="text-xl text-[#F5F7FA]/90 max-w-3xl mx-auto" style={{ fontWeight: 400 }}>
             Stay updated with the latest maritime news, research insights, and success stories from across West Africa
           </p>
         </div>
       </section>
 
-      {/* Search and Categories Section - Improved Layout */}
+      {/* Search and Categories Section */}
       <section className="py-12 bg-gradient-to-br from-[#132552] to-[#1A336C]">
         <div className="max-w-7xl mx-auto px-6">
           {/* Search Bar */}
           <div className="mb-8">
             <div className="relative max-w-2xl mx-auto">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#C1A875]" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#8E3400]" />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-[#F5F7FA] border-2 border-[#C1A875]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C1A875] focus:border-transparent text-[#132552] placeholder-[#132552]/50"
-                style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+                className="w-full pl-12 pr-4 py-4 bg-[#F5F7FA] border-2 border-[#8E3400]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400] focus:border-transparent text-[#132552] placeholder-[#132552]/50"
+                style={{ fontWeight: 400 }}
               />
             </div>
           </div>
 
-          {/* Categories - Improved Grid Layout */}
+          {/* Categories */}
           <div>
-            <h3 className="text-center text-[#C1A875] font-semibold text-sm uppercase tracking-wider mb-6" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+            <h3 className="text-center text-[#8E3400] font-semibold text-sm uppercase tracking-wider mb-6" style={{ fontWeight: 600 }}>
               Filter by Category
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
                   className={`px-6 py-4 rounded-xl font-semibold transition-all ${
                     selectedCategory === category
-                      ? 'bg-[#C1A875] text-[#132552] shadow-lg'
-                      : 'bg-[#F5F7FA]/10 text-[#F5F7FA] border-2 border-[#C1A875]/30 hover:bg-[#F5F7FA]/20 hover:border-[#C1A875]/50'
+                      ? 'bg-[#8E3400] text-white shadow-lg'
+                      : 'bg-[#F5F7FA]/10 text-[#F5F7FA] border-2 border-[#8E3400]/30 hover:bg-[#F5F7FA]/20 hover:border-[#8E3400]/50'
                   }`}
-                  style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+                  style={{ fontWeight: 700 }}
                 >
-                  {category === 'all' ? 'All Articles' : category}
+                  {category}
                 </button>
               ))}
             </div>
@@ -143,21 +187,21 @@ const Blog = () => {
       <section className="py-20 bg-gradient-to-br from-[#F5F7FA] to-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-3 mb-12">
-            <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
-            <h2 className="text-4xl font-bold text-[#132552]" style={{ fontFamily: "'Playfair Display', serif" }}>
-              {selectedCategory === 'all' ? 'All Articles' : selectedCategory}
+            <div className="w-12 h-1 bg-[#8E3400] rounded-full"></div>
+            <h2 className="text-4xl font-bold text-[#132552]" style={{ fontWeight: 900 }}>
+              {selectedCategory}
             </h2>
           </div>
 
           {filteredArticles.length === 0 ? (
             <div className="text-center py-20">
               <div className="inline-block p-6 bg-white rounded-2xl shadow-lg">
-                <Search className="w-16 h-16 text-[#C1A875] mx-auto mb-4" />
-                <p className="text-2xl text-[#132552] font-semibold mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <Search className="w-16 h-16 text-[#8E3400] mx-auto mb-4" />
+                <p className="text-2xl text-[#132552] font-semibold mb-2" style={{ fontWeight: 700 }}>
                   No articles found
                 </p>
-                <p className="text-[#132552]/70" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
-                  Try adjusting your search or filter criteria
+                <p className="text-[#132552]/70" style={{ fontWeight: 400 }}>
+                  Try adjusting your search criteria
                 </p>
               </div>
             </div>
@@ -166,7 +210,7 @@ const Blog = () => {
               {filteredArticles.map((article) => (
                 <div 
                   key={article.id} 
-                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-[#C1A875]/30"
+                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 border-transparent hover:border-[#8E3400]/30"
                 >
                   <div className="relative h-56 overflow-hidden">
                     <img 
@@ -176,38 +220,38 @@ const Blog = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#132552]/80 via-[#132552]/40 to-transparent"></div>
                     <div className="absolute top-4 left-4">
-                      <span className="bg-[#C1A875] text-[#132552] px-4 py-2 rounded-full text-xs font-bold shadow-lg" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                      <span className="bg-[#8E3400] text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg" style={{ fontWeight: 700 }}>
                         {article.category}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-[#132552] mb-3 group-hover:text-[#C1A875] transition-colors line-clamp-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <h3 className="text-xl font-bold text-[#132552] mb-3 group-hover:text-[#8E3400] transition-colors line-clamp-2" style={{ fontWeight: 700 }}>
                       {article.title}
                     </h3>
                     
-                    <p className="text-[#132552]/70 text-sm mb-4 line-clamp-3" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                    <p className="text-[#132552]/70 text-sm mb-4 line-clamp-3" style={{ fontWeight: 400 }}>
                       {article.excerpt}
                     </p>
 
-                    <div className="flex items-center justify-between text-sm text-[#132552]/60 mb-4" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                    <div className="flex items-center justify-between text-sm text-[#132552]/60 mb-4" style={{ fontWeight: 400 }}>
                       <span className="flex items-center">
-                        <User className="w-4 h-4 mr-1 text-[#C1A875]" />
+                        <User className="w-4 h-4 mr-1 text-[#8E3400]" />
                         {article.author}
                       </span>
                       <span className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1 text-[#C1A875]" />
+                        <Clock className="w-4 h-4 mr-1 text-[#8E3400]" />
                         {article.readTime}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-[#C1A875]/20">
-                      <span className="text-sm text-[#132552]/60 flex items-center" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
-                        <Calendar className="w-4 h-4 mr-1 text-[#C1A875]" />
+                    <div className="flex items-center justify-between pt-4 border-t border-[#8E3400]/20">
+                      <span className="text-sm text-[#132552]/60 flex items-center" style={{ fontWeight: 400 }}>
+                        <Calendar className="w-4 h-4 mr-1 text-[#8E3400]" />
                         {article.date}
                       </span>
-                      <button className="text-[#C1A875] font-semibold text-sm flex items-center hover:text-[#7A4E3A] transition-colors group/btn" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+                      <button className="text-[#8E3400] font-semibold text-sm flex items-center hover:text-[#6B2700] transition-colors group/btn" style={{ fontWeight: 600 }}>
                         <span>Read More</span>
                         <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
                       </button>
@@ -227,23 +271,23 @@ const Blog = () => {
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute w-96 h-96 bg-[#C1A875] rounded-full blur-3xl top-1/2 left-1/4 animate-pulse"></div>
-          <div className="absolute w-96 h-96 bg-[#7A4E3A] rounded-full blur-3xl top-1/2 right-1/4 animate-pulse delay-500"></div>
+          <div className="absolute w-96 h-96 bg-[#8E3400] rounded-full blur-3xl top-1/2 left-1/4 animate-pulse"></div>
+          <div className="absolute w-96 h-96 bg-[#6B2700] rounded-full blur-3xl top-1/2 right-1/4 animate-pulse delay-500"></div>
         </div>
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <div className="inline-block mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
-              <span className="text-[#C1A875] font-semibold tracking-wider text-sm uppercase" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Newsletter</span>
-              <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
+              <div className="w-12 h-1 bg-[#8E3400] rounded-full"></div>
+              <span className="text-[#8E3400] font-semibold tracking-wider text-sm uppercase" style={{ fontWeight: 600 }}>Newsletter</span>
+              <div className="w-12 h-1 bg-[#8E3400] rounded-full"></div>
             </div>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-[#F5F7FA] mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#F5F7FA] mb-6" style={{ fontWeight: 900 }}>
             Stay Updated
           </h2>
-          <p className="text-xl text-[#F5F7FA]/90 mb-10" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+          <p className="text-xl text-[#F5F7FA]/90 mb-10" style={{ fontWeight: 400 }}>
             Subscribe to our newsletter for the latest maritime insights and updates
           </p>
           
@@ -251,10 +295,10 @@ const Blog = () => {
             <input
               type="email"
               placeholder="Enter your email address"
-              className="flex-1 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#C1A875] bg-[#F5F7FA] text-[#132552] placeholder-[#132552]/50"
-              style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+              className="flex-1 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400] bg-[#F5F7FA] text-[#132552] placeholder-[#132552]/50"
+              style={{ fontWeight: 400 }}
             />
-            <button className="bg-[#C1A875] text-[#132552] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all shadow-xl hover:scale-105 whitespace-nowrap" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
+            <button className="bg-[#8E3400] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#6B2700] transition-all shadow-xl hover:scale-105 whitespace-nowrap" style={{ fontWeight: 700 }}>
               Subscribe
             </button>
           </div>
