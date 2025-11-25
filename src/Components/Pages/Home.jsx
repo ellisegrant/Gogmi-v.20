@@ -127,7 +127,7 @@ const Home = () => {
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 animate-slide-up"
               style={{ fontFamily: "Inter, sans-serif", fontWeight: 900 }}>
-            Shaping West Africa's
+            Shaping The Gulf of Guinea
             <span className="block mt-3 drop-shadow-lg" style={{ color: '#8E3400' }}>
               Blue Economy
             </span>
@@ -168,18 +168,17 @@ const Home = () => {
                 </span>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-8" 
                     style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-                  Driving Maritime Excellence in West Africa
+                  Driving Maritime Excellence in the Gulf of Guinea
                 </h2>
                 <div className="w-20 h-1.5 rounded-full mb-8" style={{ backgroundColor: '#8E3400' }}></div>
               </div>
               
               <div className="space-y-6">
                 <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                  The Gulf of Guinea Maritime Institute (GoGMI) is a leading non-profit think tank dedicated to advancing maritime security, safety, and sustainable blue economy development across West Africa.
+                 The Gulf of Guinea Maritime Institute (GoGMI) is a non-profit think - tank organization in Ghana. The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact,
+                  share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region.
                 </p>
-                <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                  Through strategic research, policy advocacy, and capacity building programs, we empower stakeholders to make informed decisions that drive positive change in the maritime sector.
-                </p>
+               
               </div>
               
               <Link
@@ -193,98 +192,90 @@ const Home = () => {
             </div>
 
             {/* Professional Image - 7 columns */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl h-[500px] lg:col-span-7">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl h-[450px] lg:col-span-7 lg:-mt-60">
               <img 
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&fit=crop&q=90" 
+                src="public\aboutus.enoch.jpg" 
                 alt="Maritime professionals at work"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
+
+          {/* Full-width content below image - Professional layout */}
+          
         </div>
       </section>
 
-      {/* SERVICES / WHAT WE DO */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Our Services</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6" 
-                style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              What We Do
-            </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-              Comprehensive maritime solutions addressing the critical needs of the Gulf of Guinea region
-            </p>
-          </div>
+     {/* SERVICES / WHAT WE DO */}
+<section className="py-20 md:py-28 bg-white">
+  <div className="container mx-auto max-w-7xl px-6">
+    <div className="text-center mb-16">
+      <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Our Services</span>
+      <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6" 
+          style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
+        What We Do
+      </h2>
+      <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+        Comprehensive maritime solutions addressing the critical needs of the Gulf of Guinea region
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Maritime Security Research',
-                desc: 'In-depth analysis of security challenges, threats, and opportunities in the Gulf of Guinea maritime domain.',
-                color: '#132552'
-              },
-              {
-                title: 'Policy Advocacy',
-                desc: 'Strategic engagement with policymakers to shape effective maritime governance frameworks.',
-                color: '#8E3400'
-              },
-              {
-                title: 'Capacity Building',
-                desc: 'Professional training programs and workshops for maritime stakeholders and youth.',
-                color: '#1A336C'
-              },
-              {
-                title: 'International Collaboration',
-                desc: 'Facilitating partnerships between African and international maritime organizations.',
-                color: '#6B2700'
-              },
-              {
-                title: 'Blue Economy Development',
-                desc: 'Promoting sustainable economic opportunities in fisheries, shipping, and marine resources.',
-                color: '#132552'
-              },
-              {
-                title: 'Youth Mentorship',
-                desc: 'The Blue Mentorship Programme connecting young professionals with maritime career opportunities.',
-                color: '#8E3400'
-              }
-            ].map((service, idx) => (
-              <div
-                key={idx}
-                className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group overflow-hidden"
-                style={{ border: '1px solid rgba(19, 37, 82, 0.1)' }}
-              >
-                {/* Accent bar on top */}
-                <div 
-                  className="absolute top-0 left-0 right-0 h-1 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
-                  style={{ backgroundColor: service.color }}
-                ></div>
-                
-                <h3 className="text-2xl font-bold mb-4" 
-                    style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, color: '#132552' }}>
-                  {service.title}
-                </h3>
-                <p className="leading-relaxed text-base" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>{service.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:scale-105"
-              style={{ backgroundColor: '#8E3400', color: 'white', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
-            >
-              <span>View All Services</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
+    <div className="grid md:grid-cols-3 gap-8">
+      {[
+        {
+          title: 'Maritime Security Research',
+          desc: 'Facilitation of Regional and International Partnerships Foster Maritime Safety and Security in the Gulf of Guinea Region',
+          color: '#132552'
+        },
+        {
+          title: 'Policy Advocacy',
+          desc: 'Analysis of National, Regional and International Policies On Ocean Governance and Maritime Security.',
+          color: '#8E3400'
+        },
+        {
+          title: 'Capacity Building',
+          desc: 'Development, Audit and Validation Of Corporate Maritime Security Plans.',
+          color: '#1A336C'
+        },
+        {
+          title: 'International Collaboration',
+          desc: 'Organization of International Ocean Governance And Maritime Security Conferences and Exhibitions',
+          color: '#6B2700'
+        },
+        {
+          title: 'Blue Economy Development',
+          desc: 'Analysis of Activities In the Regions Maritime Domain.',
+          color: '#132552'
+        },
+        {
+          title: 'Youth Mentorship',
+          desc: 'Development of Policy Briefs Articles and Other Relevant Publications',
+          color: '#8E3400'
+        }
+      ].map((service, idx) => (
+        <div
+          key={idx}
+          className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group overflow-hidden"
+          style={{ border: '1px solid rgba(19, 37, 82, 0.1)' }}
+        >
+          {/* Accent bar on top */}
+          <div 
+            className="absolute top-0 left-0 right-0 h-1 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+            style={{ backgroundColor: service.color }}
+          ></div>
+          
+          <h3 className="text-2xl font-bold mb-4" 
+              style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, color: '#132552' }}>
+            {service.title}
+          </h3>
+          <p className="leading-relaxed text-base" style={{ color: '#374151', fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>{service.desc}</p>
         </div>
-      </section>
+      ))}
+    </div>
+
+   
+  </div>
+</section>
 
       
       {/* ABOUT THE GULF OF GUINEA - PROFESSIONAL LAYOUT */}
@@ -304,9 +295,9 @@ const Home = () => {
 
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             {/* Professional Image - 7 columns, on the left */}
-            <div className="relative rounded-2xl overflow-hidden shadow-xl h-[500px] order-2 lg:order-1 lg:col-span-7">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl h-[800px] order-2 lg:order-1 lg:col-span-7">
               <img 
-                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1800&fit=crop&q=90" 
+                src="public\HEBREWISRAELITE.jpeg" 
                 alt="Gulf of Guinea maritime view"
                 className="w-full h-full object-cover"
               />
@@ -366,155 +357,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* SDG SECTION - UPDATED WITH BRAND COLORS */}
-      <section className="py-20 md:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%)' }}>
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider inline-block mb-4" 
-                  style={{ 
-                    color: '#8E3400',
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: 600,
-                    letterSpacing: '0.1em'
-                  }}>
-              Our Commitment
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl mt-4 mb-6 text-gray-900"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: 900,
-                  letterSpacing: '-0.02em',
-                  lineHeight: '1.1'
-                }}>
-              Aligned with UN Sustainable<br />Development Goals
-            </h2>
-            <div className="w-20 h-1 mx-auto mb-8 rounded-full"
-                 style={{ backgroundColor: '#8E3400' }}></div>
-            <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" 
-               style={{ 
-                 color: '#4B5563',
-                 fontFamily: 'Inter, sans-serif',
-                 fontWeight: 400
-               }}>
-              Our work directly contributes to achieving global sustainability targets through maritime excellence and regional cooperation
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                number: '14',
-                title: 'Life Below Water',
-                desc: 'Protecting marine ecosystems and promoting sustainable ocean resources management',
-                bgColor: '#1F8DD6',
-                textColor: '#ffffff'
-              },
-              {
-                number: '8',
-                title: 'Decent Work & Economic Growth',
-                desc: 'Creating maritime employment opportunities and fostering sustainable economic development',
-                bgColor: '#A21942',
-                textColor: '#ffffff'
-              },
-              {
-                number: '4',
-                title: 'Quality Education',
-                desc: 'Providing maritime training, capacity building, and professional development programs',
-                bgColor: '#C5192D',
-                textColor: '#ffffff'
-              },
-              {
-                number: '13',
-                title: 'Climate Action',
-                desc: 'Addressing climate impacts on maritime environments and promoting environmental stewardship',
-                bgColor: '#3F7E44',
-                textColor: '#ffffff'
-              },
-              {
-                number: '16',
-                title: 'Peace, Justice & Strong Institutions',
-                desc: 'Strengthening maritime security governance and promoting regional stability',
-                bgColor: '#00689D',
-                textColor: '#ffffff'
-              },
-              {
-                number: '17',
-                title: 'Partnerships for the Goals',
-                desc: 'Building regional and international collaborations for maritime security and development',
-                bgColor: '#19486A',
-                textColor: '#ffffff'
-              }
-            ].map((sdg, idx) => (
-              <div 
-                key={idx} 
-                className="relative rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group"
-                style={{ 
-                  backgroundColor: '#ffffff',
-                  border: '1px solid #e5e7eb'
-                }}
-              >
-                {/* Top colored bar */}
-                <div 
-                  className="h-2"
-                  style={{ backgroundColor: sdg.bgColor }}
-                ></div>
-
-                <div className="p-8">
-                  {/* SDG Number Badge */}
-                  <div className="mb-6">
-                    <div 
-                      className="inline-flex items-center justify-center w-16 h-16 rounded-xl text-white font-black text-2xl transition-transform duration-300 group-hover:scale-110"
-                      style={{ 
-                        backgroundColor: sdg.bgColor,
-                        fontFamily: 'Inter, sans-serif',
-                        fontWeight: 900
-                      }}
-                    >
-                      {sdg.number}
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 text-gray-900"
-                      style={{ 
-                        fontFamily: 'Inter, sans-serif',
-                        fontWeight: 700,
-                        lineHeight: '1.3'
-                      }}>
-                    {sdg.title}
-                  </h3>
-                  <p className="text-base leading-relaxed text-gray-600" 
-                     style={{ 
-                       fontFamily: 'Inter, sans-serif',
-                       fontWeight: 400
-                     }}>
-                    {sdg.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-16">
-            <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full"
-                 style={{ 
-                   backgroundColor: '#fef3e2',
-                   border: '2px solid #8E3400'
-                 }}>
-              <span className="w-3 h-3 rounded-full" 
-                    style={{ backgroundColor: '#8E3400' }}></span>
-              <span className="font-semibold text-base" 
-                    style={{ 
-                      color: '#8E3400',
-                      fontFamily: 'Inter, sans-serif',
-                      fontWeight: 600
-                    }}>
-                Contributing to a sustainable maritime future
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
+    
       {/* PARTNERS SECTION */}
       <section className="py-20 md:py-28 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
@@ -529,30 +372,41 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
-            {[
-              { name: 'UNESCO', initial: 'UNESCO' },
-              { name: 'IMO', initial: 'IMO' },
-              { name: 'ECOWAS', initial: 'ECOWAS' },
-              { name: 'ECCAS', initial: 'ECCAS' },
-              { name: 'EU', initial: 'EU' },
-              { name: 'GGC', initial: 'GGC' }
-            ].map((partner, idx) => (
-              <div key={idx} className="flex items-center justify-center p-8 rounded-2xl transition-all duration-500 hover:shadow-xl group cursor-pointer"
-                   style={{ backgroundColor: '#F5F7FA' }}
-                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(142, 52, 0, 0.08)'}
-                   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#F5F7FA'}
-              >
-                <div className="text-center">
-                  <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-all duration-500 mx-auto mb-3 shadow-lg"
-                       style={{ background: 'linear-gradient(135deg, #132552 0%, #1A336C 100%)', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
-                    {partner.initial}
-                  </div>
-                  <p className="text-xs font-semibold" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{partner.name}</p>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+  {[
+    { name: 'ECOWAS', logo: '/ECOWAS Logo (1).png' },
+    { name: 'APN', logo: '/APN.png' },
+    { name: 'AU', logo: '/AU.png' },
+    { name: 'ECCAS', logo: '/ECCAS_logo (1).jpg' },
+    { name: 'DOTCAN', logo: '/DOTCAN LOGO.png' },
+    { name: 'GGC', logo: '/ggc-logo.png' }
+  ].map((partner, idx) => (
+    <div key={idx} className="flex items-center justify-center p-6 rounded-2xl transition-all duration-500 hover:shadow-xl group cursor-pointer bg-white border border-gray-100"
+         style={{ minHeight: '140px' }}>
+      <div className="text-center w-full">
+        {/* Logo Image Container */}
+        <div className="flex items-center justify-center h-20 mb-3 px-4">
+          <img 
+            src={partner.logo} 
+            alt={`${partner.name} logo`}
+            className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500"
+            onError={(e) => {
+              // Fallback if image doesn't load
+              e.target.style.display = 'none';
+              e.target.nextElementSibling.style.display = 'flex';
+            }}
+          />
+          {/* Fallback text - hidden by default */}
+          <div className="hidden w-full h-20 rounded-xl items-center justify-center text-white font-bold text-sm"
+               style={{ background: 'linear-gradient(135deg, #132552 0%, #1A336C 100%)', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
+            {partner.name}
           </div>
+        </div>
+        <p className="text-xs font-semibold" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{partner.name}</p>
+      </div>
+    </div>
+  ))}
+</div>
 
           <div className="text-center mt-12">
             <Link

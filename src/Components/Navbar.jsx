@@ -37,7 +37,7 @@ const Navbar = () => {
         { name: "Secretariat Services", path: "/services/secretariat-services" },
       ],
     },
-    { name: "Executive Chairman", path: "/ExecutiveChairman" },
+    { name: "Leadership", path: "/ExecutiveChairman" },
     // { name: "Projects", path: "/projects" },
     {
       name: "Resources", path: "/resources",

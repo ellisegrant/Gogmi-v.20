@@ -12,37 +12,45 @@ const ExecutiveChairman = () => {
   const ADMIRALS_BLOG_URL = "https://www.gogmiconsult.com/"; 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#132552] via-[#1A336C] to-[#132552]">
-      {/* Header Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#132552]/50"></div>
+    <div className="min-h-screen" style={{ fontFamily: 'Inter, sans-serif', backgroundColor: '#F5F7FA' }}>
+      
+      {/* Hero Section - Clean & Professional */}
+      <section className="relative bg-white border-b border-gray-100">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#132552]/3 to-[#8E3400]/3"></div>
         
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden opacity-10">
-          <div className="absolute w-96 h-96 bg-[#C1A875] rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
-          <div className="absolute w-96 h-96 bg-[#4B637F] rounded-full blur-3xl -bottom-48 -right-48 animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 py-20">
+        <div className="relative max-w-7xl mx-auto px-6 py-16">
           {/* Breadcrumb */}
-          <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-            <p className="text-[#F5F7FA]/70 text-sm" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
-              <span className="hover:text-[#C1A875] transition-colors cursor-pointer">Home</span>
+          <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+            <p className="text-sm" style={{ color: '#4B5563', fontWeight: 400 }}>
+              <span className="hover:text-[#8E3400] transition-colors cursor-pointer">Home</span>
               <span className="mx-2">/</span>
-              <span className="hover:text-[#C1A875] transition-colors cursor-pointer">About Us</span>
+              <span className="hover:text-[#8E3400] transition-colors cursor-pointer">Leadership</span>
               <span className="mx-2">/</span>
-              <span className="text-[#C1A875]">Executive Chairman</span>
+              <span style={{ color: '#8E3400', fontWeight: 600 }}>Executive Chairman</span>
             </p>
           </div>
 
-          {/* TOP SECTION: IMAGE + QUOTE/BUTTON/CONNECT */}
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Page Title */}
+          <div className={`mb-16 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <span className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4"
+                  style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 600 }}>
+              Leadership
+            </span>
+            <h1 className="text-5xl md:text-6xl font-black mb-6"
+                style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
+              Executive Chairman
+            </h1>
+            <div className="w-20 h-1.5 rounded-full" style={{ backgroundColor: '#8E3400' }}></div>
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
             
-            {/* LEFT: IMAGE */}
-            <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-              <div className="relative group">
-                {/* Image Container - NO decorative shadows */}
-                <div className="relative bg-gradient-to-br from-[#F5F7FA] to-gray-200 rounded-2xl overflow-hidden shadow-2xl">
+            {/* LEFT: IMAGE - 5 columns */}
+            <div className={`lg:col-span-5 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
+              <div className="relative">
+                {/* Image Container */}
+                <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100">
                   <div className="aspect-[3/4] relative">
                     <img 
                       src="/admiral.jpg" 
@@ -50,81 +58,59 @@ const ExecutiveChairman = () => {
                       className="w-full h-full object-cover"
                     />
                     
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#F5F7FA]/95 via-transparent to-transparent"></div>
-                    
-                    <div className="absolute bottom-0 left-0 right-0 p-8">
-                      <div className="backdrop-blur-sm bg-[#F5F7FA]/90 rounded-xl p-6 border border-[#132552]/20 shadow-xl">
-                        <p className="text-[#132552] text-sm font-semibold mb-3" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Executive Chairman</p>
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <h2 className="text-3xl font-bold text-[#132552] leading-tight mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
-                              Vice Admiral Issah Adam Yakubu (Rtd.)
-                            </h2>
-                            <p className="text-[#1F2933] text-sm mt-2" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
-                              nwc(USA) psc++ nsc jdc (Nigeria) MA (USA) dpa MUSni
-                            </p>
-                          </div>
-                          <img 
-                            src="/Flag.png" 
-                            alt="Three Star Ghana Navy" 
-                            className="w-16 h-16 object-contain flex-shrink-0"
-                          />
+                    {/* Info Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white to-transparent p-6">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <p className="text-sm font-semibold mb-2"
+                             style={{ color: '#8E3400', fontWeight: 600 }}>
+                            Executive Chairman
+                          </p>
+                          <h2 className="text-2xl font-bold leading-tight mb-2" 
+                              style={{ color: '#132552', fontWeight: 700 }}>
+                            Vice Admiral Issah Adam Yakubu (Rtd.)
+                          </h2>
+                          <p className="text-sm" style={{ color: '#4B5563', fontWeight: 400 }}>
+                            nwc(USA) psc++ nsc jdc (Nigeria) MA (USA) dpa MUSni
+                          </p>
                         </div>
+                        <img 
+                          src="/Flag.png" 
+                          alt="Three Star Ghana Navy" 
+                          className="w-14 h-14 object-contain flex-shrink-0"
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* RIGHT: QUOTE + CONNECT (ALL STACKED) */}
-            <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-              <div className="space-y-4">
-                
-                {/* QUOTE LABEL */}
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-1 bg-[#C1A875] rounded-full"></div>
-                  <span className="text-[#C1A875] font-semibold tracking-wider text-sm uppercase" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Quote</span>
-                </div>
-
-                {/* QUOTE TEXT WITH ATTRIBUTION */}
-                <div className="relative pl-6 border-l-4 border-[#C1A875] py-2">
-                  <p className="text-[#F5F7FA]/90 text-lg italic leading-relaxed mb-4" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
-                    "Strategy is not about the abundance of resources. It is about clarity of priorities, consensus among stakeholders, and the disciplined alignment of limited means to vital ends"
-                  </p>
-                  
-                  {/* Quote Attribution */}
-                  <div className="mt-4 pt-4 border-t border-[#C1A875]/30">
-                    <p className="text-[#C1A875] text-base font-semibold" style={{ fontFamily: "'Playfair Display', serif" }}>
-                      — Vice Admiral Issah Adam Yakubu (Rtd.)
-                    </p>
-                    <p className="text-[#F5F7FA]/60 text-sm mt-1" style={{ fontFamily: "'Source Sans Pro', sans-serif", letterSpacing: '0.05em' }}>
-                      nwc(USA) psc++ nsc jdc (Nigeria) MA (USA) dpa MUSni
-                    </p>
-                  </div>
-                </div>
-
-                {/* CONNECT SECTION - IN RIGHT COLUMN */}
-                <div className="bg-gradient-to-br from-[#132552]/50 to-[#1A336C]/50 backdrop-blur-sm rounded-2xl p-6 border border-[#C1A875]/30 shadow-xl mt-6">
-                  <h3 className="text-xl font-bold text-[#F5F7FA] mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>Connect</h3>
+                {/* Connect Section Below Image */}
+                <div className="mt-8 bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                  <h3 className="text-lg font-bold mb-4" style={{ color: '#132552', fontWeight: 700 }}>
+                    Connect
+                  </h3>
                   
                   {/* LinkedIn */}
                   <a 
                     href={LINKEDIN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-4 p-4 bg-[#132552]/50 rounded-xl border border-[#C1A875]/30 hover:border-[#C1A875] hover:bg-[#C1A875]/20 transition-all duration-300 cursor-pointer hover:scale-105 shadow-lg mb-3"
+                    className="group flex items-center gap-4 p-4 bg-[#F5F7FA] rounded-xl hover:bg-[#8E3400]/10 border border-gray-100 hover:border-[#8E3400] transition-all duration-300 mb-3"
                   >
-                    <div className="w-12 h-12 bg-[#0077B5] rounded-xl flex items-center justify-center group-hover:bg-[#F5F7FA] transition-all">
-                      <svg className="w-6 h-6 text-[#F5F7FA] group-hover:text-[#0077B5] transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-[#0077B5] rounded-xl flex items-center justify-center flex-shrink-0">
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-[#F5F7FA] font-semibold group-hover:text-[#C1A875] transition-colors" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>LinkedIn</h4>
-                      <p className="text-[#F5F7FA]/70 text-sm mt-1" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Follow on LinkedIn</p>
+                      <h4 className="font-semibold" style={{ color: '#132552', fontWeight: 600 }}>
+                        LinkedIn Profile
+                      </h4>
+                      <p className="text-sm" style={{ color: '#4B5563', fontWeight: 400 }}>
+                        Connect professionally
+                      </p>
                     </div>
-                    <svg className="w-5 h-5 text-[#C1A875] group-hover:text-[#F5F7FA] transition-all group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-[#8E3400] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
@@ -134,106 +120,181 @@ const ExecutiveChairman = () => {
                     href={ADMIRALS_BLOG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-4 p-4 bg-[#132552]/50 rounded-xl border border-[#C1A875]/30 hover:border-[#C1A875] hover:bg-[#C1A875]/20 transition-all duration-300 cursor-pointer hover:scale-105 shadow-lg"
+                    className="group flex items-center gap-4 p-4 bg-[#F5F7FA] rounded-xl hover:bg-[#8E3400]/10 border border-gray-100 hover:border-[#8E3400] transition-all duration-300"
                   >
-                    <div className="w-12 h-12 bg-[#C1A875] rounded-xl flex items-center justify-center group-hover:bg-[#F5F7FA] transition-all">
-                      <svg className="w-6 h-6 text-[#132552] group-hover:text-[#C1A875] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                         style={{ backgroundColor: '#8E3400' }}>
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-[#F5F7FA] font-semibold group-hover:text-[#C1A875] transition-colors" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Admiral's Blog</h4>
-                      <p className="text-[#F5F7FA]/70 text-sm mt-1" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>Read Latest Posts</p>
+                      <h4 className="font-semibold" style={{ color: '#132552', fontWeight: 600 }}>
+                        Admiral's Blog
+                      </h4>
+                      <p className="text-sm" style={{ color: '#4B5563', fontWeight: 400 }}>
+                        Read latest insights
+                      </p>
                     </div>
-                    <svg className="w-5 h-5 text-[#C1A875] group-hover:text-[#F5F7FA] transition-all group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-[#8E3400] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </a>
                 </div>
+              </div>
+            </div>
 
+            {/* RIGHT: CONTENT - 7 columns */}
+            <div className={`lg:col-span-7 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
+              
+              {/* Quote Section */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mb-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-1 rounded-full" style={{ backgroundColor: '#8E3400' }}></div>
+                  <span className="font-semibold text-sm uppercase tracking-wider"
+                        style={{ color: '#8E3400', fontWeight: 600 }}>
+                    Quote
+                  </span>
+                </div>
+
+                <div className="relative pl-6 border-l-4 py-2" style={{ borderColor: '#8E3400' }}>
+                  <p className="text-xl italic leading-relaxed mb-6" 
+                     style={{ color: '#132552', fontWeight: 400 }}>
+                    "Strategy is not about the abundance of resources. It is about clarity of priorities, consensus among stakeholders, and the disciplined alignment of limited means to vital ends"
+                  </p>
+                  
+                  {/* Attribution */}
+                  <div className="mt-6 pt-6 border-t border-gray-200">
+                    <p className="font-bold text-lg" style={{ color: '#132552', fontWeight: 700 }}>
+                      Vice Admiral Issah Adam Yakubu (Rtd.)
+                    </p>
+                    <p className="text-sm mt-1" style={{ color: '#4B5563', fontWeight: 400 }}>
+                      nwc(USA) psc++ nsc jdc (Nigeria) MA (USA) dpa MUSni
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Biography Section */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3"
+                    style={{ color: '#132552', fontWeight: 700 }}>
+                  <span className="w-1.5 h-8 rounded-full" style={{ backgroundColor: '#8E3400' }}></span>
+                  About the Executive Chairman
+                </h3>
+                
+                <div className="space-y-5 text-lg leading-relaxed" style={{ color: '#4B5563', fontWeight: 400 }}>
+                  <p>
+                    Vice Admiral Issah Yakubu is the immediate past Chief of the Naval Staff of Ghana and currently 
+                    serves as the Executive Chairman of the Gulf of Guinea Maritime Institute (GoGMI).
+                    With a distinguished career spanning over three decades in naval leadership,
+                    he is deeply committed to advancing maritime security,
+                    strategic thought, and regional cooperation in the Gulf of Guinea and beyond.
+                  </p>
+                  <p>
+                    During his tenure as Chief of the Naval Staff, he led a bold transformation agenda focused on modernising 
+                    the Ghana Navy through comprehensive fleet renewal, infrastructure development, and the integration of 
+                    advanced technologies. 
+                    Under his leadership, the Ghana Navy's efforts in defence diplomacy and operational innovation 
+                    significantly enhanced Ghana's maritime posture and regional influence.
+                  </p>
+                  <p>
+                    He also played a key role in the development of Ghana's National Integrated 
+                    Maritime Strategy (NIMS), providing strategic direction to secure and
+                    optimise the country's maritime domain.
+                  </p>
+                  <p>
+                    Vice Admiral Issah Yakubu holds a Master of Arts Degree in International Relations from Salve 
+                    Regina University, USA and a Post-graduate Diploma in Public Administration from the 
+                    Ghana Institute of Management and Public Administration. 
+                    He is an avid researcher and has authored numerous papers on maritime security and strategy. 
+                    He is Co-Author and Co-Editor of the official history of 
+                    the Ghana Navy titled "History of the Ghana Navy: 
+                    A Case for a Credible Naval Force for National Development".
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* BOTTOM SECTION: FULL WIDTH BIOGRAPHY */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          
-          {/* SINGLE FULL WIDTH CARD */}
-          <div className="bg-gradient-to-br from-[#132552]/50 to-[#1A336C]/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[#C1A875]/30 hover:border-[#C1A875]/50 transition-all duration-500 shadow-xl">
+      {/* Advisory Board Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
             
-            {/* Title */}
-            <h2 className="text-3xl md:text-4xl font-bold text-[#F5F7FA] mb-8 flex items-center gap-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-              <span className="w-2 h-10 bg-[#C1A875] rounded-full"></span>
-              About the Executive Chairman
+            <h2 className="text-4xl md:text-5xl font-black mb-6"
+                style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
+              Advisory Board Members
             </h2>
-            
-            {/* Biography Text in 2 Columns */}
-            <div className="grid md:grid-cols-2 gap-8 text-[#F5F7FA]/90 leading-relaxed text-lg" style={{ fontFamily: "'Source Sans Pro', sans-serif" }}>
-              <div className="space-y-6">
-                <p>
-                  Vice Admiral Issah Yakubu is the immediate past Chief of the Naval Staff of Ghana and currently 
-                  serve as the Executive Chairman of the Gulf of Guinea Maritime Institute (GoGMI).
-                  With a distinguished career spanning over three decades in naval leadership,
-                  he is deeply committed to advancing maritime security,
-                  strategic thought, and regional cooperation in the Gulf of Guinea and beyond.
-                </p>
-                <p>
-                  During his tenure as Chief of the Naval Staff, he led a bold transformation agenda focused on modernising 
-                  the Ghana Navy through comprehensive fleet renewal, infrastructure development, and the integration of 
-                  advanced technologies. 
-                  Under his leadership, the Ghana Navy's efforts in defence diplomacy and operational innovation 
-                  significantly enhanced Ghana's maritime posture and regional influence.
-                </p>
-              </div>
-              <div className="space-y-6">
-                <p>
-                  He also played a key role in the development of Ghana's National Integrated 
-                  Maritime Strategy (NIMS), providing strategic direction to secure and
-                  optimise the country's maritime domain.
-                </p>
-                <p>
-                  Vice Admiral Issah Yakubu holds a Master of Arts Degree in International Relations from the Salve 
-                  Regina University, USA and a Post-graduate Diploma in Public Administration from the 
-                  Ghana Institute of Management and Public Administration. 
-                  He is an avid researcher and has authored numerous papers on maritime security and strategy. 
-                  He is Co-Author and Co-Editor of the official history of 
-                  the Ghana Navy titled "History of the Ghana Navy: 
-                  A Case for a Credible Naval Force for National Development".
-                </p>
-              </div>
-            </div>
+            <div className="w-20 h-1.5 rounded-full mx-auto" style={{ backgroundColor: '#8E3400' }}></div>
           </div>
 
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {[
+              { name: 'AIR VICE MARSHAL FRANK HANSON (RTD)', role: 'Advisory Board Chair', img: '/frank.jpg' },
+              { name: 'JEFFREY LANDSMAN', role: 'ASSOCIATE PROFESSOR, U.S. NAVAL WAR COLLEGE (Rtd), CAPT, USN (RTD)', img: '/jeffrey.jpg' },
+              { name: 'Mrs. KATHLEEN QUARTEY AYENSU, ESQ', role: '', img: '/kathleen.jpg' },
+              { name: 'COMMODORE JAMES OSEI KONTOH (RTD)', role: '', img: '/jamesO.jpg' },
+              { name: 'REAR ADMIRAL SOLOMON AGADA (RTD)', role: '', img: '/solomon.jpg' }
+            ].map((member, idx) => (
+              <div key={idx} className="group">
+                <div className="relative overflow-hidden rounded-2xl mb-5 bg-gray-100 aspect-[3/4] shadow-lg hover:shadow-xl transition-all duration-300">
+                  <img 
+                    src={member.img} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500" 
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center text-gray-400"><span>Image not found</span></div>';
+                    }}
+                  />
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#132552]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <h3 className="text-lg font-bold mb-2" 
+                    style={{ color: '#132552', fontWeight: 700 }}>
+                  {member.name}
+                </h3>
+                {member.role && (
+                  <p className="text-sm" style={{ color: '#4B5563', fontWeight: 400 }}>
+                    {member.role}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      
-      <style>{`
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 0.3;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.5;
-            transform: scale(1.05);
-          }
-        }
-        
-        .animate-pulse {
-          animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        .delay-500 {
-          animation-delay: 500ms;
-        }
-        
-        .delay-1000 {
-          animation-delay: 1000ms;
-        }
-      `}</style>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 relative overflow-hidden"
+               style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #ffffff 50%, #F5F7FA 100%)' }}>
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-10"
+             style={{ backgroundColor: '#8E3400' }}></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl opacity-10"
+             style={{ backgroundColor: '#132552' }}></div>
+
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-black mb-6"
+              style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
+            Join Our Mission
+          </h2>
+          <p className="text-xl mb-10 leading-relaxed" style={{ color: '#4B5563', fontWeight: 400 }}>
+            Partner with us to transform the future of maritime in the Gulf of Guinea
+          </p>
+          <button className="inline-flex items-center justify-center gap-2 px-12 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl hover:scale-105 hover:shadow-2xl"
+                  style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}>
+            <span>Get Involved</span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </section>
     </div>
   );
 };

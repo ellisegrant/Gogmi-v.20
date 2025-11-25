@@ -128,7 +128,7 @@ const Contact = () => {
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&fit=crop" 
+            src="public\contactus.jpg" 
             alt="Contact Background"
             className="w-full h-full object-cover"
           />
