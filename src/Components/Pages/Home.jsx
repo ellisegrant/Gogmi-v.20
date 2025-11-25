@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Users,
   TrendingUp,
   Globe,
-  Ship,
-  Waves,
   BookOpen,
   Image as ImageIcon,
   Video,
@@ -14,24 +12,8 @@ import {
 } from 'lucide-react';
 
 const Home = () => {
-  // Google Drive video IDs - All 4 videos are unique and verified
-  const videoIds = [
-    '18PFtwSc3rbfOetzHaOnbagjuSA9UobHV', // Video 1
-    '1ioOdQbaMQtxLF1pisyJNIQZT8V5KvOCo', // Video 2
-    '13JqEfYsYiBnHEepgPSOyA_XBiXyxJ0O4', // Video 3
-    '1p_cmjos3Y8QV17pI1sPo6YyeyV-bwvSh'  // Video 4
-  ];
-
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-
-  // Auto-cycle through videos every 30 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoIds.length);
-    }, 30000);
-
-    return () => clearInterval(interval);
-  }, []);
+  // YouTube Video ID
+  const youtubeVideoId = 'XgzCbENPQn0';
 
   // Add animations
   useEffect(() => {
@@ -71,6 +53,22 @@ const Home = () => {
       .animate-slide-up {
         animation: slide-up 1s ease-out;
       }
+      /* Hide YouTube loading spinner and branding */
+      iframe[src*="youtube"] {
+        opacity: 1;
+        transition: opacity 0.3s ease-in;
+      }
+      .ytp-spinner,
+      .ytp-large-play-button,
+      .ytp-title,
+      .ytp-watermark,
+      .ytp-chrome-top,
+      .ytp-show-cards-title,
+      .ytp-pause-overlay {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
@@ -81,11 +79,16 @@ const Home = () => {
 
       {/* HERO */}
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        {/* Google Drive Video Background */}
+        {/* YouTube Video Background */}
         <div className="absolute inset-0">
+          {/* Fallback Background Image */}
+          <div className="absolute inset-0 bg-cover bg-center" 
+               style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&fit=crop&q=90)' }}>
+          </div>
+          
+          {/* YouTube Video Overlay */}
           <iframe
-            key={currentVideoIndex}
-            src={`https://drive.google.com/file/d/${videoIds[currentVideoIndex]}/preview?autoplay=1`}
+            src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1&fs=0&iv_load_policy=3&start=0`}
             className="w-full h-full"
             style={{ 
               position: 'absolute',
@@ -93,21 +96,27 @@ const Home = () => {
               left: '50%',
               minWidth: '100%',
               minHeight: '100%',
-              width: 'auto',
-              height: 'auto',
+              width: '100vw',
+              height: '56.25vw', // 16:9 aspect ratio
+              minHeight: '100vh',
+              minWidth: '177.77vh', // 16:9 aspect ratio
               transform: 'translate(-50%, -50%)',
-              pointerEvents: 'none'
+              pointerEvents: 'none',
+              zIndex: 1,
+              border: 'none',
+              overflow: 'hidden'
             }}
-            allow="autoplay"
+            allow="autoplay; fullscreen"
             frameBorder="0"
+            title="Hero Background Video"
           />
           
           {/* Opacity Overlays */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, rgba(19, 37, 82, 0.05), rgba(26, 51, 108, 0.05))' }}></div>
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(19, 37, 82, 0.1), transparent)' }}></div>
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, rgba(19, 37, 82, 0.05), rgba(26, 51, 108, 0.05))', zIndex: 2 }}></div>
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(19, 37, 82, 0.1), transparent)', zIndex: 2 }}></div>
         </div>
 
-        <div className="relative z-10 container mx-auto max-w-6xl px-6 py-20 flex flex-col items-center text-center text-white">
+        <div className="relative container mx-auto max-w-6xl px-6 py-20 flex flex-col items-center text-center text-white" style={{ zIndex: 10 }}>
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border mb-6 animate-fade-in"
                style={{ backgroundColor: 'rgba(142, 52, 0, 0.2)', borderColor: 'rgba(142, 52, 0, 0.3)', backdropFilter: 'blur(8px)' }}>
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#8E3400' }}></span>
@@ -146,41 +155,50 @@ const Home = () => {
         </div>
       </header>
 
-      {/* ABOUT / WELCOME */}
-      <section className="py-20 md:py-28" style={{ backgroundColor: '#F5F7FA' }}>
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Who We Are</span>
-              <h2 className="text-5xl md:text-6xl font-black leading-tight" 
-                  style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-                Driving Maritime Excellence in West Africa
-              </h2>
-              <div className="w-20 h-1 rounded-full" style={{ backgroundColor: '#8E3400' }}></div>
-              <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                The Gulf of Guinea Maritime Institute (GoGMI) is a leading non-profit think tank dedicated to advancing maritime security, safety, and sustainable blue economy development across West Africa.
-              </p>
-              <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                Through strategic research, policy advocacy, and capacity building programs, we empower stakeholders to make informed decisions that drive positive change in the maritime sector.
-              </p>
+      {/* ABOUT / WELCOME - PROFESSIONAL LAYOUT */}
+      <section className="py-32 md:py-40" style={{ backgroundColor: '#F5F7FA' }}>
+        <div className="container mx-auto max-w-[1400px] px-8">
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            {/* Content - 5 columns */}
+            <div className="space-y-8 lg:col-span-5">
+              <div>
+                <span className="font-semibold text-sm uppercase tracking-wider inline-block mb-6" 
+                      style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
+                  Who We Are
+                </span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-8" 
+                    style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
+                  Driving Maritime Excellence in West Africa
+                </h2>
+                <div className="w-20 h-1.5 rounded-full mb-8" style={{ backgroundColor: '#8E3400' }}></div>
+              </div>
+              
+              <div className="space-y-6">
+                <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+                  The Gulf of Guinea Maritime Institute (GoGMI) is a leading non-profit think tank dedicated to advancing maritime security, safety, and sustainable blue economy development across West Africa.
+                </p>
+                <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+                  Through strategic research, policy advocacy, and capacity building programs, we empower stakeholders to make informed decisions that drive positive change in the maritime sector.
+                </p>
+              </div>
+              
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 font-bold hover:gap-4 transition-all text-lg mt-4"
+                className="inline-flex items-center gap-3 font-bold hover:gap-5 transition-all text-lg mt-8 group"
                 style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
               >
                 <span>Learn More About Us</span>
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
-            {/* Image on the right */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px] group">
+            {/* Professional Image - 7 columns */}
+            <div className="relative rounded-2xl overflow-hidden shadow-xl h-[500px] lg:col-span-7">
               <img 
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&fit=crop" 
+                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1800&fit=crop&q=90" 
                 alt="Maritime professionals at work"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             </div>
           </div>
         </div>
@@ -269,50 +287,48 @@ const Home = () => {
       </section>
 
       
-      {/* ABOUT THE GULF OF GUINEA */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Our Region</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6"
+      {/* ABOUT THE GULF OF GUINEA - PROFESSIONAL LAYOUT */}
+      <section className="py-32 md:py-40 bg-white">
+        <div className="container mx-auto max-w-[1400px] px-8">
+          <div className="text-center mb-20">
+            <span className="font-semibold text-sm uppercase tracking-wider inline-block mb-6" 
+                  style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
+              Our Region
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8"
                 style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
               The Gulf of Guinea
             </h2>
+            <div className="w-20 h-1.5 rounded-full mx-auto" style={{ backgroundColor: '#8E3400' }}></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[550px] group">
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            {/* Professional Image - 7 columns, on the left */}
+            <div className="relative rounded-2xl overflow-hidden shadow-xl h-[500px] order-2 lg:order-1 lg:col-span-7">
               <img 
-                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1400&fit=crop&q=90" 
+                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1800&fit=crop&q=90" 
                 alt="Gulf of Guinea maritime view"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
-              {/* Professional gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/30"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              
-              {/* Elegant caption overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <p className="text-white text-lg font-semibold" style={{ fontFamily: "Inter, sans-serif", fontWeight: 600 }}>
-                  A vital maritime region connecting nations and economies
-                </p>
-              </div>
             </div>
 
-            <div className="space-y-6">
-              <p className="text-xl leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                The Gulf of Guinea is one of the world's most critical maritime regions, stretching from Senegal to Angola and encompassing over 6,000 kilometers of coastline.
-              </p>
-              <p className="text-xl leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                This region is vital for global trade, energy security, and economic development, yet faces significant challenges including maritime insecurity, illegal fishing, and environmental degradation.
-              </p>
+            {/* Content - 5 columns, on the right */}
+            <div className="space-y-8 order-1 lg:order-2 lg:col-span-5">
+              <div className="space-y-6">
+                <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+                  The Gulf of Guinea is one of the world's most critical maritime regions, stretching from Senegal to Angola and encompassing over 6,000 kilometers of coastline.
+                </p>
+                <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+                  This region is vital for global trade, energy security, and economic development, yet faces significant challenges including maritime insecurity, illegal fishing, and environmental degradation.
+                </p>
+              </div>
               
               {/* Countries List */}
               <div className="pt-4">
-                <h3 className="text-lg font-bold mb-4" style={{ color: '#132552', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
+                <h3 className="text-lg font-bold mb-6" style={{ color: '#132552', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
                   Gulf of Guinea Countries:
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   {[
                     'Senegal', 'Guinea-Bissau', 'Guinea', 'Sierra Leone', 'Liberia', 
                     'Côte d\'Ivoire', 'Ghana', 'Togo', 'Benin', 'Nigeria', 
@@ -331,18 +347,18 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6 pt-6">
-                <div className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" 
+              <div className="grid grid-cols-2 gap-4 pt-6">
+                <div className="p-6 rounded-xl shadow-md hover:shadow-lg transition-all" 
                      style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #ffffff 100%)' }}>
-                  <div className="text-4xl font-black mb-3" 
+                  <div className="text-3xl font-black mb-2" 
                        style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552' }}>16</div>
-                  <p className="font-semibold text-base" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Coastal Countries</p>
+                  <p className="font-semibold text-sm" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Coastal Countries</p>
                 </div>
-                <div className="p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" 
+                <div className="p-6 rounded-xl shadow-md hover:shadow-lg transition-all" 
                      style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #ffffff 100%)' }}>
-                  <div className="text-4xl font-black mb-3" 
+                  <div className="text-3xl font-black mb-2" 
                        style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552' }}>400M+</div>
-                  <p className="font-semibold text-base" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>People</p>
+                  <p className="font-semibold text-sm" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>People</p>
                 </div>
               </div>
             </div>

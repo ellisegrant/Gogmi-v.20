@@ -86,6 +86,7 @@ const Navbar = () => {
           ? "bg-[#F5F7FA]/95 backdrop-blur-lg shadow-lg py-3"
           : "bg-[#132552]/90 backdrop-blur-md py-5"
       }`}
+      style={{ fontFamily: "'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
     >
       <div className="w-full flex items-center justify-between px-12">
         {/* Logo Section - UPDATED WITH REAL LOGO */}
@@ -102,18 +103,18 @@ const Navbar = () => {
           />
           <div>
             <div
-              className={`text-xl md:text-2xl font-bold tracking-tight whitespace-nowrap ${
+              className={`text-xl md:text-2xl tracking-tight whitespace-nowrap ${
                 scrolled ? "text-[#132552]" : "text-[#F5F7FA]"
               }`}
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              style={{ fontWeight: 700 }}
             >
               GoGMI
             </div>
             <div
-              className={`text-xs font-medium whitespace-nowrap ${
+              className={`text-xs whitespace-nowrap ${
                 scrolled ? "text-[#1F2933]" : "text-[#F5F7FA]/80"
               }`}
-              style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+              style={{ fontWeight: 600 }}
             >
               Gulf Of Guinea Maritime Institute
             </div>
@@ -133,29 +134,29 @@ const Navbar = () => {
                 >
                   <button
                     type="button"
-                    className={`px-4 py-2 cursor-pointer rounded-lg font-medium transition-all flex items-center gap-1 hover:-translate-y-0.5 ${
+                    className={`px-4 py-2 cursor-pointer rounded-lg transition-all flex items-center gap-1 hover:-translate-y-0.5 ${
                       isActive(item.path) || currentPath.startsWith(item.path)
                         ? scrolled
                           ? "bg-[#132552] text-[#F5F7FA]"
                           : "bg-[#F5F7FA]/30 text-[#F5F7FA]"
                         : scrolled
-                        ? "text-[#1F2933] hover:bg-[#C1A875]/10 hover:text-[#132552]"
+                        ? "text-[#1F2933] hover:bg-[#8E3400]/10 hover:text-[#132552]"
                         : "text-[#F5F7FA] hover:bg-[#F5F7FA]/20"
                     }`}
-                    style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+                    style={{ fontWeight: 600 }}
                   >
                     <span>{item.name}</span>
                     <ChevronDown className="w-4 h-4" />
                   </button>
 
                   {dropdownOpen === item.name && (
-                    <div className="absolute top-full left-0 mt-2 w-56 bg-[#132552] rounded-xl shadow-2xl py-2 border border-[#C1A875]/30 z-50">
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-[#132552] rounded-xl shadow-2xl py-2 border border-[#8E3400]/30 z-50">
                       {item.dropdown.map((subItem) => (
                         <button
                           key={subItem.path}
                           onClick={() => handleNavClick(subItem.path)}
-                          className="block w-full text-left px-4 py-2.5 text-[#F5F7FA] hover:bg-[#C1A875] hover:text-[#132552] transition-colors"
-                          style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+                          className="block w-full text-left px-4 py-2.5 text-[#F5F7FA] hover:bg-[#8E3400] hover:text-white transition-colors"
+                          style={{ fontWeight: 400 }}
                         >
                           {subItem.name}
                         </button>
@@ -168,16 +169,16 @@ const Navbar = () => {
                 <button
                   key={item.path}
                   onClick={() => handleNavClick(item.path)}
-                  className={`px-4 py-2 rounded-lg cursor-pointer font-medium transition-all hover:-translate-y-0.5 whitespace-nowrap ${
+                  className={`px-4 py-2 rounded-lg cursor-pointer transition-all hover:-translate-y-0.5 whitespace-nowrap ${
                     isActive(item.path)
                       ? scrolled
                         ? "bg-[#132552] text-[#F5F7FA]"
                         : "bg-[#F5F7FA]/30 text-[#F5F7FA]"
                       : scrolled
-                      ? "text-[#1F2933] hover:bg-[#C1A875]/10 hover:text-[#132552]"
+                      ? "text-[#1F2933] hover:bg-[#8E3400]/10 hover:text-[#132552]"
                       : "text-[#F5F7FA] hover:bg-[#F5F7FA]/20"
                   }`}
-                  style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+                  style={{ fontWeight: 600 }}
                 >
                   {item.name}
                 </button>
@@ -190,8 +191,8 @@ const Navbar = () => {
         <div className="hidden lg:block flex-shrink-0 mr-4">
           <button
             onClick={() => handleNavClick("/contact")}
-            className="bg-[#C1A875] text-[#132552] px-6 py-2.5 rounded-lg font-semibold hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all shadow-lg hover:scale-105 whitespace-nowrap"
-            style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+            className="bg-[#8E3400] text-white px-6 py-2.5 rounded-lg hover:bg-[#132552] transition-all shadow-lg hover:scale-105 whitespace-nowrap"
+            style={{ fontWeight: 600 }}
           >
             Get Started
           </button>
@@ -219,8 +220,8 @@ const Navbar = () => {
                   <button
                     type="button"
                     onClick={() => setDropdownOpen(dropdownOpen === item.name ? null : item.name)}
-                    className="flex items-center justify-between w-full text-left py-3 px-4 text-[#1F2933] font-medium rounded-lg hover:bg-[#C1A875]/10"
-                    style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+                    className="flex items-center justify-between w-full text-left py-3 px-4 text-[#1F2933] rounded-lg hover:bg-[#8E3400]/10"
+                    style={{ fontWeight: 600 }}
                   >
                     {item.name}
                     <ChevronDown className={`w-4 h-4 transition-transform ${dropdownOpen === item.name ? 'rotate-180' : ''}`} />
@@ -231,8 +232,8 @@ const Navbar = () => {
                         <button
                           key={subItem.path}
                           onClick={() => handleNavClick(subItem.path)}
-                          className="block w-full text-left py-2.5 px-4 text-[#F5F7FA] hover:bg-[#C1A875] hover:text-[#132552] text-sm rounded-lg transition-colors"
-                          style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+                          className="block w-full text-left py-2.5 px-4 text-[#F5F7FA] hover:bg-[#8E3400] hover:text-white text-sm rounded-lg transition-colors"
+                          style={{ fontWeight: 400 }}
                         >
                           {subItem.name}
                         </button>
@@ -244,12 +245,12 @@ const Navbar = () => {
                 <button
                   key={item.path}
                   onClick={() => handleNavClick(item.path)}
-                  className={`block w-full text-left py-3 px-4 rounded-lg font-medium transition-all ${
+                  className={`block w-full text-left py-3 px-4 rounded-lg transition-all ${
                     isActive(item.path)
                       ? "bg-[#132552] text-[#F5F7FA]"
-                      : "text-[#1F2933] hover:bg-[#C1A875]/10"
+                      : "text-[#1F2933] hover:bg-[#8E3400]/10"
                   }`}
-                  style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+                  style={{ fontWeight: 600 }}
                 >
                   {item.name}
                 </button>
@@ -259,8 +260,8 @@ const Navbar = () => {
             {/* Mobile Get Started Button */}
             <button
               onClick={() => handleNavClick("/contact")}
-              className="block w-full text-center bg-[#C1A875] text-[#132552] px-6 py-3 rounded-lg font-semibold hover:bg-[#7A4E3A] hover:text-[#F5F7FA] transition-all shadow-lg"
-              style={{ fontFamily: "'Source Sans Pro', sans-serif" }}
+              className="block w-full text-center bg-[#8E3400] text-white px-6 py-3 rounded-lg hover:bg-[#132552] transition-all shadow-lg"
+              style={{ fontWeight: 600 }}
             >
               Get Started
             </button>
