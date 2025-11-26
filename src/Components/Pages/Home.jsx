@@ -194,7 +194,7 @@ const Home = () => {
             {/* Professional Image - 7 columns */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-[450px] lg:col-span-7 lg:-mt-60">
               <img 
-                src="public\aboutus.enoch.jpg" 
+                src="/aboutus.enoch.jpg" 
                 alt="Maritime professionals at work"
                 className="w-full h-full object-cover"
               />
@@ -297,7 +297,7 @@ const Home = () => {
             {/* Professional Image - 7 columns, on the left */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-[800px] order-2 lg:order-1 lg:col-span-7">
               <img 
-                src="public\HEBREWISRAELITE.jpeg" 
+                src="/HEBREWISRAELITE.jpeg" 
                 alt="Gulf of Guinea maritime view"
                 className="w-full h-full object-cover"
               />
@@ -376,10 +376,10 @@ const Home = () => {
   {[
     { name: 'ECOWAS', logo: '/ECOWAS Logo (1).png' },
     { name: 'APN', logo: '/APN.png' },
-    { name: 'AU', logo: '/AU.png' },
+    { name: 'AU', logo: '/AU Main.png' },
     { name: 'ECCAS', logo: '/ECCAS_logo (1).jpg' },
     { name: 'DOTCAN', logo: '/DOTCAN LOGO.png' },
-    { name: 'GGC', logo: '/ggc-logo.png' }
+    { name: 'ENMAR', logo: '/Enmar.png' }
   ].map((partner, idx) => (
     <div key={idx} className="flex items-center justify-center p-6 rounded-2xl transition-all duration-500 hover:shadow-xl group cursor-pointer bg-white border border-gray-100"
          style={{ minHeight: '140px' }}>

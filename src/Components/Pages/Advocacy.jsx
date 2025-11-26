@@ -57,24 +57,24 @@ const Advocacy = () => {
   const achievements = [
     {
       year: '2024',
-      title: 'Regional Maritime Security Framework Adopted',
-      description: 'Successfully advocated for the adoption of comprehensive maritime security protocols across 12 West African nations.',
+      title: 'International Maritime Security Working Group',
+      description: 'The International Maritime Security Working Group (IMSWG), formed by the Gulf of Guinea Maritime Institute, is the Institute’s flagship forum focused on stimulating dialogue and policy innovation aimed at addressing maritime security and safety concerns in the Gulf of Guinea (GoG) region. The IMSWG forum is notable as a knowledge exchange and research network on regional issues while keeping an eye on the pulse of international perspectives.',
       impact: '40% reduction in maritime incidents',
-      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&fit=crop'
+      image: '/IMSWG LOGO WHITE BG.jpg'
     },
     {
       year: '2023',
-      title: 'Blue Economy Investment Fund Established',
-      description: 'Led policy dialogue resulting in €50M regional fund for sustainable maritime development.',
+      title: 'Blue Career and Business Expo',
+      description: 'The Blue Career and Business Expo is a yearly programme designed to create dynamic opportunity-exchange platforms that enable young people to engage with maritime industry leaders and actively contribute to building a robust blue economy in Africa. The three-month initiative commence with a two-day Business Expo Conference, specifically targeted at youth (with full gender inclusivity). The conference will feature in-depth panel discussions, networking sessions, and an exhibition of maritime businesses, serving as a strategic gathering point for Ghana’s maritime industry leaders, relevant ministries, maritime enterprises, and young people followed by a three (3) month mentorship program co-managed by GoGMI to support career development among participants. Through the mentorship program, students who enroll will be paired with experienced maritime professionals, helping them map out clear career pathways and gain practical insights into the maritime sector',
       impact: '500+ jobs created',
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&fit=crop'
     },
     {
       year: '2023',
-      title: 'Maritime Training Standards Harmonized',
-      description: 'Coordinated efforts to standardize maritime professional certifications across the region.',
+      title: 'Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE)',
+      description: 'The Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE) seeks to create a viable platform for navies, industry partners and other relevant stakeholders from across the Gulf of Guinea and beyond to harmonise counter-piracy efforts and communication in the region under the existing information sharing architecture provided by both the Yaoundé Code of Conduct (YCOC) and the Best Management Practices to Deter Piracy and Enhance Maritime Security off the Coast of West Africa (BMP-WA)',
       impact: '2,000+ professionals certified',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&fit=crop'
+      image: '/shade.png'
     }
   ];
 
@@ -148,19 +148,17 @@ const Advocacy = () => {
 
         <div className="container mx-auto max-w-6xl px-6 relative z-10">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border mb-8"
-                 style={{ backgroundColor: 'rgba(142, 52, 0, 0.2)', borderColor: 'rgba(142, 52, 0, 0.3)', backdropFilter: 'blur(8px)' }}>
-              <Scale className="w-4 h-4" style={{ color: '#8E3400' }} />
-              <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Policy & Advocacy</span>
-            </div>
+           
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl leading-tight mb-8"
                 style={{ fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Shaping Maritime Policy Across West Africa
+             Analysing International Implications
+             Of Maritime Governance Reforms
             </h1>
 
             <p className="text-xl md:text-2xl leading-relaxed mb-10" style={{ fontWeight: 400, color: 'rgba(255, 255, 255, 0.95)' }}>
-              Through evidence-based research and strategic engagement, we advocate for policies that enhance maritime security, promote sustainable ocean economies, and strengthen regional cooperation.
+              GoGMI is committed to improving situational awareness of maritime security and safety challenges in the Gulf of Guinea. Through our advocacy work, we provide strategic analysis and bring together policymakers and stakeholders to develop collaborative solutions that support the blue economy and strengthen regional economic resilience. 
+              Every initiative is created with stakeholder input to ensure sustainable, long-term impact.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -174,15 +172,7 @@ const Advocacy = () => {
                 <span>Partner With Us</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link
-                to="#campaigns"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl transition-all"
-                style={{ fontWeight: 700, border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-              >
-                <span>View Campaigns</span>
-              </Link>
+            
             </div>
           </div>
         </div>
@@ -282,9 +272,7 @@ const Advocacy = () => {
                 style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
               Our Advocacy Wins
             </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ fontWeight: 400, color: '#4B5563' }}>
-              Measurable policy changes and tangible impact across the Gulf of Guinea region
-            </p>
+           
           </div>
 
           <div className="space-y-8">

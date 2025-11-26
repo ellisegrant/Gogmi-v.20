@@ -73,28 +73,28 @@ const Resources = () => {
         'Continuing education'
       ]
     },
-    {
-      id: 4,
-      title: 'Regional Maritime Security Conference 2024',
-      description: 'Full video recording of our flagship annual conference featuring keynotes from regional maritime leaders.',
-      fullDescription: 'Complete video proceedings of the 2024 Regional Maritime Security Conference. Features keynote addresses from maritime ministers, panel discussions on emerging threats, and presentations on innovative security solutions. Includes Q&A sessions and networking highlights.',
-      type: 'Video',
-      category: 'Events',
-      size: '580 MB',
-      duration: '3h 25min',
-      date: 'November 2024',
-      downloads: 420,
-      thumbnail: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&fit=crop',
-      fileType: 'MP4',
-      downloadUrl: '#',
-      keyTopics: [
-        'Ministerial keynote addresses',
-        'Panel on emerging threats',
-        'Innovative security solutions',
-        'Regional cooperation strategies',
-        'Q&A sessions'
-      ]
-    },
+    // {
+    //   id: 4,
+    //   title: 'Regional Maritime Security Conference 2024',
+    //   description: 'Full video recording of our flagship annual conference featuring keynotes from regional maritime leaders.',
+    //   fullDescription: 'Complete video proceedings of the 2024 Regional Maritime Security Conference. Features keynote addresses from maritime ministers, panel discussions on emerging threats, and presentations on innovative security solutions. Includes Q&A sessions and networking highlights.',
+    //   type: 'Video',
+    //   category: 'Events',
+    //   size: '580 MB',
+    //   duration: '3h 25min',
+    //   date: 'November 2024',
+    //   downloads: 420,
+    //   thumbnail: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&fit=crop',
+    //   fileType: 'MP4',
+    //   downloadUrl: '#',
+    //   keyTopics: [
+    //     'Ministerial keynote addresses',
+    //     'Panel on emerging threats',
+    //     'Innovative security solutions',
+    //     'Regional cooperation strategies',
+    //     'Q&A sessions'
+    //   ]
+    // },
     {
       id: 5,
       title: 'Policy Brief: Port Digitalization',
@@ -117,27 +117,27 @@ const Resources = () => {
         'Implementation strategies'
       ]
     },
-    {
-      id: 6,
-      title: 'Infographic: Gulf of Guinea Maritime Statistics 2023',
-      description: 'Visual representation of key maritime statistics, trade volumes, and security incidents in the region.',
-      fullDescription: 'A comprehensive infographic presenting key maritime data for the Gulf of Guinea region. Visualizes trade statistics, vessel traffic patterns, security incidents, economic impact metrics, and comparative regional analysis.',
-      type: 'Infographic',
-      category: 'Data',
-      size: '3.2 MB',
-      date: 'July 2024',
-      downloads: 1100,
-      thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&fit=crop',
-      fileType: 'PNG',
-      downloadUrl: '#',
-      keyTopics: [
-        'Trade volume statistics',
-        'Vessel traffic patterns',
-        'Security incident data',
-        'Economic impact metrics',
-        'Regional comparisons'
-      ]
-    },
+    // {
+    //   id: 6,
+    //   title: 'Infographic: Gulf of Guinea Maritime Statistics 2023',
+    //   description: 'Visual representation of key maritime statistics, trade volumes, and security incidents in the region.',
+    //   fullDescription: 'A comprehensive infographic presenting key maritime data for the Gulf of Guinea region. Visualizes trade statistics, vessel traffic patterns, security incidents, economic impact metrics, and comparative regional analysis.',
+    //   type: 'Infographic',
+    //   category: 'Data',
+    //   size: '3.2 MB',
+    //   date: 'July 2024',
+    //   downloads: 1100,
+    //   thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&fit=crop',
+    //   fileType: 'PNG',
+    //   downloadUrl: '#',
+    //   keyTopics: [
+    //     'Trade volume statistics',
+    //     'Vessel traffic patterns',
+    //     'Security incident data',
+    //     'Economic impact metrics',
+    //     'Regional comparisons'
+    //   ]
+    // },
     {
       id: 8,
       title: 'Annual Report 2023',

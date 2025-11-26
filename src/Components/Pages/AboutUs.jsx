@@ -67,7 +67,7 @@ const AboutUs = () => {
             {/* RIGHT: Image - 6 columns */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-[550px] lg:col-span-6">
               <img 
-                src="public\fav11.jpg" 
+                src="/fav11.jpg" 
                 alt="Maritime operations in the Gulf of Guinea"
                 className="w-full h-full object-cover"
               />
