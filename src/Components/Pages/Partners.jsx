@@ -277,7 +277,7 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* Partners Grid - Compact Logo-Focused Design */}
+      {/* Partners Grid - All Content Visible */}
       <section className="py-20" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="max-w-7xl mx-auto px-6">
           {/* Count Display */}
@@ -287,66 +287,63 @@ const Partners = () => {
             </p>
           </div>
 
-          {/* Compact Grid - 4 columns */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {/* Grid - 3 columns for better content display */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPartners.map((partner) => (
               <div
                 key={partner.id}
-                className="group bg-white rounded-xl p-5 border border-gray-200 hover:border-[#8E3400] hover:shadow-xl transition-all duration-300 cursor-pointer relative"
+                className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300 relative"
               >
                 {/* Project Count Badge */}
-                <div className="absolute top-3 right-3">
-                  <span className="inline-flex items-center px-2 py-1 rounded-md text-xs"
+                <div className="absolute top-4 right-4">
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs"
                         style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 600 }}>
-                    {partner.projects}
+                    {partner.projects} Projects
                   </span>
                 </div>
 
                 {/* Logo */}
-                <div className="flex items-center justify-center h-20 mb-4">
+                <div className="flex items-center justify-center h-24 mb-5">
                   <img 
                     src={partner.logo} 
                     alt={partner.name}
-                    className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                    className="max-w-full max-h-full object-contain"
                   />
                 </div>
 
                 {/* Name */}
-                <h3 className="text-center text-sm font-bold mb-2 line-clamp-2 min-h-[40px]" 
+                <h3 className="text-center text-base font-bold mb-2" 
                     style={{ color: '#132552', fontWeight: 700 }}>
                   {partner.name}
                 </h3>
 
                 {/* Type */}
-                <p className="text-center text-xs mb-3" 
+                <p className="text-center text-sm mb-4" 
                    style={{ color: '#4B5563', fontWeight: 600 }}>
                   {partner.type}
                 </p>
 
-                {/* Hover Details */}
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="pt-3 border-t border-gray-200">
-                    <p className="text-xs leading-relaxed mb-3 line-clamp-2" 
-                       style={{ color: '#4B5563', fontWeight: 400 }}>
-                      {partner.description}
-                    </p>
-                    
-                    <div className="flex items-center justify-between text-xs">
-                      <span style={{ color: '#4B5563', fontWeight: 400 }}>Since {partner.since}</span>
-                      {partner.website !== '#' && (
-                        <a 
-                          href={partner.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 hover:text-[#8E3400] transition-colors"
-                          style={{ color: '#132552', fontWeight: 600 }}
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <span>Visit</span>
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
-                      )}
-                    </div>
+                {/* Details - Always Visible */}
+                <div className="pt-4 border-t border-gray-200">
+                  <p className="text-sm leading-relaxed mb-4" 
+                     style={{ color: '#4B5563', fontWeight: 400 }}>
+                    {partner.description}
+                  </p>
+                  
+                  <div className="flex items-center justify-between text-sm">
+                    <span style={{ color: '#4B5563', fontWeight: 400 }}>Since {partner.since}</span>
+                    {partner.website !== '#' && (
+                      <a 
+                        href={partner.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 hover:text-[#8E3400] transition-colors"
+                        style={{ color: '#132552', fontWeight: 600 }}
+                      >
+                        <span>Visit</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

@@ -121,7 +121,7 @@ const Home = () => {
                style={{ backgroundColor: 'rgba(142, 52, 0, 0.2)', borderColor: 'rgba(142, 52, 0, 0.3)', backdropFilter: 'blur(8px)' }}>
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#8E3400' }}></span>
             <span className="font-semibold text-sm" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
-              Leading West Africa's Maritime Future
+              Leading The Gulf Of Guinea Maritime Future
             </span>
           </div>
 

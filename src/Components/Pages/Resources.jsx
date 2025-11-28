@@ -258,7 +258,136 @@ const Resources = () => {
         ' Embarked Officers and Cross-Border Operations',
         'Legal Framework for Interdiction and Prosecution'
       ]
-    }
+    },
+
+    {
+      id: 12,
+      title: 'BRIEFING ON THE STATUS OF IMPLEMENTATION OF THE YAOUNDE CODE OF CONDUCT ARCHITECTURE',
+      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
+      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      type: 'Internal Reports',
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 4,
+      date: 'MARCH 2021',
+      downloads: 1580,
+      thumbnail: '/briefing.yaounde.code.png',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/An Evaluation of the Yaoundé Architecture.pdf',
+      keyTopics: [
+        'Comprehensive Definition of Maritime Crimes',
+        'National-Level Implementation Obligations',
+        'Coordination and Information Sharing Architecture',
+        ' Embarked Officers and Cross-Border Operations',
+        'Legal Framework for Interdiction and Prosecution'
+      ]
+    },
+
+    {
+      id: 13,
+      title: 'DEVELOPING BLUE CAREERS TO FOSTER STRATEGIC DEVELOPMENT OF GULF OF GUINEA MARITIME ECONOMIES',
+      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
+      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      type: 'Internal Reports',
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 8,
+      date: 'FEBRUARY 2021',
+      downloads: 1580,
+      thumbnail: '/briefing.yaounde.code.png',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/An Evaluation of the Yaoundé Architecture.pdf',
+      keyTopics: [
+        'Comprehensive Definition of Maritime Crimes',
+        'National-Level Implementation Obligations',
+        'Coordination and Information Sharing Architecture',
+        ' Embarked Officers and Cross-Border Operations',
+        'Legal Framework for Interdiction and Prosecution'
+      ]
+    },
+
+        {
+      id: 14,
+      title: 'G7++FoGG Plenary, Abidjan',
+      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
+      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      type: 'Internal Reports',
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 8,
+      date: 'DECEMBER 2022',
+      downloads: 1580,
+      thumbnail: '/G7.png',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/G7-FOGG-Event-Report.pdf',
+      keyTopics: [
+        'Comprehensive Definition of Maritime Crimes',
+        'National-Level Implementation Obligations',
+        'Coordination and Information Sharing Architecture',
+        ' Embarked Officers and Cross-Border Operations',
+        'Legal Framework for Interdiction and Prosecution'
+      ]
+    },
+
+
+    
+        {
+      id: 15,
+      title: 'SEMINAR REPORT, INTERVENTION IN THE GULF OF GUINEA: THE CASE OF MARITIME SECURITY GOVERNANCE',
+      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
+      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      type: 'Internal Reports',
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 8,
+      date: 'DECEMBER 2022',
+      downloads: 1580,
+      thumbnail: '/atlanticcentre.png',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/Interventionism-in-the-Gulf-of-Guinea.pdf',
+      keyTopics: [
+        'Comprehensive Definition of Maritime Crimes',
+        'National-Level Implementation Obligations',
+        'Coordination and Information Sharing Architecture',
+        ' Embarked Officers and Cross-Border Operations',
+        'Legal Framework for Interdiction and Prosecution'
+      ]
+    },
+
+
+     {
+      id: 16,
+      title: 'STRENGTHENING COUNTER-PIRACY RESPONSES: THE GULF OF GUINEA MARITIME COLLABORATION FORUM-SHADE',
+      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
+      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      type: 'Internal Reports',
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 8,
+      date: 'DECEMBER 2022',
+      downloads: 1580,
+      thumbnail: '/strenght.shade.png',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/Interventionism-in-the-Gulf-of-Guinea.pdf',
+      keyTopics: [
+        'Comprehensive Definition of Maritime Crimes',
+        'National-Level Implementation Obligations',
+        'Coordination and Information Sharing Architecture',
+        ' Embarked Officers and Cross-Border Operations',
+        'Legal Framework for Interdiction and Prosecution'
+      ]
+    },
+
+
+  
+
+
+
+
+
+
+
+
 
 
 
