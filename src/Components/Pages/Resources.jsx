@@ -6,207 +6,265 @@ const Resources = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [previewResource, setPreviewResource] = useState(null);
 
+
   const resources = [
     {
       id: 1,
-      title: 'Maritime Security Framework for West Africa 2024',
-      description: 'Comprehensive policy framework for enhancing maritime security cooperation across the Gulf of Guinea region.',
-      fullDescription: 'This comprehensive framework document provides detailed guidelines and recommendations for strengthening maritime security cooperation across West African nations. It covers threat assessment methodologies, coordination mechanisms, capacity building strategies, and implementation roadmaps for regional maritime security initiatives.',
-      type: 'Reports & Reviews',
-      category: 'Security',
+      title: "5 ESSENTIAL TRAITS THAT MAKE YOUTH CRUCIAL TO ADDRESSING OCEAN",
+      description: 'Comprehensive policy framework for developing sustainable blue economy initiatives across Africa.',
+      fullDescription: 'This comprehensive handbook provides detailed guidelines for policymakers and stakeholders to develop sustainable blue economy strategies across the African continent.',
+      type: 'Blogs',
+      category: 'Youth',
       size: '2.5 MB',
-      pages: 85,
-      date: 'November 2024',
+      pages: 4,
+      date: 'July 2022',
       downloads: 1250,
-      thumbnail: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&fit=crop',
+      thumbnail: '/lawrence.blog.png',
       fileType: 'PDF',
-      downloadUrl: '#',
+      // ✅ Correct path (single /resources)
+      downloadUrl: '/resources/pdfs/Essential-traits.pdf',
       keyTopics: [
-        'Threat assessment methodologies',
-        'Regional coordination mechanisms',
-        'Capacity building strategies',
-        'Implementation roadmap',
-        'Best practices and case studies'
+        'Policy framework development',
+        'Sustainable resource management',
+        'Economic growth strategies',
+        'Regional cooperation',
+        'Implementation guidelines'
       ]
     },
     {
       id: 2,
-      title: 'Blue Economy Investment Opportunities Guide',
-      description: 'Detailed analysis of investment opportunities in sustainable fisheries, marine tourism, and renewable ocean energy.',
-      fullDescription: 'An in-depth investment guide exploring untapped opportunities in the blue economy sector across the Gulf of Guinea. Features market analysis, investment climate assessment, regulatory frameworks, and case studies of successful maritime investments in the region.',
-      type: 'Reports & Reviews',
-      category: 'Blue Economy',
-      size: '4.8 MB',
-      pages: 120,
+      title: "Africa's Blue Economy:  A policy handbook",
+      description: "Africa's Blue word is made of vast lakes and rivers and an extensive ocean resource base. Thirty-eight of the fifty-four African States are coastal States. ore than 90 percent of Africa’s imports and exports are conducted by sea and some of the most straegic gateways for international trade are in Africa, underscoring the geopolitical importance of the region.",
+      fullDescription: 'This comprehensive policy handbook serves as a strategic guide for African nations to harness the economic potential of their ocean and coastal resources. It provides actionable frameworks for policymakers, government officials, and stakeholders to develop sustainable blue economy initiatives that balance economic growth with environmental conservation and social inclusion across the continent.',
+      type: 'Academic Papers',
+      category: 'Research',
+      size: '1.8 MB',
+      pages: 109,
       date: 'October 2024',
       downloads: 890,
-      thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&fit=crop',
+      thumbnail: '/blueEconomyimage.png',
       fileType: 'PDF',
-      downloadUrl: '#',
+      // ✅ Correct path (single /resources)
+      downloadUrl: '/resources/pdfs/Blue-Economy-Policy-Handbook.pdf',
       keyTopics: [
-        'Market analysis and trends',
-        'Investment climate assessment',
-        'Regulatory frameworks',
-        'Success case studies',
-        'ROI projections'
-      ]
+       'Policy and regulatory frameworks for blue economy development',
+      'Sustainable fisheries and aquaculture management',
+      'Marine conservation and biodiversity protection',
+      'Coastal tourism and infrastructure development',
+      'Regional cooperation and capacity building strategies'
+          ]
     },
     {
       id: 3,
-      title: 'Maritime Training Curriculum 2024',
-      description: 'Complete training curriculum for maritime security professionals including modules, assessments, and certifications.',
-      fullDescription: 'A comprehensive training curriculum designed for maritime security professionals at all levels. Includes detailed learning modules, practical exercises, assessment criteria, and certification pathways aligned with international maritime training standards.',
-      type: 'Strategy Documents',
+      title: 'AN OCEAN FOR THE YOUTH',
+      description: 'AN OCEAN FOR THE YOUTH, A HOLISTIC APPROACH TO ENGAGING THE YOUTH IN THE MARITIME SECTOR',
+      fullDescription: 'An Ocean for the Youth” emphasizes the importance of empowering young people to actively participate in the maritime sector through education, awareness, skills development, and inclusive opportunities. It highlights the need for a holistic approach that connects ocean literacy, career pathways, environmental stewardship, innovation, and community engagement. By equipping the youth with knowledge and practical exposure, the initiative aims to build the next generation of ocean leaders who can contribute to sustainable maritime development, blue economy growth, and the long-term protection of marine resources.',
+      type: 'Blogs',
       category: 'Training',
       size: '1.8 MB',
-      pages: 45,
-      date: 'September 2024',
+      pages: 10,
+      date: 'March 2022',
       downloads: 650,
-      thumbnail: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&fit=crop',
+      thumbnail: '/Stephanie.blog.png',
       fileType: 'PDF',
-      downloadUrl: '#',
+      // ❌ Upload this file to: public/resources/pdfs/training-curriculum-2024.pdf
+      downloadUrl: '/resources/pdfs/An-Occean-for-Youth.pdf',
       keyTopics: [
-        'Core competency modules',
-        'Practical exercises',
-        'Assessment frameworks',
-        'Certification pathways',
-        'Continuing education'
+        'Ocean Literacy and Early Educations',
+        'Skills Development and Capacity Building',
+        'Career Pathways in the Blue Economy',
+        'Youth Leadership and Innovation',
+        'Environmental Stewardship and Community Engagement'
       ]
     },
-    // {
-    //   id: 4,
-    //   title: 'Regional Maritime Security Conference 2024',
-    //   description: 'Full video recording of our flagship annual conference featuring keynotes from regional maritime leaders.',
-    //   fullDescription: 'Complete video proceedings of the 2024 Regional Maritime Security Conference. Features keynote addresses from maritime ministers, panel discussions on emerging threats, and presentations on innovative security solutions. Includes Q&A sessions and networking highlights.',
-    //   type: 'Video',
-    //   category: 'Events',
-    //   size: '580 MB',
-    //   duration: '3h 25min',
-    //   date: 'November 2024',
-    //   downloads: 420,
-    //   thumbnail: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&fit=crop',
-    //   fileType: 'MP4',
-    //   downloadUrl: '#',
-    //   keyTopics: [
-    //     'Ministerial keynote addresses',
-    //     'Panel on emerging threats',
-    //     'Innovative security solutions',
-    //     'Regional cooperation strategies',
-    //     'Q&A sessions'
-    //   ]
-    // },
+
+      {
+      id: 4,
+      title: 'A World Oceans Day Blog Post',
+      description: 'AN OCEAN FOR THE YOUTH, A HOLISTIC APPROACH TO ENGAGING THE YOUTH IN THE MARITIME SECTOR',
+      fullDescription: 'An Ocean for the Youth” emphasizes the importance of empowering young people to actively participate in the maritime sector through education, awareness, skills development, and inclusive opportunities. It highlights the need for a holistic approach that connects ocean literacy, career pathways, environmental stewardship, innovation, and community engagement. By equipping the youth with knowledge and practical exposure, the initiative aims to build the next generation of ocean leaders who can contribute to sustainable maritime development, blue economy growth, and the long-term protection of marine resources.',
+      type: 'Blogs',
+      category: 'Celebrations',
+      size: '1.8 MB',
+      pages: 3,
+      date: 'June 2022',
+      downloads: 650,
+      thumbnail: '/occeanday.blog.png',
+      fileType: 'PDF',
+      // ❌ Upload this file to: public/resources/pdfs/training-curriculum-2024.pdf
+      downloadUrl: '/resources/pdfs/World-Ocean-Day-Collective-Action-Starts-with-You.pdf',
+      keyTopics: [
+        'Ocean Literacy and Early Educations',
+        'Skills Development and Capacity Building',
+        'Career Pathways in the Blue Economy',
+        'Youth Leadership and Innovation',
+        'Environmental Stewardship and Community Engagement'
+      ]
+    },
     {
       id: 5,
-      title: 'Policy Brief: Port Digitalization',
-      description: 'Strategic recommendations for digital transformation of port operations in West African countries.',
-      fullDescription: 'A policy brief examining digital transformation opportunities in West African ports. Provides strategic recommendations for implementing port management systems, cargo tracking technologies, and cybersecurity measures to enhance efficiency and competitiveness.',
-      type: 'Academic Papers',
+      title: "Africa's Integrated Maritime Strategy (2050 AIM Strategy)",
+      description: "African Union's comprehensive framework for transforming maritime sectors into drivers of sustainable growth and regional integration.",
+      fullDescription: "Africa's Integrated Maritime Strategy (2050 AIM Strategy) is the African Union's comprehensive long-term framework for transforming the continent's maritime sector into a driver of sustainable economic growth and regional integration. Developed through extensive consultation with African experts, member states, and international partners, this strategy provides a coordinated roadmap for protecting and harnessing Africa's vast maritime resources while addressing security threats, enhancing regional cooperation, and building the capacity needed to unlock the blue economy's full potential across the continent.",
+      type: 'Strategic Documents',
       category: 'Technology',
       size: '850 KB',
-      pages: 12,
+      pages: 49,
       date: 'August 2024',
       downloads: 780,
-      thumbnail: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&fit=crop',
+      thumbnail: '/unionafricaine.png',
       fileType: 'PDF',
-      downloadUrl: '#',
+      downloadUrl: '/resources/Africa-Integrated-Maritime-Strategy.pdf',
       keyTopics: [
-        'Digital transformation framework',
-        'Port management systems',
-        'Cargo tracking technologies',
-        'Cybersecurity measures',
-        'Implementation strategies'
-      ]
+    'Establishment of Combined Exclusive Maritime Zone of Africa (CEMZA)',
+    'Maritime security and safety enhancement through regional cooperation',
+    'Sustainable fisheries management and blue economy development',
+    'Maritime infrastructure development and trade competitiveness',
+    'Capacity building and human resource development for maritime sectors'
+  ]
     },
-    // {
-    //   id: 6,
-    //   title: 'Infographic: Gulf of Guinea Maritime Statistics 2023',
-    //   description: 'Visual representation of key maritime statistics, trade volumes, and security incidents in the region.',
-    //   fullDescription: 'A comprehensive infographic presenting key maritime data for the Gulf of Guinea region. Visualizes trade statistics, vessel traffic patterns, security incidents, economic impact metrics, and comparative regional analysis.',
-    //   type: 'Infographic',
-    //   category: 'Data',
-    //   size: '3.2 MB',
-    //   date: 'July 2024',
-    //   downloads: 1100,
-    //   thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&fit=crop',
-    //   fileType: 'PNG',
-    //   downloadUrl: '#',
-    //   keyTopics: [
-    //     'Trade volume statistics',
-    //     'Vessel traffic patterns',
-    //     'Security incident data',
-    //     'Economic impact metrics',
-    //     'Regional comparisons'
-    //   ]
-    // },
     {
-      id: 8,
-      title: 'Annual Report 2023',
-      description: 'Comprehensive annual report highlighting our achievements, financial statements, and impact metrics.',
-      fullDescription: 'GoGMI\'s complete annual report for 2023, featuring detailed program achievements, financial transparency, impact assessment, strategic initiatives, partnership highlights, and future outlook for maritime development in the region.',
-      type: 'Reports & Reviews',
+      id: 6,
+      title: 'Ecowas Integrated Maritime strategy (EIMs)',
+      description: "The ECOWAS Integrated Maritime Strategy (2014) is a comprehensive regional framework addressing maritime security, governance, environmental protection, and economic development across West Africa's 2,868 nautical mile coastline. It establishes coordinated approaches to combat threats like piracy, IUU fishing, and pollution while promoting sustainable use of maritime resources for the benefit of all 15 ECOWAS member states.",
+      fullDescription: "The ECOWAS Integrated Maritime Strategy (EIMS), adopted in August 2014, is a comprehensive policy framework designed to address maritime challenges and unlock economic opportunities across West Africa's maritime domain. The strategy covers 11 coastal ECOWAS member states with a combined 2,868 nautical mile coastline on the Atlantic Ocean, plus three landlocked countries connected through inland waterways. It establishes a vision for a prosperous, safe and peaceful EMD for all its peoples that will allow environmentally sustainable development and wealth creation based on efficient management and good governance",
+      type: 'Strategic Documents',
       category: 'Organizational',
       size: '5.6 MB',
       pages: 95,
       date: 'January 2024',
       downloads: 1580,
-      thumbnail: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&fit=crop',
+      thumbnail: '/ecowas-Integated-cover.png',
       fileType: 'PDF',
-      downloadUrl: '#',
+      downloadUrl: '/resources/Africa-Integrated-Maritime-Strategy.pdf',
       keyTopics: [
-        'Program achievements',
-        'Financial statements',
-        'Impact metrics',
-        'Strategic initiatives',
-        'Future outlook'
+        'Maritime Governance and Regulatory Framework',
+        'Maritime Security and Safety',
+        'Environmental Protection and Sustainability',
+        'Maritime Economic Development',
+        'Capacity Building and Maritime Awareness'
       ]
     },
     {
-      id: 9,
-      title: 'Ocean Governance Framework Analysis',
-      description: 'Academic analysis of ocean governance frameworks and their implementation in the Gulf of Guinea region.',
-      fullDescription: 'An academic paper analyzing the effectiveness of ocean governance frameworks in the Gulf of Guinea. Examines legal instruments, institutional arrangements, stakeholder coordination, and provides recommendations for strengthening maritime governance structures.',
+      id: 7,
+      title: 'Deep Seabed Mining: A Note on Some Potentials and Risks to the Sustainable Mineral Extraction from the Oceans',
+      description: " ",
+      fullDescription: "Deep-sea mining is increasingly promoted as a solution to rising demand for minerals used in clean energy technologies. However, the document highlights that mining the ocean floor poses serious and potentially irreversible threats to fragile marine ecosystems. It emphasizes that disturbances from extraction could last for centuries and impact species we have barely begun to understand. The note urges prioritizing ocean protection amid the climate emergency and stresses the growing global movement—including commitments at the UN Ocean Conference—to place environmental safeguarding above mining interests.",
       type: 'Academic Papers',
-      category: 'Governance',
+      category: 'Policy',
       size: '1.5 MB',
-      pages: 32,
+      pages: 109,
       date: 'May 2024',
       downloads: 540,
-      thumbnail: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&fit=crop',
+      thumbnail: '/seabed.jpg',
       fileType: 'PDF',
-      downloadUrl: '#',
+      downloadUrl: '/resources/pdfs/Deep-Sea-Mining-A-note-on-potentials-and-risks.pdf',
       keyTopics: [
-        'Legal framework analysis',
-        'Institutional arrangements',
-        'Stakeholder coordination',
-        'Policy recommendations',
-        'Comparative assessments'
+        'Rising Demand for Minerals in the Clean Energy Transition',
+        'Environmental Risks to Deep-Sea Ecosystems',
+        'Long-Lasting Ecological Disturbance',
+        'Global Calls for Ocean Protection',
+        'International Pushback and Policy Action'
       ]
     },
     {
-      id: 10,
-      title: 'Regional Maritime Strategy 2024-2030',
-      description: 'Strategic document outlining maritime development goals and implementation roadmap for the next six years.',
-      fullDescription: 'A forward-looking strategic document establishing vision, goals, and implementation framework for maritime development in West Africa through 2030. Covers security enhancement, economic development, environmental protection, and regional cooperation initiatives.',
-      type: 'Strategy Documents',
-      category: 'Policy',
+      id: 8,
+      title: 'IWD2022–GENDEREQUALITY TODAY FORASUSTAINABLETOMORROW',
+      description: 'Women are vital to safeguarding marine ecosystems, yet they often face structural barriers in the blue economy. Recognizing their leadership and ensuring equal opportunities is key to achieving long-term ocean sustainability and driving meaningful change.',
+      fullDescription: 'This note highlights the essential role women play in ocean sustainability and how gender equality strengthens environmental protection. It stresses that empowering women—especially in coastal and marine sectors—leads to better policy decisions, stronger communities, and more sustainable blue economy practices.',
+      type: 'Blogs',
+      category: "International Women's day",
       size: '3.2 MB',
-      pages: 78,
-      date: 'April 2024',
+      pages: 1,
+      date: 'April 2022',
       downloads: 980,
-      thumbnail: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&fit=crop',
+      thumbnail: '/int.women.jpg',
       fileType: 'PDF',
-      downloadUrl: '#',
+      downloadUrl: '/resources/Gender-Equality.pdf',
       keyTopics: [
-        'Vision and strategic goals',
-        'Security enhancement',
-        'Economic development',
-        'Environmental protection',
-        'Regional cooperation'
+        'The Interconnection Between Gender Equality and Environmental Sustainability',
+        'Women’s Crucial Role in Marine and Coastal Ecosystems',
+        'The Importance of Women’s Leadership in Ocean Governance',
+        'Gender Inequalities Within the Blue Economy',
+        'The Call to #BreakTheBias for Ocean Sustainability'
+      ]
+    },
+
+    {
+      id: 9,
+      title: ' THE YAOUNDÉ FRAMEWORK',
+      description: "The Yaoundé Framework (2013) is a multinational maritime security cooperation architecture for West and Central Africa that addresses 12 types of transnational organized maritime crimes including piracy, IUU fishing, oil theft, and trafficking. It establishes an Interregional Coordination Centre in Yaoundé, Cameroon, overseeing five maritime zones spanning 25 countries with support from international partners.",
+      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      type: 'Strategic Documents',
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 4,
+      date: 'January 2024',
+      downloads: 1580,
+      thumbnail: '/yaounde.jpg',
+      fileType: 'PDF',
+      downloadUrl: '/resources/Africa-Integrated-Maritime-Strategy.pdf',
+      keyTopics: [
+        'Operational Structure and Zonal Coordination',
+        'Comprehensive Crime Focus Beyond Piracy',
+        'Legal and Regulatory Harmonization',
+        'National-Level Implementation Requirements',
+        ' International Partnership and Capacity Building'
+      ]
+    },
+
+
+    {
+      id: 10,
+      title: 'YAOUNDE CODE OF CONDUCT ',
+      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
+      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      type: 'Strategic Documents',
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 15,
+      date: 'January 2024',
+      downloads: 1580,
+      thumbnail: '/yaoundecode.conduct.jpg',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/Yaounde-Code-of-Conduct.pdf',
+      keyTopics: [
+        'Comprehensive Definition of Maritime Crimes',
+        'National-Level Implementation Obligations',
+        'Coordination and Information Sharing Architecture',
+        ' Embarked Officers and Cross-Border Operations',
+        'Legal Framework for Interdiction and Prosecution'
+      ]
+    },
+
+    {
+      id: 11,
+      title: 'AN EVALUATION OF THE YAOUNDE ARCHITECTURE',
+      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
+      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      type: 'Internal Reports',
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 15,
+      date: 'JULY 2022',
+      downloads: 1580,
+      thumbnail: '/yaounde.eval.png',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/An Evaluation of the Yaoundé Architecture.pdf',
+      keyTopics: [
+        'Comprehensive Definition of Maritime Crimes',
+        'National-Level Implementation Obligations',
+        'Coordination and Information Sharing Architecture',
+        ' Embarked Officers and Cross-Border Operations',
+        'Legal Framework for Interdiction and Prosecution'
       ]
     }
+
+
+
   ];
 
-  const types = ['Reports & Reviews', 'Strategy Documents', 'Academic Papers', 'Video', 'Infographic'];
+  const types = ['Blogs', 'Strategic Documents','Academic Papers', 'Internal Reports', 'Videos'];
 
   const filteredResources = resources.filter(resource => {
     const matchesType = resource.type === selectedType;
@@ -214,6 +272,52 @@ const Resources = () => {
                          resource.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesType && matchesSearch;
   });
+
+  // ===== DOWNLOAD FUNCTION - Direct Download (More Reliable) =====
+  const handleDownload = (resource) => {
+    try {
+      console.log(`🔄 Starting download: ${resource.title}`);
+      console.log(`📁 File path: ${resource.downloadUrl}`);
+      
+      // Encode URL to handle spaces and special characters
+      const encodedUrl = resource.downloadUrl.split('/').map(part => encodeURIComponent(part)).join('/');
+      
+      // Create direct download link (no blob conversion)
+      const link = document.createElement('a');
+      link.href = encodedUrl;
+      
+      // Extract filename from URL
+      const fileName = resource.downloadUrl.split('/').pop();
+      link.download = fileName;
+      
+      // Add attributes to force download
+      link.setAttribute('type', 'application/pdf');
+      link.setAttribute('target', '_blank');
+      
+      // Append, click, remove
+      document.body.appendChild(link);
+      console.log(`💾 Triggering download for: ${fileName}`);
+      link.click();
+      document.body.removeChild(link);
+      
+      console.log(`✅ Download initiated: ${fileName}`);
+      
+      // Show success message
+      setTimeout(() => {
+        alert(`✅ Download complete!\n\nFile: ${fileName}\n\nSaved to: C:\\Users\\Corporate Affairs\\Downloads\\`);
+      }, 500);
+      
+    } catch (error) {
+      console.error('❌ Download error:', error);
+      alert(`Download failed!\n\nError: ${error.message}\n\nPlease check if file exists in public/resources/pdfs/`);
+    }
+  };
+
+  // ===== PREVIEW FUNCTION - Opens file in new tab =====
+  const handlePreview = (resource) => {
+    // Open the file in a new browser tab for preview
+    window.open(resource.downloadUrl, '_blank');
+  };
 
   const PreviewModal = ({ resource, onClose }) => {
     if (!resource) return null;
@@ -311,6 +415,7 @@ const Resources = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-200">
               <button 
+                onClick={() => handleDownload(resource)}
                 className="flex-1 bg-[#8E3400] text-white px-6 py-4 rounded-xl font-bold transition-all hover:bg-[#6B2700] flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105"
                 style={{ fontWeight: 700 }}
               >
@@ -318,6 +423,7 @@ const Resources = () => {
                 <span>Download Resource</span>
               </button>
               <button 
+                onClick={() => handlePreview(resource)}
                 className="flex-1 bg-gray-100 text-gray-900 px-6 py-4 rounded-xl font-bold transition-all hover:bg-gray-200 flex items-center justify-center gap-2"
                 style={{ fontWeight: 700 }}
               >
@@ -497,6 +603,7 @@ const Resources = () => {
                         <span>Preview</span>
                       </button>
                       <button 
+                        onClick={() => handleDownload(resource)}
                         className="flex-1 bg-[#8E3400] text-white py-3 rounded-lg font-semibold hover:bg-[#6B2700] transition-all flex items-center justify-center space-x-2 shadow-lg"
                         style={{ fontWeight: 700 }}
                       >

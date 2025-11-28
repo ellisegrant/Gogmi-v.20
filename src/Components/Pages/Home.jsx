@@ -376,7 +376,7 @@ const Home = () => {
   {[
     { name: 'ECOWAS', logo: '/ECOWAS Logo (1).png' },
     { name: 'APN', logo: '/APN.png' },
-    { name: 'AU', logo: '/AU Main.png' },
+    { name: 'AU', logo: '/AUMain.png' },
     { name: 'ECCAS', logo: '/ECCAS_logo (1).jpg' },
     { name: 'DOTCAN', logo: '/DOTCAN LOGO.png' },
     { name: 'ENMAR', logo: '/Enmar.png' }
