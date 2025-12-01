@@ -263,8 +263,8 @@ const Resources = () => {
     {
       id: 12,
       title: 'BRIEFING ON THE STATUS OF IMPLEMENTATION OF THE YAOUNDE CODE OF CONDUCT ARCHITECTURE',
-      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
-      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      description: "A briefing summarizing expert discussions on the implementation progress, challenges, and recommendations for strengthening the Yaoundé Code of Conduct (YCoC) Architecture to improve maritime security in the Gulf of Guinea.",
+      fullDescription: "This briefing outlines the outcomes of a series of expert-level Virtual Discussion Group (VDG) meetings held between January and April 2021 on the status of implementing the Yaoundé Code of Conduct (YCoC) in the Gulf of Guinea. Organized by the Gulf of Guinea Maritime Institute and supported by the IMO, the meetings brought together regional, international, academic, and industry stakeholders to assess progress, address implementation gaps, and recommend strategies to enhance maritime safety and security. The document highlights key discussions on sustainability, law enforcement cooperation, international partnerships, and strategic communications within the YCoC framework.",
       type: 'Internal Reports',
       category: 'Organizational',
       size: '5.6 MB',
@@ -275,19 +275,18 @@ const Resources = () => {
       fileType: 'PDF',
       downloadUrl: '/resources/pdfs/An Evaluation of the Yaoundé Architecture.pdf',
       keyTopics: [
-        'Comprehensive Definition of Maritime Crimes',
-        'National-Level Implementation Obligations',
-        'Coordination and Information Sharing Architecture',
-        ' Embarked Officers and Cross-Border Operations',
-        'Legal Framework for Interdiction and Prosecution'
-      ]
+        'Strengthening the YCoC Implementation Architecture',
+        'Enhanced Cooperation Between States and International Partners',
+        'Inclusion of Key Regional Institutions',
+        'The Role of Academia and Research Institutions',
+        'Defining the Maritime Industry’s Role']
     },
 
     {
       id: 13,
       title: 'DEVELOPING BLUE CAREERS TO FOSTER STRATEGIC DEVELOPMENT OF GULF OF GUINEA MARITIME ECONOMIES',
-      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
-      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      description: "A report on a regional online event discussing how developing blue careers can drive sustainable economic growth in the Gulf of Guinea by strengthening human capital, maritime skills, and career opportunities within the blue economy.",
+      fullDescription: "This document presents insights from the GoGMI–International Maritime Security Working Group online event held on 25th February 2021, focused on developing blue careers to support the strategic growth of Gulf of Guinea maritime economies. The discussions highlighted Africa’s vast blue economy potential, the urgent need for skilled human capital, and the role of innovation, education, and partnerships in unlocking economic opportunities. Speakers from Ghana, Nigeria, Canada, and Europe explored key themes such as maritime security, blue skills development, career awareness, technical training, public-private collaboration, and youth engagement to build a stronger, more sustainable maritime sector across the region.",
       type: 'Internal Reports',
       category: 'Organizational',
       size: '5.6 MB',
@@ -298,19 +297,19 @@ const Resources = () => {
       fileType: 'PDF',
       downloadUrl: '/resources/pdfs/An Evaluation of the Yaoundé Architecture.pdf',
       keyTopics: [
-        'Comprehensive Definition of Maritime Crimes',
-        'National-Level Implementation Obligations',
-        'Coordination and Information Sharing Architecture',
-        ' Embarked Officers and Cross-Border Operations',
-        'Legal Framework for Interdiction and Prosecution'
+        'Africa’s Blue Economy Potential',
+        'Importance of Human Capital and Skills Development',
+        'Regional and International Partnerships',
+        ' National Efforts: Case Studies from Nigeria and Ghana',
+        'Recommendations for Strengthening Blue Careers in Africa'
       ]
     },
 
         {
       id: 14,
       title: 'G7++FoGG Plenary, Abidjan',
-      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
-      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      description: "A detailed event report on the 2022 G7++ Friends of the Gulf of Guinea (FoGG) Plenary held in Abidjan, highlighting key discussions on maritime security, blue economy governance, regional cooperation, women in maritime, and international partner strategies for strengthening security in the Gulf of Guinea.",
+      fullDescription: "This report captures the major presentations, discussions, and conclusions from the G7++FoGG Plenary held in Abidjan from 1–2 December 2022. As a multilateral platform supporting the Yaoundé Code of Conduct, the plenary brought together over 150 delegates, including government officials, naval leaders, civil society groups, private sector actors, and international partners. The event examined challenges and opportunities within the Yaoundé Architecture, explored maritime security governance, highlighted the role of civil society and women, discussed regional–international cooperation, and presented strategic approaches for the next decade of maritime security efforts in the Gulf of Guinea.",
       type: 'Internal Reports',
       category: 'Organizational',
       size: '5.6 MB',
@@ -321,11 +320,11 @@ const Resources = () => {
       fileType: 'PDF',
       downloadUrl: '/resources/pdfs/G7-FOGG-Event-Report.pdf',
       keyTopics: [
-        'Comprehensive Definition of Maritime Crimes',
-        'National-Level Implementation Obligations',
-        'Coordination and Information Sharing Architecture',
-        ' Embarked Officers and Cross-Border Operations',
-        'Legal Framework for Interdiction and Prosecution'
+        'Strengthening the Yaoundé Architecture at Its 10-Year Milestone',
+        'Expanding the Role of Civil Society in Maritime Governance',
+        'Women in Maritime Security and Crime Prevention',
+        'Regional & International Collaboration',
+        'Addressing Piracy, Oil Theft & Transnational Crime'
       ]
     },
 
@@ -334,8 +333,8 @@ const Resources = () => {
         {
       id: 15,
       title: 'SEMINAR REPORT, INTERVENTION IN THE GULF OF GUINEA: THE CASE OF MARITIME SECURITY GOVERNANCE',
-      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
-      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
+      description: "A comprehensive seminar report examining maritime security interventions in the Gulf of Guinea region, analyzing stakeholder coordination, the Yaoundé Architecture, and pathways to sustainable maritime governance.",
+      fullDescription: "On October 21, 2022, the Gulf of Guinea Maritime Institute (GoGMI) and the Atlantic Centre co-hosted a virtual seminar bringing together over 40 global participants to examine interventionism and maritime security governance in the Gulf of Guinea. The seminar featured expert panelists including Rear Admiral Solomon Agada (Nigeria Navy), Professor Christian Bueger (University of Copenhagen), Captain Emmanuel Bell Bell (ICC Yaoundé), and Mr. Gilles Chehab (EU GoGIN Project). Participants explored the effectiveness of major maritime security initiatives including the Yaoundé Architecture, YARIS information system, GoG-MCF SHADE, and multilateral exercises. The discussion addressed critical challenges in regional coordination, capacity building, and navigating the complex landscape of competing international and regional interests while promoting sustainable blue economy development and maritime security in West Africa.",
       type: 'Internal Reports',
       category: 'Organizational',
       size: '5.6 MB',
@@ -346,11 +345,11 @@ const Resources = () => {
       fileType: 'PDF',
       downloadUrl: '/resources/pdfs/Interventionism-in-the-Gulf-of-Guinea.pdf',
       keyTopics: [
-        'Comprehensive Definition of Maritime Crimes',
-        'National-Level Implementation Obligations',
-        'Coordination and Information Sharing Architecture',
-        ' Embarked Officers and Cross-Border Operations',
-        'Legal Framework for Interdiction and Prosecution'
+        ' Evolution of Maritime Security Threats in the Gulf of Guinea',
+        ' Major Maritime Security Interventions and Frameworks',
+        'The Critical Role of YARIS in Information Sharing',
+        'Challenges in Regional Coordination and Capacity Building',
+        ' Navigating Complex Actor Relations and Competing Interests'
       ]
     },
 
@@ -358,9 +357,9 @@ const Resources = () => {
      {
       id: 16,
       title: 'STRENGTHENING COUNTER-PIRACY RESPONSES: THE GULF OF GUINEA MARITIME COLLABORATION FORUM-SHADE',
-      description: "The Yaoundé Code of Conduct (2013) is a multilateral agreement signed by 25 West and Central African nations establishing a comprehensive framework to combat piracy, armed robbery at sea, and 10 other types of transnational maritime crimes including IUU fishing, oil theft, human trafficking, and maritime terrorism. It creates coordination mechanisms through national focal points, regional information-sharing centers, and commits signatories to cooperative enforcement measures including embarked officers programs and joint operations.",
-      fullDescription: "The Yaoundé Framework, established through the 2013 Yaoundé Code of Conduct and subsequent agreements, is a comprehensive multinational maritime security cooperation architecture for West and Central Africa. It creates an operational structure with the Interregional Coordination Centre (ICC) in Yaoundé, Cameroon, overseeing regional coordination centers and five maritime zones (A, D, E, F, G) that address 12 types of transnational organized maritime crimes across 25 participating nations from Angola to Cape Verde.",
-      type: 'Internal Reports',
+      description: "An in-depth analysis of the Gulf of Guinea Maritime Collaboration Forum - SHADE (Shared Awareness and De-confliction), a regionally-owned platform established to harmonize counter-piracy efforts and enhance maritime security coordination across the Gulf of Guinea.",
+      fullDescription: "The GoG-MCF/SHADE initiative represents a groundbreaking approach to maritime security in the Gulf of Guinea, born from a Memorandum of Understanding between the Government of Nigeria and the Inter-regional Coordination Centre (ICC) representing 21 countries. Operating through structured plenary sessions and three specialized Working Groups (Air De-confliction, Cooperation at Sea, and Information Sharing & Reporting), SHADE creates a vital platform for navies, industry partners, and maritime stakeholders to coordinate counter-piracy responses. Since its establishment in July 2021, the forum has held five plenaries—including the first in-person session in Abuja, Nigeria in May 2022—bringing together regional and international stakeholders to address the Gulf's evolution from being the world's piracy hotspot in 2020-2021 to achieving measurable security improvements. The initiative complements existing frameworks including the Yaoundé Code of Conduct, BMP-WA, and G7++ Friends of the Gulf of Guinea, while introducing practical innovations like the SOLARTA communication platform.",
+      type: "Internal Reports",
       category: 'Organizational',
       size: '5.6 MB',
       pages: 8,
@@ -370,13 +369,38 @@ const Resources = () => {
       fileType: 'PDF',
       downloadUrl: '/resources/pdfs/Interventionism-in-the-Gulf-of-Guinea.pdf',
       keyTopics: [
-        'Comprehensive Definition of Maritime Crimes',
-        'National-Level Implementation Obligations',
-        'Coordination and Information Sharing Architecture',
-        ' Embarked Officers and Cross-Border Operations',
-        'Legal Framework for Interdiction and Prosecution'
+        'The Gulf of Guinea Piracy Crisis and Response',
+        " SHADE's Operational Structure and Working Groups",
+        'Evolution Through Five Plenary Sessions',
+        'Practical Achievements and Innovations',
+        'Strategic Recommendations for Sustainability'
       ]
     },
+
+
+    {
+      id: 16,
+      title: 'Understanding and Addressing the Drivers Behind the Nexus of Blue Crime, Drugs, Piracy, and Terror Prevalent Across the Atlantic',
+      description: "An in-depth analysis of the Gulf of Guinea Maritime Collaboration Forum - SHADE (Shared Awareness and De-confliction), a regionally-owned platform established to harmonize counter-piracy efforts and enhance maritime security coordination across the Gulf of Guinea.",
+      fullDescription: "The GoG-MCF/SHADE initiative represents a groundbreaking approach to maritime security in the Gulf of Guinea, born from a Memorandum of Understanding between the Government of Nigeria and the Inter-regional Coordination Centre (ICC) representing 21 countries. Operating through structured plenary sessions and three specialized Working Groups (Air De-confliction, Cooperation at Sea, and Information Sharing & Reporting), SHADE creates a vital platform for navies, industry partners, and maritime stakeholders to coordinate counter-piracy responses. Since its establishment in July 2021, the forum has held five plenaries—including the first in-person session in Abuja, Nigeria in May 2022—bringing together regional and international stakeholders to address the Gulf's evolution from being the world's piracy hotspot in 2020-2021 to achieving measurable security improvements. The initiative complements existing frameworks including the Yaoundé Code of Conduct, BMP-WA, and G7++ Friends of the Gulf of Guinea, while introducing practical innovations like the SOLARTA communication platform.",
+      type: "Internal Reports",
+      category: 'Organizational',
+      size: '5.6 MB',
+      pages: 8,
+      date: 'DECEMBER 2022',
+      downloads: 1580,
+      thumbnail: '/strenght.shade.png',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/ABI-HSWG-policy-brief-Yakubu-final.pdf',
+      keyTopics: [
+        'The Gulf of Guinea Piracy Crisis and Response',
+        " SHADE's Operational Structure and Working Groups",
+        'Evolution Through Five Plenary Sessions',
+        'Practical Achievements and Innovations',
+        'Strategic Recommendations for Sustainability'
+      ]
+    },
+
 
 
   
