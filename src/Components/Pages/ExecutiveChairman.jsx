@@ -30,7 +30,6 @@ const ExecutiveChairman = () => {
 
           {/* Page Title */}
           <div className={`text-center transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-           
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6"
                 style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
               Our Leadership
@@ -43,7 +42,14 @@ const ExecutiveChairman = () => {
       {/* Board Members Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-       
+          
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black mb-4"
+                style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
+              Board Members
+            </h2>
+          
+          </div>
 
           {/* Executive Chairman - Featured */}
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 mb-12">
@@ -61,7 +67,6 @@ const ExecutiveChairman = () => {
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/95 to-transparent p-4">
                       <div className="flex flex-col gap-2">
-                        {/* Name and Flag on same line - TIGHT */}
                         <div className="flex items-center gap-2">
                           <h3 className="text-lg font-bold leading-tight flex-1" 
                               style={{ color: '#132552', fontWeight: 700 }}>
@@ -74,7 +79,6 @@ const ExecutiveChairman = () => {
                           />
                         </div>
 
-                        {/* ========== CREDENTIALS BADGE - ADJUST WIDTH/SIZE HERE ========== */}
                         <div className="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-white border border-gray-200 w-full">
                           <svg className="w-6 h-4 flex-shrink-0" style={{ color: '#8E3400' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -83,7 +87,6 @@ const ExecutiveChairman = () => {
                             nwc(USA) psc++ nsc jdc (Nigeria) MA (USA) dpa MUSni
                           </span>
                         </div>
-                        {/* ========== END CREDENTIALS BADGE ========== */}
                       </div>
                     </div>
                   </div>
@@ -168,6 +171,72 @@ const ExecutiveChairman = () => {
               </div>
             </div>
           </div>
+
+          {/* Other Board Members - Two Column Grid */}
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            
+            {/* Board Member 1 */}
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+              <div className="relative bg-white rounded-lg overflow-hidden shadow-md border border-gray-100">
+                <div className="aspect-[5/4] relative">
+                  <img 
+                    src="/lt.amponsah.jpg" 
+                    alt="Board Member"
+                    className="w-full h-full object-cover object-center"
+                    style={{ objectPosition: 'center 20%' }}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/95 to-transparent p-3">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-base font-bold leading-tight" 
+                          style={{ color: '#132552', fontWeight: 700 }}>
+                        Lieutenant Commander Kofi Amponsah Duodu
+                      </h3>
+
+                      <div className="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white border border-gray-200 w-full">
+                        <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#8E3400' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                        </svg>
+                        <span className="text-xs font-semibold leading-tight" style={{ color: '#4B5563', fontWeight: 600 }}>
+                          Board Director (Oversight over Finance and Administration)
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Board Member 2 */}
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+              <div className="relative bg-white rounded-lg overflow-hidden shadow-md border border-gray-100">
+                <div className="aspect-[5/4] relative">
+                  <img 
+                    src="/Alberta.jpg" 
+                    alt="Board Member"
+                    className="w-full h-full object-cover object-center"
+                    style={{ objectPosition: 'center 20%' }}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/95 to-transparent p-3">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-base font-bold leading-tight" 
+                          style={{ color: '#132552', fontWeight: 700 }}>
+                        DR. Alberta Ama Sagoe
+                      </h3>
+
+                      <div className="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white border border-gray-200 w-full">
+                        <svg className="w-3.5 h-3.5 flex-shrink-0" style={{ color: '#8E3400' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                        </svg>
+                        <span className="text-xs font-semibold leading-tight" style={{ color: '#4B5563', fontWeight: 600 }}>
+                          Board Member (Oversight over Technical Services)
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -182,11 +251,10 @@ const ExecutiveChairman = () => {
             <div className="w-20 h-1 rounded-full mx-auto" style={{ backgroundColor: '#8E3400' }}></div>
           </div>
 
-          {/* Air Vice Marshal - Full Featured Profile Like Admiral */}
+          {/* Air Vice Marshal - Full Featured Profile */}
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 mb-12">
             <div className="grid lg:grid-cols-12 gap-8 items-start">
               
-              {/* Image - 4 columns */}
               <div className="lg:col-span-4">
                 <div className="relative bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
                   <div className="aspect-[3/4] relative">
@@ -202,10 +270,12 @@ const ExecutiveChairman = () => {
                           <h3 className="text-lg font-bold leading-tight flex-1" 
                               style={{ color: '#132552', fontWeight: 700 }}>
                             Air Vice Marshal Frank Hanson (Rtd.)
+                  
                           </h3>
+
+                          
                         </div>
 
-                        {/* ========== CREDENTIALS BADGE ========== */}
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-gray-200 w-full">
                           <svg className="w-4 h-4 flex-shrink-0" style={{ color: '#8E3400' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -214,17 +284,13 @@ const ExecutiveChairman = () => {
                             Advisory Board Chair
                           </span>
                         </div>
-                        {/* ========== END CREDENTIALS BADGE ========== */}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Content - 8 columns */}
               <div className="lg:col-span-8 space-y-6">
-                
-                {/* Biography */}
                 <div>
                   <h4 className="text-xl font-bold mb-4 flex items-center gap-2"
                       style={{ color: '#132552', fontWeight: 700 }}>
@@ -252,9 +318,9 @@ const ExecutiveChairman = () => {
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { name: 'JEFFREY LANDSMAN', role: 'ASSOCIATE PROFESSOR, U.S. NAVAL WAR COLLEGE (Rtd), CAPT, USN (RTD)', img: '/jeffrey.jpg' },
-              { name: 'Mrs. KATHLEEN QUARTEY AYENSU, ESQ', role: '', img: '/kathleen.jpg' },
-              { name: 'COMMODORE JAMES OSEI KONTOH (RTD)', role: '', img: '/jamesO.jpg' },
-              { name: 'REAR ADMIRAL SOLOMON AGADA (RTD)', role: '', img: '/solomon.jpg' }
+              { name: 'Mrs. KATHLEEN QUARTEY AYENSU, ESQ', role: 'Lawyer', img: '/kathleen.jpg' },
+              { name: 'COMMODORE JAMES OSEI KONTOH (RTD)', role: 'Ghana Navy', img: '/jamesO.jpg' },
+              { name: 'REAR ADMIRAL SOLOMON AGADA (RTD)', role: 'Nigerian Navy', img: '/solomon.jpg' }
             ].map((member, idx) => (
               <div key={idx} className="group">
                 <div className="relative overflow-hidden rounded-xl mb-4 bg-white aspect-[3/4] shadow-lg hover:shadow-xl transition-all duration-300">

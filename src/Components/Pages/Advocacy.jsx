@@ -60,14 +60,16 @@ const Advocacy = () => {
       title: 'International Maritime Security Working Group',
       description: `The International Maritime Security Working Group (IMSWG), formed by the Gulf of Guinea Maritime Institute, is the Institute's flagship forum focused on stimulating dialogue and policy innovation aimed at addressing maritime security and safety concerns in the Gulf of Guinea (GoG) region. The IMSWG forum is notable as a knowledge exchange and research network on regional issues while keeping an eye on the pulse of international perspectives.`,
       impact: '40% reduction in maritime incidents',
-      image: '/IMSWG LOGO WHITE BG.jpg'
+      image: '/IMSWG LOGO WHITE BG.jpg',
+      link: '/imswg'
     },
     {
       year: '2023',
       title: 'Blue Career and Business Expo',
       description: `The Blue Career and Business Expo is a yearly programme designed to create dynamic opportunity-exchange platforms that enable young people to engage with maritime industry leaders and actively contribute to building a robust blue economy in Africa. The three-month initiative commence with a two-day Business Expo Conference, specifically targeted at youth (with full gender inclusivity). The conference will feature in-depth panel discussions, networking sessions, and an exhibition of maritime businesses, serving as a strategic gathering point for Ghana's maritime industry leaders, relevant ministries, maritime enterprises, and young people followed by a three (3) month mentorship program co-managed by GoGMI to support career development among participants. Through the mentorship program, students who enroll will be paired with experienced maritime professionals, helping them map out clear career pathways and gain practical insights into the maritime sector`,
       impact: '500+ jobs created',
-      image: '/bluecareer.webp'
+      image: '/bluecareer.webp',
+      link: '/bluecareerexpo'  // Link to Blue Career Expo page - you can add links like this to any achievement
     },
     {
       year: '2023',
@@ -101,7 +103,8 @@ const Advocacy = () => {
       description: 'The IMSWG forum is a leading platform for regional knowledge sharing and research, with insight into international trends.',
       supporters: 2450,
       deadline: 'Ongoing',
-      logo: '/IMSWG LOGO WHITE BG.jpg'
+      logo: '/IMSWG LOGO WHITE BG.jpg',
+      link: '/imswg'
     },
     {
       status: 'active',
@@ -110,7 +113,8 @@ const Advocacy = () => {
       description: "The Blue Career and Business Expo is a yearly event that connects young people with maritime industry leaders to support Africa's blue economy.",
       supporters: 1890,
       deadline: 'Annual Event',
-      logo: '/bluecareer.webp'
+      logo: '/bluecareer.webp',
+      link: '/bluecareerexpo'
     },
     {
       status: 'active',
@@ -145,7 +149,7 @@ const Advocacy = () => {
             alt="Advocacy Hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(19, 37, 82, 0.9) 0%, rgba(26, 51, 108, 0.85) 100%)' }}></div>
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(19, 37, 82, 0.7) 0%, rgba(26, 51, 108, 0.65) 100%)' }}></div>
         </div>
 
         <div className="container mx-auto max-w-6xl px-6 relative z-10">
@@ -250,7 +254,7 @@ const Advocacy = () => {
                 </div>
 
                 <Link
-                  to={`/campaigns/${campaign.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  to={campaign.link || `/campaigns/${campaign.title.toLowerCase().replace(/\s+/g, '-')}`}
                   className="block w-full px-5 py-2.5 rounded-xl text-center text-sm transition-all hover:scale-105"
                   style={{ fontWeight: 700, backgroundColor: '#132552', color: 'white' }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1A336C'}
@@ -277,52 +281,58 @@ const Advocacy = () => {
            
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-6">
             {achievements.map((achievement, idx) => (
               <div
                 key={idx}
-                className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-500"
+                className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
               >
                 <div className="grid md:grid-cols-5 gap-0">
-                  <div className="md:col-span-2 relative h-32 md:h-auto overflow-hidden">
+                  {/* Image/Logo section - centered and contained */}
+                  <div className="md:col-span-2 relative h-64 md:h-72 bg-white flex items-center justify-center p-8">
                     <img
                       src={achievement.image}
                       alt={achievement.title}
-                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                      className="max-w-full max-h-full object-contain"
+                      style={{ objectFit: 'contain' }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20"></div>
                   </div>
 
-                  <div className="md:col-span-3 p-3">
-                    <div className="flex items-center gap-2 mb-1">
-                      <div className="px-2 py-0.5 rounded-full text-white text-xs"
+                  <div className="md:col-span-3 p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="px-4 py-1.5 rounded-full text-white text-sm"
                            style={{ fontWeight: 700, backgroundColor: '#132552' }}>
                         {achievement.year}
                       </div>
                       {achievement.impact && (
-                        <div className="px-2 py-0.5 rounded-full text-xs"
+                        <div className="px-4 py-1.5 rounded-full text-sm"
                              style={{ fontWeight: 600, backgroundColor: '#F5F7FA', color: '#8E3400' }}>
                           {achievement.impact}
                         </div>
                       )}
                     </div>
 
-                    <h3 className="text-base mb-1 line-clamp-1"
+                    <h3 className="text-xl md:text-2xl mb-4 line-clamp-2"
                         style={{ fontWeight: 900, color: '#132552' }}>
                       {achievement.title}
                     </h3>
 
-                    <p className="text-xs leading-relaxed mb-2 line-clamp-2" style={{ fontWeight: 400, color: '#4B5563' }}>
+                    <p className="text-base leading-relaxed mb-5 line-clamp-3" style={{ fontWeight: 400, color: '#4B5563' }}>
                       {achievement.description}
                     </p>
 
+                    {/* Learn More Link - connects to actual pages 
+                        HOW TO ADD LINKS: Simply add a 'link' property to the achievement object
+                        Example: link: '/imswg' or link: '/bluecareerexpo'
+                        If no link is provided, it will use a default URL
+                    */}
                     <Link
-                      to={`/projects/${achievement.title.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="inline-flex items-center gap-1 transition-all hover:gap-3 text-xs"
+                      to={achievement.link || `/projects/${achievement.title.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="inline-flex items-center gap-2 transition-all hover:gap-4 text-base"
                       style={{ fontWeight: 600, color: '#8E3400' }}
                     >
                       <span>Learn More</span>
-                      <ArrowRight className="w-3 h-3" />
+                      <ArrowRight className="w-5 h-5" />
                     </Link>
                   </div>
                 </div>

@@ -126,155 +126,59 @@ const MaritimeSecurityAudit = () => {
     <div className="min-h-screen bg-white">
       
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0">
           <img 
-            src="/Republic of Guinea Armed Forces execute small-unit tactics at Flintlock 20.jpg"
+            src="/How to Ensure Hassle-Free Crew Transfers at French Ports.jpg"
             alt="Maritime Security"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#132552]/95 via-[#1A5490]/90 to-[#132552]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#132552]/60 via-[#1A5490]/55 to-[#132552]/60"></div>
           <div className="absolute inset-0" style={{ 
             backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(142, 52, 0, 0.1) 0%, transparent 50%)',
           }}></div>
         </div>
 
         {/* Content */}
-        <div className={`relative z-10 max-w-6xl mx-auto px-6 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 backdrop-blur-md"
+        <div className={`relative z-10 max-w-5xl mx-auto px-6 text-center py-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 backdrop-blur-md"
                style={{ backgroundColor: 'rgba(142, 52, 0, 0.2)', border: '1px solid rgba(142, 52, 0, 0.3)', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#8E3400' }}></span>
-            <span className="text-sm font-semibold tracking-widest text-white">ONGOING RESEARCH PROJECT</span>
+            <span className="text-xs font-semibold tracking-widest text-white">ONGOING RESEARCH PROJECT</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-none"
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 leading-none"
               style={{ letterSpacing: '-0.03em', fontFamily: '"SF Pro Display", system-ui, -apple-system, sans-serif' }}>
             MARITIME SECURITY<br/>
             <span style={{ color: '#8E3400' }}>INTERVENTIONS AUDIT</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed"
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed"
              style={{ fontWeight: 400, fontFamily: 'Georgia, "Times New Roman", serif' }}>
             A comprehensive examination of maritime security governance complexities in the Gulf of Guinea
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-lg transition-all shadow-2xl hover:scale-105"
-                    style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700, fontFamily: 'system-ui, sans-serif' }}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <button className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-base transition-all shadow-xl hover:scale-105"
+                    style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 600, fontFamily: 'system-ui, sans-serif' }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}>
               <Download className="w-5 h-5" />
               <span>Download Full Report</span>
             </button>
-           
+          
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-8 h-8 text-white/60" />
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-6 h-6 text-white/60" />
         </div>
       </section>
 
       {/* Background and Rationale */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <span className="text-sm font-bold uppercase tracking-wider mb-4 block"
-                    style={{ color: '#8E3400', fontFamily: 'system-ui, sans-serif', letterSpacing: '0.15em' }}>
-                Context & Purpose
-              </span>
-              <h2 className="text-4xl md:text-5xl font-black mb-8"
-                  style={{ color: '#132552', letterSpacing: '-0.02em', fontFamily: '"SF Pro Display", system-ui, sans-serif' }}>
-                Background and Rationale
-              </h2>
-              <div className="w-20 h-1.5 rounded-full mb-8" style={{ backgroundColor: '#8E3400' }}></div>
-              
-              <p className="text-xl leading-relaxed mb-6" style={{ color: '#132552', fontWeight: 500, fontFamily: 'Georgia, serif' }}>
-                It is clear that maritime security debates over the past few decades have centered on the Gulf of Guinea (GoG) – a region considered the most dangerous for seafarers – and the unique conundrum it presents to maritime security cooperation.
-              </p>
-
-              <p className="text-base leading-relaxed mb-6" style={{ color: '#4B5563', fontWeight: 400, fontFamily: 'system-ui, sans-serif' }}>
-                The Gulf of Guinea is crucial, not only because it is geographically cardinal to maritime trade but also because its strategic significance is largely interwoven with the interests of a large number of actors.
-              </p>
-            </div>
-
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&fit=crop"
-                alt="Gulf of Guinea Maritime Operations"
-                className="rounded-2xl shadow-2xl w-full"
-              />
-              
-            </div>
-          </div>
-
-          <div className="space-y-6 text-base leading-relaxed" style={{ color: '#4B5563', fontWeight: 400, fontFamily: 'Georgia, serif' }}>
-            <p>
-              The implications of this are as extensive and multifaceted. For instance, while it does imply a multiplicity of interests in enhancing the region's maritime security, it equally infers the exposure of the region to a more complex set of maritime security threats, as well as a more complex set of responses to these threats. The Gulf is therefore characterised by an intricate nexus of threats and governance challenges that have resulted in varied responses from different levels of actors.
-            </p>
-
-            <p>
-              From the composite Yaoundé Architecture to the multi-actor G7++ Friends of the Gulf of Guinea, these interventions have emerged in response to the peculiar nature of maritime security challenges faced by the region and are likely to evolve as the dynamics of those challenges change over time. The implications of this proliferation of interventions are two-fold. First, it deepens the need for partnerships and collaborations across a broad range of stakeholders. Second, it heightens elements of informality and experimentation in governance approaches towards attaining shared goals within the region.
-            </p>
-
-            <div className="bg-gradient-to-r from-blue-50 to-orange-50 p-8 rounded-2xl border-l-4 border-[#8E3400] my-8">
-              <p className="text-lg leading-relaxed" style={{ color: '#132552', fontWeight: 500, fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
-                Whether such an evolution will be beneficial to advancing the multiplex of interests in the region, however, is dependent on a contextual analysis of how their discourses and practices have shaped the maritime security architecture of the region and how various actors deal with the complexities of the region's maritime security environment.
-              </p>
-            </div>
-
-            <p>
-              It is also dependent on a credible assessment of how efforts in the region aimed at addressing maritime security concerns can be more effectively coordinated and harnessed towards the attainment of shared interests. A study that incorporates these dynamics could create a much clearer understanding of the suitability of existing frameworks for enhancing maritime security in the region.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Download Report Section */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#132552' }}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(142, 52, 0, 0.1) 10px, rgba(142, 52, 0, 0.1) 20px)'
-          }}></div>
-        </div>
-        
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <div className="bg-gradient-to-r from-[#8E3400] to-[#B84E00] rounded-3xl p-10 md:p-12 shadow-2xl">
-            <div className="grid md:grid-cols-3 gap-8 items-center">
-              <div className="md:col-span-2">
-                <h3 className="text-3xl md:text-4xl font-black text-white mb-4"
-                    style={{ fontFamily: '"SF Pro Display", sans-serif', letterSpacing: '-0.02em' }}>
-                  Download Full Report
-                </h3>
-                <p className="text-white/90 text-lg mb-6" style={{ fontFamily: 'Georgia, serif' }}>
-                  Get comprehensive insights into maritime security interventions across the Gulf of Guinea region. 120+ pages of in-depth analysis and recommendations.
-                </p>
-                <div className="flex flex-wrap gap-4 text-sm text-white/80" style={{ fontFamily: 'system-ui, sans-serif' }}>
-                  <span className="flex items-center gap-2">
-                    <Check className="w-4 h-4" /> PDF Format
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Check className="w-4 h-4" /> 120 Pages
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Check className="w-4 h-4" /> Free Access
-                  </span>
-                </div>
-              </div>
-              <div className="flex justify-center md:justify-end">
-                <button className="group relative inline-flex items-center gap-3 px-8 py-5 bg-white rounded-2xl text-lg font-black transition-all hover:scale-105 hover:shadow-2xl"
-                        style={{ color: '#132552', fontFamily: 'system-ui, sans-serif' }}>
-                  <Download className="w-6 h-6 group-hover:animate-bounce" style={{ color: '#8E3400' }} />
-                  <span>Download Now</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* Areas of Exploration */}
       <section className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
@@ -300,15 +204,15 @@ const MaritimeSecurityAudit = () => {
                    className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <div className="relative h-48 overflow-hidden">
                   <img 
-                    src={idx === 0 ? "https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?w=600&fit=crop" : 
-                         idx === 1 ? "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&fit=crop" : 
-                         "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&fit=crop"}
+                    src={idx === 0 ? "/AAC starts work on maritime domain awareness constellation.jpg" : 
+                         idx === 1 ? "/gggmi.jpg" : 
+                         "/Dinoprajapati2003 Author Portfolio _ Freepik.jpg"}
                     alt={area.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className={`absolute inset-0 ${idx === 0 ? 'bg-gradient-to-br from-slate-700/85 to-slate-900/85' : 
-                                   idx === 1 ? 'bg-gradient-to-br from-amber-700/85 to-orange-800/85' : 
-                                   'bg-gradient-to-br from-teal-700/85 to-cyan-800/85'}`}></div>
+                  <div className={`absolute inset-0 ${idx === 0 ? 'bg-gradient-to-br from-slate-700/60 to-slate-900/60' : 
+                                   idx === 1 ? 'bg-gradient-to-br from-amber-700/60 to-orange-800/60' : 
+                                   'bg-gradient-to-br from-teal-700/60 to-cyan-800/60'}`}></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-xl font-black mb-6 leading-tight group-hover:text-[#8E3400] transition-colors"
@@ -525,7 +429,7 @@ const MaritimeSecurityAudit = () => {
           {/* Impact Visualization Image */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl">
             <img 
-              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&fit=crop"
+              src="/bossess.jpg"
               alt="Collaborative Maritime Operations"
               className="w-full h-96 object-cover"
             />
@@ -612,65 +516,7 @@ const MaritimeSecurityAudit = () => {
       </section>
 
       {/* Final Download CTA */}
-      <section className="py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&fit=crop"
-            alt="Research Background"
-            className="w-full h-full object-cover opacity-10"
-          />
-        </div>
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="bg-gradient-to-r from-[#8E3400] to-[#B84E00] rounded-3xl p-12 shadow-2xl">
-            <div className="grid md:grid-cols-2 gap-10 items-center">
-              <div>
-                <div className="inline-block px-4 py-1 rounded-full mb-4 text-xs font-bold tracking-widest"
-                     style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', color: 'white', fontFamily: 'system-ui, sans-serif' }}>
-                  COMPREHENSIVE RESEARCH REPORT
-                </div>
-                <h3 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight"
-                    style={{ fontFamily: '"SF Pro Display", sans-serif', letterSpacing: '-0.02em' }}>
-                  Download the Full Report
-                </h3>
-                <p className="text-white/90 text-lg mb-6 leading-relaxed" style={{ fontFamily: 'Georgia, serif' }}>
-                  Access comprehensive insights, detailed analysis, and strategic recommendations for maritime security governance in the Gulf of Guinea.
-                </p>
-                <div className="flex flex-col gap-3 text-white/90 mb-8" style={{ fontFamily: 'system-ui, sans-serif' }}>
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-md bg-white/20 flex items-center justify-center">
-                      <Check className="w-4 h-4" />
-                    </div>
-                    <span>120+ pages of in-depth research</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-md bg-white/20 flex items-center justify-center">
-                      <Check className="w-4 h-4" />
-                    </div>
-                    <span>Analysis of 15+ security interventions</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-md bg-white/20 flex items-center justify-center">
-                      <Check className="w-4 h-4" />
-                    </div>
-                    <span>Strategic policy recommendations</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col gap-4">
-                <button className="group relative inline-flex items-center justify-center gap-3 px-10 py-6 bg-white rounded-2xl text-xl font-black transition-all hover:scale-105 hover:shadow-2xl"
-                        style={{ color: '#132552', fontFamily: 'system-ui, sans-serif' }}>
-                  <Download className="w-7 h-7 group-hover:animate-bounce" style={{ color: '#8E3400' }} />
-                  <span>Download Full Report (PDF)</span>
-                </button>
-                <p className="text-center text-white/70 text-sm" style={{ fontFamily: 'Georgia, serif' }}>
-                  Free access • No registration required • 12.4 MB
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* CTA Section */}
       <section className="py-20 md:py-32 relative overflow-hidden"
                style={{ background: 'linear-gradient(135deg, #132552 0%, #1A5490 100%)' }}>
@@ -706,3 +552,5 @@ const MaritimeSecurityAudit = () => {
 };
 
 export default MaritimeSecurityAudit;
+
+

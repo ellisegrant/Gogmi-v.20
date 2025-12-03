@@ -129,6 +129,7 @@ const Partners = () => {
     {
       id: 9,
       name: '/Maritimafrica.jpg',
+      logo: '/IMDEC-Logo.png',
       category: 'Private Sector',
       type: 'Network Partner',
       since: '2017',
@@ -157,7 +158,9 @@ const Partners = () => {
       description: 'Women in maritime empowerment programs',
       website: '#',
       projects: 7
-    }
+    },
+
+    
   ];
 
   const categories = ['International', 'Regional', 'Government', 'Private Sector'];

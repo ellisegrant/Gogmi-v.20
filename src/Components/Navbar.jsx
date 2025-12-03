@@ -43,7 +43,7 @@ const Navbar = () => {
       name: "Resources", path: "/resources",
       dropdown: [
         { name: "Library", path: "/resources" },
-        { name: "Blog & News", path: "/blog" },
+        { name: "Events, Blog & News", path: "/blog" },
         { name: "Membership", path: "/Membership" },
       ],
     },

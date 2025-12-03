@@ -155,7 +155,7 @@ const Home = () => {
         </div>
       </header>
 
-      {/* ABOUT / WELCOME - PROFESSIONAL LAYOUT */}
+      {/* ABOUT / WELCOME  */}
       <section className="py-32 md:py-40" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="container mx-auto max-w-[1400px] px-8">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
@@ -191,17 +191,17 @@ const Home = () => {
               </Link>
             </div>
 
-            {/* Professional Image - 7 columns */}
+      
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-[450px] lg:col-span-7 lg:-mt-60">
               <img 
-                src="/aboutus.enoch.jpg" 
+                src="/conf1.jpg" 
                 alt="Maritime professionals at work"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
 
-          {/* Full-width content below image - Professional layout */}
+     
           
         </div>
       </section>
@@ -376,7 +376,7 @@ const Home = () => {
   {[
     { name: 'ECOWAS', logo: '/ECOWAS Logo (1).png' },
     { name: 'APN', logo: '/APN.png' },
-    { name: 'AU', logo: '/AUMain.png' },
+    { name: 'AU', logo: '/AU Main.png' },
     { name: 'ECCAS', logo: '/ECCAS_logo (1).jpg' },
     { name: 'DOTCAN', logo: '/DOTCAN LOGO.png' },
     { name: 'ENMAR', logo: '/Enmar.png' }
