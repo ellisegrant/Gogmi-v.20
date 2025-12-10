@@ -112,7 +112,7 @@ const BlueCareerExpo = () => {
       <section className="relative py-32 overflow-hidden" style={{ backgroundColor: '#132552' }}>
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&fit=crop"
+            src="/conf4.jpg"
             alt="Blue Career Expo"
             className="w-full h-full object-cover opacity-20"
           />
@@ -126,121 +126,61 @@ const BlueCareerExpo = () => {
             <p className="text-2xl text-white/90 mb-8 font-semibold max-w-3xl mx-auto">
               Building a Robust Blue Economy, Leaving No One Behind
             </p>
-            <button 
-              className="inline-flex items-center gap-2 px-10 py-4 rounded-lg font-bold text-lg transition-all shadow-lg"
-              style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
-            >
-              <span>Learn More</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
+            
           </div>
         </div>
       </section>
 
-      {/* Hosted By & Partners Section */}
+
+      {/* Hosted By Partners Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            
-            {/* Left Side - Event Branding */}
             <div className="text-center md:text-left">
               <div className="inline-block">
-                <h2 className="text-6xl md:text-7xl font-black mb-2" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.05em', lineHeight: '0.9' }}>
-                  BLUE
-                </h2>
-                <h2 className="text-6xl md:text-7xl font-black mb-2" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.05em', lineHeight: '0.9' }}>
-                  CAREER
-                </h2>
+                <h2 className="text-6xl md:text-7xl font-black mb-2" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.05em', lineHeight: '0.9' }}>BLUE</h2>
+                <h2 className="text-6xl md:text-7xl font-black mb-2" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.05em', lineHeight: '0.9' }}>CAREER</h2>
                 <div className="text-center">
                   <span className="text-xl font-bold tracking-widest" style={{ color: '#132552' }}>AND</span>
                 </div>
-                <h2 className="text-6xl md:text-7xl font-black" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.05em', lineHeight: '0.9' }}>
-                  BUSINESS
-                </h2>
-                <h3 className="text-4xl md:text-5xl font-black mt-2" style={{ color: '#132552', fontWeight: 900 }}>
-                  EXPO 2021
-                </h3>
+                <h2 className="text-6xl md:text-7xl font-black" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.05em', lineHeight: '0.9' }}>BUSINESS</h2>
+                <h3 className="text-4xl md:text-5xl font-black mt-2" style={{ color: '#132552', fontWeight: 900 }}>EXPO 2021</h3>
               </div>
-
-              {/* Hosted By */}
               <div className="mt-8">
                 <p className="text-sm font-bold mb-3" style={{ color: '#4B5563' }}>Hosted by</p>
                 <div className="flex justify-center md:justify-start">
                   <div className="w-24 h-24 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                    <img 
-                      src="/gogmi-logo.png" 
-                      alt="GoGMI"
-                      className="max-w-full max-h-full object-contain"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.parentElement.innerHTML = '<div class="text-xs font-bold" style="color: #132552;">GoGMI</div>';
-                      }}
-                    />
+                    <span className="text-sm font-bold" style={{ color: '#132552' }}>GoGMI</span>
                   </div>
                 </div>
               </div>
-
-              {/* In Collaboration With */}
               <div className="mt-6">
                 <p className="text-sm font-bold mb-3" style={{ color: '#4B5563' }}>In collaboration with</p>
                 <div className="flex justify-center md:justify-start">
                   <div className="w-32 h-20 bg-white rounded-lg shadow-md p-2 flex items-center justify-center">
-                    <img 
-                      src="/wista-logo.png" 
-                      alt="WISTA"
-                      className="max-w-full max-h-full object-contain"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.parentElement.innerHTML = '<div class="text-xs font-bold" style="color: #132552;">WISTA Ghana</div>';
-                      }}
-                    />
+                    <span className="text-sm font-bold" style={{ color: '#132552' }}>WISTA Ghana</span>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Right Side - Partner Logos Grid with Animation */}
             <div className="relative">
-              <div className="grid grid-cols-4 gap-4 animate-fade-in">
-                {[
-                  'ECOWAS', 'IMO', 'WISTA', 'WIELS', 'ECOWAS Commission', 'Canada',
-                  'APM Terminals', 'PSPA', 'Statcomm', 'Ghana Navy', 'APM',
-                  'WIELS', 'Statcomm', 'Canada', 'APM', 'WISTA'
-                ].map((partner, idx) => (
-                  <div 
-                    key={idx}
-                    className="bg-white rounded-lg shadow-sm p-3 flex items-center justify-center hover:shadow-md transition-all duration-300 hover:scale-105"
-                    style={{ 
-                      animation: `fadeInUp 0.5s ease-out ${idx * 0.05}s both`,
-                      minHeight: '60px'
-                    }}
-                  >
-                    <span className="text-xs font-bold text-center" style={{ color: '#132552' }}>
-                      {partner}
-                    </span>
+              <div className="relative h-96 rounded-xl overflow-hidden shadow-2xl">
+                <img src="/conf4.jpg" alt="Blue Career Expo Event" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center group hover:bg-black/40 transition-all">
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center cursor-pointer transition-all group-hover:scale-110" style={{ backgroundColor: '#8E3400' }}>
+                    <div className="w-0 h-0 border-t-10 border-t-transparent border-l-16 border-l-white border-b-10 border-b-transparent ml-1"></div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Download Button */}
           <div className="text-center mt-12">
-            <button 
-              className="px-8 py-3 rounded-lg font-bold text-sm transition-all hover:scale-105 shadow-md"
-              style={{ backgroundColor: '#132552', color: 'white', fontWeight: 700 }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F1C3F'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#132552'}
-            >
+            <button className="px-8 py-3 rounded-lg font-bold text-sm transition-all hover:scale-105 shadow-md" style={{ backgroundColor: '#132552', color: 'white', fontWeight: 700 }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F1C3F'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#132552'}>
               DOWNLOAD BLUE CAREER AND BUSINESS EXPO 2021 PUBLIC REPORT HERE
             </button>
           </div>
         </div>
       </section>
-
-      {/* Event Summary Stats */}
       <section className="py-16 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-3xl font-black text-center mb-12" style={{ color: '#132552', fontWeight: 900 }}>
@@ -306,7 +246,7 @@ const BlueCareerExpo = () => {
             </div>
             <div className="relative h-96 rounded-xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&fit=crop"
+                src="/conf3.jpg"
                 alt="Conference Event"
                 className="w-full h-full object-cover"
               />

@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// Import GoGMI Logo from assets - path goes UP one level from Components to src
-//import GoGMI_PNG from "../assets/images/GoGMI_PNG.png";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(null); // Changed to track which dropdown is open
-  const [closeTimeout, setCloseTimeout] = useState(null); // Add timeout for delayed closing
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [closeTimeout, setCloseTimeout] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
   const [currentPath, setCurrentPath] = useState("/");
 
-  // Keep currentPath in sync with router location
   useEffect(() => {
     setCurrentPath(location.pathname || "/");
   }, [location]);
@@ -33,12 +30,11 @@ const Navbar = () => {
       dropdown: [
         { name: "Advocacy", path: "/services/advocacy" },
         { name: "Research", path: "/services/research" },
-        { name: "Capacity Building", path: "services/CapacityBuilding" },
-        { name: "Secretariat Services", path: "/services/secretariat-services" },
+        { name: "Capacity Building", path: "/services/CapacityBuilding" },
+        { name: "Secretariat Services", path: "/secretariat" },
       ],
     },
     { name: "Leadership", path: "/ExecutiveChairman" },
-    // { name: "Projects", path: "/projects" },
     {
       name: "Resources", path: "/resources",
       dropdown: [
@@ -52,7 +48,6 @@ const Navbar = () => {
 
   const isActive = (path) => currentPath === path;
 
-  // Handle dropdown open with immediate opening
   const handleDropdownEnter = (itemName) => {
     if (closeTimeout) {
       clearTimeout(closeTimeout);
@@ -61,17 +56,14 @@ const Navbar = () => {
     setDropdownOpen(itemName);
   };
 
-  // Handle dropdown close with delay
   const handleDropdownLeave = () => {
     const timeout = setTimeout(() => {
       setDropdownOpen(null);
-    }, 300); // 300ms delay before closing
+    }, 300);
     setCloseTimeout(timeout);
   };
 
-  // Use router navigation
   const handleNavClick = (path) => {
-    // If same path, still close mobile menu
     if (path && path !== currentPath) {
       navigate(path);
     }
@@ -89,13 +81,11 @@ const Navbar = () => {
       style={{ fontFamily: "'Inter', 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
     >
       <div className="w-full flex items-center justify-between px-12">
-        {/* Logo Section - UPDATED WITH REAL LOGO */}
         <button
           onClick={() => handleNavClick("/")}
           className="flex items-center space-x-3 group flex-shrink-0"
           aria-label="Go to home"
         >
-          {/* GoGMI REAL LOGO - Located in /public folder */}
           <img 
             src="/GoGMI_PNG.png"
             alt="GoGMI Logo" 
@@ -121,7 +111,6 @@ const Navbar = () => {
           </div>
         </button>
 
-        {/* Desktop Navigation - Centered and evenly spaced */}
         <div className="hidden lg:flex items-center flex-1 justify-center">
           <div className="flex items-center gap-6">
             {navItems.map((item) =>
@@ -165,7 +154,6 @@ const Navbar = () => {
                   )}
                 </div>
               ) : (
-                // Use button + navigate (or you could use <Link>)
                 <button
                   key={item.path}
                   onClick={() => handleNavClick(item.path)}
@@ -187,7 +175,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Get Started Button - Right side */}
         <div className="hidden lg:block flex-shrink-0 mr-4">
           <button
             onClick={() => handleNavClick("/contact")}
@@ -198,7 +185,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className={`lg:hidden transition-colors p-2 ${
             scrolled ? "text-[#132552]" : "text-[#F5F7FA]"
@@ -210,7 +196,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#F5F7FA]/98 backdrop-blur-xl border-t border-gray-200 shadow-2xl">
           <div className="px-6 py-4 space-y-2">
@@ -257,7 +242,6 @@ const Navbar = () => {
               )
             )}
 
-            {/* Mobile Get Started Button */}
             <button
               onClick={() => handleNavClick("/contact")}
               className="block w-full text-center bg-[#8E3400] text-white px-6 py-3 rounded-lg hover:bg-[#132552] transition-all shadow-lg"

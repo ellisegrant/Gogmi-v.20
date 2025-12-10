@@ -83,7 +83,7 @@ const Advocacy = () => {
       year: '2023',
       title: 'Occean Career Fair – Ghana',
       description: "The conference reflected on ten years of the Yaoundé Code of Conduct, uniting ECOWAS stakeholders to assess the Yaoundé Architecture's role in maritime safety, governance, and regional coordination, with discussions on operational challenges, regulations, and contributions from academia and community actors.",
-      image: '/Front.jpg'
+      image: '/DOTCAN LOGO.png'
     },
 
 //  {

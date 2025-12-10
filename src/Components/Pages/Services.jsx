@@ -55,7 +55,7 @@ const Services = () => {
     { id: 'advocacy', name: 'Advocacy', icon: <Megaphone className="w-4 h-4" /> },
     { id: 'research', name: 'Research', icon: <FileSearch className="w-4 h-4" /> },
     { id: 'capacity', name: 'Capacity Building', icon: <GraduationCap className="w-4 h-4" /> },
-    { id: 'secretariat', name: 'Secretariat Services', icon: <Building2 className="w-4 h-4" /> }
+    { id: 'secretariat', name: 'Secretariat', icon: <Building2 className="w-4 h-4" /> }
   ];
 
   const filteredServices = services.filter(service => service.category === activeTab);

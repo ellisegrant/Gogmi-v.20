@@ -8,12 +8,95 @@ import {
   BookOpen,
   Image as ImageIcon,
   Video,
-  Play
+  Play,
+  X
 } from 'lucide-react';
 
 const Home = () => {
   // YouTube Video ID
   const youtubeVideoId = 'XgzCbENPQn0';
+
+  // ============================================================
+  // FESTIVE OVERLAY CONFIGURATION
+  // ============================================================
+  // Instructions: 
+  // 1. Upload your festive flyer to /public folder (e.g., /christmas-2024.jpg)
+  // 2. Set the scheduledDate to when you want it to appear (format: 'YYYY-MM-DD')
+  // 3. Set displayDuration to how long overlay shows (in seconds)
+  // 4. Set enabled to true to activate
+  // 5. Can schedule multiple overlays - only one matching today's date will show
+  
+  const festiveOverlays = [
+    {
+      enabled: true,                          // Turn on/off
+      scheduledDate: '2025-12-05',            // When to show (YYYY-MM-DD)
+      image: '/farmers.jpg',           // Image path (upload to /public folder)
+      displayDuration: 5,                     // How long to show (seconds)
+      name: 'Christmas 2024'                  // Internal reference name
+    },
+    {
+      enabled: true,
+      scheduledDate: '2025-01-01',
+      image: '/newyear-2025.jpg',
+      displayDuration: 5,
+      name: 'New Year 2025'
+    },
+    {
+      enabled: false,                         // Example: disabled overlay
+      scheduledDate: '2024-12-31',
+      image: '/newyear-eve-2024.jpg',
+      displayDuration: 4,
+      name: 'New Year Eve 2024'
+    }
+    // Add more festive overlays as needed
+  ];
+
+  // State for overlay visibility
+  const [showFestiveOverlay, setShowFestiveOverlay] = React.useState(true);
+  const [activeFestiveImage, setActiveFestiveImage] = React.useState('/farmers.jpg');
+  const [overlayDuration, setOverlayDuration] = React.useState(5);
+
+  // Check if there's a scheduled overlay for today
+  React.useEffect(() => {
+    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+    
+    // Find if any overlay is scheduled for today
+    const todaysOverlay = festiveOverlays.find(
+      overlay => overlay.enabled && overlay.scheduledDate === today
+    );
+
+    if (todaysOverlay) {
+      // Check localStorage to see if user has already seen it today
+      const overlaySeenKey = `festive-overlay-seen-${todaysOverlay.scheduledDate}`;
+      const hasSeenToday = localStorage.getItem(overlaySeenKey);
+
+      if (!hasSeenToday) {
+        setActiveFestiveImage(todaysOverlay.image);
+        setOverlayDuration(todaysOverlay.displayDuration);
+        setShowFestiveOverlay(true);
+
+        // Auto-hide after specified duration
+        const timer = setTimeout(() => {
+          setShowFestiveOverlay(false);
+          // Mark as seen for today
+          localStorage.setItem(overlaySeenKey, 'true');
+        }, todaysOverlay.displayDuration * 1000);
+
+        return () => clearTimeout(timer);
+      }
+    }
+  }, []);
+
+  // Manual close function (X button)
+  const closeFestiveOverlay = () => {
+    setShowFestiveOverlay(false);
+    const today = new Date().toISOString().split('T')[0];
+    localStorage.setItem(`festive-overlay-seen-${today}`, 'true');
+  };
+
+  // ============================================================
+  // END FESTIVE OVERLAY CONFIGURATION
+  // ============================================================
 
   // Add animations
   useEffect(() => {
@@ -47,11 +130,24 @@ const Home = () => {
           transform: translateY(-15px) translateX(5px); 
         }
       }
+      @keyframes festive-zoom {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
       .animate-fade-in {
         animation: fade-in 1s ease-out;
       }
       .animate-slide-up {
         animation: slide-up 1s ease-out;
+      }
+      .animate-festive-zoom {
+        animation: festive-zoom 0.4s ease-out;
       }
       /* Hide YouTube loading spinner and branding */
       iframe[src*="youtube"] {
@@ -77,6 +173,46 @@ const Home = () => {
   return (
     <div className="w-full overflow-x-hidden scroll-smooth" style={{ fontFamily: "Inter, sans-serif" }}>
 
+      {/* FESTIVE OVERLAY - FULL SCREEN COVERAGE */}
+      {showFestiveOverlay && activeFestiveImage && (
+        <div 
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black animate-fade-in"
+          style={{ width: '100vw', height: '100vh' }}
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeFestiveOverlay}
+            className="absolute top-8 right-8 z-[10000] p-3 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all hover:scale-110 group shadow-2xl"
+            aria-label="Close festive overlay"
+          >
+            <X className="w-7 h-7 text-white group-hover:rotate-90 transition-transform" strokeWidth={2.5} />
+          </button>
+
+          {/* Festive Image/Flyer - FILLS ENTIRE SCREEN */}
+          <div 
+            className="w-full h-full animate-festive-zoom cursor-pointer"
+            onClick={closeFestiveOverlay}
+          >
+            <img
+              src={activeFestiveImage}
+              alt="Festive Season Greeting"
+              className="w-full h-full object-cover"
+              style={{ 
+                width: '100vw', 
+                height: '100vh',
+                objectFit: 'cover',
+                objectPosition: 'center'
+              }}
+            />
+          </div>
+
+          {/* Auto-close timer indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-sm font-bold bg-black/60 px-6 py-3 rounded-full backdrop-blur-md shadow-xl border border-white/20">
+            Click anywhere to continue
+          </div>
+        </div>
+      )}
+
       {/* HERO */}
       <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         {/* YouTube Video Background */}
@@ -97,9 +233,9 @@ const Home = () => {
               minWidth: '100%',
               minHeight: '100%',
               width: '100vw',
-              height: '56.25vw', // 16:9 aspect ratio
+              height: '56.25vw',
               minHeight: '100vh',
-              minWidth: '177.77vh', // 16:9 aspect ratio
+              minWidth: '177.77vh',
               transform: 'translate(-50%, -50%)',
               pointerEvents: 'none',
               zIndex: 1,
@@ -149,8 +285,6 @@ const Home = () => {
               <span>Discover Our Journey</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
-
-           
           </div>
         </div>
       </header>

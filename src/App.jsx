@@ -23,6 +23,7 @@ import CapacityBuilding from './Components/Pages/CapacityBuilding';
 import MaritimeSecurityAudit from './Components/Pages/MaritimeSecurityAudit';
 import IMSWG from './Components/Pages/IMSWG'
 import BlueCareerExpo from './Components/Pages/BlueCareerExpo';
+import Secretariat from './Components/Pages/Secretariat';
 
 
 
@@ -51,6 +52,7 @@ function App() {
            <Route path="/research/maritime-security-audit" element={<MaritimeSecurityAudit />} />
            <Route path="/imswg" element={<IMSWG />} />
             <Route path="/bluecareerexpo" element={<BlueCareerExpo/>} />
+            <Route path="/secretariat" element={<Secretariat/>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
