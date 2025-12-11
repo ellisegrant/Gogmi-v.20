@@ -299,31 +299,11 @@ const Careers = () => {
 
       {/* Unsolicited Applications */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <FileText className="w-16 h-16 text-[#8E3400] mx-auto mb-6" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#132552] mb-4" style={{ fontWeight: 900 }}>Don't See Your Role?</h2>
-          <p className="text-lg text-gray-600 mb-8 leading-relaxed" style={{ fontWeight: 400 }}>
-            We're always looking for talented individuals who share our passion for maritime excellence. Send us your CV and we'll keep you in mind for future opportunities.
-          </p>
-          <button className="bg-[#8E3400] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#6B2700] transition-all shadow-xl hover:scale-105 inline-flex items-center gap-2" style={{ fontWeight: 700 }}>
-            <span>Submit Your CV</span>
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
+        
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#132552]">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6" style={{ fontWeight: 900 }}>Ready to Make an Impact?</h2>
-          <p className="text-xl text-white/90 mb-10 leading-relaxed" style={{ fontWeight: 400 }}>
-            Join us in shaping the future of West Africa's maritime sector
-          </p>
-          <button className="bg-[#8E3400] text-white px-12 py-4 rounded-xl font-bold text-lg hover:bg-[#6B2700] transition-all shadow-xl hover:scale-105" style={{ fontWeight: 700 }}>
-            Explore Opportunities
-          </button>
-        </div>
-      </section>
+     
     </div>
   );
 };

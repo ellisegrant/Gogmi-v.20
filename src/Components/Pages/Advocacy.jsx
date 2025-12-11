@@ -56,7 +56,7 @@ const Advocacy = () => {
 
   const achievements = [
     {
-      year: '2024',
+      year: '2010-2025',
       title: 'International Maritime Security Working Group',
       description: `The International Maritime Security Working Group (IMSWG), formed by the Gulf of Guinea Maritime Institute, is the Institute's flagship forum focused on stimulating dialogue and policy innovation aimed at addressing maritime security and safety concerns in the Gulf of Guinea (GoG) region. The IMSWG forum is notable as a knowledge exchange and research network on regional issues while keeping an eye on the pulse of international perspectives.`,
       impact: '40% reduction in maritime incidents',
@@ -76,7 +76,8 @@ const Advocacy = () => {
       title: 'Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE)',
       description: `The Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE) seeks to create a viable platform for navies, industry partners and other relevant stakeholders from across the Gulf of Guinea and beyond to harmonise counter-piracy efforts and communication in the region under the existing information sharing architecture provided by both the Yaoundé Code of Conduct (YCOC) and the Best Management Practices to Deter Piracy and Enhance Maritime Security off the Coast of West Africa (BMP-WA)`,
       impact: '2,000+ professionals certified',
-      image: '/shade.png'
+      image: '/shade.png',
+      link: '/shade'  // ✅ ADDED LINK TO SHADE PAGE
     },
 
     {
@@ -113,8 +114,7 @@ const Advocacy = () => {
       description: "The Blue Career and Business Expo is a yearly event that connects young people with maritime industry leaders to support Africa's blue economy.",
       supporters: 1890,
       deadline: 'Annual Event',
-      logo: '/bluecareer.webp',
-      link: '/bluecareerexpo'
+      logo: '/bluecareer.webp'
     },
     {
       status: 'active',
@@ -128,7 +128,7 @@ const Advocacy = () => {
     {
       status: 'active',
       title: 'Blue World Initiative',
-      category: 'Youth Developmenty',
+      category: 'Youth Development',
       description: 'BWI is an ocean literacy program equipping Basic and Second Cycle students to become informed and engaged ocean stewards.',
       supporters: 1250,
       deadline: 'March 2025',

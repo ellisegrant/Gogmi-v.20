@@ -37,7 +37,7 @@ const Membership = () => {
     {
       id: 'professional',
       name: 'Professional Membership (5-10 yrs)',
-      price: 'GHS 700',
+      price: 'GHS 1000',
       period: '/year',
       features: [
         'Certificate of Membership',
@@ -51,7 +51,7 @@ const Membership = () => {
     {
       id: 'fellow',
       name: 'Fellow Membership (Experts)',
-      price: 'GHS 1000',
+      price: 'GHS 1500',
       period: '/year',
       features: [
         'Certificate of Membership',
@@ -61,14 +61,28 @@ const Membership = () => {
         'High-level roundtables engagement',
         'Maritime Security Advice access'
       ]
+    },
+
+{
+      id: 'honorary',
+      name: 'Honorary Membership',
+      price: 'By Invitation',
+      period: '',
+      features: [
+        'Recognition as key strategic partner',
+        'Engagement in strategic initiatives',
+        'Board and advisory meetings participation',
+        'Preferential strategic partnerships'
+      ]
     }
+
   ];
 
   const institutionalPlans = [
     {
       id: 'academic',
       name: 'Academic & Research Institutions',
-      price: 'GHS 5,000',
+      price: 'GHS 10,000',
       period: '/year',
       features: [
         'Certificate of Membership',
@@ -82,7 +96,7 @@ const Membership = () => {
     {
       id: 'corporate',
       name: 'Corporate Membership',
-      price: 'GHS 5,000',
+      price: 'GHS 20,000',
       period: '/year',
       features: [
         'Certificate of Membership',
@@ -93,18 +107,21 @@ const Membership = () => {
         'Customized briefings on key issues'
       ]
     },
+
+
     {
       id: 'honorary',
-      name: 'Honorary & Strategic Partners',
+      name: 'Strategic Partner',
       price: 'By Invitation',
       period: '',
       features: [
         'Recognition as key strategic partner',
         'Engagement in strategic initiatives',
-        'Board and advisory meetings participation',
         'Preferential strategic partnerships'
       ]
     }
+
+    
   ];
 
   return (
@@ -127,15 +144,6 @@ const Membership = () => {
             <p className="text-xl text-white/90 leading-relaxed mb-8 font-semibold">
               Join our maritime community to access exclusive research, engage with thought leaders, and expand your network across West Africa's maritime sector.
             </p>
-            <button 
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-bold text-lg transition-all"
-              style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
-            >
-              <span>Apply</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
           </div>
         </div>
       </section>

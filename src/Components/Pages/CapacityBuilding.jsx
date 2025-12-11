@@ -153,11 +153,11 @@ const CapacityBuilding = () => {
 
   // Impact Metrics
   const impactMetrics = [
-    { label: 'Youth Engaged', value: '1,200+', icon: <Users className="w-6 h-6" /> },
+    // { label: 'Youth Engaged', value: '1,200+', icon: <Users className="w-6 h-6" /> },
     { label: 'Training Programs', value: '25+', icon: <BookOpen className="w-6 h-6" /> },
     { label: 'Professionals Certified', value: '2,000+', icon: <Award className="w-6 h-6" /> },
-    { label: 'Jobs Created', value: '500+', icon: <Briefcase className="w-6 h-6" /> },
-    { label: 'Blue Businesses Supported', value: '150+', icon: <Rocket className="w-6 h-6" /> },
+    // { label: 'Jobs Created', value: '500+', icon: <Briefcase className="w-6 h-6" /> },
+    // { label: 'Blue Businesses Supported', value: '150+', icon: <Rocket className="w-6 h-6" /> },
     { label: 'Partner Organizations', value: '45+', icon: <Building2 className="w-6 h-6" /> }
   ];
 
@@ -202,7 +202,9 @@ const CapacityBuilding = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#programs"
+                href="https://lms.gogmi.org.gh/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl transition-all shadow-xl hover:scale-105"
                 style={{ fontWeight: 700, backgroundColor: '#8E3400', color: 'white' }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}

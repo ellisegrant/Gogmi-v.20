@@ -174,7 +174,9 @@ const Research = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#themes"
+                href="http://www.gulfspectrumjournal.org"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl transition-all shadow-lg hover:scale-105"
                 style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 600 }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
@@ -183,15 +185,7 @@ const Research = () => {
                 <span>Explore Our Research</span>
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <a
-                href="#team"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl transition-all"
-                style={{ border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', fontWeight: 600 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-              >
-                <span>Meet Our Researchers</span>
-              </a>
+             
             </div>
           </div>
         </div>
@@ -249,7 +243,7 @@ const Research = () => {
             {researchThemes.map((theme, idx) => (
               <Link
                 key={idx}
-                to={idx === 0 ? '/research/maritime-security-audit' : `/research-${idx + 1}`}
+                to={idx === 0 ? '/research/maritime-security-audit' : `/research/project-${idx + 1}`}
                 className="group rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 bg-white block"
               >
                 <div className="grid md:grid-cols-5 gap-0">
@@ -307,11 +301,10 @@ const Research = () => {
                       </div>
                       
                       {/* Learn More About This Research */}
-                      <div className="flex items-center gap-2 text-sm whitespace-nowrap group-hover:gap-3 transition-all"
+                      <div className="flex items-center gap-2 text-sm group-hover:gap-3 transition-all ml-auto"
                            style={{ fontWeight: 600, color: '#8E3400' }}>
-                        <span className="hidden md:inline">Learn More About This Research</span>
-                        <span className="md:hidden">Learn More</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <span>Learn More About This Research</span>
+                        <ArrowRight className="w-4 h-4 flex-shrink-0" />
                       </div>
                     </div>
                   </div>

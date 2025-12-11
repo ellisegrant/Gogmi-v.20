@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Partners = () => {
   const [selectedCategory, setSelectedCategory] = useState('International');
@@ -10,9 +11,9 @@ const Partners = () => {
       name: 'AFRICAN UNION',
       logo: '/AU Main.png',
       category: 'International',
-      type: 'Strategic Partner',
+      // type: 'Strategic Partner',
       since: '2015',
-      description: 'Collaboration on maritime education and cultural heritage preservation',
+      description: 'The AU plays a major role in Africa’s maritime security, shipping, blue economy, and coastal development.',
       website: 'https://au.int/',
       projects: 8
     },
@@ -21,9 +22,9 @@ const Partners = () => {
       name: 'ECOWAS',
       logo: '/ECOWAS Logo (1).png',
       category: 'International',
-      type: 'Strategic Partner',
+      // type: 'Strategic Partner',
       since: '2016',
-      description: 'Maritime safety and security technical cooperation',
+      description: 'ECOWAS supports West African maritime safety by coordinating naval patrols, improving port security, and promoting regional collaboration against piracy and illegal activities.',
       website: 'https://www.ecowas.int/',
       projects: 12
     },
@@ -32,9 +33,9 @@ const Partners = () => {
       name: 'DOTCAN',
       logo: '/DOTCAN LOGO.png',
       category: 'International',
-      type: 'Strategic Partner',
+      // type: 'Strategic Partner',
       since: '2014',
-      description: 'Regional maritime policy development and implementation',
+      description: 'DOTCAN Institute collaborates with governments, development partners, and communities to advance ocean governance, maritime research, and sustainable blue-economy opportunities across Africa.',
       website: 'https://dotcan.institute/',
       projects: 15
     },
@@ -43,7 +44,7 @@ const Partners = () => {
       name: 'APN',
       logo: '/APN.png',
       category: 'Regional',
-      type: 'Strategic Partner',
+      // type: 'Strategic Partner',
       since: '2017',
       description: 'Continental maritime strategy and blue economy initiatives',
       website: 'https://au.int',
@@ -54,7 +55,7 @@ const Partners = () => {
       name: 'ECCAS',
       logo: '/ECCAS_logo (1).jpg',
       category: 'International',
-      type: 'Funding Partner',
+      // type: 'Funding Partner',
       since: '2018',
       description: 'Maritime security capacity building programs',
       website: 'https://europa.eu',
@@ -65,7 +66,7 @@ const Partners = () => {
       name: 'ENMAR',
       logo: '/Enmar.png',
       category: 'International',
-      type: 'Implementation Partner',
+      // type: 'Implementation Partner',
       since: '2013',
       description: 'Maritime security operations and training',
       website: '#',
@@ -76,7 +77,7 @@ const Partners = () => {
       name: 'NIGERIA NAVY',
       logo: '/nigerian navy.png',
       category: 'Government',
-      type: 'Regulatory Partner',
+      // type: 'Regulatory Partner',
       since: '2016',
       description: 'Maritime safety standards and compliance',
       website: 'https://www.joinnigeriannavy.navy.mil.ng/',
@@ -87,7 +88,7 @@ const Partners = () => {
       name: 'GGC',
       logo: '/GGC Logo (1).jpg',
       category: 'International',
-      type: 'Funding Partner',
+      // type: 'Funding Partner',
       since: '2019',
       description: 'Blue economy development financing',
       website: 'https://worldbank.org',
@@ -98,40 +99,40 @@ const Partners = () => {
       name: 'EYE ON PORT',
       logo: '/eyeonport.jpg',
       category: 'Private Sector',
-      type: 'Network Partner',
+      // type: 'Network Partner',
       since: '2017',
       description: 'Women in maritime empowerment programs',
       website: '#',
       projects: 7
     },
     {
-      id: 9,
+      id: 10,
       name: 'ICC',
       logo: '/ICC Logo (1).png',
       category: 'International',
-      type: 'Network Partner',
+      // type: 'Network Partner',
       since: '2017',
       description: 'Women in maritime empowerment programs',
       website: '#',
       projects: 7
     },
     {
-      id: 9,
+      id: 11,
       name: 'IMDEC',
       logo: '/IMDEC-Logo.png',
       category: 'Private Sector',
-      type: 'Network Partner',
+      // type: 'Network Partner',
       since: '2017',
       description: 'Women in maritime empowerment programs',
       website: '#',
       projects: 7
     },
     {
-      id: 9,
-      name: '/Maritimafrica.jpg',
-      logo: '/IMDEC-Logo.png',
+      id: 12,
+      name: 'Maritime Africa',
+      logo: '/Maritimafrica.jpg',
       category: 'Private Sector',
-      type: 'Network Partner',
+      // type: 'Network Partner',
       since: '2017',
       description: 'Women in maritime empowerment programs',
       website: '#',
@@ -139,10 +140,11 @@ const Partners = () => {
     },
 
     {
-      id: 9,
-      name: '/maritime logo (1).jpg',
+      id: 13,
+      name: 'Maritime',
+      logo: "/maritime logo (1).jpg",
       category: 'Private Sector',
-      type: 'Network Partner',
+      // type: 'Network Partner',
       since: '2017',
       description: 'Women in maritime empowerment programs',
       website: '#',
@@ -150,15 +152,95 @@ const Partners = () => {
     },
 
     {
-      id: 9,
-      name: '/Maritimafrica.jpg',
+      id: 14,
+      name: 'Nexus Coastal',
+      logo: "/NEXUS COASTAL LOGO.png",
       category: 'Private Sector',
-      type: 'Network Partner',
+      // type: 'Network Partner',
       since: '2017',
       description: 'Women in maritime empowerment programs',
       website: '#',
       projects: 7
     },
+
+    {
+      id: 15,
+      name: "UNESCO",
+      logo: '/UNESCO_logo_hor_blue_transparent.png',
+      category: 'Private Sector',
+      // type: 'Network Partner',
+      since: '2017',
+      description: 'Women in maritime empowerment programs',
+      website: '#',
+      projects: 7
+    },
+
+
+    {
+      id: 16,
+      name: "SOKO",
+      logo: '/SOKO-01-e1513038159719.png',
+      category: 'Private Sector',
+      // type: 'Network Partner',
+      since: '2017',
+      description: 'Women in maritime empowerment programs',
+      website: '#',
+      projects: 7
+    },
+    {
+      id: 17,
+      name: "MASER AFRIQUE",
+      logo: '/masser.jpg',
+      category: 'International',
+      // type: 'Network Partner',
+      since: '2017',
+      description: 'Women in maritime empowerment programs',
+      website: '#',
+      projects: 7
+    },
+
+     {
+      id: 18,
+      name: "MARITIME DIGEST GH",
+      logo: '/maritimedigest.webp',
+      category: 'Regional',
+      // type: 'Network Partner',
+      since: '2017',
+      description: 'Women in maritime empowerment programs',
+      website: '#',
+      projects: 7
+    },
+
+
+    {
+      id: 19,
+      name: "SWAIMS",
+      logo: '/swaims.png',
+      category: 'Regional',
+      // type: 'Network Partner',
+      since: '2017',
+      description: 'Women in maritime empowerment programs',
+      website: '#',
+      projects: 7
+    },
+
+
+    {
+      id: 20,
+      name: "ATLANTIC CENTER",
+      logo: '/AtlanticCenter.webp',
+      category: 'International',
+      // type: 'Network Partner',
+      since: '2017',
+      description: 'Women in maritime empowerment programs',
+      website: '#',
+      projects: 7
+    },
+
+
+
+
+    
 
     
   ];
@@ -192,7 +274,7 @@ const Partners = () => {
           </h1>
           <div className="w-20 h-1.5 rounded-full mx-auto mb-6" style={{ backgroundColor: '#8E3400' }}></div>
           <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed" style={{ fontWeight: 400 }}>
-            Working together with leading organizations to advance maritime excellence across West Africa
+            Working together with leading organizations to advance maritime excellence across the Gulf Of Guinea
           </p>
         </div>
       </section>
@@ -229,9 +311,9 @@ const Partners = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { number: '50+', label: 'Global Partners' },
+              { number: '20+', label: 'Global Partners' },
               { number: '15+', label: 'Countries' },
-              { number: '100+', label: 'Joint Projects' },
+              // { number: '100+', label: 'Joint Projects' },
               { number: '10 Years', label: 'Collaboration' }
             ].map((stat, idx) => (
               <div key={idx} className="bg-white rounded-xl p-6 shadow-lg text-center border border-gray-100">
@@ -375,17 +457,20 @@ const Partners = () => {
             <a href="mailto:partnerships@gogmi.org.gh" 
                className="text-lg hover:underline" 
                style={{ color: '#8E3400', fontWeight: 600 }}>
-              partnerships@gogmi.org.gh
+              info@gogmi.org.gh
             </a>
           </div>
 
           <div>
-            <button className="inline-flex items-center gap-2 px-10 py-4 rounded-xl text-lg transition-all shadow-lg hover:scale-105"
-                    style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-10 py-4 rounded-xl text-lg transition-all shadow-lg hover:scale-105"
+              style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
+            >
               Partnership Opportunities
-            </button>
+            </Link>
           </div>
         </div>
       </section>

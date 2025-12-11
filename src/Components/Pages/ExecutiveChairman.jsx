@@ -214,7 +214,7 @@ const ExecutiveChairman = () => {
                     src="/Alberta.jpg" 
                     alt="Board Member"
                     className="w-full h-full object-cover object-center"
-                    style={{ objectPosition: 'center 20%' }}
+                    style={{ objectPosition: 'center 30%' }}
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/95 to-transparent p-3">
                     <div className="flex flex-col gap-2">
@@ -228,7 +228,7 @@ const ExecutiveChairman = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                         </svg>
                         <span className="text-xs font-semibold leading-tight" style={{ color: '#4B5563', fontWeight: 600 }}>
-                          Board Member (Oversight over Technical Services)
+                          Board Director (Oversight over Technical Services)
                         </span>
                       </div>
                     </div>
@@ -240,115 +240,7 @@ const ExecutiveChairman = () => {
         </div>
       </section>
 
-      {/* Advisory Board Section */}
-      <section className="py-20" style={{ backgroundColor: '#F5F7FA' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black mb-4"
-                style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Advisory Board Members
-            </h2>
-            <div className="w-20 h-1 rounded-full mx-auto" style={{ backgroundColor: '#8E3400' }}></div>
-          </div>
-
-          {/* Air Vice Marshal - Full Featured Profile */}
-          <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 mb-12">
-            <div className="grid lg:grid-cols-12 gap-8 items-start">
-              
-              <div className="lg:col-span-4">
-                <div className="relative bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100">
-                  <div className="aspect-[3/4] relative">
-                    <img 
-                      src="/frank.jpg" 
-                      alt="Advisory Board Chair"
-                      className="w-full h-full object-cover object-center"
-                      style={{ objectPosition: 'center 20%' }}
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/95 to-transparent p-4">
-                      <div className="flex flex-col gap-2">
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-lg font-bold leading-tight flex-1" 
-                              style={{ color: '#132552', fontWeight: 700 }}>
-                            Air Vice Marshal Frank Hanson (Rtd.)
-                  
-                          </h3>
-
-                          
-                        </div>
-
-                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-gray-200 w-full">
-                          <svg className="w-4 h-4 flex-shrink-0" style={{ color: '#8E3400' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                          </svg>
-                          <span className="text-xs font-semibold leading-tight" style={{ color: '#4B5563', fontWeight: 600 }}>
-                            Advisory Board Chair
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-8 space-y-6">
-                <div>
-                  <h4 className="text-xl font-bold mb-4 flex items-center gap-2"
-                      style={{ color: '#132552', fontWeight: 700 }}>
-                    <span className="w-1 h-6 rounded-full" style={{ backgroundColor: '#8E3400' }}></span>
-                    About the Advisory Board Chair
-                  </h4>
-                  
-                  <div className="space-y-4 text-base leading-relaxed" style={{ color: '#4B5563', fontWeight: 400 }}>
-                    <p>
-                      AVM Frank Hanson was the Chief of Air Staff of the Ghana Air Force from January 2019 to January 2023. He holds an MSc in Strategic Studies with Grand Strategy Concentration and as an ardent Peacekeeper, he served with the United Nations and African Union as a strategic Military and Aviation planner.
-                    </p>
-                    <p>
-                      He is an expert in national and international security. An astute and highly experienced military instructor pilot. AVM Hanson has worked with leading aircraft manufacturers to develop the "static aircraft carrier concept"; for Tactical Air support for Maritime Operations (TASMO) as well as offshore Special Forces Operations. His tenure at the helm of affairs at the Ghana Air Force saw a holistic interoperability between the Ghana Navy and the Ghana Air Force. Additionally, he has participated in several AU and UN missions across the continent as part of the consultative team that worked on Ghana's National Integrated Maritime Strategy.
-                    </p>
-                    <p>
-                      He is an alumni of the Harvard University, the US Air University, the US Air War College, Command and Staff College, Ghana, Command Staff College, Nigeria and brings over 30 years of experience in deep understanding of diplomacy, global geopolitical matters, Aviation, National Security and Strategic Leadership to the Institute.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Other Advisory Board Members - Grid */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: 'JEFFREY LANDSMAN', role: 'ASSOCIATE PROFESSOR, U.S. NAVAL WAR COLLEGE (Rtd), CAPT, USN (RTD)', img: '/jeffrey.jpg' },
-              { name: 'Mrs. KATHLEEN QUARTEY AYENSU, ESQ', role: 'Lawyer', img: '/kathleen.jpg' },
-              { name: 'COMMODORE JAMES OSEI KONTOH (RTD)', role: 'Ghana Navy', img: '/jamesO.jpg' },
-              { name: 'REAR ADMIRAL SOLOMON AGADA (RTD)', role: 'Nigerian Navy', img: '/solomon.jpg' }
-            ].map((member, idx) => (
-              <div key={idx} className="group">
-                <div className="relative overflow-hidden rounded-xl mb-4 bg-white aspect-[3/4] shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={member.img} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500" 
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center text-gray-400 text-sm"><span>Image</span></div>';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#132552]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <h3 className="text-sm font-bold mb-1" 
-                    style={{ color: '#132552', fontWeight: 700 }}>
-                  {member.name}
-                </h3>
-                {member.role && (
-                  <p className="text-xs" style={{ color: '#4B5563', fontWeight: 400 }}>
-                    {member.role}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="py-20 bg-white">

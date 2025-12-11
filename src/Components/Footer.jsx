@@ -10,7 +10,19 @@ const Footer = () => {
           {/* Column 1 - About */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#132552] to-[#1A336C] rounded-xl flex items-center justify-center">
+              {/* GoGMI Logo - Upload logo to /public/GoGMI_PNG.png */}
+              <img 
+                src="/GoGMI_PNG.png" 
+                alt="GoGMI Logo" 
+                className="w-12 h-12 object-contain"
+                onError={(e) => {
+                  // Fallback if logo image doesn't load
+                  e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'flex';
+                }}
+              />
+              {/* Fallback Icon (hidden by default) */}
+              <div className="hidden w-12 h-12 bg-gradient-to-br from-[#132552] to-[#1A336C] rounded-xl items-center justify-center">
                 <Waves className="w-6 h-6 text-[#8E3400]" />
               </div>
               <div>
@@ -25,11 +37,15 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 text-gray-400" style={{ fontWeight: 400 }}>
                 <Mail className="w-5 h-5 text-[#8E3400] flex-shrink-0" />
-                <span>info@gogmi.org.gh</span>
+                <a href="mailto:info@gogmi.org.gh" className="hover:text-[#8E3400] transition-colors">
+                  info@gogmi.org.gh
+                </a>
               </div>
               <div className="flex items-center space-x-3 text-gray-400" style={{ fontWeight: 400 }}>
                 <Phone className="w-5 h-5 text-[#8E3400] flex-shrink-0" />
-                <span>+233 50 4953400</span>
+                <a href="tel:+233504953400" className="hover:text-[#8E3400] transition-colors">
+                  +233 50 4953400
+                </a>
               </div>
             </div>
           </div>
@@ -42,7 +58,7 @@ const Footer = () => {
                 { name: 'Home', path: '/' },
                 { name: 'About Us', path: '/about' },
                 { name: 'Membership', path: '/Membership' },
-                { name: 'Blog', path: '/blog' }
+                
               ].map((item) => (
                 <li key={item.path}>
                   <Link 
@@ -64,7 +80,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { name: 'Library', path: '/Resources' },
-                { name: 'News & Updates', path: '/blog' },
+                { name: 'News,Blogs & Events', path: '/blog' },
                 { name: 'Contact', path: '/contact' },
                 { name: 'Careers', path: '/CareersOpportunities' },
                 { name: 'Partners', path: '/partners' }
@@ -91,35 +107,45 @@ const Footer = () => {
               <h3 className="font-bold text-lg mb-4" style={{ fontWeight: 700 }}>Connect With Us</h3>
               <div className="flex space-x-4">
                 <a 
-                  href="#" 
+                  href="https://www.linkedin.com/search/results/all/?keywords=Gulf%20of%20Guinea%20Maritime%20Institute&origin=HISTORY&sid=5~z" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all hover:scale-110"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://x.com/GoGMIOfficial" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-sky-500 hover:text-white transition-all hover:scale-110"
                   aria-label="Twitter"
                 >
                   <Twitter className="w-5 h-5" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.facebook.com/GoGMI.Official" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all hover:scale-110"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://www.youtube.com/@gulfofguineamaritimeinstitute" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-red-600 hover:text-white transition-all hover:scale-110"
                   aria-label="YouTube"
                 >
                   <Youtube className="w-5 h-5" />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://whatsapp.com/channel/0029Vb8O9l94Spk9T1nYig06" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110"
                   aria-label="WhatsApp"
                 >

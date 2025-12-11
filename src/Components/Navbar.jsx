@@ -23,7 +23,15 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
+    { 
+      name: "About Us", 
+      path: "/about",
+      dropdown: [
+        {name: "Who We Are", path: "/about"},
+        {name: "Partners", path: "/partners"},
+        {name: "Careers", path: "/CareersOpportunities"}
+      ]
+    },
     { 
       name: "Services", 
       path: "/services",
@@ -34,9 +42,18 @@ const Navbar = () => {
         { name: "Secretariat Services", path: "/secretariat" },
       ],
     },
-    { name: "Leadership", path: "/ExecutiveChairman" },
+    { 
+      name: "Our Team", 
+      path: "/ExecutiveChairman",
+      dropdown: [
+        { name: "Board Of Directors", path: "/ExecutiveChairman" },
+        { name: "Advisory Board", path: "/AdvisoryBoard" },
+        { name: "Management", path: "/Management" }
+      ]
+    },
     {
-      name: "Resources", path: "/resources",
+      name: "Resources", 
+      path: "/resources",
       dropdown: [
         { name: "Library", path: "/resources" },
         { name: "Events, Blog & News", path: "/blog" },
@@ -123,7 +140,7 @@ const Navbar = () => {
                 >
                   <button
                     type="button"
-                    className={`px-4 py-2 cursor-pointer rounded-lg transition-all flex items-center gap-1 hover:-translate-y-0.5 ${
+                    className={`px-4 py-2 cursor-pointer rounded-lg transition-all flex items-center gap-1 hover:-translate-y-0.5 whitespace-nowrap ${
                       isActive(item.path) || currentPath.startsWith(item.path)
                         ? scrolled
                           ? "bg-[#132552] text-[#F5F7FA]"
@@ -139,12 +156,12 @@ const Navbar = () => {
                   </button>
 
                   {dropdownOpen === item.name && (
-                    <div className="absolute top-full left-0 mt-2 w-56 bg-[#132552] rounded-xl shadow-2xl py-2 border border-[#8E3400]/30 z-50">
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-[#132552] rounded-xl shadow-2xl py-2 border border-[#8E3400]/30 z-50">
                       {item.dropdown.map((subItem) => (
                         <button
                           key={subItem.path}
                           onClick={() => handleNavClick(subItem.path)}
-                          className="block w-full text-left px-4 py-2.5 text-[#F5F7FA] hover:bg-[#8E3400] hover:text-white transition-colors"
+                          className="block w-full text-left px-4 py-2.5 text-[#F5F7FA] hover:bg-[#8E3400] hover:text-white transition-colors whitespace-nowrap"
                           style={{ fontWeight: 400 }}
                         >
                           {subItem.name}

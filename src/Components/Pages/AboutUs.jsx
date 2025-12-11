@@ -83,7 +83,7 @@ const AboutUs = () => {
           
             <h2 className="text-4xl md:text-5xl font-black mb-6"
                 style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Mission, Vision & Business Model
+              Vision, Mission & Business Model
             </h2>
             <div className="w-20 h-1.5 rounded-full mx-auto" style={{ backgroundColor: '#8E3400' }}></div>
           </div>
@@ -91,13 +91,14 @@ const AboutUs = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Target className="w-16 h-16" />,
-                title: 'Our Mission',
+                 icon: <Eye className="w-16 h-16" />,
+                title: 'Our Vision',
                 desc: 'To provide strategic maritime research, advocacy, and capacity building that drives sustainable blue economy development across West Africa.'
               },
               {
-                icon: <Eye className="w-16 h-16" />,
-                title: 'Our Vision',
+              
+                icon: <Target className="w-16 h-16" />,
+                title: 'Our Mission',
                 desc: 'The mission of the GoGMI is to provide an intellectual base to governments, organizations, corporate bodies and individuals whose activities impinge upon the maritime domain of the GoG Region to ensure a sustainable use of the sea. We will do that by research and advocacy in strategic maritime issues affecting the Region in order to influence policies and activities affecting the maritime environment of the Region. In conducting our business we shall uphold the values of independence, accuracy and fairness.'
               },
               {

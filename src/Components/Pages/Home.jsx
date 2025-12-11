@@ -16,26 +16,18 @@ const Home = () => {
   // YouTube Video ID
   const youtubeVideoId = 'XgzCbENPQn0';
 
-  // ============================================================
-  // FESTIVE OVERLAY CONFIGURATION
-  // ============================================================
-  // Instructions: 
-  // 1. Upload your festive flyer to /public folder (e.g., /christmas-2024.jpg)
-  // 2. Set the scheduledDate to when you want it to appear (format: 'YYYY-MM-DD')
-  // 3. Set displayDuration to how long overlay shows (in seconds)
-  // 4. Set enabled to true to activate
-  // 5. Can schedule multiple overlays - only one matching today's date will show
   
   const festiveOverlays = [
     {
       enabled: true,                          // Turn on/off
-      scheduledDate: '2025-12-05',            // When to show (YYYY-MM-DD)
+      scheduledDate: '2025-12-11',            // When to show (YYYY-MM-DD)
       image: '/farmers.jpg',           // Image path (upload to /public folder)
-      displayDuration: 5,                     // How long to show (seconds)
-      name: 'Christmas 2024'                  // Internal reference name
+      displayDuration: 10,                     // How long to show (seconds)
+      name: 'December 2025',                  // Internal reference name
+      testing: true                           // SET TO TRUE FOR TESTING (bypasses localStorage)
     },
     {
-      enabled: true,
+      enabled: false,
       scheduledDate: '2025-01-01',
       image: '/newyear-2025.jpg',
       displayDuration: 5,
@@ -52,8 +44,8 @@ const Home = () => {
   ];
 
   // State for overlay visibility
-  const [showFestiveOverlay, setShowFestiveOverlay] = React.useState(true);
-  const [activeFestiveImage, setActiveFestiveImage] = React.useState('/farmers.jpg');
+  const [showFestiveOverlay, setShowFestiveOverlay] = React.useState(false);
+  const [activeFestiveImage, setActiveFestiveImage] = React.useState(null);
   const [overlayDuration, setOverlayDuration] = React.useState(5);
 
   // Check if there's a scheduled overlay for today
@@ -70,7 +62,8 @@ const Home = () => {
       const overlaySeenKey = `festive-overlay-seen-${todaysOverlay.scheduledDate}`;
       const hasSeenToday = localStorage.getItem(overlaySeenKey);
 
-      if (!hasSeenToday) {
+      // If testing mode is on, always show the overlay (bypass localStorage)
+      if (!hasSeenToday || todaysOverlay.testing) {
         setActiveFestiveImage(todaysOverlay.image);
         setOverlayDuration(todaysOverlay.displayDuration);
         setShowFestiveOverlay(true);
@@ -78,8 +71,10 @@ const Home = () => {
         // Auto-hide after specified duration
         const timer = setTimeout(() => {
           setShowFestiveOverlay(false);
-          // Mark as seen for today
-          localStorage.setItem(overlaySeenKey, 'true');
+          // Only mark as seen if NOT in testing mode
+          if (!todaysOverlay.testing) {
+            localStorage.setItem(overlaySeenKey, 'true');
+          }
         }, todaysOverlay.displayDuration * 1000);
 
         return () => clearTimeout(timer);
@@ -173,10 +168,10 @@ const Home = () => {
   return (
     <div className="w-full overflow-x-hidden scroll-smooth" style={{ fontFamily: "Inter, sans-serif" }}>
 
-      {/* FESTIVE OVERLAY - FULL SCREEN COVERAGE */}
+      {/* FESTIVE OVERLAY - CENTERED WITH SEMI-TRANSPARENT BACKGROUND */}
       {showFestiveOverlay && activeFestiveImage && (
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black animate-fade-in"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 animate-fade-in"
           style={{ width: '100vw', height: '100vh' }}
         >
           {/* Close Button */}
@@ -185,24 +180,18 @@ const Home = () => {
             className="absolute top-8 right-8 z-[10000] p-3 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all hover:scale-110 group shadow-2xl"
             aria-label="Close festive overlay"
           >
-            <X className="w-7 h-7 text-white group-hover:rotate-90 transition-transform" strokeWidth={2.5} />
+            <X className="w-2 h-2 text-white group-hover:rotate-90 transition-transform" strokeWidth={2.5} />
           </button>
 
-          {/* Festive Image/Flyer - FILLS ENTIRE SCREEN */}
+          {/* Festive Image/Flyer - SMALLER CENTERED (max-w-3xl = 768px) */}
           <div 
-            className="w-full h-full animate-festive-zoom cursor-pointer"
+            className="relative max-w-3xl w-full mx-4 animate-festive-zoom cursor-pointer"
             onClick={closeFestiveOverlay}
           >
             <img
               src={activeFestiveImage}
               alt="Festive Season Greeting"
-              className="w-full h-full object-cover"
-              style={{ 
-                width: '100vw', 
-                height: '100vh',
-                objectFit: 'cover',
-                objectPosition: 'center'
-              }}
+              className="w-165 h-auto rounded-2xl shadow-2xl"
             />
           </div>
 
@@ -309,7 +298,7 @@ const Home = () => {
               
               <div className="space-y-6">
                 <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                 The Gulf of Guinea Maritime Institute (GoGMI) is a non-profit think - tank organization in Ghana. The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact,
+                 The Gulf of Guinea Maritime Institute (GoGMI) is a non-profit thinktank organization in Ghana. The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact,
                   share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region.
                 </p>
                
@@ -431,7 +420,7 @@ const Home = () => {
             {/* Professional Image - 7 columns, on the left */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-[800px] order-2 lg:order-1 lg:col-span-7">
               <img 
-                src="/HEBREWISRAELITE.jpeg" 
+                src="/Piracy Increases in Africa's Guinea Gulf.jpg" 
                 alt="Gulf of Guinea maritime view"
                 className="w-full h-full object-cover"
               />
@@ -508,15 +497,25 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
   {[
-    { name: 'ECOWAS', logo: '/ECOWAS Logo (1).png' },
-    { name: 'APN', logo: '/APN.png' },
-    { name: 'AU', logo: '/AU Main.png' },
-    { name: 'ECCAS', logo: '/ECCAS_logo (1).jpg' },
-    { name: 'DOTCAN', logo: '/DOTCAN LOGO.png' },
-    { name: 'ENMAR', logo: '/Enmar.png' }
+    { name: 'ENMAR', logo: '/Enmar.png', website: 'https://www.linkedin.com/company/enmar-enhanced-maritime-action-in-the-gulf-of-guinea/' },
+    { name: 'DOTCAN', logo: '/DOTCAN LOGO.png', website: 'https://dotcan.institute/' },
+
+
+    { name: 'GREAT MINDS EVENT MANAGEMENT', logo: '/GM-logo.webp', website: 'https://www.ecowas.int/' },
+    { name: 'ATLANTIC CENTRE', logo: '/AtlanticCenter.webp', website: 'https://www.defesa.gov.pt/pt/pdefesa/ac/about' },
+    { name: 'GHANA NAVY', logo: '/ghananavy.png', website: 'https://navyonline.mil.gh/' },
+    { name: 'KAIPTC', logo: '/kaiptc.jpg', website: 'https://www.kaiptc.org/' },
+    
+   
   ].map((partner, idx) => (
-    <div key={idx} className="flex items-center justify-center p-6 rounded-2xl transition-all duration-500 hover:shadow-xl group cursor-pointer bg-white border border-gray-100"
-         style={{ minHeight: '140px' }}>
+    <a 
+      key={idx} 
+      href={partner.website} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="flex items-center justify-center p-6 rounded-2xl transition-all duration-500 hover:shadow-xl group cursor-pointer bg-white border border-gray-100"
+      style={{ minHeight: '140px' }}
+    >
       <div className="text-center w-full">
         {/* Logo Image Container */}
         <div className="flex items-center justify-center h-20 mb-3 px-4">
@@ -538,9 +537,10 @@ const Home = () => {
         </div>
         <p className="text-xs font-semibold" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>{partner.name}</p>
       </div>
-    </div>
+    </a>
   ))}
 </div>
+
 
           <div className="text-center mt-12">
             <Link
@@ -559,86 +559,96 @@ const Home = () => {
 
       {/* LATEST NEWS SECTION */}
       <section className="py-20 md:py-28" style={{ backgroundColor: '#F5F7FA' }}>
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Stay Informed</span>
-            <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6"
-                style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Latest News & Updates
-            </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-              Insights, research findings, and maritime developments from across the Gulf of Guinea
-            </p>
-          </div>
+  <div className="container mx-auto max-w-7xl px-6">
+    <div className="text-center mb-16">
+      <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Stay Informed</span>
+      <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6"
+          style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
+        Latest News & Updates
+      </h2>
+      <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
+        Insights, research findings, and maritime developments from across the Gulf of Guinea
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                category: 'Events',
-                title: 'Regional Maritime Security Conference 2024',
-                excerpt: 'GoGMI hosts 200+ maritime professionals from 15 countries to discuss emerging security challenges.',
-                date: 'November 15, 2024',
-                image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&fit=crop'
-              },
-              {
-                category: 'News',
-                title: 'New Blue Economy Investment Report Released',
-                excerpt: 'Latest research explores untapped opportunities in sustainable fisheries and marine tourism.',
-                date: 'November 10, 2024',
-                image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&fit=crop'
-              },
-              {
-                category: 'Training',
-                title: '50+ Professionals Complete Maritime Certification',
-                excerpt: 'Our latest cohort successfully graduates from comprehensive maritime security programs.',
-                date: 'November 5, 2024',
-                image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&fit=crop'
-              }
-            ].map((news, idx) => (
-              <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
-                <div className="relative h-56 overflow-hidden">
-                  <img 
-                    src={news.image} 
-                    alt={news.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  <div className="absolute top-4 left-4">
-                    <span className="px-4 py-2 rounded-full text-xs font-bold text-white shadow-lg"
-                          style={{ backgroundColor: '#132552' }}>
-                      {news.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-8">
-                  <p className="text-sm font-semibold mb-3 flex items-center gap-2" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#8E3400' }}></span>
-                    {news.date}
-                  </p>
-                  <h3 className="text-xl font-bold mb-3 transition-colors leading-tight"
-                      style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, color: '#132552' }}>
-                    {news.title}
-                  </h3>
-                  <p className="mb-6 text-base leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>{news.excerpt}</p>
-                  <Link to="/blog" className="font-semibold flex items-center group-hover:gap-3 transition-all"
-                        style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
-                    <span>Read More</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
+    <div className="grid md:grid-cols-3 gap-8">
+      {[
+        {
+          category: 'Events',
+          title: 'International Maritime Security Working Group',
+          excerpt: 'The International Maritime Security Working Group (IMSWG), formed by the Gulf of Guinea Maritime Institute, is the Institute\'s flagship forum focused on stimulating dialogue and policy innovation.',
+          date: 'December 9, 2025',
+          image: '/imswg.todat.jpg',
+          link: '/blog?category=Events#imswg'
+        },
+        {
+          category: 'News',
+          title: 'New Blue Economy Investment Report Released',
+          excerpt: 'Latest research explores untapped opportunities in sustainable fisheries and marine tourism.',
+          date: 'November 10, 2024',
+          image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&fit=crop'
+        },
+        {
+          category: 'Training',
+          title: '50+ Professionals Complete Maritime Certification',
+          excerpt: 'Our latest cohort successfully graduates from comprehensive maritime security programs.',
+          date: 'November 5, 2024',
+          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&fit=crop'
+        }
+      ].map((news, idx) => (
+        <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">
+          <div className="relative h-56 overflow-hidden">
+            <img 
+              src={news.image} 
+              alt={news.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
+            <div className="absolute top-4 left-4">
+              <span className="px-4 py-2 rounded-full text-xs font-bold text-white shadow-lg"
+                    style={{ backgroundColor: '#132552' }}>
+                {news.category}
+              </span>
+            </div>
+          </div>
+          <div className="p-8">
+            <p className="text-sm font-semibold mb-3 flex items-center gap-2" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#8E3400' }}></span>
+              {news.date}
+            </p>
+            <h3 className="text-xl font-bold mb-3 transition-colors leading-tight"
+                style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, color: '#132552' }}>
+              {news.title}
+            </h3>
+            <p className="mb-6 text-base leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>{news.excerpt}</p>
+            
+            {/* ✅ CONDITIONAL LINK - If news has link property, use it, otherwise go to blog */}
+            {news.link ? (
+              <Link to={news.link} className="font-semibold flex items-center group-hover:gap-3 transition-all"
+                    style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
+                <span>Read More</span>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            ) : (
+              <Link to="/blog" className="font-semibold flex items-center group-hover:gap-3 transition-all"
+                    style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
+                <span>Read More</span>
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            )}
           </div>
         </div>
-      </section>
+      ))}
+    </div>
 
-      
+    <div className="text-center mt-12">
+      {/* Optional: View All News button */}
+    </div>
+  </div>
+</section>
+
 
       {/* CTA */}
       <section className="py-20 md:py-32 relative overflow-hidden" 

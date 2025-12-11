@@ -24,6 +24,9 @@ import MaritimeSecurityAudit from './Components/Pages/MaritimeSecurityAudit';
 import IMSWG from './Components/Pages/IMSWG'
 import BlueCareerExpo from './Components/Pages/BlueCareerExpo';
 import Secretariat from './Components/Pages/Secretariat';
+import SHADE from './Components/Pages/Shade';
+import Management from './Components/Pages/Management';
+import AdvisoryBoard from './Components/Pages/AdvisoryBoard';
 
 
 
@@ -53,6 +56,10 @@ function App() {
            <Route path="/imswg" element={<IMSWG />} />
             <Route path="/bluecareerexpo" element={<BlueCareerExpo/>} />
             <Route path="/secretariat" element={<Secretariat/>} />
+            <Route path="/shade" element={<SHADE/>} />
+             <Route path="/management" element={<Management/>} />
+             <Route path="/advisoryboard" element={<AdvisoryBoard/>} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
