@@ -135,7 +135,6 @@ const Research = () => {
 
   // Live Data
   const liveData = [
-    { label: "Vessels Tracked Today", value: "15,247", change: "+234" },
     { label: "Active Research Projects", value: "36", change: "+3" },
     { label: "Data Points Collected", value: "2.4M", change: "+45K" },
     { label: "Partner Institutions", value: "89", change: "+5" }
@@ -185,7 +184,15 @@ const Research = () => {
                 <span>Explore Our Research</span>
                 <ArrowRight className="w-5 h-5" />
               </a>
-             
+              <a
+                href="#team"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl transition-all"
+                style={{ border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', fontWeight: 600 }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+              >
+                <span>Meet Our Researchers</span>
+              </a>
             </div>
           </div>
         </div>
@@ -199,27 +206,29 @@ const Research = () => {
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#8E3400' }}></div>
                 <h3 className="text-lg" style={{ fontWeight: 700, color: '#132552' }}>
-                  Live Research Dashboard
+                  Research Dashboard
                 </h3>
               </div>
               <span className="text-xs" style={{ fontWeight: 500, color: '#6B7280' }}>Updated 2 min ago</span>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {liveData.map((item, idx) => (
-                <div key={idx} className="text-center p-4 rounded-xl transition-all hover:scale-105" 
-                     style={{ backgroundColor: '#F9FAFB' }}>
-                  <div className="text-3xl mb-1" 
-                       style={{ fontWeight: 800, color: '#132552' }}>
-                    {item.value}
+            <div className="flex justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl">
+                {liveData.map((item, idx) => (
+                  <div key={idx} className="text-center p-4 rounded-xl transition-all hover:scale-105" 
+                       style={{ backgroundColor: '#F9FAFB' }}>
+                    <div className="text-3xl mb-1" 
+                         style={{ fontWeight: 800, color: '#132552' }}>
+                      {item.value}
+                    </div>
+                    <p className="text-xs mb-2" style={{ fontWeight: 500, color: '#6B7280' }}>{item.label}</p>
+                    <span className="text-xs px-2 py-0.5 rounded-full" 
+                          style={{ fontWeight: 600, backgroundColor: '#8E3400', color: 'white' }}>
+                      {item.change} today
+                    </span>
                   </div>
-                  <p className="text-xs mb-2" style={{ fontWeight: 500, color: '#6B7280' }}>{item.label}</p>
-                  <span className="text-xs px-2 py-0.5 rounded-full" 
-                        style={{ fontWeight: 600, backgroundColor: '#8E3400', color: 'white' }}>
-                    {item.change} today
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -315,190 +324,6 @@ const Research = () => {
         </div>
       </section>
 
-      {/* RESEARCHERS - COMPACT */}
-      <section id="team" className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-widest" style={{ fontWeight: 600, color: '#8E3400', letterSpacing: '0.1em' }}>Our Team</span>
-            <h2 className="text-4xl md:text-5xl mt-3 mb-4"
-                style={{ fontWeight: 800, color: '#132552', letterSpacing: '-0.01em' }}>
-              Meet Our Researchers
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {researchers.map((researcher, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={researcher.image}
-                    alt={researcher.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-                  
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <h3 className="text-lg text-white mb-1.5"
-                        style={{ fontWeight: 700 }}>
-                      {researcher.name}
-                    </h3>
-                    <p className="text-sm mb-2" style={{ fontWeight: 500, color: '#8E3400' }}>
-                      {researcher.role}
-                    </p>
-                    <div className="flex items-center gap-2 text-white text-xs">
-                      <BookOpen className="w-3 h-3" />
-                      <span>{researcher.publications} Publications</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-5">
-                  <p className="text-xs leading-relaxed mb-3" style={{ fontWeight: 400, color: '#4B5563' }}>
-                    {researcher.bio}
-                  </p>
-                  <div className="space-y-2">
-                    <p className="text-xs uppercase" style={{ fontWeight: 600, color: '#8E3400' }}>Expertise</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {researcher.expertise.map((skill, i) => (
-                        <span key={i} className="px-2 py-0.5 rounded-full text-xs"
-                              style={{ fontWeight: 500, backgroundColor: '#F5F7FA', color: '#132552' }}>
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* IMPACT STORIES - COMPACT */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: '#F5F7FA' }}>
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-widest" style={{ fontWeight: 600, color: '#8E3400', letterSpacing: '0.1em' }}>Impact</span>
-            <h2 className="text-4xl md:text-5xl mt-3 mb-4"
-                style={{ fontWeight: 800, color: '#132552', letterSpacing: '-0.01em' }}>
-              Research in Action
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {impactStories.map((story, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-              >
-                <div className="relative h-52 overflow-hidden">
-                  <img
-                    src={story.image}
-                    alt={story.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                  
-                  <div className="absolute top-3 left-3">
-                    <span className="px-3 py-1 rounded-full text-xs text-white"
-                          style={{ fontWeight: 600, backgroundColor: '#8E3400' }}>
-                      {story.category}
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-3 left-3 right-3 flex justify-between text-white text-xs">
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-3 h-3" />
-                      <span>{story.date}</span>
-                    </div>
-                    <span>{story.readTime}</span>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-lg mb-2 line-clamp-2 leading-tight"
-                      style={{ fontWeight: 700, color: '#132552' }}>
-                    {story.title}
-                  </h3>
-                  <p className="text-sm line-clamp-2 mb-3" style={{ fontWeight: 400, color: '#4B5563' }}>
-                    {story.description}
-                  </p>
-                  <button className="inline-flex items-center gap-1.5 text-sm transition-all hover:gap-2.5"
-                          style={{ fontWeight: 600, color: '#8E3400' }}>
-                    <span>Read Story</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* EVENTS - COMPACT */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-12">
-            <span className="text-xs uppercase tracking-widest" style={{ fontWeight: 600, color: '#8E3400', letterSpacing: '0.1em' }}>Events</span>
-            <h2 className="text-4xl md:text-5xl mt-3 mb-4"
-                style={{ fontWeight: 800, color: '#132552', letterSpacing: '-0.01em' }}>
-              Seminars & Webinars
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            {upcomingEvents.map((event, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                style={{ border: '1px solid #E5E7EB' }}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full text-xs text-white"
-                        style={{ fontWeight: 600, backgroundColor: '#132552' }}>
-                    {event.type}
-                  </span>
-                  <div className="flex items-center gap-1.5 text-sm" style={{ fontWeight: 500, color: '#8E3400' }}>
-                    <Users className="w-3.5 h-3.5" />
-                    <span>{event.attendees}+</span>
-                  </div>
-                </div>
-
-                <h3 className="text-xl mb-3"
-                    style={{ fontWeight: 700, color: '#132552' }}>
-                  {event.title}
-                </h3>
-
-                <p className="text-sm mb-3" style={{ fontWeight: 500, color: '#4B5563' }}>
-                  with {event.speaker}
-                </p>
-
-                <div className="space-y-1.5 mb-4 text-xs" style={{ fontWeight: 400, color: '#4B5563' }}>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-3.5 h-3.5" style={{ color: '#8E3400' }} />
-                    <span>{event.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Radio className="w-3.5 h-3.5" style={{ color: '#8E3400' }} />
-                    <span>{event.time}</span>
-                  </div>
-                </div>
-
-                <button className="w-full px-5 py-2.5 rounded-xl transition-all hover:scale-105"
-                        style={{ fontWeight: 600, backgroundColor: '#8E3400', color: 'white' }}
-                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
-                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}>
-                  Register Now
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-16 md:py-24 relative overflow-hidden"
                style={{ background: 'linear-gradient(135deg, #132552 0%, #1A336C 100%)' }}>
@@ -521,15 +346,17 @@ const Research = () => {
               <span>Partner With Us</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link
-              to="/resources"
+            <a
+              href="https://gulfspectrumjournal.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base transition-all"
               style={{ fontWeight: 600, border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
             >
               <span>Access Publications</span>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

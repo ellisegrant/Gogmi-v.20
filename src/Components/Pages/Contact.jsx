@@ -177,8 +177,8 @@ const Contact = () => {
               {
                 icon: <MapPin className="w-8 h-8" />,
                 title: 'Visit Us',
-                info: 'Accra, Ghana',
-                subinfo: 'Gulf of Guinea Region',
+                info: 'GL-108-0038, Tse addo La Dade Kotopon,',
+                subinfo: 'Burma Camp, Accra',
                 color: 'from-[#1A336C] to-[#132552]'
               }
             ].map((item, idx) => (

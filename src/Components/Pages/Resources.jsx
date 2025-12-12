@@ -297,10 +297,75 @@ const Resources = () => {
         'Regional Security Cooperation',
         'Policy Recommendations for Intervention'
       ]
+    },
+
+    // ===== VIDEOS =====
+    {
+      id: 18,
+      title: 'Introduction to Gulf of Guinea Maritime Security',
+      description: 'Comprehensive overview of maritime security challenges and solutions in the Gulf of Guinea region.',
+      fullDescription: 'This video provides a comprehensive introduction to maritime security in the Gulf of Guinea, covering key challenges, regional initiatives, and collaborative efforts to ensure safe and secure maritime operations.',
+      type: 'Videos',
+      category: 'Educational',
+      duration: '15:30',
+      date: 'November 2024',
+      views: 2340,
+      thumbnail: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&fit=crop',
+      fileType: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1',
+      keyTopics: [
+        'Overview of Gulf of Guinea Maritime Domain',
+        'Key Security Challenges',
+        'Regional Cooperation Frameworks',
+        'Success Stories and Best Practices',
+        'Future Outlook and Opportunities'
+      ]
+    },
+    {
+      id: 19,
+      title: 'Blue Economy Opportunities in West Africa',
+      description: 'Exploring sustainable blue economy development and career opportunities in the West African maritime sector.',
+      fullDescription: 'Discover the vast potential of the blue economy in West Africa. This video explores sustainable development opportunities, emerging careers, and how youth can participate in building a prosperous maritime future.',
+      type: 'Videos',
+      category: 'Blue Economy',
+      duration: '22:45',
+      date: 'October 2024',
+      views: 3120,
+      thumbnail: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&fit=crop',
+      fileType: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID_2',
+      keyTopics: [
+        'Blue Economy Fundamentals',
+        'Career Pathways in Maritime Sectors',
+        'Sustainable Fisheries and Aquaculture',
+        'Marine Tourism Development',
+        'Youth Engagement and Opportunities'
+      ]
+    },
+    {
+      id: 20,
+      title: 'Yaoundé Code of Conduct Explained',
+      description: 'Detailed explanation of the Yaoundé Code of Conduct and its implementation across West and Central Africa.',
+      fullDescription: 'An in-depth look at the Yaoundé Code of Conduct, the cornerstone of maritime security cooperation in West and Central Africa. Learn about its structure, implementation, and impact on regional security.',
+      type: 'Videos',
+      category: 'Security',
+      duration: '18:20',
+      date: 'September 2024',
+      views: 1890,
+      thumbnail: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&fit=crop',
+      fileType: 'VIDEO',
+      videoUrl: 'https://www.youtube.com/watch?v=YOUR_VIDEO_ID_3',
+      keyTopics: [
+        'History and Development of Yaoundé Code',
+        'Operational Structure and Coordination',
+        'Regional Implementation Success Stories',
+        'Challenges and Lessons Learned',
+        'Future Directions and Enhancements'
+      ]
     }
   ];
 
-  const types = ['Strategic Documents', 'Academic Papers', 'Internal Reports'];
+  const types = ['Strategic Documents', 'Academic Papers', 'Internal Reports', 'Videos'];
 
   const filteredResources = resources.filter(resource => {
     const matchesType = resource.type === selectedType;
@@ -557,7 +622,15 @@ const Resources = () => {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredResources.map((resource) => (
-                <div key={resource.id} className="group bg-[#F5F7FA] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100">
+                <div 
+                  key={resource.id} 
+                  className={`group bg-[#F5F7FA] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100 ${resource.type === 'Videos' ? 'cursor-pointer' : ''}`}
+                  onClick={() => {
+                    if (resource.type === 'Videos' && resource.videoUrl) {
+                      window.open(resource.videoUrl, '_blank');
+                    }
+                  }}
+                >
                   <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[#132552]/10 to-[#8E3400]/10">
                     <img 
                       src={resource.thumbnail} 
@@ -565,6 +638,16 @@ const Resources = () => {
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    
+                    {/* Video Play Icon Overlay */}
+                    {resource.type === 'Videos' && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-[#8E3400]/90 rounded-full p-4 group-hover:scale-110 transition-transform">
+                          <Video className="w-8 h-8 text-white" />
+                        </div>
+                      </div>
+                    )}
+                    
                     <div className="absolute top-4 left-4">
                       <span className="bg-[#132552] text-[#F5F7FA] px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 700 }}>
                         {resource.type}
@@ -584,8 +667,17 @@ const Resources = () => {
                         {resource.date}
                       </span>
                       <span className="flex items-center">
-                        <Download className="w-3 h-3 mr-1" />
-                        {resource.downloads}
+                        {resource.type === 'Videos' ? (
+                          <>
+                            <Eye className="w-3 h-3 mr-1" />
+                            {resource.views} views
+                          </>
+                        ) : (
+                          <>
+                            <Download className="w-3 h-3 mr-1" />
+                            {resource.downloads}
+                          </>
+                        )}
                       </span>
                     </div>
 
@@ -598,29 +690,55 @@ const Resources = () => {
                     </p>
 
                     <div className="flex items-center justify-between text-sm text-[#1F2933]/70 mb-4 pb-4 border-b border-gray-200" style={{ fontWeight: 400 }}>
-                      <span className="font-medium" style={{ fontWeight: 600 }}>{resource.size}</span>
-                      {resource.pages && <span>{resource.pages} pages</span>}
+                      {resource.type === 'Videos' ? (
+                        <>
+                          <span className="font-medium" style={{ fontWeight: 600 }}>Duration: {resource.duration}</span>
+                          <span className="flex items-center">
+                            <Video className="w-3 h-3 mr-1" />
+                            Watch
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="font-medium" style={{ fontWeight: 600 }}>{resource.size}</span>
+                          {resource.pages && <span>{resource.pages} pages</span>}
+                        </>
+                      )}
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-2">
+                    {resource.type === 'Videos' ? (
                       <button 
-                        onClick={() => setPreviewResource(resource)}
-                        className="flex-1 bg-white border-2 border-[#8E3400] text-[#8E3400] py-3 rounded-lg font-semibold hover:bg-[#8E3400] hover:text-white transition-all flex items-center justify-center space-x-2"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(resource.videoUrl, '_blank');
+                        }}
+                        className="w-full bg-[#8E3400] text-white py-3 rounded-lg font-semibold hover:bg-[#6B2700] transition-all flex items-center justify-center space-x-2 shadow-lg"
                         style={{ fontWeight: 700 }}
                       >
-                        <Eye className="w-5 h-5" />
-                        <span>Preview</span>
+                        <Video className="w-5 h-5" />
+                        <span>Watch Video</span>
                       </button>
-                      <button 
-                        onClick={() => handleDownload(resource)}
-                        className="flex-1 bg-[#8E3400] text-white py-3 rounded-lg font-semibold hover:bg-[#6B2700] transition-all flex items-center justify-center space-x-2 shadow-lg"
-                        style={{ fontWeight: 700 }}
-                      >
-                        <Download className="w-5 h-5" />
-                        <span>Download</span>
-                      </button>
-                    </div>
+                    ) : (
+                      <div className="flex gap-2">
+                        <button 
+                          onClick={() => setPreviewResource(resource)}
+                          className="flex-1 bg-white border-2 border-[#8E3400] text-[#8E3400] py-3 rounded-lg font-semibold hover:bg-[#8E3400] hover:text-white transition-all flex items-center justify-center space-x-2"
+                          style={{ fontWeight: 700 }}
+                        >
+                          <Eye className="w-5 h-5" />
+                          <span>Preview</span>
+                        </button>
+                        <button 
+                          onClick={() => handleDownload(resource)}
+                          className="flex-1 bg-[#8E3400] text-white py-3 rounded-lg font-semibold hover:bg-[#6B2700] transition-all flex items-center justify-center space-x-2 shadow-lg"
+                          style={{ fontWeight: 700 }}
+                        >
+                          <Download className="w-5 h-5" />
+                          <span>Download</span>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}

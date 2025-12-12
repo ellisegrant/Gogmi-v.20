@@ -68,71 +68,24 @@ const SHADE = () => {
   return (
     <div className="w-full" style={{ fontFamily: 'Inter, sans-serif' }}>
       
-      {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden" style={{ backgroundColor: '#132552' }}>
-        <div className="absolute inset-0">
-          <img 
-            src="/shade.png"
-            alt="Maritime Security"
-            className="w-full h-full object-cover opacity-20"
-          />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <div className="inline-block mb-6">
-            <span className="px-4 py-2 rounded-full text-sm font-bold" style={{ backgroundColor: '#8E3400', color: 'white' }}>
-              Counter-Piracy Initiative
-            </span>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6" style={{ fontWeight: 900, letterSpacing: '-0.02em' }}>
-            Gulf of Guinea Maritime Collaboration Forum
-          </h1>
-          <h2 className="text-3xl md:text-4xl font-bold text-white/90 mb-8">
-            Shared Awareness and De-confliction (GoG-MCF/SHADE)
-          </h2>
-          <p className="text-xl text-white/80 max-w-4xl mx-auto leading-relaxed font-semibold">
-            Strengthening Counter-Piracy Responses: A viable platform for navies, industry partners and stakeholders 
-            to harmonise counter-piracy efforts and communication in the Gulf of Guinea region
-          </p>
-        </div>
+      {/* Hero Section - Banner Image Only */}
+      <section className="relative w-full pt-20">
+        <img 
+          src="/Banner.webp"
+          alt="GoG-MCF SHADE Banner"
+          className="w-full h-auto object-cover"
+        />
       </section>
 
       {/* Shared Awareness Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-6" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Shared Awareness – A Starting Point
-            </h2>
-            <div className="w-20 h-1.5 rounded-full mb-8" style={{ backgroundColor: '#8E3400' }}></div>
-          </div>
+          
 
           <div className="space-y-6 text-lg leading-relaxed font-semibold" style={{ color: '#4B5563' }}>
-            <p>
-              In the past decade, the world has witnessed an evolution of the Gulf of Guinea's maritime security threat trajectory – 
-              an evolution that rendered the region the most dangerous for seafarers. In 2020, all fifty-seven (57) incidents of 
-              kidnapping-for-ransom worldwide occurred in the Gulf of Guinea and in the first quarter of 2021, the region accounted for nearly 
-              half of all reported piracy incidents worldwide, leaving it as the world's piracy hotspot, according to the International 
-              Maritime Bureau (IMB).
-            </p>
+            
+            
 
-            <p>
-              What remained clear during this period was that the region presented a unique convolution of enablers for piratical 
-              activities, with an inadequate framework for effective maritime regulation and enforcement. In particular, few 
-              mechanisms existed for operative dissemination and sharing of information across the broad range of actors involved 
-              – a prerequisite to fostering coordinated responses to piracy in the region. Recognising this, the Government of Nigeria 
-              and the Inter-regional Coordination Centre (ICC), which represents twenty-one (21) countries in the Gulf of Guinea, 
-              signed a Memorandum of Understanding to establish a regionally owned forum, aimed at fostering shared awareness 
-              and military de-confliction.
-            </p>
-
-            <p>
-              The <strong>Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE)</strong> seeks 
-              to create a viable platform for navies, industry partners and other relevant stakeholders from across the Gulf of Guinea 
-              and beyond to harmonise counter-piracy efforts and communication in the region under the existing information 
-              sharing architecture provided by both the Yaoundé Code of Conduct (YCOC) and the Best Management Practices to 
-              Deter Piracy and Enhance Maritime Security off the Coast of West Africa (BMP-WA).
-            </p>
           </div>
         </div>
       </section>
@@ -190,7 +143,7 @@ const SHADE = () => {
           </div>
 
           {/* Quote Box */}
-          <div className="bg-blue-600 text-white p-8 rounded-xl mb-8">
+          <div className="text-white p-8 rounded-xl mb-8" style={{ backgroundColor: '#1E3A5F' }}>
             <p className="text-xl font-bold leading-relaxed italic mb-4">
               "The SHADE Model has already demonstrated its ability to support the exchange of information between regional and non-regional 
               military forces in countering Somali piracy in the Horn of Africa."
@@ -361,7 +314,7 @@ const SHADE = () => {
           </div>
 
           {/* IMO Quote Box */}
-          <div className="bg-blue-600 text-white p-8 rounded-xl mt-12 mb-8">
+          <div className="text-white p-8 rounded-xl mt-12 mb-8" style={{ backgroundColor: '#1E3A5F' }}>
             <p className="text-xl font-bold leading-relaxed italic mb-4">
               "The key challenge in the Gulf of Guinea is to effectively integrate all initiatives to address piracy, armed robbery and 
               all maritime criminality into a focused and coordinated effort through the Yaoundé Code of Conduct framework."
@@ -418,7 +371,7 @@ const SHADE = () => {
 
           {/* Testimonial Boxes */}
           <div className="space-y-6">
-            <div className="bg-blue-600 text-white p-8 rounded-xl">
+            <div className="text-white p-8 rounded-xl" style={{ backgroundColor: '#1E3A5F' }}>
               <p className="text-xl font-bold leading-relaxed italic mb-4">
                 "SOLARTA has gone online, is being used and has proved to be effective in preventing attacks becoming hostage 
                 situations. And that is a big accomplishment in the space of six months."
@@ -426,7 +379,7 @@ const SHADE = () => {
               <p className="text-right font-semibold">— Simon Church, Special Adviser to Forum Co-chairs - 7th February, 2022</p>
             </div>
 
-            <div className="bg-blue-600 text-white p-8 rounded-xl">
+            <div className="text-white p-8 rounded-xl" style={{ backgroundColor: '#1E3A5F' }}>
               <p className="text-xl font-bold leading-relaxed italic mb-4">
                 "The establishment of SHADE has enabled working-level stakeholders from the GoG region and outside, to 
                 connect and discuss how best to tackle piracy in the area, this has been a catalyst for non-regional stakeholders to 
@@ -464,7 +417,7 @@ const SHADE = () => {
       {/* Inaugural Meeting Info */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-gradient-to-r from-blue-900 to-blue-700 rounded-xl overflow-hidden shadow-2xl">
+          <div className="bg-gradient-to-r from-[#1E3A5F] to-[#2C5282] rounded-xl overflow-hidden shadow-2xl">
             <div className="grid md:grid-cols-2 gap-0">
               <div className="relative h-96">
                 <img 
@@ -472,7 +425,7 @@ const SHADE = () => {
                   alt="GoG-MCF SHADE Event"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A5F]/80 to-transparent"></div>
               </div>
               <div className="p-12 text-white">
                 <h3 className="text-4xl font-black mb-6" style={{ fontWeight: 900 }}>
@@ -609,41 +562,73 @@ const SHADE = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Article Section with Contact */}
       <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-6" style={{ color: '#132552', fontWeight: 900 }}>
-            Contact Us
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Article Title */}
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12" style={{ color: '#6B7280', fontWeight: 700 }}>
+            Strengthening Counter-Piracy Responses: The Gulf of Guinea Maritime Collaboration Forum
           </h2>
-          <p className="text-lg font-semibold mb-8" style={{ color: '#4B5563' }}>
-            For more information, contact us via info@shade.org
-          </p>
-          <div className="flex flex-wrap justify-center gap-8 mb-12">
-            <img src="/icc-logo.png" alt="ICC Logo" className="h-20 object-contain" 
-                 onError={(e) => { e.target.style.display = 'none'; }} />
-            <img src="/nimasa-logo.png" alt="NIMASA Logo" className="h-20 object-contain"
-                 onError={(e) => { e.target.style.display = 'none'; }} />
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-20" style={{ backgroundColor: '#132552' }}>
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6" style={{ fontWeight: 900 }}>
-            Learn More About Our Initiatives
-          </h2>
-          <p className="text-xl text-white/90 mb-8 font-semibold">
-            Explore our other advocacy programs and maritime security initiatives
+          {/* Subtitle */}
+          <p className="text-center text-lg mb-8" style={{ color: '#6B7280', fontWeight: 400 }}>
+            An article by the Gulf of Guinea Maritime Institute
           </p>
-          <Link
-            to="/advocacy"
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:scale-105"
-            style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
-          >
-            <span>View All Programs</span>
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+
+          {/* Shared Awareness Section Title */}
+          <h3 className="text-3xl font-bold text-center mb-8" style={{ color: '#334E68', fontWeight: 700 }}>
+            Shared Awareness – A Starting Point
+          </h3>
+
+          {/* Article Preview Text */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <p className="text-base leading-relaxed mb-6" style={{ color: '#4B5563', fontWeight: 400 }}>
+              In the past decade, the world has witnessed an evolution of the Gulf of Guinea's maritime security threat trajectory – 
+              an evolution that rendered the region the most dangerous for seafarers. In 2020, all fifty-seven (57) incidents of 
+              kidnapping-for-ransom worldwide occurred in the Gulf; and in the first quarter of 2021, the region accounted for nearly 
+              half of all reported piracy incidents worldwide, leaving it as the world's piracy hotspot, <a href="https://iccwbo.org/news-publications/news/gulf-of-guinea-remains-worlds-piracy-hotspot-in-2021-according-to-imbs-latest-figures/" className="hover:underline" style={{ color: '#2563EB' }}>according to the International Maritime Bureau (IMB).</a>
+            </p>
+          </div>
+
+          {/* Download Button */}
+          <div className="text-center mb-16">
+            <a
+              href="/STRENGTHENING COUNTER-PIRACY RESPONSES (1).pdf"
+              download
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-white text-lg font-bold transition-all shadow-lg hover:scale-105"
+              style={{ backgroundColor: '#2563EB', fontWeight: 700 }}
+            >
+              <span>To Read More Download Here</span>
+              <Download className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* Contact Section */}
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold mb-4" style={{ color: '#F59E0B', fontWeight: 700 }}>
+              CONTACT
+            </h3>
+            <p className="text-lg" style={{ color: '#6B7280', fontWeight: 400 }}>
+              For more information, contact us via <a href="mailto:info@shade.org" className="hover:underline" style={{ color: '#2563EB' }}>info@shade.org</a>
+            </p>
+          </div>
+
+          {/* Partner Logos */}
+          <div className="flex flex-wrap justify-center items-center gap-12">
+            <div className="text-center">
+              <img src="/ICC Logo (1).png" alt="ICC Logo" className="h-24 w-auto object-contain mx-auto mb-2" 
+                   onError={(e) => { e.target.src = '/icc-logo.png'; }} />
+              <p className="text-sm font-semibold" style={{ color: '#334E68' }}>
+                CENTRE INTERREGIONAL DE COORDINATION (CIC)<br />
+                INTER REGIONAL COORDINATION CENTRE (ICC)
+              </p>
+            </div>
+            <div className="text-center">
+              <img src="/nigeriamaritime.webp" alt="NIMASA Logo" className="h-24 w-auto object-contain mx-auto mb-2"
+                   onError={(e) => { e.target.style.display = 'none'; }} />
+              
+            </div>
+          </div>
         </div>
       </section>
 

@@ -27,7 +27,7 @@ const AboutUs = () => {
           <div className="w-20 h-1.5 rounded-full mx-auto mb-6" style={{ backgroundColor: '#8E3400' }}></div>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed"
              style={{ fontWeight: 400 }}>
-            Championing Maritime Excellence Since 2010
+            Championing Maritime Excellence in the Gulf Of Guinea  Since 2010
           </p>
         </div>
       </section>

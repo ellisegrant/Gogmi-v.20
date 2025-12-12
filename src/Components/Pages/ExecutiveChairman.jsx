@@ -46,7 +46,7 @@ const ExecutiveChairman = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black mb-4"
                 style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Board Members
+              Board Of Directors
             </h2>
           
           </div>

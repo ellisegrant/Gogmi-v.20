@@ -234,19 +234,21 @@ const CapacityBuilding = () => {
               <span className="text-sm" style={{ fontWeight: 600, color: '#4B5563' }}>Since 2020</span>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-              {impactMetrics.map((metric, idx) => (
-                <div key={idx} className="text-center p-6 rounded-2xl transition-all hover:scale-105" 
-                     style={{ backgroundColor: '#F5F7FA' }}>
-                  <div className="inline-flex p-3 rounded-xl mb-3" style={{ backgroundColor: 'rgba(142, 52, 0, 0.1)', color: '#8E3400' }}>
-                    {metric.icon}
+            <div className="flex justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl">
+                {impactMetrics.map((metric, idx) => (
+                  <div key={idx} className="text-center p-6 rounded-2xl transition-all hover:scale-105" 
+                       style={{ backgroundColor: '#F5F7FA' }}>
+                    <div className="inline-flex p-3 rounded-xl mb-3" style={{ backgroundColor: 'rgba(142, 52, 0, 0.1)', color: '#8E3400' }}>
+                      {metric.icon}
+                    </div>
+                    <div className="text-3xl mb-2" style={{ fontWeight: 900, color: '#132552' }}>
+                      {metric.value}
+                    </div>
+                    <p className="text-sm" style={{ fontWeight: 600, color: '#4B5563' }}>{metric.label}</p>
                   </div>
-                  <div className="text-3xl mb-2" style={{ fontWeight: 900, color: '#132552' }}>
-                    {metric.value}
-                  </div>
-                  <p className="text-sm" style={{ fontWeight: 600, color: '#4B5563' }}>{metric.label}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

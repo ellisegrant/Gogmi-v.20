@@ -22,7 +22,7 @@ const Home = () => {
       enabled: true,                          // Turn on/off
       scheduledDate: '2025-12-11',            // When to show (YYYY-MM-DD)
       image: '/farmers.jpg',           // Image path (upload to /public folder)
-      displayDuration: 10,                     // How long to show (seconds)
+      displayDuration: 5,                     // How long to show (seconds)
       name: 'December 2025',                  // Internal reference name
       testing: true                           // SET TO TRUE FOR TESTING (bypasses localStorage)
     },
@@ -180,7 +180,7 @@ const Home = () => {
             className="absolute top-8 right-8 z-[10000] p-3 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md transition-all hover:scale-110 group shadow-2xl"
             aria-label="Close festive overlay"
           >
-            <X className="w-2 h-2 text-white group-hover:rotate-90 transition-transform" strokeWidth={2.5} />
+            <X className="w-7 h-7 text-white group-hover:rotate-90 transition-transform" strokeWidth={2.5} />
           </button>
 
           {/* Festive Image/Flyer - SMALLER CENTERED (max-w-3xl = 768px) */}
@@ -191,7 +191,7 @@ const Home = () => {
             <img
               src={activeFestiveImage}
               alt="Festive Season Greeting"
-              className="w-165 h-auto rounded-2xl shadow-2xl"
+              className="w-full h-auto rounded-2xl shadow-2xl"
             />
           </div>
 
@@ -264,8 +264,10 @@ const Home = () => {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <Link
-              to="/about"
+            <a
+              href="http://ourjourney.gogmi.org.gh/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 md:px-10 py-4 rounded-xl font-bold transition-all shadow-2xl hover:scale-105"
               style={{ backgroundColor: '#8E3400', color: 'white', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
@@ -273,7 +275,7 @@ const Home = () => {
             >
               <span>Discover Our Journey</span>
               <ArrowRight className="w-5 h-5" />
-            </Link>
+            </a>
           </div>
         </div>
       </header>

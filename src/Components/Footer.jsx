@@ -33,8 +33,12 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-400" style={{ fontWeight: 400 }}>
                 <MapPin className="w-5 h-5 text-[#8E3400] flex-shrink-0" />
-                <span>Accra, Ghana</span>
+                <span>GL-108-0038, Tse addo La Dade</span>
+                
+  
               </div>
+              <div className="flex items-center space-x-3 text-gray-400" style={{ fontWeight: 400 }} ><span>Burma Camp, Accra</span></div>
+              <div  className="flex items-center space-x-3 text-gray-400"><span>Kotopon,</span></div>
               <div className="flex items-center space-x-3 text-gray-400" style={{ fontWeight: 400 }}>
                 <Mail className="w-5 h-5 text-[#8E3400] flex-shrink-0" />
                 <a href="mailto:info@gogmi.org.gh" className="hover:text-[#8E3400] transition-colors">

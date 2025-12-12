@@ -13,7 +13,7 @@ const Partners = () => {
       category: 'International',
       // type: 'Strategic Partner',
       since: '2015',
-      description: 'The AU plays a major role in Africa’s maritime security, shipping, blue economy, and coastal development.',
+      description: 'Collaboration on maritime education and cultural heritage preservation',
       website: 'https://au.int/',
       projects: 8
     },
@@ -24,7 +24,7 @@ const Partners = () => {
       category: 'International',
       // type: 'Strategic Partner',
       since: '2016',
-      description: 'ECOWAS supports West African maritime safety by coordinating naval patrols, improving port security, and promoting regional collaboration against piracy and illegal activities.',
+      description: 'Maritime safety and security technical cooperation',
       website: 'https://www.ecowas.int/',
       projects: 12
     },
@@ -35,7 +35,7 @@ const Partners = () => {
       category: 'International',
       // type: 'Strategic Partner',
       since: '2014',
-      description: 'DOTCAN Institute collaborates with governments, development partners, and communities to advance ocean governance, maritime research, and sustainable blue-economy opportunities across Africa.',
+      description: 'Regional maritime policy development and implementation',
       website: 'https://dotcan.institute/',
       projects: 15
     },
@@ -106,7 +106,7 @@ const Partners = () => {
       projects: 7
     },
     {
-      id: 10,
+      id: 9,
       name: 'ICC',
       logo: '/ICC Logo (1).png',
       category: 'International',
@@ -117,7 +117,7 @@ const Partners = () => {
       projects: 7
     },
     {
-      id: 11,
+      id: 9,
       name: 'IMDEC',
       logo: '/IMDEC-Logo.png',
       category: 'Private Sector',
@@ -128,9 +128,9 @@ const Partners = () => {
       projects: 7
     },
     {
-      id: 12,
-      name: 'Maritime Africa',
-      logo: '/Maritimafrica.jpg',
+      id: 9,
+      name: '/Maritimafrica.jpg',
+      logo: '/IMDEC-Logo.png',
       category: 'Private Sector',
       // type: 'Network Partner',
       since: '2017',
@@ -140,9 +140,8 @@ const Partners = () => {
     },
 
     {
-      id: 13,
-      name: 'Maritime',
-      logo: "/maritime logo (1).jpg",
+      id: 9,
+      name: '/maritime logo (1).jpg',
       category: 'Private Sector',
       // type: 'Network Partner',
       since: '2017',
@@ -152,9 +151,8 @@ const Partners = () => {
     },
 
     {
-      id: 14,
-      name: 'Nexus Coastal',
-      logo: "/NEXUS COASTAL LOGO.png",
+      id: 9,
+      name: '/Maritimafrica.jpg',
       category: 'Private Sector',
       // type: 'Network Partner',
       since: '2017',
@@ -162,85 +160,6 @@ const Partners = () => {
       website: '#',
       projects: 7
     },
-
-    {
-      id: 15,
-      name: "UNESCO",
-      logo: '/UNESCO_logo_hor_blue_transparent.png',
-      category: 'Private Sector',
-      // type: 'Network Partner',
-      since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
-
-
-    {
-      id: 16,
-      name: "SOKO",
-      logo: '/SOKO-01-e1513038159719.png',
-      category: 'Private Sector',
-      // type: 'Network Partner',
-      since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
-    {
-      id: 17,
-      name: "MASER AFRIQUE",
-      logo: '/masser.jpg',
-      category: 'International',
-      // type: 'Network Partner',
-      since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
-
-     {
-      id: 18,
-      name: "MARITIME DIGEST GH",
-      logo: '/maritimedigest.webp',
-      category: 'Regional',
-      // type: 'Network Partner',
-      since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
-
-
-    {
-      id: 19,
-      name: "SWAIMS",
-      logo: '/swaims.png',
-      category: 'Regional',
-      // type: 'Network Partner',
-      since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
-
-
-    {
-      id: 20,
-      name: "ATLANTIC CENTER",
-      logo: '/AtlanticCenter.webp',
-      category: 'International',
-      // type: 'Network Partner',
-      since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
-
-
-
-
-    
 
     
   ];
@@ -309,22 +228,24 @@ const Partners = () => {
       {/* Partnership Statistics */}
       <section className="py-16" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { number: '20+', label: 'Global Partners' },
-              { number: '15+', label: 'Countries' },
-              // { number: '100+', label: 'Joint Projects' },
-              { number: '10 Years', label: 'Collaboration' }
-            ].map((stat, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 shadow-lg text-center border border-gray-100">
-                <div className="text-4xl mb-2" style={{ color: '#132552', fontWeight: 900 }}>
-                  {stat.number}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl">
+              {[
+                { number: '20+', label: 'Global Partners' },
+                { number: '15+', label: 'Countries' },
+                // { number: '100+', label: 'Joint Projects' },
+                { number: '10 Years', label: 'Collaboration' }
+              ].map((stat, idx) => (
+                <div key={idx} className="bg-white rounded-xl p-6 shadow-lg text-center border border-gray-100">
+                  <div className="text-4xl mb-2" style={{ color: '#132552', fontWeight: 900 }}>
+                    {stat.number}
+                  </div>
+                  <p className="text-sm" style={{ color: '#4B5563', fontWeight: 600 }}>
+                    {stat.label}
+                  </p>
                 </div>
-                <p className="text-sm" style={{ color: '#4B5563', fontWeight: 600 }}>
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
