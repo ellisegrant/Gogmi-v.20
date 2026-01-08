@@ -158,13 +158,12 @@ const Advocacy = () => {
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl leading-tight mb-8"
                 style={{ fontWeight: 900, letterSpacing: '-0.02em' }}>
-             Analysing International Implications
-             Of Maritime Governance Reforms
+             Advocacy
             </h1>
 
             <p className="text-xl md:text-2xl leading-relaxed mb-10" style={{ fontWeight: 400, color: 'rgba(255, 255, 255, 0.95)' }}>
-              GoGMI is committed to improving situational awareness of maritime security and safety challenges in the Gulf of Guinea. Through our advocacy work, we provide strategic analysis and bring together policymakers and stakeholders to develop collaborative solutions that support the blue economy and strengthen regional economic resilience. 
-              Every initiative is created with stakeholder input to ensure sustainable, long-term impact.
+             We raise awareness on how crucial the marine sector is in shaping policy, advancing the blue economy,
+              and promoting sustainable ocean use in the Gulf of Guinea.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

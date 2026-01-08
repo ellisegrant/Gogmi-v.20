@@ -21,7 +21,7 @@ const Home = () => {
     {
       enabled: true,                          // Turn on/off
       scheduledDate: '2025-12-13',            // When to show (YYYY-MM-DD) - UPDATED TO TODAY
-      image: '/farmers.jpg',           // Image path (upload to /public folder)
+      image: '/newyear.jpeg',           // Image path (upload to /public folder)
       displayDuration: 30,                     // How long to show (seconds)
       name: 'December 2025',                  // Internal reference name
       testing: true                           // SET TO TRUE FOR TESTING (bypasses localStorage)
@@ -323,8 +323,11 @@ const Home = () => {
               
               <div className="space-y-6">
                 <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                 The Gulf of Guinea Maritime Institute (GoGMI) is a non-profit thinktank organization in Ghana. The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact,
-                  share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region.
+                 Established in 2010, The Gulf of Guinea Maritime Institute (GoGMI) is a think - tank organization in Ghana. 
+                 The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact, 
+                 share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region. The Institute’s core 
+                 mandate is strategic maritime research, advocacy and capacity building in the areas of maritime
+                  security, safety and advocacy for sustainable Blue Economy in Ghana and the Gulf of Guinea (GoG) maritime space at large. 
                 </p>
                
               </div>

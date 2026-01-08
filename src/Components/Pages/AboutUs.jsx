@@ -56,10 +56,20 @@ const AboutUs = () => {
                  
                 </p>
                 <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontWeight: 400 }}>
-                  We are a non-profit think tank that brings together maritime strategic thinkers, practitioners, and experts to research and address critical maritime challenges in the Gulf of Guinea region.
+                 Established in 2010, The Gulf of Guinea Maritime Institute (GoGMI) is a think - tank organization in Ghana. 
+                 The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact, 
+                 share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region. The Institute’s core
+                  mandate is strategic maritime research, advocacy and capacity building in the areas of maritime 
+                 security, safety and advocacy for sustainable Blue Economy in Ghana and the Gulf of Guinea (GoG) maritime space at large. 
                 </p>
                 <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontWeight: 400 }}>
-                  Through innovative research, strategic advocacy, and comprehensive capacity building programs, we're shaping the future of West Africa's blue economy.
+                The Gulf of Guinea Maritime Institute (GoGMI), through its intricate network of experts, develops and implements a 
+                myriad of tailored programmes to address pertinent maritime concerns within the Gulf of Guinea (GoG) region.
+                 Content generated from the Institute’s research and stakeholder network of experts is disseminated through
+                  variety of channels including research papers, publications, physical and virtual meetings, programmes, 
+                  conferences, seminars
+                 and also through the engagements of diverse stakeholder groups particularly 
+                 the youth in the Ghana’s blue economy trajectory
                 </p>
               </div>
             </div>
@@ -93,18 +103,18 @@ const AboutUs = () => {
               {
                  icon: <Eye className="w-16 h-16" />,
                 title: 'Our Vision',
-                desc: 'To provide strategic maritime research, advocacy, and capacity building that drives sustainable blue economy development across West Africa.'
+                desc: 'Our vision is to become the lead research and advocacy institute in strategic maritime affairs in the GoG Region'
               },
               {
               
                 icon: <Target className="w-16 h-16" />,
                 title: 'Our Mission',
-                desc: 'The mission of the GoGMI is to provide an intellectual base to governments, organizations, corporate bodies and individuals whose activities impinge upon the maritime domain of the GoG Region to ensure a sustainable use of the sea. We will do that by research and advocacy in strategic maritime issues affecting the Region in order to influence policies and activities affecting the maritime environment of the Region. In conducting our business we shall uphold the values of independence, accuracy and fairness.'
+                desc: "The mission of the GoGMI is to provide an intellectual base to governments, organizations, corporate bodies and individuals whose activities impinge upon the maritime domain of the GoG Region to ensure a sustainable use of the sea. We will do that by research and advocacy in strategic maritime issues affecting the Region in order to influence policies and activities affecting the maritime environment of the Region. In conducting our business we shall uphold the values of independence, accuracy and fairness."
               },
               {
                 icon: <Heart className="w-16 h-16" />,
                 title: 'Business model',
-                desc: 'GoGMI is a non-profit, interdisciplinary institute dedicated to excellence in maritime research, education, media, and consultancy. It uses diverse platforms to make maritime knowledge accessible and operates a unique, community-supported model that ensures independence and sustainability. Experts within and outside the Institute create content that is shared through publications, events, and online channels to serve the needs of the Gulf of Guinea region.'
+                desc: 'The driving force behind GoGMI is the achievement of excellence in strategic maritime research, education, media and consultancy services. GoGMI is a pioneering interdisciplinary organization that aims to provide knowledge for all, using a variety of mediums to overcome traditional barriers. As a non-profit research organization, GoGMI’s business model is unique in that it relies on its virtual community to generate revenue required to produce research and education solutions. The model is a self-perpetuating cycle that ensures the Institute’s independence and ability to respond to the needs of the GoG Region. Contributors from within the Institute and its network of experts create the content which is then disseminated through a variety of channels including periodic publications, books, seminars, conferences and the internet and made available to the community of people interested in the study of the maritime domain of the region.'
               }
             ].map((item, idx) => (
               <div key={idx} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center border border-gray-100 group">

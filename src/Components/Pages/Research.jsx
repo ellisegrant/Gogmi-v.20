@@ -168,7 +168,9 @@ const Research = () => {
             </h1>
 
             <p className="text-lg md:text-xl leading-relaxed mb-8" style={{ color: 'rgba(255, 255, 255, 0.95)', fontWeight: 400 }}>
-              Our research doesn't just study problems—it solves them. From AI-powered piracy prevention to unlocking billions in blue economy potential.
+              We focus on strategic maritime research addressing safety, security, and environmental challenges in the Gulf of Guinea.
+
+
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
