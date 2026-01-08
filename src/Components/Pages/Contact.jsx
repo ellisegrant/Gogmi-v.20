@@ -171,14 +171,14 @@ const Contact = () => {
                 icon: <Mail className="w-8 h-8" />,
                 title: 'Email Us',
                 info: 'info@gogmi.org.gh',
-                subinfo: 'We reply within 24 hours',
+                subinfo: 'We reply within 48 hours',
                 color: 'from-[#8E3400] to-[#6B2700]'
               },
               {
                 icon: <MapPin className="w-8 h-8" />,
                 title: 'Visit Us',
-                info: 'GL-108-0038, Tse addo La Dade Kotopon,',
-                subinfo: 'Burma Camp, Accra',
+                info: 'GL-108-0038, Tse addo, ',
+                subinfo: 'La Dade Kotopon, Burma Camp, Accra',
                 color: 'from-[#1A336C] to-[#132552]'
               }
             ].map((item, idx) => (

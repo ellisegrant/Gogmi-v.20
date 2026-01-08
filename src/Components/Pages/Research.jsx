@@ -184,15 +184,7 @@ const Research = () => {
                 <span>Explore Our Research</span>
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <a
-                href="#team"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl transition-all"
-                style={{ border: '2px solid rgba(255, 255, 255, 0.5)', color: 'white', backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', fontWeight: 600 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-              >
-                <span>Meet Our Researchers</span>
-              </a>
+             
             </div>
           </div>
         </div>

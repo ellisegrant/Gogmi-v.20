@@ -20,9 +20,9 @@ const Home = () => {
   const festiveOverlays = [
     {
       enabled: true,                          // Turn on/off
-      scheduledDate: '2025-12-11',            // When to show (YYYY-MM-DD)
+      scheduledDate: '2025-12-13',            // When to show (YYYY-MM-DD) - UPDATED TO TODAY
       image: '/farmers.jpg',           // Image path (upload to /public folder)
-      displayDuration: 5,                     // How long to show (seconds)
+      displayDuration: 30,                     // How long to show (seconds)
       name: 'December 2025',                  // Internal reference name
       testing: true                           // SET TO TRUE FOR TESTING (bypasses localStorage)
     },
@@ -50,6 +50,28 @@ const Home = () => {
 
   // Check if there's a scheduled overlay for today
   React.useEffect(() => {
+    // ============================================================
+    // PERMANENT DISPLAY MODE FOR TESTING/REVIEW
+    // ============================================================
+    // Find the first enabled overlay for permanent display
+    const permanentOverlay = festiveOverlays.find(overlay => overlay.enabled);
+
+    if (permanentOverlay) {
+      setActiveFestiveImage(permanentOverlay.image);
+      setOverlayDuration(permanentOverlay.displayDuration);
+      setShowFestiveOverlay(true);
+
+      // Auto-hide after specified duration
+      const timer = setTimeout(() => {
+        setShowFestiveOverlay(false);
+      }, permanentOverlay.displayDuration * 1000);
+
+      return () => clearTimeout(timer);
+    }
+
+    /* ============================================================
+    // ORIGINAL DATE-BASED LOGIC (USE THIS FOR PRODUCTION)
+    // ============================================================
     const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
     
     // Find if any overlay is scheduled for today
@@ -80,6 +102,7 @@ const Home = () => {
         return () => clearTimeout(timer);
       }
     }
+    */ // END ORIGINAL LOGIC
   }, []);
 
   // Manual close function (X button)

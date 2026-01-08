@@ -1,8 +1,185 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 
 const Membership = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    organization: '',
+    position: '',
+    country: '',
+    membershipType: '',
+    plan: ''
+  });
+
+  // Load Paystack script on component mount
+  useEffect(() => {
+    // Check if Paystack script is already loaded
+    if (!document.getElementById('paystack-script')) {
+      const script = document.createElement('script');
+      script.id = 'paystack-script';
+      script.src = 'https://js.paystack.co/v1/inline.js';
+      script.async = true;
+      script.onload = () => {
+        console.log(' Paystack script loaded successfully');
+      };
+      script.onerror = () => {
+        console.error(' Failed to load Paystack script');
+        alert('Failed to load payment system. Please check your internet connection.');
+      };
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  const handleFormChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const openMembershipModal = (plan) => {
+    setSelectedPlan(plan);
+    setFormData({
+      ...formData,
+      membershipType: plan.id.includes('student') || plan.id.includes('associate') || plan.id.includes('professional') || plan.id.includes('fellow') || plan.id.includes('honorary') ? 'individual' : 'institutional',
+      plan: plan.name
+    });
+    setShowModal(true);
+  };
+
+  const closeMembershipModal = () => {
+    setShowModal(false);
+    setSelectedPlan(null);
+  };
+
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    
+    // Validate form
+    if (!formData.fullName || !formData.email || !formData.phone) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    // Extract price from plan (e.g., "GHS 100" -> 100)
+    const priceMatch = selectedPlan.price.match(/\d+/);
+    const amount = priceMatch ? parseFloat(priceMatch[0]) : 0;
+
+    if (amount === 0 || selectedPlan.price === 'By Invitation') {
+      // For honorary/strategic partner memberships
+      alert('Thank you for your interest! Our team will contact you regarding this membership tier.');
+      closeMembershipModal();
+      return;
+    }
+
+    // Check if Paystack is loaded
+    if (typeof window.PaystackPop === 'undefined') {
+      alert('Payment system is loading. Please wait a moment and try again.');
+      // Reload Paystack script
+      const script = document.createElement('script');
+      script.src = 'https://js.paystack.co/v1/inline.js';
+      script.async = true;
+      document.body.appendChild(script);
+      return;
+    }
+
+    // Paystack Integration
+    const paystackKey = 'pk_test_bcc51111bf5578e46e157a62180b11db89302000'; // Replace with your actual Paystack public key
+    
+    try {
+      const handler = window.PaystackPop.setup({
+        key: paystackKey,
+        email: formData.email,
+        amount: amount * 100, // Convert to pesewas (GHS to pesewas)
+        currency: 'GHS',
+        ref: 'GOGMI-' + Math.floor((Math.random() * 1000000000) + 1), // Generate unique reference
+        
+        // Enable Mobile Money and other payment channels
+        channels: ['card', 'mobile_money', 'bank', 'ussd', 'qr', 'bank_transfer'],
+        
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "Full Name",
+              variable_name: "full_name",
+              value: formData.fullName
+            },
+            {
+              display_name: "Phone",
+              variable_name: "phone",
+              value: formData.phone
+            },
+            {
+              display_name: "Membership Plan",
+              variable_name: "membership_plan",
+              value: selectedPlan.name
+            },
+            {
+              display_name: "Organization",
+              variable_name: "organization",
+              value: formData.organization || 'N/A'
+            },
+            {
+              display_name: "Country",
+              variable_name: "country",
+              value: formData.country
+            },
+            {
+              display_name: "Position",
+              variable_name: "position",
+              value: formData.position || 'N/A'
+            }
+          ]
+        },
+        
+        callback: function(response) {
+          // Payment successful
+          console.log('Payment successful!');
+          console.log('Reference:', response.reference);
+          console.log('Full Response:', response);
+          
+          alert('✅ Payment successful!\n\nReference: ' + response.reference + '\n\nThank you for joining GoGMI! You will receive a confirmation email shortly.');
+          
+          // Here you would typically send the payment confirmation to your backend
+          // Example:
+          /*
+          fetch('https://your-backend-api.com/api/membership/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              reference: response.reference,
+              membershipData: formData,
+              plan: selectedPlan
+            })
+          }).then(res => res.json())
+            .then(data => {
+              console.log('Membership created:', data);
+            });
+          */
+          
+          closeMembershipModal();
+          
+          // Optionally redirect to success page
+          // window.location.href = '/membership-success?ref=' + response.reference;
+        },
+        
+        onClose: function() {
+          console.log('Payment popup closed');
+          alert('Payment cancelled. The payment window was closed.');
+        }
+      });
+      
+      handler.openIframe();
+      
+    } catch (error) {
+      console.error('Paystack Error:', error);
+      alert('Payment initialization failed. Please check your internet connection and try again.\n\nError: ' + error.message);
+    }
+  };
 
   const individualPlans = [
     {
@@ -37,7 +214,7 @@ const Membership = () => {
     {
       id: 'professional',
       name: 'Professional Membership (5-10 yrs)',
-      price: 'GHS 1000',
+      price: 'GHS 700',
       period: '/year',
       features: [
         'Certificate of Membership',
@@ -51,7 +228,7 @@ const Membership = () => {
     {
       id: 'fellow',
       name: 'Fellow Membership (Experts)',
-      price: 'GHS 1500',
+      price: 'GHS 1000',
       period: '/year',
       features: [
         'Certificate of Membership',
@@ -61,28 +238,14 @@ const Membership = () => {
         'High-level roundtables engagement',
         'Maritime Security Advice access'
       ]
-    },
-
-{
-      id: 'honorary',
-      name: 'Honorary Membership',
-      price: 'By Invitation',
-      period: '',
-      features: [
-        'Recognition as key strategic partner',
-        'Engagement in strategic initiatives',
-        'Board and advisory meetings participation',
-        'Preferential strategic partnerships'
-      ]
     }
-
   ];
 
   const institutionalPlans = [
     {
       id: 'academic',
       name: 'Academic & Research Institutions',
-      price: 'GHS 10,000',
+      price: 'GHS 5,000',
       period: '/year',
       features: [
         'Certificate of Membership',
@@ -96,7 +259,7 @@ const Membership = () => {
     {
       id: 'corporate',
       name: 'Corporate Membership',
-      price: 'GHS 20,000',
+      price: 'GHS 5,000',
       period: '/year',
       features: [
         'Certificate of Membership',
@@ -107,25 +270,199 @@ const Membership = () => {
         'Customized briefings on key issues'
       ]
     },
-
-
     {
       id: 'honorary',
-      name: 'Strategic Partner',
+      name: 'Honorary & Strategic Partners',
       price: 'By Invitation',
       period: '',
       features: [
         'Recognition as key strategic partner',
         'Engagement in strategic initiatives',
+        'Board and advisory meetings participation',
         'Preferential strategic partnerships'
       ]
     }
-
-    
   ];
 
   return (
     <div className="w-full">
+      {/* Membership Modal */}
+      {showModal && selectedPlan && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 animate-fade-in">
+          <div className="bg-white rounded-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl">
+            {/* Modal Header */}
+            <div className="p-6 border-b border-gray-200 sticky top-0 bg-white rounded-t-2xl z-10">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h3 className="text-2xl font-bold" style={{ color: '#132552', fontWeight: 700 }}>
+                    {selectedPlan.name}
+                  </h3>
+                  <p className="text-lg mt-1" style={{ color: '#8E3400', fontWeight: 600 }}>
+                    {selectedPlan.price}{selectedPlan.period}
+                  </p>
+                </div>
+                <button
+                  onClick={closeMembershipModal}
+                  className="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center transition-all"
+                  style={{ color: '#4B5563' }}
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body - Form */}
+            <form onSubmit={handlePayment} className="p-6">
+              <div className="space-y-4">
+                {/* Full Name */}
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E3400]"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
+                    Email Address <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E3400]"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
+                    Phone Number <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E3400]"
+                    placeholder="+233 XX XXX XXXX"
+                  />
+                </div>
+
+                {/* Organization (for institutional) */}
+                {formData.membershipType === 'institutional' && (
+                  <div>
+                    <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
+                      Organization Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="organization"
+                      value={formData.organization}
+                      onChange={handleFormChange}
+                      required={formData.membershipType === 'institutional'}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E3400]"
+                      placeholder="Enter organization name"
+                    />
+                  </div>
+                )}
+
+                {/* Position */}
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
+                    Position/Title
+                  </label>
+                  <input
+                    type="text"
+                    name="position"
+                    value={formData.position}
+                    onChange={handleFormChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E3400]"
+                    placeholder="Your current position"
+                  />
+                </div>
+
+                {/* Country */}
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
+                    Country <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    name="country"
+                    value={formData.country}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E3400]"
+                  >
+                    <option value="">Select Country</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Senegal">Senegal</option>
+                    <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                    <option value="Cameroon">Cameroon</option>
+                    <option value="Togo">Togo</option>
+                    <option value="Benin">Benin</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                {/* Plan Summary */}
+                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <h4 className="font-bold mb-3" style={{ color: '#132552' }}>Membership Benefits:</h4>
+                  <ul className="space-y-2">
+                    {selectedPlan.features.slice(0, 4).map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm" style={{ color: '#4B5563' }}>
+                        <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#8E3400' }} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                    {selectedPlan.features.length > 4 && (
+                      <li className="text-sm italic" style={{ color: '#8E3400' }}>
+                        + {selectedPlan.features.length - 4} more benefits...
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 mt-6">
+                <button
+                  type="button"
+                  onClick={closeMembershipModal}
+                  className="flex-1 px-6 py-3 rounded-lg font-bold border-2 transition-all"
+                  style={{ borderColor: '#132552', color: '#132552', fontWeight: 700 }}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 px-6 py-3 rounded-lg font-bold text-white transition-all"
+                  style={{ backgroundColor: '#8E3400', fontWeight: 700 }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
+                >
+                  {selectedPlan.price === 'By Invitation' ? 'Submit Application' : `Pay ${selectedPlan.price}`}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden" style={{ backgroundColor: '#132552' }}>
         <div className="absolute inset-0">
@@ -144,6 +481,15 @@ const Membership = () => {
             <p className="text-xl text-white/90 leading-relaxed mb-8 font-semibold">
               Join our maritime community to access exclusive research, engage with thought leaders, and expand your network across West Africa's maritime sector.
             </p>
+            <button 
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-bold text-lg transition-all"
+              style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
+            >
+              <span>Apply</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
@@ -272,13 +618,13 @@ const Membership = () => {
                   </ul>
 
                   <button
-                    onClick={() => setSelectedPlan(plan.id)}
+                    onClick={() => openMembershipModal(plan)}
                     className="w-full py-2.5 rounded-lg font-bold transition-all text-sm"
                     style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
                   >
-                    Become Now
+                    Become a Member
                   </button>
                 </div>
               </div>
@@ -331,13 +677,13 @@ const Membership = () => {
                   </ul>
 
                   <button
-                    onClick={() => setSelectedPlan(plan.id)}
+                    onClick={() => openMembershipModal(plan)}
                     className="w-full py-2.5 rounded-lg font-bold transition-all text-sm"
                     style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
                   >
-                    Become Now
+                    Become a Member
                   </button>
                 </div>
               </div>
