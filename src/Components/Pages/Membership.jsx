@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Membership = () => {
+  const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
@@ -15,19 +17,17 @@ const Membership = () => {
     plan: ''
   });
 
-  // Load Paystack script on component mount
   useEffect(() => {
-    // Check if Paystack script is already loaded
     if (!document.getElementById('paystack-script')) {
       const script = document.createElement('script');
       script.id = 'paystack-script';
       script.src = 'https://js.paystack.co/v1/inline.js';
       script.async = true;
       script.onload = () => {
-        console.log(' Paystack script loaded successfully');
+        console.log('Paystack script loaded successfully');
       };
       script.onerror = () => {
-        console.error(' Failed to load Paystack script');
+        console.error('Failed to load Paystack script');
         alert('Failed to load payment system. Please check your internet connection.');
       };
       document.body.appendChild(script);
@@ -56,30 +56,86 @@ const Membership = () => {
     setSelectedPlan(null);
   };
 
+  const activateMembership = async (paymentReference) => {
+    try {
+      const priceMatch = selectedPlan.price.match(/\d+/g);
+      const amount = priceMatch ? parseFloat(priceMatch.join('').replace(',', '')) : 0;
+
+      const applicationData = {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        country: formData.country,
+        organization: formData.organization || '',
+        position: formData.position || '',
+        planId: selectedPlan.id,
+        planName: selectedPlan.name,
+        membershipType: formData.membershipType,
+        amount: amount,
+        currency: 'GHS',
+        paymentReference: paymentReference
+      };
+      
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost/backend/api';
+      const result = await fetch(`${apiUrl}/membership/apply.php`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(applicationData)
+      });
+      
+      const data = await result.json();
+      
+      if (data.success) {
+        localStorage.setItem('gogmi_token', data.data.token);
+        localStorage.setItem('gogmi_user', JSON.stringify(data.data.user));
+        localStorage.setItem('gogmi_membership', JSON.stringify(data.data.membership));
+        
+        let message = `Payment successful!\n\nReference: ${paymentReference}\nCertificate Number: ${data.data.certificateNumber}\n\nWelcome to GoGMI!`;
+        
+        if (data.data.isNewAccount && data.data.temporaryPassword) {
+          message += `\n\nYour account has been created:\nEmail: ${data.data.user.email}\nTemporary Password: ${data.data.temporaryPassword}\n\nPlease save these credentials. You can change your password after logging in.`;
+        } else {
+          message += `\n\nYou can now access all member resources!`;
+        }
+        
+        alert(message);
+        
+        closeMembershipModal();
+        
+        setTimeout(() => {
+          window.location.href = '/resources';
+        }, 1000);
+      } else {
+        alert('Payment successful but membership activation failed. Please contact support with reference: ' + paymentReference + '\n\nError: ' + data.message);
+      }
+      
+    } catch (error) {
+      console.error('Activation error:', error);
+      alert('Payment successful but there was an error activating your membership. Please contact support with reference: ' + paymentReference);
+    }
+  };
+
   const handlePayment = async (e) => {
     e.preventDefault();
     
-    // Validate form
-    if (!formData.fullName || !formData.email || !formData.phone) {
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.country) {
       alert('Please fill in all required fields');
       return;
     }
 
-    // Extract price from plan (e.g., "GHS 100" -> 100)
-    const priceMatch = selectedPlan.price.match(/\d+/);
-    const amount = priceMatch ? parseFloat(priceMatch[0]) : 0;
+    const priceMatch = selectedPlan.price.match(/\d+/g);
+    const amount = priceMatch ? parseFloat(priceMatch.join('').replace(',', '')) : 0;
 
     if (amount === 0 || selectedPlan.price === 'By Invitation') {
-      // For honorary/strategic partner memberships
       alert('Thank you for your interest! Our team will contact you regarding this membership tier.');
       closeMembershipModal();
       return;
     }
 
-    // Check if Paystack is loaded
     if (typeof window.PaystackPop === 'undefined') {
       alert('Payment system is loading. Please wait a moment and try again.');
-      // Reload Paystack script
       const script = document.createElement('script');
       script.src = 'https://js.paystack.co/v1/inline.js';
       script.async = true;
@@ -87,18 +143,15 @@ const Membership = () => {
       return;
     }
 
-    // Paystack Integration
-    const paystackKey = 'pk_test_bcc51111bf5578e46e157a62180b11db89302000'; // Replace with your actual Paystack public key
+    const paystackKey = 'pk_test_bcc51111bf5578e46e157a62180b11db89302000';
     
     try {
       const handler = window.PaystackPop.setup({
         key: paystackKey,
         email: formData.email,
-        amount: amount * 100, // Convert to pesewas (GHS to pesewas)
+        amount: amount * 100,
         currency: 'GHS',
-        ref: 'GOGMI-' + Math.floor((Math.random() * 1000000000) + 1), // Generate unique reference
-        
-        // Enable Mobile Money and other payment channels
+        ref: 'GOGMI-' + Math.floor((Math.random() * 1000000000) + 1),
         channels: ['card', 'mobile_money', 'bank', 'ussd', 'qr', 'bank_transfer'],
         
         metadata: {
@@ -137,34 +190,9 @@ const Membership = () => {
         },
         
         callback: function(response) {
-          // Payment successful
           console.log('Payment successful!');
           console.log('Reference:', response.reference);
-          console.log('Full Response:', response);
-          
-          alert('✅ Payment successful!\n\nReference: ' + response.reference + '\n\nThank you for joining GoGMI! You will receive a confirmation email shortly.');
-          
-          // Here you would typically send the payment confirmation to your backend
-          // Example:
-          /*
-          fetch('https://your-backend-api.com/api/membership/verify', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              reference: response.reference,
-              membershipData: formData,
-              plan: selectedPlan
-            })
-          }).then(res => res.json())
-            .then(data => {
-              console.log('Membership created:', data);
-            });
-          */
-          
-          closeMembershipModal();
-          
-          // Optionally redirect to success page
-          // window.location.href = '/membership-success?ref=' + response.reference;
+          activateMembership(response.reference);
         },
         
         onClose: function() {
@@ -286,11 +314,9 @@ const Membership = () => {
 
   return (
     <div className="w-full">
-      {/* Membership Modal */}
       {showModal && selectedPlan && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 animate-fade-in">
           <div className="bg-white rounded-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl">
-            {/* Modal Header */}
             <div className="p-6 border-b border-gray-200 sticky top-0 bg-white rounded-t-2xl z-10">
               <div className="flex justify-between items-center">
                 <div>
@@ -311,10 +337,8 @@ const Membership = () => {
               </div>
             </div>
 
-            {/* Modal Body - Form */}
             <form onSubmit={handlePayment} className="p-6">
               <div className="space-y-4">
-                {/* Full Name */}
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
                     Full Name <span className="text-red-500">*</span>
@@ -330,7 +354,6 @@ const Membership = () => {
                   />
                 </div>
 
-                {/* Email */}
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
                     Email Address <span className="text-red-500">*</span>
@@ -346,7 +369,6 @@ const Membership = () => {
                   />
                 </div>
 
-                {/* Phone */}
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
                     Phone Number <span className="text-red-500">*</span>
@@ -362,7 +384,6 @@ const Membership = () => {
                   />
                 </div>
 
-                {/* Organization (for institutional) */}
                 {formData.membershipType === 'institutional' && (
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
@@ -380,7 +401,6 @@ const Membership = () => {
                   </div>
                 )}
 
-                {/* Position */}
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
                     Position/Title
@@ -395,7 +415,6 @@ const Membership = () => {
                   />
                 </div>
 
-                {/* Country */}
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
                     Country <span className="text-red-500">*</span>
@@ -419,7 +438,6 @@ const Membership = () => {
                   </select>
                 </div>
 
-                {/* Plan Summary */}
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <h4 className="font-bold mb-3" style={{ color: '#132552' }}>Membership Benefits:</h4>
                   <ul className="space-y-2">
@@ -438,7 +456,6 @@ const Membership = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex gap-3 mt-6">
                 <button
                   type="button"
@@ -463,7 +480,6 @@ const Membership = () => {
         </div>
       )}
 
-      {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden" style={{ backgroundColor: '#132552' }}>
         <div className="absolute inset-0">
           <img 
@@ -482,6 +498,7 @@ const Membership = () => {
               Join our maritime community to access exclusive research, engage with thought leaders, and expand your network across West Africa's maritime sector.
             </p>
             <button 
+              onClick={() => window.scrollTo({ top: document.getElementById('plans')?.offsetTop || 0, behavior: 'smooth' })}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-bold text-lg transition-all"
               style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
@@ -494,7 +511,6 @@ const Membership = () => {
         </div>
       </section>
 
-      {/* About Membership Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -525,7 +541,6 @@ const Membership = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -566,8 +581,7 @@ const Membership = () => {
         </div>
       </section>
 
-      {/* Individual Membership Section */}
-      <section className="py-20 bg-white">
+      <section id="plans" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
@@ -633,7 +647,6 @@ const Membership = () => {
         </div>
       </section>
 
-      {/* Institutional Membership Section */}
       <section className="py-20" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -692,7 +705,6 @@ const Membership = () => {
         </div>
       </section>
 
-      {/* Application Process */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -712,17 +724,17 @@ const Membership = () => {
               {
                 step: '2',
                 title: 'Complete Application',
-                description: 'Fill out the online application form with your details and supporting documents.'
+                description: 'Fill out the online application form with your details.'
               },
               {
                 step: '3',
-                title: 'Payment & Review',
-                description: 'Submit payment and your application will be reviewed by our membership committee.'
+                title: 'Payment',
+                description: 'Complete payment securely via Paystack. Your account is automatically created.'
               },
               {
                 step: '4',
                 title: 'Welcome Aboard',
-                description: 'Receive your membership certificate and gain immediate access to all benefits.'
+                description: 'Receive your credentials and gain immediate access to all benefits.'
               }
             ].map((process, idx) => (
               <div key={idx} className="text-center">
@@ -741,7 +753,6 @@ const Membership = () => {
         </div>
       </section>
 
-      {/* Download Brochure Section */}
       <section className="py-20" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
