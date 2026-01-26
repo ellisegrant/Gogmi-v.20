@@ -91,24 +91,7 @@ const Management = () => {
               </div>
 
               {/* Key Achievements */}
-              <div className="mt-8 p-6 rounded-xl" style={{ backgroundColor: '#F5F7FA' }}>
-                <h3 className="text-lg font-bold mb-4" style={{ color: '#132552', fontWeight: 700 }}>
-                  Key Focus Areas
-                </h3>
-                <div className="space-y-3">
-                  {[
-                    'Regional Maritime Security Frameworks',
-                    'Blue Economy Development',
-                    'Stakeholder Engagement & Capacity Building',
-                    'Policy Research & Advocacy'
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#8E3400' }}></div>
-                      <span className="text-sm" style={{ color: '#4B5563', fontWeight: 500 }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -121,10 +104,13 @@ const Management = () => {
 
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { name: 'Samuel Jonas Aryeh', title: 'Head of Corporate Affairs', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&fit=crop' },
-              { name: 'Jamilatu Sulley', title: 'Head of Finance & Administration', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&fit=crop' },
               { name: 'Joseph Ayitiah', title: 'Head of Technical', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&fit=crop' },
-              { name: 'Ms. Julliet Affrah Obeng', title: 'Research Manager', img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&fit=crop' }
+              { name: 'Ms. Julliet Affrah Obeng', title: 'Research Manager', img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&fit=crop' },              
+              { name: 'Lawrence Dogli', title: 'Programmes Manager', img: ' https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&fit=crop'}, 
+               { name: 'Rhodalyn Owusu', title: 'Finance & Admin Officer', img: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&fit=crop' }
+              
+              
+             
             ].map((member, idx) => (
               <div key={idx} className="group">
                 <div className="relative overflow-hidden rounded-xl mb-4 bg-white aspect-[3/4] shadow-lg hover:shadow-xl transition-all duration-300">
@@ -153,10 +139,10 @@ const Management = () => {
           
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { name: 'Enoch Dzane Nikoi', title: 'Communications Specialist', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&fit=crop' },
+              { name: 'Enoch Dzane Nikoi', title: 'Communications Specialist', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&fit=crop'},
               { name: 'Caleb Acquah-Harrison', title: 'Research Analyst', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&fit=crop' },
-              { name: 'Lawrence Dogli', title: 'Programmes Manager', img: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&fit=crop' },
-              { name: 'Rhodalyn Owusu', title: 'Finance & Admin Officer', img: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&fit=crop' }
+              { name: 'Ellise Grant Boamah', title: 'National Service Personel', img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&fit=crop' },
+              { name: 'Mavis Akortsu Ama Afefa', title: 'Office Assistant', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&fit=crop' },
             ].map((member, idx) => (
               <div key={idx} className="group">
                 <div className="relative overflow-hidden rounded-xl mb-4 bg-white aspect-[3/4] shadow-lg hover:shadow-xl transition-all duration-300">
@@ -186,8 +172,8 @@ const Management = () => {
 
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { name: 'Mavis Akortsu Ama Afefa', title: 'Office Assistant', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&fit=crop' },
-              { name: 'Ellise Grant Boamah', title: 'National Service Personel', img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&fit=crop' },
+             
+            
               // { name: 'Mr. Kwabena Agyei', title: 'Research Analyst', img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&fit=crop' },
               // { name: 'Ms. Abena Serwaa', title: 'Research Associate', img: 'https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=400&fit=crop' }
             ].map((member, idx) => (

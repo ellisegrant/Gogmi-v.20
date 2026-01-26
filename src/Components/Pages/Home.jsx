@@ -369,7 +369,7 @@ const Home = () => {
         },
         {
           title: 'Blue Economy Development',
-          desc: 'Analysis of Activities In the Regions Maritime Domain.',
+          desc: 'Analysis of Activities In the Gulf of Guinea Maritime Domain',
           color: '#132552'
         },
         {
@@ -626,7 +626,7 @@ const Home = () => {
             </h3>
             <p className="mb-6 text-base leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>{news.excerpt}</p>
             
-            {/* ✅ CONDITIONAL LINK - If news has link property, use it, otherwise go to blog */}
+            {/*  CONDITIONAL LINK - If news has link property, use it, otherwise go to blog */}
             {news.link ? (
               <Link to={news.link} className="font-semibold flex items-center group-hover:gap-3 transition-all"
                     style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>

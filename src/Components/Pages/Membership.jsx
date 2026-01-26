@@ -4,93 +4,111 @@ import { ArrowRight, Check } from 'lucide-react';
 const Membership = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
 
+  const handleApply = (planName, planPrice) => {
+    const subject = encodeURIComponent(`Membership Application - ${planName}`);
+    const body = encodeURIComponent(`Hello GoGMI Team,
+
+I am interested in applying for the ${planName} (${planPrice}).
+
+Name: 
+Email: 
+Phone: 
+Organization (if applicable): 
+
+Additional Information:
+
+
+Best regards,`);
+    
+    window.location.href = `mailto:info@gogmi.org?subject=${subject}&body=${body}`;
+  };
+
   const individualPlans = [
     {
       id: 'student',
-      name: 'Students Membership',
+      name: 'Student Membership',
       price: 'GHS 100',
       period: '/year',
+      description: 'Designed for undergraduate and postgraduate students with an interest in maritime, ocean, environmental, and security studies.',
       features: [
-        'Certificate of Membership',
-        'Preferential training fees',
-        'Invitations to webinars',
-        'Stakeholder advisory opportunities',
-        'Access to research reports and publications',
-        'Mentorship programs'
+        'Official Certificate of Membership',
+        'Access to GoGMI research reports and publications',
+        'Invitations to student-focused webinars and seminars',
+        'Discounted fees for GoGMI trainings and workshops',
+        'Structured mentorship opportunities with professionals and researchers',
+        'Career development support (research skills, writing clinics, CV guidance)',
+        'Access to student networking platforms and discussion groups',
+        'Opportunities to volunteer or intern on GoGMI projects',
       ]
     },
     {
       id: 'associate',
-      name: 'Associate Membership (Early-Career)',
+      name: 'Associate Membership (Early Career)',
       price: 'GHS 500',
       period: '/year',
       popular: true,
+      description: 'For early-career professionals (1–5 years experience) seeking skills development, visibility, and networking.',
       features: [
-        'Certificate of Membership',
-        'Invitations to conferences',
-        'Preferential training fees',
-        'Stakeholder advisory opportunities',
-        'Access to research reports and publications',
-        'Participation in trainings and workshops'
+        'Official Certificate of Membership',
+        'Invitations to GoGMI conferences, seminars, and policy dialogues',
+        'Discounted access to professional trainings and workshops',
+        'Access to research reports, briefs, and policy publications',
+        'Career development programmes and capacity-building sessions',
+        'Opportunities to contribute to GoGMI blogs, research outputs, and junior committees',
+        'Networking with regional and international maritime professionals',
+        'Early access to GoGMI fellowships and project calls'
       ]
     },
     {
       id: 'professional',
-      name: 'Professional Membership (5-10 yrs)',
-      price: 'GHS 1000',
+      name: 'Professional Membership',
+      price: 'GHS 1,000',
       period: '/year',
+      subtitle: '5–10 years experience',
+      description: 'For mid-level professionals seeking influence, policy engagement, and regional visibility.',
       features: [
-        'Certificate of Membership',
-        'Invitations to conferences',
-        'Preferential training fees',
-        'Access to research reports and publications',
-        'Policy dialogue and exchange opportunities',
-        'Networking with regional experts'
+        'Official Certificate of Membership',
+        'Priority invitations to policy dialogues and expert roundtables',
+        'Access to GoGMI research outputs and policy briefs',
+        'Discounted access to advanced trainings and conferences',
+        'Opportunities to moderate sessions or speak at GoGMI events',
+        'Professional profile listing on the GoGMI website',
+        'Executive networking with regional experts and institutions'
       ]
     },
     {
       id: 'fellow',
-      name: 'Fellow Membership (Experts)',
-      price: 'GHS 1500',
+      name: 'Fellow Membership',
+      price: 'GHS 1,500',
       period: '/year',
+      subtitle: 'Senior experts',
+      description: 'For senior professionals and experts contributing to maritime research, policy, and governance.',
       features: [
-        'Certificate of Membership',
-        'All Professional benefits',
-        'Voting rights',
-        'Policy working groups participation',
-        'High-level roundtables engagement',
-        'Maritime Security Advice access'
-      ]
-    },
-
-{
-      id: 'honorary',
-      name: 'Honorary Membership',
-      price: 'By Invitation',
-      period: '',
-      features: [
-        'Recognition as key strategic partner',
-        'Engagement in strategic initiatives',
-        'Board and advisory meetings participation',
-        'Preferential strategic partnerships'
+        'Official Certificate of Fellowship',
+        'Participation and leadership in policy working groups',
+        'Access to high-level and closed-door policy roundtables',
+        'Opportunities to shape GoGMI research and policy agenda',
+        'Recognition as a GoGMI Fellow (website and publications)',
+        'Engagement in strategic advisory and maritime security discussions'
       ]
     }
-
   ];
 
   const institutionalPlans = [
     {
-      id: 'academic',
-      name: 'Academic & Research Institutions',
+      id: 'institution',
+      name: 'Institution Membership',
       price: 'GHS 10,000',
       period: '/year',
+      description: 'For universities, research centres, and think tanks.',
       features: [
-        'Certificate of Membership',
-        'All individual membership benefits',
-        'Joint capacity building opportunities',
-        'Joint policy projects',
-        'Training collaboration opportunities',
-        'Priority programme consideration'
+        'Official Institutional Membership Certificate',
+        'Access to GoGMI membership benefits for nominated staff and students',
+        'Joint research, training, and capacity-building programmes',
+        'Co-branded research outputs and policy publications',
+        'Opportunities for joint grant proposals and funded projects',
+        'Priority consideration for institutional partnerships and programmes',
+        'Institutional visibility on GoGMI platforms'
       ]
     },
     {
@@ -98,30 +116,29 @@ const Membership = () => {
       name: 'Corporate Membership',
       price: 'GHS 20,000',
       period: '/year',
+      description: 'For private sector organisations operating in maritime, logistics, energy, security, and related sectors.',
       features: [
-        'Certificate of Membership',
-        'All individual membership benefits',
-        'Company branding opportunities',
-        'Advisory Events Participation',
-        'Networking with regional organizations',
-        'Customized briefings on key issues'
+        'Official Corporate Membership Certificate',
+        'Corporate branding and visibility at GoGMI events and publications',
+        'Invitations to high-level advisory events and stakeholder dialogues',
+        'Access to customised briefings on maritime and ocean governance issues',
+        'Networking with regional and international partners',
+        'Opportunities to align corporate social responsibility (CSR) initiatives with GoGMI programmes'
       ]
     },
-
-
     {
-      id: 'honorary',
+      id: 'strategic',
       name: 'Strategic Partner',
-      price: 'By Invitation',
+      price: 'By Invitation Only',
       period: '',
+      description: 'For organisations with long-term strategic alignment with GoGMI mission.',
       features: [
-        'Recognition as key strategic partner',
-        'Engagement in strategic initiatives',
-        'Preferential strategic partnerships'
+        'Recognition as a GoGMI Strategic Partner',
+        'Co-creation and implementation of flagship initiatives',
+        'Engagement in strategic planning and policy influence',
+        'Priority collaboration on regional and international programmes'
       ]
     }
-
-    
   ];
 
   return (
@@ -142,7 +159,7 @@ const Membership = () => {
               Fast track your professional journey with GoGMI Membership
             </h1>
             <p className="text-xl text-white/90 leading-relaxed mb-8 font-semibold">
-              Join our maritime community to access exclusive research, engage with thought leaders, and expand your network across West Africa's maritime sector.
+              Join our maritime community to access exclusive research, engage with thought leaders, and expand your network across the Gulf of Guinea maritime sector.
             </p>
           </div>
         </div>
@@ -161,10 +178,10 @@ const Membership = () => {
                   GoGMI membership provides access to a vibrant community of maritime professionals, researchers, policymakers, and industry leaders across the Gulf of Guinea region.
                 </p>
                 <p>
-                  As a member, you become part of West Africa's premier maritime think tank, dedicated to advancing maritime security, sustainable blue economy development, and regional cooperation.
+                  As a member, you become part of the Gulf of Guinea premier maritime think tank, dedicated to advancing maritime security, sustainable blue economy development, and regional cooperation.
                 </p>
                 <p>
-                  Members gain exclusive access to cutting-edge research, policy briefs, training programs, and networking opportunities that connect you with experts across West and Central Africa.
+                  Members gain exclusive access to cutting-edge research, policy briefs, training programs, and networking opportunities that connect you with experts across the Gulf of Guinea.
                 </p>
               </div>
             </div>
@@ -204,7 +221,7 @@ const Membership = () => {
                 Professional Network
               </h3>
               <p className="text-base leading-relaxed font-semibold" style={{ color: '#4B5563' }}>
-                Connect with maritime professionals, researchers, and policymakers across West and Central Africa.
+                Connect with maritime professionals, researchers, and policymakers across the Gulf of Guinea.
               </p>
             </div>
 
@@ -225,7 +242,7 @@ const Membership = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Individual Membership
+              Individual Memberships
             </h2>
             <div className="w-20 h-1 rounded-full mx-auto" style={{ backgroundColor: '#8E3400' }}></div>
           </div>
@@ -245,11 +262,17 @@ const Membership = () => {
                 )}
                 
                 <div className="p-6">
-                  <h3 className="text-lg font-bold mb-2" style={{ color: '#132552', fontWeight: 700 }}>
+                  <h3 className="text-lg font-bold mb-1" style={{ color: '#132552', fontWeight: 700 }}>
                     {plan.name}
                   </h3>
                   
-                  <div className="mb-4">
+                  {plan.subtitle && (
+                    <p className="text-sm font-semibold mb-2" style={{ color: '#8E3400' }}>
+                      {plan.subtitle}
+                    </p>
+                  )}
+                  
+                  <div className="mb-3">
                     <div className="flex items-baseline gap-1">
                       <span className="text-2xl font-black" style={{ color: '#132552', fontWeight: 900 }}>
                         {plan.price}
@@ -260,11 +283,19 @@ const Membership = () => {
                     </div>
                   </div>
 
+                  <p className="text-xs leading-relaxed font-semibold mb-4" style={{ color: '#4B5563' }}>
+                    {plan.description}
+                  </p>
+
+                  <div className="mb-3">
+                    <p className="text-xs font-bold mb-2" style={{ color: '#132552' }}>Benefits</p>
+                  </div>
+
                   <ul className="space-y-2 mb-6">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#8E3400' }} />
-                        <span className="text-sm leading-relaxed font-semibold" style={{ color: '#4B5563' }}>
+                        <span className="text-xs leading-relaxed font-semibold" style={{ color: '#4B5563' }}>
                           {feature}
                         </span>
                       </li>
@@ -272,13 +303,13 @@ const Membership = () => {
                   </ul>
 
                   <button
-                    onClick={() => setSelectedPlan(plan.id)}
+                    onClick={() => handleApply(plan.name, plan.price)}
                     className="w-full py-2.5 rounded-lg font-bold transition-all text-sm"
                     style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
                   >
-                    Become Now
+                    Apply Now
                   </button>
                 </div>
               </div>
@@ -292,7 +323,7 @@ const Membership = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4" style={{ color: '#132552', fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Institutional Membership
+              Institutional Memberships
             </h2>
             <div className="w-20 h-1 rounded-full mx-auto" style={{ backgroundColor: '#8E3400' }}></div>
           </div>
@@ -308,7 +339,7 @@ const Membership = () => {
                     {plan.name}
                   </h3>
                   
-                  <div className="mb-4">
+                  <div className="mb-3">
                     <div className="flex items-baseline gap-1">
                       <span className="text-2xl font-black" style={{ color: '#132552', fontWeight: 900 }}>
                         {plan.price}
@@ -317,6 +348,14 @@ const Membership = () => {
                         {plan.period}
                       </span>
                     </div>
+                  </div>
+
+                  <p className="text-sm leading-relaxed font-semibold mb-4" style={{ color: '#4B5563' }}>
+                    {plan.description}
+                  </p>
+
+                  <div className="mb-3">
+                    <p className="text-xs font-bold mb-2" style={{ color: '#132552' }}>Benefits</p>
                   </div>
 
                   <ul className="space-y-2 mb-6">
@@ -331,13 +370,13 @@ const Membership = () => {
                   </ul>
 
                   <button
-                    onClick={() => setSelectedPlan(plan.id)}
+                    onClick={() => handleApply(plan.name, plan.price)}
                     className="w-full py-2.5 rounded-lg font-bold transition-all text-sm"
                     style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
                   >
-                    Become Now
+                    Apply Now
                   </button>
                 </div>
               </div>

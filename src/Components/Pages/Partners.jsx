@@ -370,7 +370,7 @@ const Partners = () => {
             Become a Partner
           </h2>
           <p className="text-xl mb-10 leading-relaxed" style={{ color: '#4B5563', fontWeight: 400 }}>
-            Join our network of leading organizations driving maritime excellence in West Africa. Together, we can create sustainable solutions for the Gulf of Guinea's blue economy.
+            Join our network of leading organizations driving maritime excellence in the Gulf of Guinea.
           </p>
           
           <div className="bg-[#F5F7FA] rounded-xl p-6 border border-gray-200 inline-block mb-8">

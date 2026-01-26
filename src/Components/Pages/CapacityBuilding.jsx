@@ -393,7 +393,7 @@ const CapacityBuilding = () => {
               Alumni Making Waves
             </h2>
             <p className="text-lg max-w-3xl mx-auto" style={{ fontWeight: 400, color: '#4B5563' }}>
-              Meet the graduates who are transforming Africa's maritime and blue economy sectors
+              Meet the professionals who are transforming The Gulf of Guinea maritime and blue economy sectors
             </p>
           </div>
 

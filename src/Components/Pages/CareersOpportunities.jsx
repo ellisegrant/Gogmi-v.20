@@ -12,8 +12,8 @@ const Careers = () => {
   const openPositions = [
     {
       id: 1,
-      title: 'Senior Maritime Policy Analyst',
-      category: 'Policy & Advocacy',
+      title: 'Executive Director ',
+      category: 'Strategic Leadership',
       type: 'Full-Time',
       location: 'Accra, Ghana',
       experience: '5-7 years',
@@ -24,7 +24,7 @@ const Careers = () => {
     },
     {
       id: 2,
-      title: 'Marine Research Scientist',
+      title: 'Head of Technical ',
       category: 'Research',
       type: 'Full-Time',
       location: 'Accra, Ghana',
@@ -36,8 +36,8 @@ const Careers = () => {
     },
     {
       id: 3,
-      title: 'Communications & Media Officer',
-      category: 'Communications',
+      title: 'Research Analyst ',
+      category: 'Research',
       type: 'Full-Time',
       location: 'Accra, Ghana',
       experience: '2-4 years',
@@ -46,42 +46,9 @@ const Careers = () => {
       requirements: ['Bachelors in Communications, Journalism, or related field', 'Proven content creation experience', 'Social media expertise', 'Excellent writing skills'],
       responsibilities: ['Develop communication strategies', 'Manage social media platforms', 'Create engaging content', 'Coordinate media relations']
     },
-    {
-      id: 4,
-      title: 'Maritime Security Research Intern',
-      category: 'Research',
-      type: 'Internship',
-      location: 'Remote/Hybrid',
-      experience: 'Entry Level',
-      deadline: 'November 30, 2024',
-      description: '6-month internship supporting maritime security research projects. Gain hands-on experience in policy analysis and stakeholder engagement.',
-      requirements: ['Enrolled in or recently completed relevant degree', 'Interest in maritime security', 'Research and writing skills', 'Self-motivated and eager to learn'],
-      responsibilities: ['Support research activities', 'Conduct literature reviews', 'Assist in data collection', 'Prepare research summaries']
-    },
-    {
-      id: 5,
-      title: 'Finance & Grants Manager',
-      category: 'Finance',
-      type: 'Full-Time',
-      location: 'Accra, Ghana',
-      experience: '5+ years',
-      deadline: 'December 5, 2024',
-      description: 'Oversee financial operations and manage grant proposals and reporting. Ensure financial sustainability and compliance.',
-      requirements: ['Degree in Finance, Accounting, or related field', 'Grant management experience', 'Strong financial analysis skills', 'Non-profit sector experience preferred'],
-      responsibilities: ['Manage organizational finances', 'Develop grant proposals', 'Ensure compliance', 'Financial reporting']
-    },
-    {
-      id: 6,
-      title: 'Community Engagement Volunteer',
-      category: 'Operations',
-      type: 'Volunteer',
-      location: 'Various Locations',
-      experience: 'No experience required',
-      deadline: 'Ongoing',
-      description: 'Support community-based maritime initiatives. Work with coastal communities on sustainable development projects.',
-      requirements: ['Passion for community development', 'Good interpersonal skills', 'Flexibility and adaptability', 'Commitment to mission'],
-      responsibilities: ['Support community programs', 'Facilitate workshops', 'Document activities', 'Engage with local stakeholders']
-    }
+    
+  
+  
   ];
 
   const coreValues = [
@@ -140,7 +107,7 @@ const Careers = () => {
             Careers at GOGMI
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8" style={{ fontWeight: 400 }}>
-            Be part of a team transforming West Africa's maritime future
+            Be part of a team transforming The Future of the Gulf of Guinea Maritime Domain
           </p>
 
           {/* Quick Stats */}
@@ -149,7 +116,7 @@ const Careers = () => {
               { number: '50+', label: 'Team Members' },
               { number: '15', label: 'Nationalities' },
               { number: '6', label: 'Open Positions' },
-              { number: '20+', label: 'Countries' }
+           
             ].map((stat, idx) => (
               <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <div className="text-3xl font-bold text-[#8E3400] mb-1" style={{ fontWeight: 900 }}>{stat.number}</div>

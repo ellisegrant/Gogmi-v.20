@@ -352,7 +352,7 @@ const Advocacy = () => {
             Ready to Make an Impact?
           </h2>
           <p className="text-xl mb-10 max-w-2xl mx-auto leading-relaxed" style={{ fontWeight: 400, color: 'rgba(255, 255, 255, 0.9)' }}>
-            Partner with us to shape maritime policy and drive sustainable development across West Africa
+            Partner with us to shape maritime policy and drive sustainable development across the Gulf of Guinea .
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <Link

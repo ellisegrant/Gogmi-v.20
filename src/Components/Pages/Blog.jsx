@@ -365,7 +365,7 @@ const Blog = () => {
             News & Blog
           </h1>
           <p className="text-xl text-[#F5F7FA]/90 max-w-3xl mx-auto" style={{ fontWeight: 400 }}>
-            Stay updated with the latest maritime news, research insights, and success stories from across West Africa
+            Stay updated with the latest maritime news, research insights, and success stories from across the Gulf of Guinea region.
           </p>
         </div>
       </section>

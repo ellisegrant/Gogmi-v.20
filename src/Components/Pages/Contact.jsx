@@ -164,14 +164,16 @@ const Contact = () => {
                 icon: <Phone className="w-8 h-8" />,
                 title: 'Call Us',
                 info: '+233 50 4953400',
-                subinfo: 'Mon-Fri 8:30 am-5pm GMT',
+                subinfo: 'Mon-Fri : 8:30 am-4:30pm GMT',
+                
+                
                 color: 'from-[#132552] to-[#1A336C]'
               },
               {
                 icon: <Mail className="w-8 h-8" />,
                 title: 'Email Us',
                 info: 'info@gogmi.org.gh',
-                subinfo: 'We reply within 24 hours',
+                subinfo: 'We reply within 72 hours',
                 color: 'from-[#8E3400] to-[#6B2700]'
               },
               {
@@ -240,7 +242,7 @@ const Contact = () => {
                       className={`w-full px-4 py-3 bg-white border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400] focus:border-transparent text-[#132552] ${
                         errors.name ? 'border-red-300' : 'border-[#8E3400]/30'
                       }`}
-                      placeholder="Jonas Boss"
+                      placeholder="James Bond"
                       style={{ fontWeight: 400 }}
                     />
                     {errors.name && (
@@ -263,7 +265,7 @@ const Contact = () => {
                       className={`w-full px-4 py-3 bg-white border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400] focus:border-transparent text-[#132552] ${
                         errors.email ? 'border-red-300' : 'border-[#8E3400]/30'
                       }`}
-                      placeholder="jonas@example.com"
+                      placeholder="info@example.com"
                       style={{ fontWeight: 400 }}
                     />
                     {errors.email && (
@@ -367,7 +369,7 @@ const Contact = () => {
                 </div>
                 <div className="space-y-4">
                   {[
-                    { days: 'Monday - Friday', hours: '8:30 AM - 5:00 PM' },
+                    { days: 'Monday - Friday', hours: '8:30 AM - 4:30 PM' },
                     { days: 'Saturday', hours: 'By Appointment' },
                     { days: 'Sunday', hours: 'Closed' }
                   ].map((schedule, idx) => (
