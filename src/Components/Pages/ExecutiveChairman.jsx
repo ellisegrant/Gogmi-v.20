@@ -189,7 +189,7 @@ const ExecutiveChairman = () => {
                     <div className="flex flex-col gap-2">
                       <h3 className="text-base font-bold leading-tight" 
                           style={{ color: '#132552', fontWeight: 700 }}>
-                        Lieutenant Commander Kofi Amponsah Duodu
+                        Commander Kofi Amponsah Duodu
                       </h3>
 
                       <div className="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white border border-gray-200 w-full">
