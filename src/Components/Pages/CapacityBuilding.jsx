@@ -188,16 +188,12 @@ const CapacityBuilding = () => {
 
             <h1 className="text-5xl sm:text-6xl md:text-7xl leading-tight mb-8"
                 style={{ fontWeight: 900, letterSpacing: '-0.03em' }}>
-             Discover Our Capacity-Building
-            Portfolio
+             Capacity Building 
             </h1>
 
             <p className="text-xl md:text-2xl leading-relaxed mb-10" style={{ fontWeight: 400, color: 'rgba(255, 255, 255, 0.95)' }}>
-            GoGMI is committed to improving maritime security and supporting sustainable development 
-            through targeted capacity-building efforts. Our training programmes provide practical 
-            knowledge and engage stakeholders across the Gulf of Guinea to strengthen their ability to implement the Yaoundé Architecture and other key maritime security frameworks. Each programme 
-            is designed for flexible participation—both virtual and in-person—and 
-            tailored to audiences within the region.
+            We specialize in training programs and mentoring initiatives for marine professionals, stakeholders, women,
+             and youth in the blue economy, as well as maritime safety and security.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

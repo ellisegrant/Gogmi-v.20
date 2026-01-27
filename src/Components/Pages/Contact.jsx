@@ -128,7 +128,7 @@ const Contact = () => {
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="public\contactus.jpg" 
+            src="/contactus.jpg" 
             alt="Contact Background"
             className="w-full h-full object-cover"
           />
@@ -165,22 +165,20 @@ const Contact = () => {
                 title: 'Call Us',
                 info: '+233 50 4953400',
                 subinfo: 'Mon-Fri : 8:30 am-4:30pm GMT',
-                
-                
                 color: 'from-[#132552] to-[#1A336C]'
               },
               {
                 icon: <Mail className="w-8 h-8" />,
                 title: 'Email Us',
                 info: 'info@gogmi.org.gh',
-                subinfo: 'We reply within 72 hours',
+                subinfo: 'We reply within 48 hours',
                 color: 'from-[#8E3400] to-[#6B2700]'
               },
               {
                 icon: <MapPin className="w-8 h-8" />,
                 title: 'Visit Us',
-                info: 'GL-108-0038, Tse addo La Dade Kotopon,',
-                subinfo: 'Burma Camp, Accra',
+                info: 'GL-108-0038, Tse addo, ',
+                subinfo: 'La Dade Kotopon, Burma Camp, Accra',
                 color: 'from-[#1A336C] to-[#132552]'
               }
             ].map((item, idx) => (
@@ -513,7 +511,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
-
-

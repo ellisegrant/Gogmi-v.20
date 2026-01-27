@@ -20,9 +20,9 @@ const Home = () => {
   const festiveOverlays = [
     {
       enabled: true,                          // Turn on/off
-      scheduledDate: '2025-12-11',            // When to show (YYYY-MM-DD)
-      image: '/farmers.jpg',           // Image path (upload to /public folder)
-      displayDuration: 5,                     // How long to show (seconds)
+      scheduledDate: '2025-12-13',            // When to show (YYYY-MM-DD) - UPDATED TO TODAY
+      image: '/newyear.jpeg',           // Image path (upload to /public folder)
+      displayDuration: 30,                     // How long to show (seconds)
       name: 'December 2025',                  // Internal reference name
       testing: true                           // SET TO TRUE FOR TESTING (bypasses localStorage)
     },
@@ -50,6 +50,28 @@ const Home = () => {
 
   // Check if there's a scheduled overlay for today
   React.useEffect(() => {
+    // ============================================================
+    // PERMANENT DISPLAY MODE FOR TESTING/REVIEW
+    // ============================================================
+    // Find the first enabled overlay for permanent display
+    const permanentOverlay = festiveOverlays.find(overlay => overlay.enabled);
+
+    if (permanentOverlay) {
+      setActiveFestiveImage(permanentOverlay.image);
+      setOverlayDuration(permanentOverlay.displayDuration);
+      setShowFestiveOverlay(true);
+
+      // Auto-hide after specified duration
+      const timer = setTimeout(() => {
+        setShowFestiveOverlay(false);
+      }, permanentOverlay.displayDuration * 1000);
+
+      return () => clearTimeout(timer);
+    }
+
+    /* ============================================================
+    // ORIGINAL DATE-BASED LOGIC (USE THIS FOR PRODUCTION)
+    // ============================================================
     const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
     
     // Find if any overlay is scheduled for today
@@ -80,6 +102,7 @@ const Home = () => {
         return () => clearTimeout(timer);
       }
     }
+    */ // END ORIGINAL LOGIC
   }, []);
 
   // Manual close function (X button)
@@ -300,8 +323,11 @@ const Home = () => {
               
               <div className="space-y-6">
                 <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                 The Gulf of Guinea Maritime Institute (GoGMI) is a non-profit thinktank organization in Ghana. The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact,
-                  share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region.
+                 Established in 2010, The Gulf of Guinea Maritime Institute (GoGMI) is a think - tank organization in Ghana. 
+                 The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact, 
+                 share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region. The Institute’s core 
+                 mandate is strategic maritime research, advocacy and capacity building in the areas of maritime
+                  security, safety and advocacy for sustainable Blue Economy in Ghana and the Gulf of Guinea (GoG) maritime space at large. 
                 </p>
                
               </div>

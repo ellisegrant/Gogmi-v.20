@@ -31,14 +31,13 @@ const Footer = () => {
               </div>
             </div>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-gray-400" style={{ fontWeight: 400 }}>
-                <MapPin className="w-5 h-5 text-[#8E3400] flex-shrink-0" />
-                <span>GL-108-0038, Tse addo La Dade</span>
-                
-  
+              <div className="flex items-start space-x-3 text-gray-400" style={{ fontWeight: 400 }}>
+                <MapPin className="w-5 h-5 text-[#8E3400] flex-shrink-0 mt-0.5" />
+                <div>
+                  <div>GL-108-0038, Tse addo La Dade, Kotopon</div>
+                  <div>Burma Camp, Accra</div>
+                </div>
               </div>
-              <div className="flex items-center space-x-3 text-gray-400" style={{ fontWeight: 400 }} ><span>Burma Camp, Accra</span></div>
-              <div  className="flex items-center space-x-3 text-gray-400"><span>Kotopon,</span></div>
               <div className="flex items-center space-x-3 text-gray-400" style={{ fontWeight: 400 }}>
                 <Mail className="w-5 h-5 text-[#8E3400] flex-shrink-0" />
                 <a href="mailto:info@gogmi.org.gh" className="hover:text-[#8E3400] transition-colors">
@@ -111,7 +110,7 @@ const Footer = () => {
               <h3 className="font-bold text-lg mb-4" style={{ fontWeight: 700 }}>Connect With Us</h3>
               <div className="flex space-x-4">
                 <a 
-                  href="https://www.linkedin.com/search/results/all/?keywords=Gulf%20of%20Guinea%20Maritime%20Institute&origin=HISTORY&sid=5~z" 
+                  href="https://www.linkedin.com/company/gulf-of-guinea-maritime-institute/" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all hover:scale-110"
@@ -120,7 +119,7 @@ const Footer = () => {
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a 
-                  href="https://x.com/GoGMIOfficial" 
+                  href="https://twitter.com/GoGMI_Official" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-sky-500 hover:text-white transition-all hover:scale-110"
@@ -138,7 +137,7 @@ const Footer = () => {
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a 
-                  href="https://www.youtube.com/@gulfofguineamaritimeinstitute" 
+                  href="https://www.youtube.com/@GoGMI_Official" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-red-600 hover:text-white transition-all hover:scale-110"
@@ -147,7 +146,7 @@ const Footer = () => {
                   <Youtube className="w-5 h-5" />
                 </a>
                 <a 
-                  href="https://whatsapp.com/channel/0029Vb8O9l94Spk9T1nYig06" 
+                  href="https://wa.me/233504953400" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110"

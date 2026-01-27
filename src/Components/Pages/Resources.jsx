@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
-import { FileText, Download, Search, Calendar, Eye, BookOpen, Video, X, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { FileText, Download, Search, Calendar, Eye, BookOpen, Video, X, ExternalLink, Lock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Resources = () => {
+  const navigate = useNavigate();
   const [selectedType, setSelectedType] = useState('Strategic Documents');
   const [searchTerm, setSearchTerm] = useState('');
   const [previewResource, setPreviewResource] = useState(null);
+  const [showMembershipModal, setShowMembershipModal] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isMember, setIsMember] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+
+  const checkAuthStatus = () => {
+    const token = localStorage.getItem('gogmi_token');
+    const membership = localStorage.getItem('gogmi_membership');
+    
+    setIsAuthenticated(!!token);
+    setIsMember(!!membership);
+    setLoading(false);
+  };
 
   const resources = [
     // ===== STRATEGIC DOCUMENTS =====
@@ -374,46 +393,134 @@ const Resources = () => {
     return matchesType && matchesSearch;
   });
 
-  // Download function
-  const handleDownload = (resource) => {
+  const handleDownload = async (resource) => {
+    if (!isAuthenticated) {
+      navigate('/membership');
+      return;
+    }
+
+    if (!isMember) {
+      setShowMembershipModal(true);
+      return;
+    }
+
     try {
-      console.log(`🔄 Starting download: ${resource.title}`);
-      const encodedUrl = resource.downloadUrl.split('/').map(part => encodeURIComponent(part)).join('/');
-      const link = document.createElement('a');
-      link.href = encodedUrl;
-      const fileName = resource.downloadUrl.split('/').pop();
-      link.download = fileName;
-      link.setAttribute('type', 'application/pdf');
-      link.setAttribute('target', '_blank');
-      document.body.appendChild(link);
-      console.log(`💾 Triggering download for: ${fileName}`);
-      link.click();
-      document.body.removeChild(link);
-      console.log(`✅ Download initiated: ${fileName}`);
+      const token = localStorage.getItem('gogmi_token');
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost/backend/api';
       
-      setTimeout(() => {
-        alert(`✅ Download complete!\n\nFile: ${fileName}`);
-      }, 500);
-      
+      const response = await fetch(`${apiUrl}/resources/check-access.php`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          resourceId: resource.id,
+          resourceTitle: resource.title
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success && data.data.canDownload) {
+        const link = document.createElement('a');
+        link.href = resource.downloadUrl;
+        link.download = resource.downloadUrl.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setTimeout(() => {
+          alert(`Download complete!\n\nFile: ${resource.title}`);
+        }, 500);
+      } else {
+        throw new Error(data.message);
+      }
+
     } catch (error) {
-      console.error('❌ Download error:', error);
-      alert(`Download failed!\n\nError: ${error.message}`);
+      console.error('Download error:', error);
+      
+      if (error.message.includes('membership')) {
+        setShowMembershipModal(true);
+      } else {
+        alert(`Download failed: ${error.message}`);
+      }
     }
   };
 
-  // Preview function
   const handlePreview = (resource) => {
     window.open(resource.downloadUrl, '_blank');
   };
 
-  // Preview Modal
+  const MembershipModal = ({ onClose }) => {
+    return (
+      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <div className="p-8 text-center">
+            <div className="bg-[#8E3400]/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Lock className="w-10 h-10 text-[#8E3400]" />
+            </div>
+            
+            <h2 className="text-3xl font-bold text-[#132552] mb-4" style={{ fontWeight: 900 }}>
+              Members Only Content
+            </h2>
+            
+            <p className="text-lg text-[#1F2933] mb-6" style={{ fontWeight: 400 }}>
+              Downloads are exclusively available to our members. Preview the document to see what you'll get, then join us to unlock full access to our entire resource library.
+            </p>
+
+            <div className="bg-[#F5F7FA] rounded-xl p-6 mb-8">
+              <h3 className="text-lg font-bold text-[#132552] mb-3" style={{ fontWeight: 700 }}>
+                Membership Benefits
+              </h3>
+              <ul className="text-left space-y-2">
+                <li className="flex items-start gap-2 text-[#1F2933]" style={{ fontWeight: 400 }}>
+                  <span className="text-[#8E3400] mt-1">✓</span>
+                  <span>Download all strategic documents and reports</span>
+                </li>
+                <li className="flex items-start gap-2 text-[#1F2933]" style={{ fontWeight: 400 }}>
+                  <span className="text-[#8E3400] mt-1">✓</span>
+                  <span>Access exclusive academic papers and research</span>
+                </li>
+                <li className="flex items-start gap-2 text-[#1F2933]" style={{ fontWeight: 400 }}>
+                  <span className="text-[#8E3400] mt-1">✓</span>
+                  <span>Receive updates on new publications</span>
+                </li>
+                <li className="flex items-start gap-2 text-[#1F2933]" style={{ fontWeight: 400 }}>
+                  <span className="text-[#8E3400] mt-1">✓</span>
+                  <span>Join our maritime community network</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={onClose}
+                className="flex-1 bg-gray-100 text-gray-900 px-6 py-3 rounded-xl font-bold transition-all hover:bg-gray-200"
+                style={{ fontWeight: 700 }}
+              >
+                Close
+              </button>
+              <button
+                onClick={() => navigate('/membership')}
+                className="flex-1 bg-[#8E3400] text-white px-6 py-3 rounded-xl font-bold transition-all hover:bg-[#6B2700] shadow-lg hover:shadow-xl"
+                style={{ fontWeight: 700 }}
+              >
+                Become a Member
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const PreviewModal = ({ resource, onClose }) => {
     if (!resource) return null;
 
     return (
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
         <div className="bg-white rounded-2xl max-w-4xl w-full my-8 shadow-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
-          {/* Modal Header */}
           <div className="relative">
             <img 
               src={resource.thumbnail} 
@@ -447,9 +554,7 @@ const Resources = () => {
             </div>
           </div>
 
-          {/* Modal Body */}
           <div className="p-8">
-            {/* Quick Info */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 pb-8 border-b border-gray-200">
               <div>
                 <p className="text-xs text-gray-500 mb-1" style={{ fontWeight: 600 }}>Published</p>
@@ -471,7 +576,20 @@ const Resources = () => {
               </div>
             </div>
 
-            {/* Description */}
+            {!isMember && (
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+                <Lock className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold text-amber-900 mb-1" style={{ fontWeight: 600 }}>
+                    Download requires membership
+                  </p>
+                  <p className="text-sm text-amber-800" style={{ fontWeight: 400 }}>
+                    You can preview this document, but downloads are exclusive to members.
+                  </p>
+                </div>
+              </div>
+            )}
+
             <div className="mb-8">
               <h3 className="text-lg font-bold text-gray-900 mb-3" style={{ fontWeight: 700 }}>Overview</h3>
               <p className="text-gray-600 leading-relaxed" style={{ fontWeight: 400 }}>
@@ -479,7 +597,6 @@ const Resources = () => {
               </p>
             </div>
 
-            {/* Key Topics */}
             {resource.keyTopics && (
               <div className="mb-8">
                 <h3 className="text-lg font-bold text-gray-900 mb-3" style={{ fontWeight: 700 }}>What's Included</h3>
@@ -494,15 +611,23 @@ const Resources = () => {
               </div>
             )}
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-200">
               <button 
                 onClick={() => handleDownload(resource)}
                 className="flex-1 bg-[#8E3400] text-white px-6 py-4 rounded-xl font-bold transition-all hover:bg-[#6B2700] flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105"
                 style={{ fontWeight: 700 }}
               >
-                <Download className="w-5 h-5" />
-                <span>Download Resource</span>
+                {isMember ? (
+                  <>
+                    <Download className="w-5 h-5" />
+                    <span>Download Resource</span>
+                  </>
+                ) : (
+                  <>
+                    <Lock className="w-5 h-5" />
+                    <span>Unlock Download</span>
+                  </>
+                )}
               </button>
               <button 
                 onClick={() => handlePreview(resource)}
@@ -519,9 +644,20 @@ const Resources = () => {
     );
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-xl">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full pt-20" style={{ fontFamily: 'Inter, sans-serif' }}>
-      {/* Preview Modal */}
+      {showMembershipModal && (
+        <MembershipModal onClose={() => setShowMembershipModal(false)} />
+      )}
+
       {previewResource && (
         <PreviewModal 
           resource={previewResource} 
@@ -529,7 +665,6 @@ const Resources = () => {
         />
       )}
 
-      {/* Hero */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <img 
@@ -549,13 +684,18 @@ const Resources = () => {
           <h1 className="text-5xl md:text-6xl font-bold text-[#F5F7FA] mb-6" style={{ fontWeight: 900 }}>
             Resources & Publications
           </h1>
-          <p className="text-xl text-[#F5F7FA]/90 max-w-3xl mx-auto" style={{ fontWeight: 400 }}>
+          <p className="text-xl text-[#F5F7FA]/90 max-w-3xl mx-auto mb-4" style={{ fontWeight: 400 }}>
             Access our library of strategic documents, academic papers, and research reports
           </p>
+          {!isMember && (
+            <p className="text-sm text-[#F5F7FA]/70 flex items-center justify-center gap-2" style={{ fontWeight: 400 }}>
+              <Lock className="w-4 h-4" />
+              <span>Downloads require membership • Preview available for all</span>
+            </p>
+          )}
         </div>
       </section>
 
-      {/* Stats */}
       <section className="relative -mt-16 z-20 px-6 pb-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-3 gap-4">
@@ -574,7 +714,6 @@ const Resources = () => {
         </div>
       </section>
 
-      {/* Search and Filter */}
       <section className="py-12 bg-[#F5F7FA] border-b sticky top-20 z-30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
@@ -610,7 +749,6 @@ const Resources = () => {
         </div>
       </section>
 
-      {/* Resources Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           {filteredResources.length === 0 ? (
@@ -639,7 +777,6 @@ const Resources = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     
-                    {/* Video Play Icon Overlay */}
                     {resource.type === 'Videos' && (
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="bg-[#8E3400]/90 rounded-full p-4 group-hover:scale-110 transition-transform">
@@ -648,13 +785,17 @@ const Resources = () => {
                       </div>
                     )}
                     
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-[#132552] text-[#F5F7FA] px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 700 }}>
-                        {resource.type}
-                      </span>
-                    </div>
+                    {!isMember && resource.type !== 'Videos' && (
+                      <div className="absolute top-4 left-4">
+                        <span className="bg-[#8E3400] text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1" style={{ fontWeight: 700 }}>
+                          <Lock className="w-3 h-3" />
+                          Members Only
+                        </span>
+                      </div>
+                    )}
+                    
                     <div className="absolute top-4 right-4">
-                      <span className="bg-[#8E3400] text-white px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 700 }}>
+                      <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 700 }}>
                         {resource.fileType}
                       </span>
                     </div>
@@ -706,7 +847,6 @@ const Resources = () => {
                       )}
                     </div>
 
-                    {/* Action Buttons */}
                     {resource.type === 'Videos' ? (
                       <button 
                         onClick={(e) => {
@@ -731,11 +871,15 @@ const Resources = () => {
                         </button>
                         <button 
                           onClick={() => handleDownload(resource)}
-                          className="flex-1 bg-[#8E3400] text-white py-3 rounded-lg font-semibold hover:bg-[#6B2700] transition-all flex items-center justify-center space-x-2 shadow-lg"
+                          className={`flex-1 py-3 rounded-lg font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg ${
+                            isMember 
+                              ? 'bg-[#8E3400] text-white hover:bg-[#6B2700]'
+                              : 'bg-gray-400 text-white cursor-not-allowed hover:bg-gray-500'
+                          }`}
                           style={{ fontWeight: 700 }}
                         >
-                          <Download className="w-5 h-5" />
-                          <span>Download</span>
+                          {isMember ? <Download className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
+                          <span>{isMember ? 'Download' : 'Locked'}</span>
                         </button>
                       </div>
                     )}
@@ -747,18 +891,40 @@ const Resources = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-[#F5F7FA] to-white">
+      <section className="py-24 bg-gradient-to-br from-[#132552] to-[#1e3a7a]">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-[#132552] mb-6" style={{ fontWeight: 900 }}>
-            Need Custom Research?
-          </h2>
-          <p className="text-xl text-[#1F2933] mb-10" style={{ fontWeight: 400 }}>
-            We offer customized research and consulting services tailored to your specific maritime needs
-          </p>
-          <button className="bg-[#8E3400] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#6B2700] transition-all shadow-lg hover:shadow-xl hover:scale-105" style={{ fontWeight: 700 }}>
-            Request Custom Research
-          </button>
+          {!isMember ? (
+            <>
+              <div className="bg-[#8E3400]/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Lock className="w-8 h-8 text-[#8E3400]" />
+              </div>
+              <h2 className="text-4xl font-bold text-white mb-6" style={{ fontWeight: 900 }}>
+                Unlock Full Access
+              </h2>
+              <p className="text-xl text-white/90 mb-10" style={{ fontWeight: 400 }}>
+                Join our community and get unlimited access to all resources, reports, and exclusive content
+              </p>
+              <button 
+                onClick={() => navigate('/membership')}
+                className="bg-[#8E3400] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#6B2700] transition-all shadow-lg hover:shadow-xl hover:scale-105" 
+                style={{ fontWeight: 700 }}
+              >
+                Become a Member
+              </button>
+            </>
+          ) : (
+            <>
+              <h2 className="text-4xl font-bold text-white mb-6" style={{ fontWeight: 900 }}>
+                Need Custom Research?
+              </h2>
+              <p className="text-xl text-white/90 mb-10" style={{ fontWeight: 400 }}>
+                We offer customized research and consulting services tailored to your specific maritime needs
+              </p>
+              <button className="bg-[#8E3400] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#6B2700] transition-all shadow-lg hover:shadow-xl hover:scale-105" style={{ fontWeight: 700 }}>
+                Request Custom Research
+              </button>
+            </>
+          )}
         </div>
       </section>
     </div>

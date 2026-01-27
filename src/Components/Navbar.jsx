@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, User, LogOut } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [closeTimeout, setCloseTimeout] = useState(null);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const [currentPath, setCurrentPath] = useState("/");
+  
+  const { isAuthenticated, user, isMember, logout } = useAuth();
 
   useEffect(() => {
     setCurrentPath(location.pathname || "/");
@@ -86,6 +90,14 @@ const Navbar = () => {
     }
     setMobileMenuOpen(false);
     setDropdownOpen(null);
+    setUserDropdownOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    setUserDropdownOpen(false);
+    setMobileMenuOpen(false);
+    navigate('/');
   };
 
   return (
@@ -192,14 +204,95 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block flex-shrink-0 mr-4">
-          <button
-            onClick={() => handleNavClick("/contact")}
-            className="bg-[#8E3400] text-white px-6 py-2.5 rounded-lg hover:bg-[#132552] transition-all shadow-lg hover:scale-105 whitespace-nowrap"
-            style={{ fontWeight: 600 }}
-          >
-            Get Started
-          </button>
+        <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+          {!isAuthenticated ? (
+            <>
+              <button
+                onClick={() => handleNavClick("/login")}
+                className={`px-4 py-2 rounded-lg transition-all whitespace-nowrap ${
+                  scrolled
+                    ? "text-[#1F2933] hover:bg-[#8E3400]/10"
+                    : "text-[#F5F7FA] hover:bg-[#F5F7FA]/20"
+                }`}
+                style={{ fontWeight: 600 }}
+              >
+                Member Login
+              </button>
+              <button
+                onClick={() => handleNavClick("/membership")}
+                className="bg-[#8E3400] text-white px-6 py-2.5 rounded-lg hover:bg-[#6B2700] transition-all shadow-lg hover:scale-105 whitespace-nowrap"
+                style={{ fontWeight: 600 }}
+              >
+                Join Now
+              </button>
+            </>
+          ) : (
+            <div className="relative">
+              <button
+                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all whitespace-nowrap ${
+                  scrolled
+                    ? "bg-[#132552] text-[#F5F7FA]"
+                    : "bg-[#F5F7FA]/30 text-[#F5F7FA]"
+                }`}
+                style={{ fontWeight: 600 }}
+              >
+                <User className="w-4 h-4" />
+                <span className="max-w-[150px] truncate">{user?.full_name}</span>
+                {isMember && (
+                  <span className="ml-1 px-2 py-0.5 text-xs bg-[#8E3400] text-white rounded-full">
+                    Member
+                  </span>
+                )}
+                <ChevronDown className={`w-4 h-4 transition-transform ${userDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {userDropdownOpen && (
+                <div className="absolute top-full right-0 mt-2 w-56 bg-[#132552] rounded-xl shadow-2xl py-2 border border-[#8E3400]/30 z-50">
+                  <div className="px-4 py-3 border-b border-[#F5F7FA]/10">
+                    <p className="text-sm text-[#F5F7FA] font-semibold truncate" style={{ fontWeight: 600 }}>
+                      {user?.full_name}
+                    </p>
+                    <p className="text-xs text-[#F5F7FA]/70 truncate" style={{ fontWeight: 400 }}>
+                      {user?.email}
+                    </p>
+                    {isMember && (
+                      <p className="text-xs text-[#8E3400] mt-1" style={{ fontWeight: 600 }}>
+                        Active Member
+                      </p>
+                    )}
+                  </div>
+                  
+                  {!isMember && (
+                    <button
+                      onClick={() => handleNavClick('/membership')}
+                      className="block w-full text-left px-4 py-2.5 text-[#F5F7FA] hover:bg-[#8E3400] hover:text-white transition-colors"
+                      style={{ fontWeight: 400 }}
+                    >
+                      Become a Member
+                    </button>
+                  )}
+                  
+                  <button
+                    onClick={() => handleNavClick('/resources')}
+                    className="block w-full text-left px-4 py-2.5 text-[#F5F7FA] hover:bg-[#8E3400] hover:text-white transition-colors"
+                    style={{ fontWeight: 400 }}
+                  >
+                    My Resources
+                  </button>
+                  
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-4 py-2.5 text-[#F5F7FA] hover:bg-red-600 hover:text-white transition-colors flex items-center gap-2"
+                    style={{ fontWeight: 400 }}
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         <button
@@ -259,13 +352,70 @@ const Navbar = () => {
               )
             )}
 
-            <button
-              onClick={() => handleNavClick("/contact")}
-              className="block w-full text-center bg-[#8E3400] text-white px-6 py-3 rounded-lg hover:bg-[#132552] transition-all shadow-lg"
-              style={{ fontWeight: 600 }}
-            >
-              Get Started
-            </button>
+            {!isAuthenticated ? (
+              <>
+                <button
+                  onClick={() => handleNavClick("/login")}
+                  className="block w-full text-center bg-white border-2 border-[#132552] text-[#132552] px-6 py-3 rounded-lg hover:bg-gray-50 transition-all"
+                  style={{ fontWeight: 600 }}
+                >
+                  Member Login
+                </button>
+                <button
+                  onClick={() => handleNavClick("/membership")}
+                  className="block w-full text-center bg-[#8E3400] text-white px-6 py-3 rounded-lg hover:bg-[#6B2700] transition-all shadow-lg"
+                  style={{ fontWeight: 600 }}
+                >
+                  Join Now
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="bg-[#132552] rounded-lg p-4 mt-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <User className="w-5 h-5 text-[#F5F7FA]" />
+                    <p className="text-sm text-[#F5F7FA] font-semibold truncate" style={{ fontWeight: 600 }}>
+                      {user?.full_name}
+                    </p>
+                  </div>
+                  <p className="text-xs text-[#F5F7FA]/70 truncate mb-2" style={{ fontWeight: 400 }}>
+                    {user?.email}
+                  </p>
+                  {isMember && (
+                    <span className="inline-block px-3 py-1 text-xs bg-[#8E3400] text-white rounded-full">
+                      Active Member
+                    </span>
+                  )}
+                </div>
+
+                {!isMember && (
+                  <button
+                    onClick={() => handleNavClick('/membership')}
+                    className="block w-full text-center bg-[#8E3400] text-white px-6 py-3 rounded-lg hover:bg-[#6B2700] transition-all"
+                    style={{ fontWeight: 600 }}
+                  >
+                    Become a Member
+                  </button>
+                )}
+
+                <button
+                  onClick={() => handleNavClick('/resources')}
+                  className="block w-full text-left py-3 px-4 text-[#1F2933] hover:bg-[#8E3400]/10 rounded-lg transition-all"
+                  style={{ fontWeight: 600 }}
+                >
+                  My Resources
+                </button>
+
+                <button
+                  onClick={handleLogout}
+                  className="block w-full text-left py-3 px-4 text-red-600 hover:bg-red-50 rounded-lg transition-all flex items-center gap-2"
+                  style={{ fontWeight: 600 }}
+                >
+                  <LogOut className="w-4 h-4" />
+                  Logout
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}

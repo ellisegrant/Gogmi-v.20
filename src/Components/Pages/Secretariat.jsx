@@ -90,8 +90,14 @@ const Secretariat = () => {
           <div className="max-w-4xl">
             <h1 className="text-5xl sm:text-6xl md:text-7xl leading-tight mb-8"
                 style={{ fontWeight: 900, letterSpacing: '-0.02em' }}>
-              Secretariat Services
+             Secretarial Services (Consultancy)
             </h1>
+
+             <p className="text-5xl sm:text-2xl md:text-2xl leading-tight mb-8"
+                style={{ fontWeight: 900, letterSpacing: '-0.02em' }}>
+            We provide expert advisory services to governments, organizations, corporate bodies,
+             and individuals on maritime strategy, policy development, and regional partnerships.
+            </p>
 
            
 
