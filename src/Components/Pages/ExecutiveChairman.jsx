@@ -206,7 +206,7 @@ const ExecutiveChairman = () => {
               </div>
             </div>
 
-            {/* Board Member 2 */}
+            {/* Board Member 2 - FIXED IMAGE POSITIONING */}
             <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
               <div className="relative bg-white rounded-lg overflow-hidden shadow-md border border-gray-100">
                 <div className="aspect-[5/4] relative">
@@ -214,7 +214,7 @@ const ExecutiveChairman = () => {
                     src="/Alberta.jpg" 
                     alt="Board Member"
                     className="w-full h-full object-cover object-center"
-                    style={{ objectPosition: 'center 30%' }}
+                    style={{ objectPosition: 'center 10%' }}
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/95 to-transparent p-3">
                     <div className="flex flex-col gap-2">
