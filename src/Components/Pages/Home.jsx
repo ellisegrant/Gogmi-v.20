@@ -323,11 +323,9 @@ const Home = () => {
               
               <div className="space-y-6">
                 <p className="text-lg leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-                 Established in 2010, The Gulf of Guinea Maritime Institute (GoGMI) is a think - tank organization in Ghana. 
-                 The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, Experts and allies to interact, 
-                 share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region. The Institute’s core 
-                 mandate is strategic maritime research, advocacy and capacity building in the areas of maritime
-                  security, safety and advocacy for sustainable Blue Economy in Ghana and the Gulf of Guinea (GoG) maritime space at large. 
+                  Established in 2010, The Gulf of Guinea Maritime Institute (GoGMI) is a think - tank incorporated in Ghana. 
+                  The Institute provides a unique platform for maritime Strategic Thinkers, Practitioners, 
+                  Experts and allies to interact, share ideas and research into strategic maritime affairs affecting the Gulf of Guinea (GoG) Region. The Institute’s core mandate is strategic maritime research, advocacy and capacity building in the areas of maritime security, safety and advocacy for sustainable Blue Economy in Ghana and the Gulf of Guinea (GoG) maritime space at large.
                 </p>
                
               </div>
@@ -361,7 +359,7 @@ const Home = () => {
 <section className="py-20 md:py-28 bg-white">
   <div className="container mx-auto max-w-7xl px-6">
     <div className="text-center mb-16">
-      <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Our Services</span>
+      <span className="font-semibold text-sm uppercase tracking-wider" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Our Areas of Work</span>
       <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6" 
           style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
         What We Do
@@ -519,7 +517,7 @@ const Home = () => {
               Our Strategic Partners
             </h2>
             <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-              Working alongside leading organizations to advance maritime excellence across West Africa
+              Working alongside leading organizations to advance maritime excellence across the Gulf of Guinea Region
             </p>
           </div>
 
@@ -693,7 +691,7 @@ const Home = () => {
             Ready to Partner With Us?
           </h2>
           <p className="text-xl mb-12 max-w-2xl mx-auto leading-relaxed" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 400 }}>
-            Join us in shaping the future of West Africa's maritime sector
+            Join us in shaping the future of the Gulf of Guinea maritime sector
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <Link
