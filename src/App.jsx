@@ -27,6 +27,7 @@ import SHADE from './Components/Pages/Shade';
 import Management from './Components/Pages/Management';
 import AdvisoryBoard from './Components/Pages/AdvisoryBoard';
 import Login from './Components/Pages/Login';
+import IMSWGSignUp from './Components/Pages/IMSWGSignUp';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
               <Route path="/shade" element={<SHADE />} />
               <Route path="/management" element={<Management />} />
               <Route path="/advisoryboard" element={<AdvisoryBoard />} />
+              <Route path="/imswg-signup" element={<IMSWGSignUp />} />
               
               {/* Simple login for returning members */}
               <Route path="/login" element={<Login />} />

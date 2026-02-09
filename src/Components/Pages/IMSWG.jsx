@@ -1,7 +1,10 @@
 import React from 'react';
 import { Download, Users, Globe, FileText, Calendar, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const IMSWG = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-white">
       
@@ -218,7 +221,10 @@ const IMSWG = () => {
               <p className="text-sm mb-6 leading-relaxed" style={{ color: '#64748b', fontFamily: 'Georgia, serif' }}>
                 Join the IMSWG network and participate in future forums to shape maritime policy
               </p>
-              <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 bg-slate-900 hover:bg-slate-800 text-white">
+              <button 
+                onClick={() => navigate('/imswg-signup')}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 bg-slate-900 hover:bg-slate-800 text-white"
+              >
                 <span>Register Now</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
@@ -269,7 +275,10 @@ const IMSWG = () => {
             Be part of the premier forum driving maritime security policy innovation in the Gulf of Guinea
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-10 py-4 rounded-xl font-semibold transition-all hover:scale-105 bg-white text-slate-900 shadow-xl">
+            <button 
+              onClick={() => navigate('/imswg-signup')}
+              className="px-10 py-4 rounded-xl font-semibold transition-all hover:scale-105 bg-white text-slate-900 shadow-xl"
+            >
               Register for Next Forum
             </button>
             <button className="px-10 py-4 rounded-xl font-semibold transition-all hover:scale-105 border-2 border-white/30 text-white hover:bg-white/10">
@@ -284,4 +293,3 @@ const IMSWG = () => {
 };
 
 export default IMSWG;
-
