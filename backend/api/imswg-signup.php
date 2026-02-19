@@ -17,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // CHANGE THESE 3 LINES WITH YOUR DATABASE INFO
 $host = 'localhost';
-$dbname = 'gogmi_database';  // ← CHANGE THIS
-$username = 'root';           // ← CHANGE THIS  
-$password = '';               // ← CHANGE THIS
+$dbname = 'u448928185_gogmi';  
+$username = 'u448928185_gogmi';           
+$password = 'CDCTeam2o25';               
 
 try {
     $json = file_get_contents('php://input');

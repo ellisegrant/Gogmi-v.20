@@ -28,6 +28,7 @@ import Management from './Components/Pages/Management';
 import AdvisoryBoard from './Components/Pages/AdvisoryBoard';
 import Login from './Components/Pages/Login';
 import IMSWGSignUp from './Components/Pages/IMSWGSignUp';
+import MaritimeGovernanceCourse from './Components/Pages/MaritimeGovernanceCourse';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
               <Route path="/management" element={<Management />} />
               <Route path="/advisoryboard" element={<AdvisoryBoard />} />
               <Route path="/imswg-signup" element={<IMSWGSignUp />} />
+              <Route path="/maritimegovernancecourse" element={<MaritimeGovernanceCourse />} />
               
               {/* Simple login for returning members */}
               <Route path="/login" element={<Login />} />

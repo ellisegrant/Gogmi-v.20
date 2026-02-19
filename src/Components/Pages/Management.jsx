@@ -1,4 +1,5 @@
 import React from 'react';
+import { X } from 'lucide-react';
 
 const Management = () => {
   return (
@@ -30,22 +31,24 @@ const Management = () => {
         </div>
       </section>
 
-
-
-       {/* Executive Director Section */}
+      {/* Executive Director Section - VACANT */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Image Section - Left */}
+            {/* Image Section - Left (EMPTY FRAME) */}
             <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[3/4]">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&fit=crop" 
-                  alt="Dr. Alberta Ama Sagoe"
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: 'center 30%' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#132552]/40 to-transparent"></div>
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[3/4] bg-gray-100 border-2 border-dashed border-gray-300">
+                {/* Empty Frame with VACANT indicator */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <div className="w-32 h-32 rounded-full mb-6 flex items-center justify-center"
+                       style={{ backgroundColor: 'rgba(142, 52, 0, 0.1)' }}>
+                    <X className="w-16 h-16" style={{ color: '#8E3400' }} strokeWidth={3} />
+                  </div>
+                  <div className="text-center px-6">
+                    <p className="text-2xl font-black mb-2" style={{ color: '#132552' }}>VACANT</p>
+                    <p className="text-sm" style={{ color: '#6B7280' }}>Position Currently Unfilled</p>
+                  </div>
+                </div>
               </div>
               
               {/* Badge */}
@@ -63,35 +66,28 @@ const Management = () => {
 
             {/* Profile Section - Right */}
             <div>
-             
-              
               <h2 className="text-4xl md:text-5xl font-black mb-4" 
                   style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-                Ellise Grant 
+                Executive Director
               </h2>
               
               <div className="w-16 h-1 rounded-full mb-6" style={{ backgroundColor: '#8E3400' }}></div>
               
-              <p className="text-lg font-semibold mb-6" style={{ color: '#8E3400', fontWeight: 600 }}>
-                Executive Director
-              </p>
-
-              <div className="space-y-4 text-base leading-relaxed" style={{ color: '#4B5563', fontWeight: 400 }}>
-                <p>
-                  Dr. Ellise serves as the Executive Director of the Gulf of Guinea Maritime Institute, bringing extensive experience in maritime governance, regional security, and sustainable development to the organization.
-                </p>
-                
-                <p>
-                  With a distinguished career spanning over two decades, she has been instrumental in shaping maritime policy frameworks across West Africa and fostering collaboration among regional stakeholders to address critical maritime security challenges.
-                </p>
-                
-                <p>
-                  Under her leadership, GoGMI has emerged as a leading voice in maritime security research, capacity building, and policy advocacy in the Gulf of Guinea region. Dr. Sagoe's vision continues to drive the institute's commitment to creating sustainable solutions for Africa's maritime future.
-                </p>
+              <div className="p-8 rounded-2xl border-2 border-dashed"
+                   style={{ backgroundColor: '#F5F7FA', borderColor: '#E5E7EB' }}>
+                <div className="flex flex-col items-center justify-center text-center py-12">
+                  <div className="w-20 h-20 rounded-full mb-6 flex items-center justify-center"
+                       style={{ backgroundColor: 'rgba(142, 52, 0, 0.1)' }}>
+                    <X className="w-10 h-10" style={{ color: '#8E3400' }} strokeWidth={3} />
+                  </div>
+                  <h3 className="text-2xl font-black mb-3" style={{ color: '#132552' }}>
+                    Position Vacant
+                  </h3>
+                  <p className="text-base max-w-md" style={{ color: '#6B7280' }}>
+                    This position is currently unfilled. 
+                  </p>
+                </div>
               </div>
-
-              {/* Key Achievements */}
-              
             </div>
           </div>
         </div>
@@ -100,26 +96,24 @@ const Management = () => {
       {/* Department of Corporate Affairs */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-         
-
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { name: 'Joseph Ayitiah', title: 'Head of Technical', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&fit=crop' },
-              { name: 'Ms. Julliet Affrah Obeng', title: 'Research Manager', img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&fit=crop' },              
-              { name: 'Lawrence Dogli', title: 'Programmes Manager', img: ' https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&fit=crop'}, 
-               { name: 'Rhodalyn Owusu', title: 'Finance & Admin Officer', img: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&fit=crop' }
-              
-              
-             
+              { name: 'Joseph Ayitiah', title: 'Head of Technical' },
+              { name: 'Ms. Julliet Affrah Obeng', title: 'Research Manager' },              
+              { name: 'Lawrence Dogli', title: 'Programmes Manager' }, 
+              { name: 'Rhodalyn Owusu', title: 'Finance & Admin Officer' }
             ].map((member, idx) => (
               <div key={idx} className="group">
-                <div className="relative overflow-hidden rounded-xl mb-4 bg-white aspect-[3/4] shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={member.img} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#132552]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative overflow-hidden rounded-xl mb-4 bg-gray-100 aspect-[3/4] shadow-lg border-2 border-gray-200">
+                  {/* Empty frame - no image */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full flex items-center justify-center"
+                         style={{ backgroundColor: 'rgba(19, 37, 82, 0.05)' }}>
+                      <svg className="w-12 h-12" style={{ color: '#132552' }} fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
                 <h3 className="text-base font-bold mb-1" 
                     style={{ color: '#132552', fontWeight: 700 }}>
@@ -136,22 +130,24 @@ const Management = () => {
 
       <section className="py-20" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="max-w-7xl mx-auto px-6">
-          
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { name: 'Enoch Dzane Nikoi', title: 'Communications Specialist', img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&fit=crop'},
-              { name: 'Caleb Acquah-Harrison', title: 'Research Analyst', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&fit=crop' },
-              { name: 'Ellise Grant Boamah', title: 'National Service Personel', img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&fit=crop' },
-              { name: 'Mavis Akortsu Ama Afefa', title: 'Office Assistant', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&fit=crop' },
+              { name: 'Enoch Dzane Nikoi', title: 'Communications Specialist' },
+              { name: 'Caleb Acquah-Harrison', title: 'Research Analyst' },
+              { name: 'Ellise Grant Boamah', title: 'National Service Personel' },
+              { name: 'Mavis Akortsu Ama Afefa', title: 'Office Assistant' }
             ].map((member, idx) => (
               <div key={idx} className="group">
-                <div className="relative overflow-hidden rounded-xl mb-4 bg-white aspect-[3/4] shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={member.img} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#132552]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative overflow-hidden rounded-xl mb-4 bg-gray-100 aspect-[3/4] shadow-lg border-2 border-gray-200">
+                  {/* Empty frame - no image */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full flex items-center justify-center"
+                         style={{ backgroundColor: 'rgba(19, 37, 82, 0.05)' }}>
+                      <svg className="w-12 h-12" style={{ color: '#132552' }} fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
                 <h3 className="text-base font-bold mb-1" 
                     style={{ color: '#132552', fontWeight: 700 }}>
@@ -166,35 +162,11 @@ const Management = () => {
         </div>
       </section>
 
-      {/* Research */}
+      {/* Research Section (empty in original) */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-             
-            
-              // { name: 'Mr. Kwabena Agyei', title: 'Research Analyst', img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=400&fit=crop' },
-              // { name: 'Ms. Abena Serwaa', title: 'Research Associate', img: 'https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=400&fit=crop' }
-            ].map((member, idx) => (
-              <div key={idx} className="group">
-                <div className="relative overflow-hidden rounded-xl mb-4 bg-white aspect-[3/4] shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={member.img} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#132552]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <h3 className="text-base font-bold mb-1" 
-                    style={{ color: '#132552', fontWeight: 700 }}>
-                  {member.name}
-                </h3>
-                <p className="text-sm" style={{ color: '#4B5563', fontWeight: 400 }}>
-                  {member.title}
-                </p>
-              </div>
-            ))}
+            {/* Empty - no members in this section */}
           </div>
         </div>
       </section>

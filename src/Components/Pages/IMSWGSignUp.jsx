@@ -68,7 +68,7 @@ const IMSWGSignUp = () => {
     setErrors({});
     
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost/backend/api';
+      const apiUrl = 'https://aquamarine-kingfisher-700098.hostingersite.com/api';
       const response = await fetch(`${apiUrl}/imswg-signup.php`, {
         method: 'POST',
         headers: {

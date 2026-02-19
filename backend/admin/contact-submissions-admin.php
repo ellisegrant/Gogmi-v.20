@@ -14,7 +14,7 @@
 session_start();
 
 // Change this password!
-$admin_password = 'gogmi2024admin'; // CHANGE THIS!
+$admin_password = 'gogmi2024admin'; 
 
 if (!isset($_SESSION['admin_logged_in'])) {
     if (isset($_POST['password'])) {
@@ -70,9 +70,9 @@ if (isset($_GET['logout'])) {
 // DATABASE CONFIGURATION
 // ============================================
 $db_host = 'localhost';
-$db_name = 'your_database_name';
-$db_user = 'your_database_username';
-$db_pass = 'your_database_password';
+$db_name = 'u448928185_gogmi';
+$db_user = 'u448928185_gogmi';
+$db_pass = 'CDCTeam2o25'; 
 
 try {
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_pass);
