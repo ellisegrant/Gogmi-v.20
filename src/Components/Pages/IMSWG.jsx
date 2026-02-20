@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom';
 const IMSWG = () => {
   const navigate = useNavigate();
 
+  const goToReports = () => {
+    navigate('/resources#internal-reports');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       
@@ -20,8 +24,6 @@ const IMSWG = () => {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-         
-
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6 leading-tight"
               style={{ fontFamily: '"SF Pro Display", system-ui, sans-serif', letterSpacing: '-0.02em' }}>
             INTERNATIONAL MARITIME<br/>SECURITY WORKING GROUP
@@ -32,10 +34,13 @@ const IMSWG = () => {
             Driving policy innovation and dialogue on Gulf of Guinea maritime security
           </p>
 
-          <button className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 rounded-lg text-base font-semibold transition-all hover:scale-105 shadow-xl"
-                  style={{ color: '#1e293b' }}>
+          <button 
+            onClick={goToReports}
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 rounded-lg text-base font-semibold transition-all hover:scale-105 shadow-xl cursor-pointer"
+            style={{ color: '#1e293b' }}
+          >
             <Download className="w-5 h-5" />
-            <span>Download Concept Note</span>
+            <span>Download Reports</span>
           </button>
         </div>
       </section>
@@ -223,7 +228,7 @@ const IMSWG = () => {
               </p>
               <button 
                 onClick={() => navigate('/imswg-signup')}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 bg-slate-900 hover:bg-slate-800 text-white"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 bg-slate-900 hover:bg-slate-800 text-white cursor-pointer"
               >
                 <span>Register Now</span>
                 <ArrowRight className="w-5 h-5" />
@@ -235,11 +240,14 @@ const IMSWG = () => {
               <div className="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center mb-6">
                 <FileText className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#1e293b' }}>2020-2024 Report</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#1e293b' }}>2020-2025 Report</h3>
               <p className="text-sm mb-6 leading-relaxed" style={{ color: '#64748b', fontFamily: 'Georgia, serif' }}>
-                Comprehensive report of forums held from 2020 to 2024 with key insights
+                Comprehensive report of forums held from 2020 to 2025 with key insights
               </p>
-              <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 border-2 border-slate-900 text-slate-900 hover:bg-slate-50">
+              <button 
+                onClick={goToReports}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 border-2 border-slate-900 text-slate-900 hover:bg-slate-50 cursor-pointer"
+              >
                 <span>Download Report</span>
                 <Download className="w-5 h-5" />
               </button>
@@ -252,9 +260,9 @@ const IMSWG = () => {
               </div>
               <h3 className="text-xl font-bold mb-3" style={{ color: '#1e293b' }}>2025 Event</h3>
               <p className="text-sm mb-6 leading-relaxed" style={{ color: '#64748b', fontFamily: 'Georgia, serif' }}>
-                View upcoming 2025 forum schedule and event details
+                View upcoming 2026 forum schedule and event details
               </p>
-              <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 border-2 border-slate-900 text-slate-900 hover:bg-slate-50">
+              <button className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 border-2 border-slate-900 text-slate-900 hover:bg-slate-50 cursor-pointer">
                 <span>View Details</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
@@ -277,12 +285,15 @@ const IMSWG = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={() => navigate('/imswg-signup')}
-              className="px-10 py-4 rounded-xl font-semibold transition-all hover:scale-105 bg-white text-slate-900 shadow-xl"
+              className="px-10 py-4 rounded-xl font-semibold transition-all hover:scale-105 bg-white text-slate-900 shadow-xl cursor-pointer"
             >
               Register for Next Forum
             </button>
-            <button className="px-10 py-4 rounded-xl font-semibold transition-all hover:scale-105 border-2 border-white/30 text-white hover:bg-white/10">
-              Download Concept Note
+            <button 
+              onClick={goToReports}
+              className="px-10 py-4 rounded-xl font-semibold transition-all hover:scale-105 border-2 border-white/30 text-white hover:bg-white/10 cursor-pointer"
+            >
+              Download Reports
             </button>
           </div>
         </div>

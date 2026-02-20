@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FileText, Download, Search, Calendar, Eye, BookOpen, Video, X, ExternalLink, Lock } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Resources = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedType, setSelectedType] = useState('Strategic Documents');
   const [searchTerm, setSearchTerm] = useState('');
   const [previewResource, setPreviewResource] = useState(null);
@@ -15,6 +16,20 @@ const Resources = () => {
   useEffect(() => {
     checkAuthStatus();
   }, []);
+
+  // Handle hash navigation (e.g., /library#internal-reports)
+  useEffect(() => {
+    if (location.hash === '#internal-reports') {
+      setSelectedType('Internal Reports');
+      // Smooth scroll to the section after a short delay to ensure content is rendered
+      setTimeout(() => {
+        const element = document.getElementById('internal-reports');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, [location]);
 
   const checkAuthStatus = () => {
     const token = localStorage.getItem('gogmi_token');
@@ -316,6 +331,22 @@ const Resources = () => {
         'Regional Security Cooperation',
         'Policy Recommendations for Intervention'
       ]
+    },
+    {
+      id: 22,
+      title: 'IMSWG 2020-2024 Consolidated Report',
+      description: "Five-year consolidated report from all IMSWG forums 2020-2024.",
+      fullDescription: "Comprehensive report consolidating insights from all IMSWG forums between 2020 and 2024.",
+      type: 'Internal Reports',
+      category: 'IMSWG',
+      size: '8.5 MB',
+      pages: 120,
+      date: 'December 2024',
+      downloads: 567,
+      thumbnail: '/conf3.jpg',
+      fileType: 'PDF',
+      downloadUrl: '/resources/pdfs/IMSWG-2020-2024-Report.pdf',
+      keyTopics: ['Five-Year Trends', 'Policy Evolution', 'Regional Impact']
     },
 
     // ===== VIDEOS =====
@@ -700,7 +731,7 @@ const Resources = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-3 gap-4">
             {[
-              { icon: <FileText />, number: '17+', label: 'Publications' },
+              { icon: <FileText />, number: '18+', label: 'Publications' },
               { icon: <Download />, number: '15K+', label: 'Downloads' },
               { icon: <BookOpen />, number: '1200+', label: 'Pages' }
             ].map((stat, idx) => (
@@ -749,7 +780,7 @@ const Resources = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section id="internal-reports" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           {filteredResources.length === 0 ? (
             <div className="text-center py-20">

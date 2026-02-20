@@ -174,7 +174,7 @@ const CapacityBuilding = () => {
             <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Featured Course</span>
             <h2 className="text-4xl md:text-5xl mt-4 mb-4"
                 style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Now Enrolling:  MARITIME GOVERNANCE MODULAR COURSE 
+              Now Enrolling:  MARITIME GOVERNANCE COURSE 
             </h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: '#4B5563' }}>
               Professional development in maritime security strategy for African practitioners

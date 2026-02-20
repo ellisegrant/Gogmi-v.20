@@ -342,7 +342,7 @@ const MaritimeGovernanceCourse = () => {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-            Maritime Governance Modular Course
+            Maritime Governance Course
           </h1>
 
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8 font-semibold">
