@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
   Users,
@@ -11,23 +11,78 @@ import {
   TrendingUp,
   Star,
   BarChart3,
-  Sparkles
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  Monitor,
+  GraduationCap
 } from 'lucide-react';
 
 const CapacityBuilding = () => {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('all');
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Featured Courses for Auto-Slider
+  const featuredCourses = [
+    {
+      id: 'maritime-governance',
+      status: 'Active',
+      badge: '2026 TRAINING COURSE ALERT!',
+      comingSoon: 'COMING SOON',
+      title: 'MARITIME GOVERNANCE COURSE:',
+      subtitle: 'A FOCUS ON AFRICA',
+      tagline: 'A Focus on Africa',
+      fullTitle: 'MARITIME GOVERNANCE COURSE',
+      description: 'Comprehensive 4-week virtual course equipping professionals with expertise to develop and implement maritime security strategies across the African continent.',
+      duration: '4 weeks',
+      format: 'Virtual (Zoom)',
+      modules: '8 modules',
+      level: 'Professional',
+      faculty: ['Vice Admiral Issah Yakubu', 'Prof. Jeffrey Landsman', 'Dr. Alberta Sagoe'],
+      nextIntake: 'May 5 - 28, 2026',
+      image: '/maritime.gov.jpeg', // Maritime governance poster
+      bgColor: '#132552',
+      accentColor: '#17A2B8',
+      buttonColor: '#8E3400',
+      link: '/maritimegovernancecourse'
+    },
+    {
+      id: 'marine-casualty',
+      status: 'Active',
+      badge: '2026 EXECUTIVE TRAINING!',
+      comingSoon: 'ENROLLING NOW',
+      title: 'MARINE CASUALTY INVESTIGATION:',
+      subtitle: 'SAFETY MANAGEMENT',
+      tagline: 'Safety Management',
+      fullTitle: 'MARINE CASUALTY INVESTIGATION & SAFETY MANAGEMENT',
+      description: 'Executive training on conducting credible marine casualty investigations aligned with IMO Casualty Investigation Code and SOLAS requirements for maritime administrators.',
+      duration: 'Multi-Day',
+      format: 'Hybrid (In-Person + Virtual)',
+      modules: '6 modules',
+      level: 'Executive',
+      faculty: ['Maritime Safety Experts', 'IMO Certified Investigators', 'Regional Specialists'],
+      nextIntake: 'TBA 2026',
+      image: '/marinecasuality.jpeg', 
+      bgColor: '#8E3400',
+      accentColor: '#FF6B35',
+      buttonColor: '#132552',
+      link: '/marine-casualty-course'
+    }
+  ];
 
   // Core Programs - with status
   const programs = [
     {
       category: 'Hybrid',
-      status: 'Upcoming',
-      title: 'Marine Casualty Investigation and Safety Management Course ',
+      status: 'Active',
+      title: 'Blue Mentorship Programme',
       description: 'An African maritime accelerator designed to encourage youth to engage in sustainable blue economy careers.',
-      duration: '4 months',
+      duration: '12 months',
       format: 'Hybrid',
       level: 'All Levels',
-      image: '/marine.casuality.jpeg',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&fit=crop',
       features: ['1-on-1 Mentorship', 'Industry Networks', 'Career Guidance'],
       impact: '200+ youth engaged since 2021',
       nextIntake: 'March 2025'
@@ -89,10 +144,31 @@ const CapacityBuilding = () => {
     ? programs 
     : programs.filter(p => p.category === activeCategory);
 
+  // Auto-slide functionality - advance every 15 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % featuredCourses.length);
+    }, 15000); // 15 seconds
+
+    return () => clearInterval(interval);
+  }, [featuredCourses.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % featuredCourses.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + featuredCourses.length) % featuredCourses.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <div className="w-full overflow-x-hidden" style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
       
-      {/* HERO SECTION - Original */}
+      {/* HERO SECTION */}
       <section className="relative text-white py-24 md:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <img 
@@ -133,7 +209,7 @@ const CapacityBuilding = () => {
         </div>
       </section>
 
-      {/* IMPACT DASHBOARD - Compact */}
+      {/* IMPACT DASHBOARD */}
       <section className="relative -mt-20 z-20 px-6 pb-16">
         <div className="container mx-auto max-w-7xl">
           <div className="bg-white rounded-3xl p-8 shadow-2xl" style={{ border: '2px solid #F5F7FA' }}>
@@ -167,136 +243,217 @@ const CapacityBuilding = () => {
         </div>
       </section>
 
-      {/* FEATURED COURSE - MASDII */}
+      {/* FEATURED COURSES - AUTO-SLIDING CAROUSEL */}
       <section className="py-20 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-12">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Featured Course</span>
+            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>FEATURED COURSE</span>
             <h2 className="text-4xl md:text-5xl mt-4 mb-4"
                 style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Now Enrolling:  MARITIME GOVERNANCE COURSE 
+              Now Enrolling: {featuredCourses[currentSlide].title.split(':')[0]}
             </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: '#4B5563' }}>
+            <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563' }}>
               Professional development in maritime security strategy for African practitioners
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border-2" style={{ borderColor: '#E5E7EB' }}>
-            <div className="grid lg:grid-cols-2 gap-0">
-              <div className="relative h-[350px] lg:h-auto">
-                <img 
-                  src="/maritime.gov.jpeg" 
-                  alt="MASDII Course"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#132552]/80 to-transparent"></div>
-                
-                <div className="absolute top-6 left-6">
-                  <span className="px-4 py-2 rounded-full text-sm font-bold text-white"
-                        style={{ backgroundColor: '#16A34A' }}>
-                    Active
-                  </span>
-                </div>
+          {/* Slider Container */}
+          <div className="relative max-w-7xl mx-auto">
+            {/* Navigation Buttons */}
+            <button 
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 z-20 bg-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all hover:scale-110"
+              style={{ color: '#132552' }}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button 
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 z-20 bg-white rounded-full p-4 shadow-2xl hover:shadow-3xl transition-all hover:scale-110"
+              style={{ color: '#132552' }}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Slides */}
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {featuredCourses.map((course, idx) => (
+                  <div key={idx} className="w-full flex-shrink-0">
+                    <div className="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+                      <div className="grid md:grid-cols-5 gap-0">
+                        
+                        {/* LEFT - Course Poster IMAGE ONLY */}
+                        <div className="md:col-span-2 relative overflow-hidden bg-gray-100">
+                          <img 
+                            src={course.image}
+                            alt={course.title}
+                            className="w-full h-full object-contain"
+                            style={{ minHeight: '600px' }}
+                          />
+                        </div>
+
+                        {/* RIGHT - Course Details */}
+                        <div className="md:col-span-3 p-8 md:p-10 bg-gray-50">
+                          <div className="mb-8">
+                            <h3 className="text-3xl md:text-4xl font-black mb-3"
+                                style={{ color: '#132552' }}>
+                              {course.fullTitle}
+                            </h3>
+                            <p className="text-lg font-semibold mb-4"
+                               style={{ color: course.bgColor }}>
+                              {course.tagline}
+                            </p>
+                            <p className="text-base leading-relaxed" 
+                               style={{ color: '#4B5563' }}>
+                              {course.description}
+                            </p>
+                          </div>
+
+                          {/* Course Stats */}
+                          <div className="grid grid-cols-2 gap-4 mb-8">
+                            <div>
+                              <div className="flex items-center gap-2 text-sm mb-1" style={{ color: '#6B7280' }}>
+                                <Clock className="w-4 h-4" />
+                                <span className="font-semibold">Duration</span>
+                              </div>
+                              <p className="text-base font-bold" style={{ color: '#132552' }}>
+                                {course.duration}
+                              </p>
+                            </div>
+                            
+                            <div>
+                              <div className="flex items-center gap-2 text-sm mb-1" style={{ color: '#6B7280' }}>
+                                <Monitor className="w-4 h-4" />
+                                <span className="font-semibold">Format</span>
+                              </div>
+                              <p className="text-base font-bold" style={{ color: '#132552' }}>
+                                {course.format}
+                              </p>
+                            </div>
+
+                            <div>
+                              <div className="flex items-center gap-2 text-sm mb-1" style={{ color: '#6B7280' }}>
+                                <BookOpen className="w-4 h-4" />
+                                <span className="font-semibold">Modules</span>
+                              </div>
+                              <p className="text-base font-bold" style={{ color: '#132552' }}>
+                                {course.modules}
+                              </p>
+                            </div>
+
+                            <div>
+                              <div className="flex items-center gap-2 text-sm mb-1" style={{ color: '#6B7280' }}>
+                                <GraduationCap className="w-4 h-4" />
+                                <span className="font-semibold">Level</span>
+                              </div>
+                              <p className="text-base font-bold" style={{ color: '#132552' }}>
+                                {course.level}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Distinguished Faculty */}
+                          <div className="mb-8">
+                            <h4 className="text-sm font-bold uppercase tracking-wide mb-3"
+                                style={{ color: '#6B7280' }}>
+                              Distinguished Faculty
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {course.faculty.map((name, i) => (
+                                <div key={i} className="bg-white px-4 py-2 rounded-lg border border-gray-200">
+                                  <p className="text-sm font-semibold" style={{ color: '#132552' }}>
+                                    {name}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Action Buttons */}
+                          <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                            <Link
+                              to={course.link}
+                              className="flex-1 text-center px-6 py-4 rounded-xl font-bold transition-all hover:scale-105 shadow-lg text-white"
+                              style={{ backgroundColor: course.buttonColor }}
+                            >
+                              View Full Program →
+                            </Link>
+                            <Link
+                              to={course.link}
+                              className="flex-1 text-center px-6 py-4 rounded-xl font-bold transition-all hover:scale-105 border-2 bg-white"
+                              style={{ borderColor: '#132552', color: '#132552' }}
+                            >
+                              Apply Now
+                            </Link>
+                          </div>
+
+                          {/* Next Intake */}
+                          <div className="flex items-center gap-2 text-sm" style={{ color: '#8E3400' }}>
+                            <Calendar className="w-4 h-4" />
+                            <span className="font-bold">Next Intake: {course.nextIntake}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div className="p-8 lg:p-10">
-                <h3 className="text-2xl md:text-3xl font-black mb-2" style={{ color: '#132552', letterSpacing: '-0.02em' }}>
-                  MARITIME GOVERNANCE COURSE
-                </h3>
-                <p className="text-lg font-semibold mb-6" style={{ color: '#8E3400' }}>
-                  A Focus on Africa
-                </p>
-                
-                <p className="text-base leading-relaxed mb-6" style={{ color: '#4B5563' }}>
-                  Comprehensive 4-week virtual course equipping professionals with expertise to develop and implement 
-                  maritime security strategies across the African continent.
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <Clock className="w-4 h-4" style={{ color: '#8E3400' }} />
-                      <span className="text-xs font-bold" style={{ color: '#6B7280' }}>Duration</span>
-                    </div>
-                    <p className="text-base font-bold" style={{ color: '#132552' }}>4 weeks</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <MapPin className="w-4 h-4" style={{ color: '#8E3400' }} />
-                      <span className="text-xs font-bold" style={{ color: '#6B7280' }}>Format</span>
-                    </div>
-                    <p className="text-base font-bold" style={{ color: '#132552' }}>Virtual (Zoom)</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <BookOpen className="w-4 h-4" style={{ color: '#8E3400' }} />
-                      <span className="text-xs font-bold" style={{ color: '#6B7280' }}>Modules</span>
-                    </div>
-                    <p className="text-base font-bold" style={{ color: '#132552' }}>8 modules</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <Users className="w-4 h-4" style={{ color: '#8E3400' }} />
-                      <span className="text-xs font-bold" style={{ color: '#6B7280' }}>Level</span>
-                    </div>
-                    <p className="text-base font-bold" style={{ color: '#132552' }}>Professional</p>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <h4 className="text-xs font-bold mb-3" style={{ color: '#6B7280' }}>DISTINGUISHED FACULTY</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {['Vice Admiral Issah Yakubu', 'Prof. Jeffrey Landsman', 'Dr. Alberta Sagoe'].map((faculty, i) => (
-                      <span key={i} className="px-3 py-1.5 rounded-lg text-xs font-bold border" 
-                            style={{ borderColor: '#E5E7EB', color: '#132552' }}>
-                        {faculty}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 mb-4">
-                  <Link
-                    to="/maritimegovernancecourse"
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl transition-all hover:scale-105 shadow-lg"
-                    style={{ fontWeight: 700, backgroundColor: '#8E3400', color: 'white' }}
-                  >
-                    <span>View Full Program</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <Link
-                    to="/masdii"
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl transition-all border-2"
-                    style={{ fontWeight: 700, borderColor: '#132552', color: '#132552' }}
-                  >
-                    <span>Apply Now</span>
-                  </Link>
-                </div>
-
-                <div className="p-3 rounded-xl" style={{ backgroundColor: '#F5F7FA' }}>
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4" style={{ color: '#8E3400' }} />
-                    <span className="text-sm font-bold" style={{ color: '#132552' }}>
-                      Next Intake: May 5 - 28, 2026
-                    </span>
-                  </div>
-                </div>
-              </div>
+            {/* Dots Indicator with Auto-Progress */}
+            <div className="flex justify-center gap-3 mt-8">
+              {featuredCourses.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  className="relative h-2 rounded-full transition-all overflow-hidden"
+                  style={{ 
+                    backgroundColor: currentSlide === idx ? '#132552' : '#D1D5DB',
+                    width: currentSlide === idx ? '48px' : '12px'
+                  }}
+                >
+                  {currentSlide === idx && (
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-r from-transparent to-white/30 animate-progress"
+                    />
+                  )}
+                </button>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* OTHER PROGRAMS - With Status Badge */}
-      <section id="programs" className="py-20" style={{ backgroundColor: '#F5F7FA' }}>
+      {/* Add CSS for progress animation */}
+      <style>{`
+        @keyframes slideProgress {
+          from {
+            transform: translateX(-100%);
+          }
+          to {
+            transform: translateX(100%);
+          }
+        }
+        .animate-progress {
+          animation: slideProgress 15s linear infinite;
+        }
+      `}</style>
+
+      {/* CORE PROGRAMS */}
+      <section className="py-20" style={{ backgroundColor: '#F5F7FA' }}>
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-12">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Our Programs</span>
+            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>All Programs</span>
             <h2 className="text-4xl md:text-5xl mt-4 mb-4"
                 style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Training & Development
+              Comprehensive Training Portfolio
             </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ fontWeight: 400, color: '#4B5563' }}>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: '#4B5563' }}>
               Comprehensive programs for every stage of your maritime career
             </p>
           </div>
@@ -377,7 +534,7 @@ const CapacityBuilding = () => {
         </div>
       </section>
 
-      {/* SUCCESS STORIES - Original Grid */}
+      {/* SUCCESS STORIES */}
       <section className="py-16 bg-white">
         <div className="container mx-auto max-w-7xl px-6">
           <div className="text-center mb-10">

@@ -72,11 +72,11 @@ const Membership = () => {
         planName: selectedPlan.name,
         membershipType: formData.membershipType,
         amount: amount,
-        currency: 'GHS',
+        currency: 'USD',
         paymentReference: paymentReference
       };
       
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost/backend/api';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://gogmi.org.gh/api';
       const result = await fetch(`${apiUrl}/membership/apply.php`, {
         method: 'POST',
         headers: {
@@ -126,9 +126,9 @@ const Membership = () => {
     }
 
     const priceMatch = selectedPlan.price.match(/\d+/g);
-    const amount = priceMatch ? parseFloat(priceMatch.join('').replace(',', '')) : 0;
+    const amountUSD = priceMatch ? parseFloat(priceMatch.join('').replace(',', '')) : 0;
 
-    if (amount === 0 || selectedPlan.price === 'By Invitation Only') {
+    if (amountUSD === 0 || selectedPlan.price === 'By Invitation Only') {
       alert('Thank you for your interest! Our team will contact you regarding this membership tier.');
       closeMembershipModal();
       return;
@@ -145,11 +145,14 @@ const Membership = () => {
 
     const paystackKey = 'pk_test_bcc51111bf5578e46e157a62180b11db89302000';
     
+    // Convert USD to GHS (approximate rate: 1 USD = 15 GHS)
+    const amountGHS = amountUSD * 15;
+    
     try {
       const handler = window.PaystackPop.setup({
         key: paystackKey,
         email: formData.email,
-        amount: amount * 100,
+        amount: amountGHS * 100, // Paystack expects amount in pesewas
         currency: 'GHS',
         ref: 'GOGMI-' + Math.floor((Math.random() * 1000000000) + 1),
         channels: ['card', 'mobile_money', 'bank', 'ussd', 'qr', 'bank_transfer'],
@@ -170,6 +173,11 @@ const Membership = () => {
               display_name: "Membership Plan",
               variable_name: "membership_plan",
               value: selectedPlan.name
+            },
+            {
+              display_name: "USD Amount",
+              variable_name: "usd_amount",
+              value: `$${amountUSD}`
             },
             {
               display_name: "Organization",
@@ -209,13 +217,25 @@ const Membership = () => {
     }
   };
 
+  const handleBrochureDownload = () => {
+    // Link to the membership brochure PDF
+    const brochureUrl = 'public/resources/pdfs/GoGMI-Membership-2026.pdf';
+    const link = document.createElement('a');
+    link.href = brochureUrl;
+    link.download = 'GoGMI-Membership-2026.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const individualPlans = [
     {
       id: 'student',
       name: 'Student Membership',
-      price: 'GHS 100',
+      price: 'USD 20',
       period: '/year',
-      description: 'Designed for undergraduate and postgraduate students with an interest in maritime, ocean, environmental, and security studies.',
+      description: 'Designed for undergraduate students with an interest in maritime, ocean, environmental, and security studies.',
       features: [
         'Official Certificate of Membership',
         'Access to GoGMI research reports and publications',
@@ -224,20 +244,21 @@ const Membership = () => {
         'Structured mentorship opportunities with professionals and researchers',
         'Career development support (research skills, writing clinics, CV guidance)',
         'Access to student networking platforms and discussion groups',
-        'Opportunities to volunteer or intern on GoGMI projects',
+        'Opportunities to volunteer or intern on GoGMI projects'
       ]
     },
     {
       id: 'associate',
-      name: 'Associate Membership (Early Career)',
-      price: 'GHS 500',
+      name: 'Associate Membership',
+      price: 'USD 100',
       period: '/year',
       popular: true,
-      description: 'For early-career professionals (1–5 years experience) seeking skills development, visibility, and networking.',
+      subtitle: '2-7 Years\' Experience',
+      description: 'For early-career professionals (1–5 years of experience) seeking skills development, visibility, and networking.',
       features: [
         'Official Certificate of Membership',
         'Invitations to GoGMI conferences, seminars, and policy dialogues',
-        'Discounted access to professional trainings and workshops',
+        'Discounted access to professional training and workshops',
         'Access to research reports, briefs, and policy publications',
         'Career development programmes and capacity-building sessions',
         'Opportunities to contribute to GoGMI blogs, research outputs, and junior committees',
@@ -248,16 +269,17 @@ const Membership = () => {
     {
       id: 'professional',
       name: 'Professional Membership',
-      price: 'GHS 1,000',
+      price: 'USD 200',
       period: '/year',
-      subtitle: '5–10 years experience',
+      subtitle: '7 Years upwards Experience',
       description: 'For mid-level professionals seeking influence, policy engagement, and regional visibility.',
       features: [
         'Official Certificate of Membership',
         'Priority invitations to policy dialogues and expert roundtables',
         'Access to GoGMI research outputs and policy briefs',
         'Discounted access to advanced trainings and conferences',
-        'Opportunities to moderate sessions or speak at GoGMI events',
+        'Opportunity to moderate sessions or speak at GoGMI events',
+        'Opportunity to mentor young graduates interested in Maritime affairs',
         'Professional profile listing on the GoGMI website',
         'Executive networking with regional experts and institutions'
       ]
@@ -265,26 +287,19 @@ const Membership = () => {
     {
       id: 'fellow',
       name: 'Fellow Membership',
-      price: 'GHS 1,500',
-      period: '/year',
-      subtitle: 'Senior experts',
+      price: 'By Invitation Only',
+      period: '',
+      subtitle: 'Senior Experts',
       description: 'For senior professionals and experts contributing to maritime research, policy, and governance.',
-      features: [
-        'Official Certificate of Fellowship',
-        'Participation and leadership in policy working groups',
-        'Access to high-level and closed-door policy roundtables',
-        'Opportunities to shape GoGMI research and policy agenda',
-        'Recognition as a GoGMI Fellow (website and publications)',
-        'Engagement in strategic advisory and maritime security discussions'
-      ]
+      features: []
     }
   ];
 
   const institutionalPlans = [
     {
       id: 'institution',
-      name: 'Institution Membership',
-      price: 'GHS 10,000',
+      name: 'Institutional Membership',
+      price: 'USD 2,000',
       period: '/year',
       description: 'For universities, research centres, and think tanks.',
       features: [
@@ -300,15 +315,15 @@ const Membership = () => {
     {
       id: 'corporate',
       name: 'Corporate Membership',
-      price: 'GHS 20,000',
+      price: 'USD 4,000',
       period: '/year',
       description: 'For private sector organisations operating in maritime, logistics, energy, security, and related sectors.',
       features: [
         'Official Corporate Membership Certificate',
-        'Corporate branding and visibility at GoGMI events and publications',
+        'Corporate branding and visibility at GoGMI website, social media, events and publications',
         'Invitations to high-level advisory events and stakeholder dialogues',
         'Access to customised briefings on maritime and ocean governance issues',
-        'Networking with regional and international partners',
+        'Networking with local, regional and international partners',
         'Opportunities to align corporate social responsibility (CSR) initiatives with GoGMI programmes'
       ]
     },
@@ -322,7 +337,8 @@ const Membership = () => {
         'Recognition as a GoGMI Strategic Partner',
         'Co-creation and implementation of flagship initiatives',
         'Engagement in strategic planning and policy influence',
-        'Priority collaboration on regional and international programmes'
+        'Priority collaboration on regional and international programmes',
+        'Corporate branding and visibility at GoGMI website, social media, events and publications'
       ]
     }
   ];
@@ -645,30 +661,38 @@ const Membership = () => {
                     {plan.description}
                   </p>
 
-                  <div className="mb-3">
-                    <p className="text-xs font-bold mb-2" style={{ color: '#132552' }}>Benefits</p>
-                  </div>
+                  {/* Only show benefits and apply button if NOT Fellow membership */}
+                  {plan.id !== 'fellow' && (
+                    <>
+                      <div className="mb-3">
+                        <p className="text-xs font-bold mb-2" style={{ color: '#132552' }}>Benefits</p>
+                      </div>
 
-                  <ul className="space-y-2 mb-6">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#8E3400' }} />
-                        <span className="text-xs leading-relaxed font-semibold" style={{ color: '#4B5563' }}>
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                      <ul className="space-y-2 mb-6">
+                        {plan.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#8E3400' }} />
+                            <span className="text-xs leading-relaxed font-semibold" style={{ color: '#4B5563' }}>
+                              {feature}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
 
-                  <button
-                    onClick={() => openMembershipModal(plan)}
-                    className="w-full py-2.5 rounded-lg font-bold transition-all text-sm"
-                    style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
-                  >
-                    Apply Now
-                  </button>
+                      <button
+                        onClick={() => openMembershipModal(plan)}
+                        className="w-full py-2.5 rounded-lg font-bold transition-all text-sm"
+                        style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}
+                      >
+                        Apply Now
+                      </button>
+                    </>
+                  )}
+
+                  {/* Special message for Fellow membership */}
+                  
                 </div>
               </div>
             ))}
@@ -808,6 +832,7 @@ const Membership = () => {
                 Get detailed information about all membership categories, benefits, and application procedures.
               </p>
               <button 
+                onClick={handleBrochureDownload}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-bold text-lg transition-all"
                 style={{ backgroundColor: '#132552', color: 'white', fontWeight: 700 }}
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0F1C3F'}

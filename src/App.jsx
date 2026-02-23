@@ -29,6 +29,7 @@ import AdvisoryBoard from './Components/Pages/AdvisoryBoard';
 import Login from './Components/Pages/Login';
 import IMSWGSignUp from './Components/Pages/IMSWGSignUp';
 import MaritimeGovernanceCourse from './Components/Pages/MaritimeGovernanceCourse';
+import MarineCasualtyCourse from './Components/pages/MarineCasualtyCourse';
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
               <Route path="/advisoryboard" element={<AdvisoryBoard />} />
               <Route path="/imswg-signup" element={<IMSWGSignUp />} />
               <Route path="/maritimegovernancecourse" element={<MaritimeGovernanceCourse />} />
+              <Route path="/marine-casualty-course" element={<MarineCasualtyCourse />} />
               
               {/* Simple login for returning members */}
               <Route path="/login" element={<Login />} />
