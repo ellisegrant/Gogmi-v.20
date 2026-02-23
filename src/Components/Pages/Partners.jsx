@@ -13,9 +13,9 @@ const Partners = () => {
       category: 'International',
       // type: 'Strategic Partner',
       since: '2015',
-      description: 'Collaboration on maritime education and cultural heritage preservation',
+      
       website: 'https://au.int/',
-      projects: 8
+      // projects: 8
     },
     {
       id: 2,
@@ -24,9 +24,9 @@ const Partners = () => {
       category: 'International',
       // type: 'Strategic Partner',
       since: '2016',
-      description: 'Maritime safety and security technical cooperation',
-      website: 'https://www.ecowas.int/',
-      projects: 12
+      
+      // website: 'https://www.ecowas.int/about-ecowas/',
+      // projects: 12
     },
     {
       id: 3,
@@ -35,9 +35,9 @@ const Partners = () => {
       category: 'International',
       // type: 'Strategic Partner',
       since: '2014',
-      description: 'Regional maritime policy development and implementation',
+      
       website: 'https://dotcan.institute/',
-      projects: 15
+      // projects: 15
     },
     {
       id: 4,
@@ -46,9 +46,9 @@ const Partners = () => {
       category: 'Regional',
       // type: 'Strategic Partner',
       since: '2017',
-      description: 'Continental maritime strategy and blue economy initiatives',
-      website: 'https://au.int',
-      projects: 6
+      
+      website: '#####',
+      // projects: 6
     },
     {
       id: 5,
@@ -57,9 +57,9 @@ const Partners = () => {
       category: 'International',
       // type: 'Funding Partner',
       since: '2018',
-      description: 'Maritime security capacity building programs',
-      website: 'https://europa.eu',
-      projects: 10
+      
+      website: 'https://www.ceeac-eccas.org/2023/05/28/eccas-in-brief/',
+      // projects: 10
     },
     {
       id: 6,
@@ -68,9 +68,9 @@ const Partners = () => {
       category: 'International',
       // type: 'Implementation Partner',
       since: '2013',
-      description: 'Maritime security operations and training',
-      website: '#',
-      projects: 20
+      
+      website: 'https://www.expertisefrance.fr/en/projects/enmar-maritime-security-gulf-guinea',
+      // projects: 20
     },
     {
       id: 7,
@@ -79,9 +79,9 @@ const Partners = () => {
       category: 'Government',
       // type: 'Regulatory Partner',
       since: '2016',
-      description: 'Maritime safety standards and compliance',
-      website: 'https://www.joinnigeriannavy.navy.mil.ng/',
-      projects: 9
+      
+      website: 'https://navy.mil.ng/',
+      // projects: 9
     },
     {
       id: 8,
@@ -90,9 +90,9 @@ const Partners = () => {
       category: 'International',
       // type: 'Funding Partner',
       since: '2019',
-      description: 'Blue economy development financing',
-      website: 'https://worldbank.org',
-      projects: 5
+      
+      website: 'https://luanda.mfa.gov.gh/ghana-and-the-gulf-of-guinea-commission/the-gulf-of-guinea-commission/',
+      // projects: 5
     },
     {
       id: 9,
@@ -101,9 +101,9 @@ const Partners = () => {
       category: 'Private Sector',
       // type: 'Network Partner',
       since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
+      
+      website: 'https://www.youtube.com/c/EyeOnPort',
+      // projects: 7
     },
     {
       id: 9,
@@ -112,54 +112,45 @@ const Partners = () => {
       category: 'International',
       // type: 'Network Partner',
       since: '2017',
-      description: 'Women in maritime empowerment programs',
+      
       website: '#',
-      projects: 7
+      // projects: 7
     },
+    
     {
       id: 9,
-      name: 'IMDEC',
-      logo: '/IMDEC-Logo.png',
+      name: 'Maritimafrica.jpg',
+      logo: '/Maritimafrica.jpg',
       category: 'Private Sector',
       // type: 'Network Partner',
       since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
-    {
-      id: 9,
-      name: '/Maritimafrica.jpg',
-      logo: '/IMDEC-Logo.png',
-      category: 'Private Sector',
-      // type: 'Network Partner',
-      since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
+    
+      website: 'https://maritimafrica.com/en/',
+      // projects: 7
     },
 
     {
       id: 9,
-      name: '/maritime logo (1).jpg',
+      name: 'IMO',
+      logo: '/international-maritime-organization-vector-logo (1).png',
       category: 'Private Sector',
-      // type: 'Network Partner',
+      type: 'Network Partner',
       since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
+   
+      website: 'https://www.imo.org/',
+      //  projects: 7
+     },
 
-    {
-      id: 9,
-      name: '/Maritimafrica.jpg',
-      category: 'Private Sector',
-      // type: 'Network Partner',
-      since: '2017',
-      description: 'Women in maritime empowerment programs',
-      website: '#',
-      projects: 7
-    },
+    // {
+    //   id: 9,
+    //   name: '/Maritimafrica.jpg',
+    //   category: 'Private Sector',
+    //   // type: 'Network Partner',
+    //   since: '2017',
+    //   description: 'Women in maritime empowerment programs',
+    //   website: '#',
+    //   projects: 7
+    // },
 
     
   ];
