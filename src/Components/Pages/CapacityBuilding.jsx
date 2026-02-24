@@ -82,7 +82,7 @@ const CapacityBuilding = () => {
       duration: '12 months',
       format: 'Hybrid',
       level: 'All Levels',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&fit=crop',
+      image: '/bluementorshipimage.png',
       features: ['1-on-1 Mentorship', 'Industry Networks', 'Career Guidance'],
       impact: '200+ youth engaged since 2021',
       nextIntake: 'March 2025'
@@ -90,12 +90,12 @@ const CapacityBuilding = () => {
     {
       category: 'Virtual',
       status: 'Active',
-      title: 'Youth in Africa\'s Blue Economy',
-      description: 'Four-module training course exposing participants to career opportunities in Africa\'s Blue Economy.',
+      title: 'ECOP',
+      description: 'The ECOP Training Course was held twice this year in March and November 2022 as a 9-day event to equip the youth with first-hand knowledge about Africa’s blue economy and expose participants to various career and business opportunities in the blue industry.',
       duration: '4 weeks',
       format: 'Online',
       level: 'Beginner-Intermediate',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&fit=crop',
+      image: '/ecop.png',
       features: ['4 Training Modules', 'Zoom Workshops', 'Certificate'],
       impact: 'Supported by IOC-UNESCO & NORAD',
       nextIntake: 'Quarterly'
@@ -108,7 +108,7 @@ const CapacityBuilding = () => {
       duration: '2 days',
       format: 'In-Person',
       level: 'All Levels',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&fit=crop',
+      image: '/bluecareer.webp',
       features: ['Panel Discussions', 'Network Sessions', 'Career Fair'],
       impact: 'Launched Ghana\'s Blue Business Directory',
       nextIntake: 'November 2025'
@@ -135,9 +135,9 @@ const CapacityBuilding = () => {
   ];
 
   const impactMetrics = [
-    { label: 'Training Programs', value: '25+', icon: <BookOpen className="w-6 h-6" /> },
-    { label: 'Professionals Certified', value: '2,000+', icon: <Award className="w-6 h-6" /> },
-    { label: 'Partner Organizations', value: '45+', icon: <Building2 className="w-6 h-6" /> }
+    { label: 'Training Programs', value: '5+', icon: <BookOpen className="w-6 h-6" /> },
+    { label: 'Professionals Certified', value: '100+', icon: <Award className="w-6 h-6" /> },
+    { label: 'Partner Organizations', value: '15+', icon: <Building2 className="w-6 h-6" /> }
   ];
 
   const filteredPrograms = activeCategory === 'all' 

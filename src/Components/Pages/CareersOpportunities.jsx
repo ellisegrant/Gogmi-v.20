@@ -22,30 +22,30 @@ const Careers = () => {
       requirements: ['Masters in Maritime Studies, International Relations, or related field', 'Proven experience in policy analysis', 'Excellent research and writing skills', 'Knowledge of West African maritime sector'],
       responsibilities: ['Conduct comprehensive policy research', 'Develop policy recommendations', 'Engage with government officials', 'Lead advocacy campaigns']
     },
-    {
-      id: 2,
-      title: 'Head of Technical ',
-      category: 'Research',
-      type: 'Full-Time',
-      location: 'Accra, Ghana',
-      experience: '3-5 years',
-      deadline: 'December 20, 2024',
-      description: 'Conduct marine ecosystem research and contribute to sustainable blue economy initiatives. Work with coastal communities and scientific institutions.',
-      requirements: ['PhD in Marine Biology, Oceanography, or related field', 'Research experience in marine ecosystems', 'Strong analytical skills', 'Field research experience'],
-      responsibilities: ['Design and execute research projects', 'Analyze marine data', 'Publish scientific papers', 'Collaborate with research partners']
-    },
-    {
-      id: 3,
-      title: 'Research Analyst ',
-      category: 'Research',
-      type: 'Full-Time',
-      location: 'Accra, Ghana',
-      experience: '2-4 years',
-      deadline: 'January 10, 2025',
-      description: 'Manage organizational communications, social media presence, and stakeholder engagement. Create compelling content about maritime issues.',
-      requirements: ['Bachelors in Communications, Journalism, or related field', 'Proven content creation experience', 'Social media expertise', 'Excellent writing skills'],
-      responsibilities: ['Develop communication strategies', 'Manage social media platforms', 'Create engaging content', 'Coordinate media relations']
-    },
+    // {
+    //   id: 2,
+    //   title: 'Head of Technical ',
+    //   category: 'Research',
+    //   type: 'Full-Time',
+    //   location: 'Accra, Ghana',
+    //   experience: '3-5 years',
+    //   deadline: 'December 20, 2024',
+    //   description: 'Conduct marine ecosystem research and contribute to sustainable blue economy initiatives. Work with coastal communities and scientific institutions.',
+    //   requirements: ['PhD in Marine Biology, Oceanography, or related field', 'Research experience in marine ecosystems', 'Strong analytical skills', 'Field research experience'],
+    //   responsibilities: ['Design and execute research projects', 'Analyze marine data', 'Publish scientific papers', 'Collaborate with research partners']
+    // },
+    // {
+    //   id: 3,
+    //   title: 'Research Analyst ',
+    //   category: 'Research',
+    //   type: 'Full-Time',
+    //   location: 'Accra, Ghana',
+    //   experience: '2-4 years',
+    //   deadline: 'January 10, 2025',
+    //   description: 'Manage organizational communications, social media presence, and stakeholder engagement. Create compelling content about maritime issues.',
+    //   requirements: ['Bachelors in Communications, Journalism, or related field', 'Proven content creation experience', 'Social media expertise', 'Excellent writing skills'],
+    //   responsibilities: ['Develop communication strategies', 'Manage social media platforms', 'Create engaging content', 'Coordinate media relations']
+    // },
     
   
   
@@ -113,9 +113,9 @@ const Careers = () => {
           {/* Quick Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12">
             {[
-              { number: '50+', label: 'Team Members' },
-              { number: '15', label: 'Nationalities' },
-              { number: '6', label: 'Open Positions' },
+              { number: '20+', label: 'Team Members' },
+              { number: '5', label: 'Nationalities' },
+              { number: '0', label: 'Open Positions' },
            
             ].map((stat, idx) => (
               <div key={idx} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
@@ -253,7 +253,7 @@ const Careers = () => {
                     </div>
 
                     <button className="lg:flex-shrink-0 bg-[#8E3400] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#6B2700] transition-all shadow-lg hover:scale-105 flex items-center justify-center gap-2" style={{ fontWeight: 700 }}>
-                      <span>Apply Now</span>
+                      <span>Closed</span>
                       <ChevronRight className="w-5 h-5" />
                     </button>
                   </div>

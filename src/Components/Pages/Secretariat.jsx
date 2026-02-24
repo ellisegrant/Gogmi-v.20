@@ -158,87 +158,153 @@ const Secretariat = () => {
         </div>
       </section>
 
-      {/* PORTFOLIO - Similar to Advocacy's Achievements */}
-      <section className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
-        <div className="container mx-auto max-w-7xl px-6">
-          <div className="text-center mb-16">
-            <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Our Portfolio</span>
-            <h2 className="text-5xl md:text-6xl mt-4 mb-6"
-                style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
-              Signature Events & Initiatives
-            </h2>
-            <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563', fontWeight: 400 }}>
-              Explore our track record of delivering world-class secretariat services for major maritime events
-            </p>
+     
+{/* PORTFOLIO - Clickable Projects */}
+<section className="py-20 md:py-32" style={{ backgroundColor: '#F5F7FA' }}>
+  <div className="container mx-auto max-w-7xl px-6">
+    <div className="text-center mb-16">
+      <span className="text-sm uppercase tracking-wider" style={{ fontWeight: 600, color: '#8E3400' }}>Our Portfolio</span>
+      <h2 className="text-5xl md:text-6xl mt-4 mb-6"
+          style={{ fontWeight: 900, color: '#132552', letterSpacing: '-0.02em' }}>
+        Signature Events & Initiatives
+      </h2>
+      <p className="text-lg max-w-3xl mx-auto" style={{ color: '#4B5563', fontWeight: 400 }}>
+        Explore our track record of delivering world-class secretariat services for major maritime events
+      </p>
+    </div>
+
+    <div className="space-y-6">
+      {/* GMAC Project */}
+      <Link
+        to="/gmac"
+        className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 block"
+      >
+        <div className="grid md:grid-cols-5 gap-0">
+          {/* Image section */}
+          <div className="md:col-span-2 relative h-64 md:h-auto">
+            <img
+              src="/gmacpic.jpg"
+              alt="Green Maritime Africa Coalition"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
 
-          <div className="space-y-6">
-            {portfolioItems.map((item, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-              >
-                <div className="grid md:grid-cols-5 gap-0">
-                  {/* Image section */}
-                  <div className="md:col-span-2 relative h-64 md:h-auto">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  </div>
-
-                  <div className="md:col-span-3 p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="px-4 py-1.5 rounded-full text-white text-sm"
-                           style={{ fontWeight: 700, backgroundColor: '#132552' }}>
-                        {item.year}
-                      </div>
-                      {item.impact && (
-                        <div className="px-4 py-1.5 rounded-full text-sm"
-                             style={{ fontWeight: 600, backgroundColor: '#F5F7FA', color: '#8E3400' }}>
-                          {item.impact}
-                        </div>
-                      )}
-                    </div>
-
-                    <h3 className="text-xl md:text-2xl mb-3"
-                        style={{ fontWeight: 900, color: '#132552' }}>
-                      {item.title}
-                    </h3>
-
-                    {item.theme && (
-                      <p className="text-sm font-bold mb-4 uppercase tracking-wide" style={{ color: '#8E3400' }}>
-                        Theme: {item.theme}
-                      </p>
-                    )}
-
-                    <p className="text-base leading-relaxed mb-4 line-clamp-3" style={{ fontWeight: 400, color: '#4B5563' }}>
-                      {item.overview}
-                    </p>
-
-                    {/* Highlights */}
-                    {item.highlights && item.highlights.length > 0 && (
-                      <div className="mt-4">
-                        <p className="text-sm font-bold mb-2" style={{ color: '#132552' }}>Key Highlights:</p>
-                        <ul className="space-y-1">
-                          {item.highlights.slice(0, 2).map((highlight, hIdx) => (
-                            <li key={hIdx} className="flex items-start gap-2 text-sm" style={{ color: '#4B5563' }}>
-                              <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#8E3400' }} />
-                              <span>{highlight}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
+          <div className="md:col-span-3 p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="px-4 py-1.5 rounded-full text-white text-sm"
+                   style={{ fontWeight: 700, backgroundColor: '#132552' }}>
+                2023
               </div>
-            ))}
+              <div className="px-4 py-1.5 rounded-full text-sm"
+                   style={{ fontWeight: 600, backgroundColor: '#F5F7FA', color: '#8E3400' }}>
+                37 stakeholders engaged
+              </div>
+            </div>
+
+            <h3 className="text-xl md:text-2xl mb-3 group-hover:text-[#8E3400] transition-colors"
+                style={{ fontWeight: 900, color: '#132552' }}>
+              Green Maritime Africa Coalition
+            </h3>
+
+            <p className="text-sm font-bold mb-4 uppercase tracking-wide" style={{ color: '#8E3400' }}>
+              Theme: Advancing Net-Zero Emissions and Maritime Resilience in Africa through Continental Collaboration
+            </p>
+
+            <p className="text-base leading-relaxed mb-4 line-clamp-3" style={{ fontWeight: 400, color: '#4B5563' }}>
+              GoGMI collaborates with the Nigerian Maritime Administration and Safety Agency to host the Green Maritime Africa Coalition (GMAC). 
+              GMAC's mission is a shared continental initiative aimed at leading the global energy transition. By 2030, GMAC intends to provide 
+              zero-emission fuels for the maritime industry and implement them in both international and domestic shipping throughout Africa.
+            </p>
+
+            {/* Highlights */}
+            <div className="mt-4">
+              <p className="text-sm font-bold mb-2" style={{ color: '#132552' }}>Key Highlights:</p>
+              <ul className="space-y-1">
+                <li className="flex items-start gap-2 text-sm" style={{ color: '#4B5563' }}>
+                  <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#8E3400' }} />
+                  <span>Thought-provoking insights from industry leaders, experts, and influencers</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm" style={{ color: '#4B5563' }}>
+                  <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#8E3400' }} />
+                  <span>Stakeholders had the chance to connect with peers, forge new partnerships, and expand their professional networks</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex items-center gap-2 mt-6 text-sm font-semibold group-hover:gap-3 transition-all" style={{ color: '#8E3400' }}>
+              <span>View Full Project</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
           </div>
         </div>
-      </section>
+      </Link>
+
+      {/* SHADE Project */}
+      <Link
+        to="/shade"
+        className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 block"
+      >
+        <div className="grid md:grid-cols-5 gap-0">
+          {/* Image section */}
+          <div className="md:col-span-2 relative h-64 md:h-auto">
+            <img
+              src="/shade.png"
+              alt="GoG-MCF SHADE"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          </div>
+
+          <div className="md:col-span-3 p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="px-4 py-1.5 rounded-full text-white text-sm"
+                   style={{ fontWeight: 700, backgroundColor: '#132552' }}>
+                2023
+              </div>
+              <div className="px-4 py-1.5 rounded-full text-sm"
+                   style={{ fontWeight: 600, backgroundColor: '#F5F7FA', color: '#8E3400' }}>
+                Enhanced regional security
+              </div>
+            </div>
+
+            <h3 className="text-xl md:text-2xl mb-3 group-hover:text-[#8E3400] transition-colors"
+                style={{ fontWeight: 900, color: '#132552' }}>
+              Gulf of Guinea Maritime Collaboration Forum - Shared Awareness and Deconfliction (GoG-MCF SHADE)
+            </h3>
+
+            <p className="text-base leading-relaxed mb-4 line-clamp-3" style={{ fontWeight: 400, color: '#4B5563' }}>
+              The Gulf of Guinea Maritime Collaboration Forum - Shared Awareness and Deconfliction (GoG-MCF SHADE) was a dynamic forum designed 
+              and implemented by GoGMI in collaboration with the Nigerian Maritime Administration and Safety Agency (NIMASA) as a viable platform 
+              for regional and international navies, maritime industry partners and relevant stakeholders from across the GoG and beyond to harmonise 
+              counter-piracy efforts and communication in the GoG region.
+            </p>
+
+            {/* Highlights */}
+            <div className="mt-4">
+              <p className="text-sm font-bold mb-2" style={{ color: '#132552' }}>Key Highlights:</p>
+              <ul className="space-y-1">
+                <li className="flex items-start gap-2 text-sm" style={{ color: '#4B5563' }}>
+                  <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#8E3400' }} />
+                  <span>Dynamic discussions on counter-piracy efforts and communication</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm" style={{ color: '#4B5563' }}>
+                  <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#8E3400' }} />
+                  <span>Working group discussions on industry disruptions and collaboration</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex items-center gap-2 mt-6 text-sm font-semibold group-hover:gap-3 transition-all" style={{ color: '#8E3400' }}>
+              <span>View Full Project</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
+          </div>
+        </div>
+      </Link>
+    </div>
+  </div>
+</section>
 
      
 

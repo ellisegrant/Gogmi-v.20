@@ -1,6 +1,7 @@
 <?php
 define('APP_RUNNING', true);
-require_once __DIR__ . '/../config/config.php';
+<?php
+require_once __DIR__ . '/.htaccess/config/cors.php';
 
 class JWT {
     

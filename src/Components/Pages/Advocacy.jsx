@@ -71,14 +71,14 @@ const Advocacy = () => {
       image: '/bluecareer.webp',
       link: '/bluecareerexpo'  // Link to Blue Career Expo page - you can add links like this to any achievement
     },
-    {
-      year: '2023',
-      title: 'Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE)',
-      description: `The Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE) seeks to create a viable platform for navies, industry partners and other relevant stakeholders from across the Gulf of Guinea and beyond to harmonise counter-piracy efforts and communication in the region under the existing information sharing architecture provided by both the Yaoundé Code of Conduct (YCOC) and the Best Management Practices to Deter Piracy and Enhance Maritime Security off the Coast of West Africa (BMP-WA)`,
-      impact: '2,000+ professionals certified',
-      image: '/shade.png',
-      link: '/shade'  // ✅ ADDED LINK TO SHADE PAGE
-    },
+    // {
+    //   year: '2023',
+    //   title: 'Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE)',
+    //   description: `The Gulf of Guinea Maritime Collaboration Forum and Shared Awareness and De-confliction (GoG-MCF/SHADE) seeks to create a viable platform for navies, industry partners and other relevant stakeholders from across the Gulf of Guinea and beyond to harmonise counter-piracy efforts and communication in the region under the existing information sharing architecture provided by both the Yaoundé Code of Conduct (YCOC) and the Best Management Practices to Deter Piracy and Enhance Maritime Security off the Coast of West Africa (BMP-WA)`,
+    //   impact: '2,000+ professionals certified',
+    //   image: '/shade.png',
+    //   link: '/shade'  // ✅ ADDED LINK TO SHADE PAGE
+    // },
 
     {
       year: '2023',
@@ -116,15 +116,15 @@ const Advocacy = () => {
       deadline: 'Annual Event',
       logo: '/bluecareer.webp'
     },
-    {
-      status: 'active',
-      title: 'National Maritime Safety and Security (NaMSSec) Forum ',
-      category: 'Maritime Safety',
-      description: 'A high level stakeholder forum organized to discuss and advise on policies and identify policy gaps for necessary interventions',
-      supporters: 3200,
-      deadline: 'Ongoing',
-      logo: '/shade.png'
-    },
+    // {
+    //   status: 'active',
+    //   title: 'National Maritime Safety and Security (NaMSSec) Forum ',
+    //   category: 'Maritime Safety',
+    //   description: 'A high level stakeholder forum organized to discuss and advise on policies and identify policy gaps for necessary interventions',
+    //   supporters: 3200,
+    //   deadline: 'Ongoing',
+    //   logo: '/shade.png'
+    // },
     {
       status: 'active',
       title: 'Blue World Initiative',

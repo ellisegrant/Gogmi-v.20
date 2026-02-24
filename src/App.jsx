@@ -30,6 +30,8 @@ import Login from './Components/Pages/Login';
 import IMSWGSignUp from './Components/Pages/IMSWGSignUp';
 import MaritimeGovernanceCourse from './Components/Pages/MaritimeGovernanceCourse';
 import MarineCasualtyCourse from './Components/pages/MarineCasualtyCourse';
+import GulfSpectrumPodcast from './Components/Pages/GulfSpectrumPodcast';
+
 
 function App() {
   return (
@@ -61,8 +63,10 @@ function App() {
               <Route path="/management" element={<Management />} />
               <Route path="/advisoryboard" element={<AdvisoryBoard />} />
               <Route path="/imswg-signup" element={<IMSWGSignUp />} />
-              <Route path="/maritimegovernancecourse" element={<MaritimeGovernanceCourse />} />
+              <Route path="/"maritimegovernancecourse element={<MaritimeGovernanceCourse />} />
               <Route path="/marine-casualty-course" element={<MarineCasualtyCourse />} />
+              <Route path="/gulf-spectrum-podcast" element={<GulfSpectrumPodcast />} />
+            
               
               {/* Simple login for returning members */}
               <Route path="/login" element={<Login />} />

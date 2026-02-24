@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../../config/cors.php';
+<?php
+require_once __DIR__ . '/.htaccess/config/cors.php';
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../utils/Response.php';
 require_once __DIR__ . '/../../utils/JWT.php';

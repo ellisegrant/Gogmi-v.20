@@ -268,7 +268,7 @@ const Home = () => {
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border mb-6 animate-fade-in"
                style={{ backgroundColor: 'rgba(142, 52, 0, 0.2)', borderColor: 'rgba(142, 52, 0, 0.3)', backdropFilter: 'blur(8px)' }}>
             <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#8E3400' }}></span>
-            <span className="font-semibold text-sm" style={{ color: '#8E3400', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
+            <span className="font-semibold text-sm" style={{ color: 'white', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
               Leading The Gulf Of Guinea Maritime Future
             </span>
           </div>
@@ -343,7 +343,7 @@ const Home = () => {
       
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-[450px] lg:col-span-7 lg:-mt-60">
               <img 
-                src="/conf1.jpg" 
+                src="/whoweare.ad.jpg" 
                 alt="Maritime professionals at work"
                 className="w-full h-full object-cover"
               />
@@ -446,7 +446,7 @@ const Home = () => {
             {/* Professional Image - 7 columns, on the left */}
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-[800px] order-2 lg:order-1 lg:col-span-7">
               <img 
-                src="/Piracy Increases in Africa's Guinea Gulf.jpg" 
+                src="/MapChart_Map (4).png" 
                 alt="Gulf of Guinea maritime view"
                 className="w-full h-full object-cover"
               />
@@ -473,7 +473,7 @@ const Home = () => {
                     'Senegal', 'Guinea-Bissau', 'Guinea', 'Sierra Leone', 'Liberia', 
                     'Côte d\'Ivoire', 'Ghana', 'Togo', 'Benin', 'Nigeria', 
                     'Cameroon', 'Equatorial Guinea', 'Gabon', 'Congo', 
-                    'DR Congo', 'Angola'
+                    'DR Congo', 'Angola','Cape Verde','São Tomé and Príncipe '
                   ].map((country, idx) => (
                     <div 
                       key={idx}
@@ -491,7 +491,7 @@ const Home = () => {
                 <div className="p-6 rounded-xl shadow-md hover:shadow-lg transition-all" 
                      style={{ background: 'linear-gradient(135deg, #F5F7FA 0%, #ffffff 100%)' }}>
                   <div className="text-3xl font-black mb-2" 
-                       style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552' }}>16</div>
+                       style={{ fontFamily: "Inter, sans-serif", fontWeight: 900, color: '#132552' }}>18</div>
                   <p className="font-semibold text-sm" style={{ color: '#4B5563', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>Coastal Countries</p>
                 </div>
                 <div className="p-6 rounded-xl shadow-md hover:shadow-lg transition-all" 
@@ -608,18 +608,18 @@ const Home = () => {
           link: '/blog?category=Events#imswg'
         },
         {
-          category: 'News',
-          title: 'New Blue Economy Investment Report Released',
-          excerpt: 'Latest research explores untapped opportunities in sustainable fisheries and marine tourism.',
-          date: 'November 10, 2024',
-          image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&fit=crop'
+          category: 'Training',
+          title: 'MARINE CASUALTY INVESTIGATION & SAFETY MANAGEMENT',
+          excerpt: 'Executive training on conducting credible marine casualty investigations aligned with IMO Casualty Investigation Code and SOLAS requirements for maritime administrators.',
+          date: 'TBA 2026',
+          image: '/marinecasuality.jpeg'
         },
         {
           category: 'Training',
-          title: '50+ Professionals Complete Maritime Certification',
-          excerpt: 'Our latest cohort successfully graduates from comprehensive maritime security programs.',
-          date: 'November 5, 2024',
-          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&fit=crop'
+          title: 'Maritime Governance CourseA Focus on Africa',
+          excerpt: 'This comprehensive course equips professionals, stakeholders, and decision-makers with the knowledge, skills, and tools necessary to develop and implement effective maritime strategies within the African context.',
+          date: 'May 5 – 28, 2026',
+          image: '/maritime.gov.jpeg'
         }
       ].map((news, idx) => (
         <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group">

@@ -62,6 +62,7 @@ const Navbar = () => {
         { name: "Library", path: "/resources" },
         { name: "Events, Blog & News", path: "/blog" },
         { name: "Membership", path: "/Membership" },
+        { name: "Gulf Spectrum Podcast", path: "/gulf-spectrum-podcast" },
       ],
     },
     { name: "Contact", path: "/contact" },

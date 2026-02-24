@@ -1,7 +1,8 @@
 <?php
 define('APP_RUNNING', true);
 require_once 'config/database.php';
-require_once 'config/config.php';
+<?php
+require_once __DIR__ . '/.htaccess/config/cors.php';
 
 header('Content-Type: text/html; charset=utf-8');
 ?>

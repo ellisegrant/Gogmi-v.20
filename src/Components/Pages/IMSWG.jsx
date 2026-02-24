@@ -16,7 +16,7 @@ const IMSWG = () => {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="/conf2.jpg"
+            src="/imswg4.jpg"
             alt="IMSWG Forum"
             className="w-full h-full object-cover"
           />
@@ -71,7 +71,7 @@ const IMSWG = () => {
 
             <div className="relative">
               <img 
-                src="/conf3.jpg"
+                src="/imswg2.jpg"
                 alt="Maritime Collaboration"
                 className="rounded-xl shadow-2xl w-full"
               />
@@ -183,7 +183,7 @@ const IMSWG = () => {
 
           <div className="relative rounded-2xl overflow-hidden shadow-2xl">
             <img 
-              src="/conf2.jpg"
+              src="/imswg3.jpg"
               alt="Maritime Forum Discussion"
               className="w-full h-96 object-cover"
             />
@@ -195,6 +195,169 @@ const IMSWG = () => {
                 <p className="text-slate-300" style={{ fontFamily: 'Georgia, serif' }}>
                   Bringing together experts from across the maritime ecosystem
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+{/* IMSWG 2026 - Upcoming Event */}
+      <section className="py-20 md:py-28 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest mb-4 block text-cyan-400"
+                  style={{ letterSpacing: '0.15em' }}>
+              Next Forum
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white"
+                style={{ letterSpacing: '-0.01em', fontFamily: '"SF Pro Display", sans-serif' }}>
+              IMSWG 2026 - Coming Soon
+            </h2>
+            <div className="w-20 h-1 bg-cyan-400 rounded-full mx-auto mb-6"></div>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto"
+               style={{ fontFamily: 'Georgia, serif' }}>
+              High-Level Expert Meeting: Optimizing Maritime Security for Sustainable Blue Economy Development
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Flyer Image */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full"></div>
+              <img 
+                src="/IMSWG2026flyer.jpg"
+                alt="IMSWG 2026 Forum"
+                className="relative rounded-2xl shadow-2xl w-full hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+
+            {/* Event Details */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-4">Forum Theme</h3>
+                <p className="text-lg text-slate-300 leading-relaxed" style={{ fontFamily: 'Georgia, serif' }}>
+                  Optimizing Maritime Security for Sustainable Blue Economy Development: A Strategic Framework for the Gulf of Guinea
+                </p>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                <div className="flex items-center gap-3 mb-4">
+                  <Calendar className="w-6 h-6 text-cyan-400" />
+                  <h4 className="text-lg font-bold text-white">Event Details</h4>
+                </div>
+                <div className="space-y-3 text-slate-300">
+                  <p className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                    <span className="font-semibold text-white">Date:</span> Coming Soon
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                    <span className="font-semibold text-white">Format:</span> Hybrid (Virtual & In-Person)
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                    <span className="font-semibold text-white">Status:</span> Registration Opening Soon
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={() => navigate('/imswg-signup')}
+                  className="flex-1 px-8 py-4 bg-cyan-400 hover:bg-cyan-500 text-slate-900 rounded-xl font-bold transition-all hover:scale-105 shadow-lg cursor-pointer"
+                >
+                  Register Interest
+                </button>
+               
+              </div>
+
+              <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4">
+                <p className="text-sm text-cyan-100 text-center">
+                  📧 For sponsorship & inquiries: <a href="mailto:info@gogmi.org.gh" className="font-bold underline">info@gogmi.org.gh</a> | 📱 +233504953400
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Past Events Showcase */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest mb-4 block"
+                  style={{ color: '#64748b', letterSpacing: '0.15em' }}>
+              Previous Forums
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6"
+                style={{ color: '#1e293b', letterSpacing: '-0.01em', fontFamily: '"SF Pro Display", sans-serif' }}>
+              IMSWG Connect 2025
+            </h2>
+            <div className="w-20 h-1 bg-slate-900 rounded-full mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* 2025 Flyer */}
+            <div className="order-2 md:order-1">
+              <img 
+                src="/imswg2025flyer.jpg"
+                alt="IMSWG Connect 2025"
+                className="rounded-2xl shadow-xl w-full hover:shadow-2xl transition-shadow"
+              />
+            </div>
+
+            {/* 2025 Event Info */}
+            <div className="order-1 md:order-2 space-y-6">
+              <div>
+                <h3 className="text-3xl font-bold mb-4" style={{ color: '#1e293b' }}>
+                  IMSWG Connect Event
+                </h3>
+                <p className="text-lg text-slate-600 leading-relaxed mb-6" style={{ fontFamily: 'Georgia, serif' }}>
+                  A successful networking and dialogue session featuring Vice Admiral Issah Adam Yakubu, Executive Chairman of GoGMI.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 text-slate-700" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-900">25th September 2025</p>
+                    <p className="text-sm text-slate-600">2:00 PM</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Users className="w-5 h-5 text-slate-700" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-900">Coconut Groove Hotel, Accra</p>
+                    <p className="text-sm text-slate-600">John Kasavubu Road</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Globe className="w-5 h-5 text-slate-700" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-900">Hybrid Format</p>
+                    <p className="text-sm text-slate-600">In-person & Virtual via Zoom</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <button 
+                  onClick={goToReports}
+                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-semibold transition-all cursor-pointer"
+                >
+                  <FileText className="w-5 h-5" />
+                  <span>View Event Report</span>
+                </button>
               </div>
             </div>
           </div>
@@ -230,7 +393,7 @@ const IMSWG = () => {
                 onClick={() => navigate('/imswg-signup')}
                 className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all hover:gap-3 bg-slate-900 hover:bg-slate-800 text-white cursor-pointer"
               >
-                <span>Register Now</span>
+                <span>Express Your Interest</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
@@ -258,7 +421,7 @@ const IMSWG = () => {
               <div className="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center mb-6">
                 <Calendar className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-3" style={{ color: '#1e293b' }}>2025 Event</h3>
+              <h3 className="text-xl font-bold mb-3" style={{ color: '#1e293b' }}>2026 Event</h3>
               <p className="text-sm mb-6 leading-relaxed" style={{ color: '#64748b', fontFamily: 'Georgia, serif' }}>
                 View upcoming 2026 forum schedule and event details
               </p>

@@ -106,7 +106,7 @@ const Partners = () => {
       // projects: 7
     },
     {
-      id: 9,
+      id: 10,
       name: 'ICC',
       logo: '/ICC Logo (1).png',
       category: 'International',
@@ -118,7 +118,7 @@ const Partners = () => {
     },
     
     {
-      id: 9,
+      id: 11,
       name: 'Maritimafrica.jpg',
       logo: '/Maritimafrica.jpg',
       category: 'Private Sector',
@@ -130,27 +130,28 @@ const Partners = () => {
     },
 
     {
-      id: 9,
+      id: 12,
       name: 'IMO',
       logo: '/international-maritime-organization-vector-logo (1).png',
       category: 'Private Sector',
-      type: 'Network Partner',
+      // type: 'Network Partner',
       since: '2017',
    
       website: 'https://www.imo.org/',
       //  projects: 7
      },
 
-    // {
-    //   id: 9,
-    //   name: '/Maritimafrica.jpg',
-    //   category: 'Private Sector',
-    //   // type: 'Network Partner',
-    //   since: '2017',
-    //   description: 'Women in maritime empowerment programs',
-    //   website: '#',
-    //   projects: 7
-    // },
+     {
+    id: 13,
+    name: 'NIMASA',
+    logo: '/nimasa.jpg',
+    category: 'Private Sector',
+    //  type: 'Network Partner',
+      since: '2017',
+      // description: 'Women in maritime empowerment programs',
+      website: 'https://nimasa.gov.ng/',
+      // projects: 7
+     },
 
     
   ];
