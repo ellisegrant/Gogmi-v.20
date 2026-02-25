@@ -59,9 +59,11 @@ const GulfSpectrumPodcast = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className={`text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             
-            {/* Podcast Logo */}
+            {/* Podcast Logo with white background */}
             <div className="mb-8 flex justify-center">
-              <img src="/gsp.png" alt="Gulf Spectrum Podcast" className="h-32 w-auto" />
+              <div className="bg-white rounded-2xl p-6 shadow-2xl">
+                <img src="/gsp.png" alt="Gulf Spectrum Podcast" className="h-24 w-auto" />
+              </div>
             </div>
 
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
@@ -161,6 +163,7 @@ const GulfSpectrumPodcast = () => {
         </div>
       </section>
 
+      {/* Featured Episodes - Grid Layout (3 per row) */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -170,39 +173,40 @@ const GulfSpectrumPodcast = () => {
             <div className="w-20 h-1 rounded-full mx-auto mb-6" style={{ backgroundColor: '#8E3400' }}></div>
           </div>
 
-          <div className="space-y-12">
+          <div className="grid md:grid-cols-3 gap-8">
             {featuredEpisodes.map((episode, idx) => (
               <div key={idx} className="group bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-gray-100 hover:border-[#8E3400] transition-all duration-500">
-                <div className="grid md:grid-cols-5 gap-0">
-                  <div className="md:col-span-2 relative h-80 md:h-auto">
-                    <img src={episode.image} alt={episode.guest} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    
-                    <a href={episode.youtubeLink} target="_blank" rel="noopener noreferrer" className="absolute inset-0 flex items-center justify-center group-hover:bg-black/30 transition-all">
-                      <div className="w-20 h-20 rounded-full flex items-center justify-center transition-all group-hover:scale-110" style={{ backgroundColor: '#8E3400' }}>
-                        <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                      </div>
-                    </a>
-                  </div>
+                {/* Episode Image */}
+                <div className="relative h-64">
+                  <img src={episode.image} alt={episode.guest} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  
+                  {/* Play Button Overlay */}
+                  <a href={episode.youtubeLink} target="_blank" rel="noopener noreferrer" className="absolute inset-0 flex items-center justify-center group-hover:bg-black/30 transition-all">
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center transition-all group-hover:scale-110" style={{ backgroundColor: '#8E3400' }}>
+                      <Play className="w-6 h-6 text-white ml-1" fill="white" />
+                    </div>
+                  </a>
+                </div>
 
-                  <div className="md:col-span-3 p-8">
-                    <h3 className="text-2xl md:text-3xl font-black mb-3" style={{ color: '#132552', fontWeight: 900 }}>
-                      {episode.title}
-                    </h3>
+                {/* Episode Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-black mb-2 group-hover:text-[#8E3400] transition-colors line-clamp-2" style={{ color: '#132552', fontWeight: 900 }}>
+                    {episode.title}
+                  </h3>
 
-                    <p className="text-lg font-bold mb-4" style={{ color: '#8E3400' }}>
-                      with {episode.guest}
-                    </p>
+                  <p className="text-sm font-bold mb-3" style={{ color: '#8E3400' }}>
+                    with {episode.guest}
+                  </p>
 
-                    <p className="text-base leading-relaxed mb-6" style={{ color: '#4B5563' }}>
-                      {episode.description}
-                    </p>
+                  <p className="text-sm leading-relaxed mb-4 line-clamp-3" style={{ color: '#4B5563' }}>
+                    {episode.description}
+                  </p>
 
-                    <a href={episode.youtubeLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold transition-all hover:scale-105" style={{ backgroundColor: '#132552', color: 'white' }}>
-                      <Youtube className="w-5 h-5" />
-                      <span>Watch Now</span>
-                    </a>
-                  </div>
+                  <a href={episode.youtubeLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-bold transition-all hover:scale-105 text-sm" style={{ backgroundColor: '#132552', color: 'white' }}>
+                    <Youtube className="w-4 h-4" />
+                    <span>Watch Now</span>
+                  </a>
                 </div>
               </div>
             ))}

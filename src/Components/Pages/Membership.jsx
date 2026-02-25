@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Membership = () => {
   const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -14,7 +16,9 @@ const Membership = () => {
     position: '',
     country: '',
     membershipType: '',
-    plan: ''
+    plan: '',
+    password: '',
+    confirmPassword: ''
   });
 
   useEffect(() => {
@@ -46,7 +50,9 @@ const Membership = () => {
     setFormData({
       ...formData,
       membershipType: plan.id.includes('student') || plan.id.includes('associate') || plan.id.includes('professional') || plan.id.includes('fellow') ? 'individual' : 'institutional',
-      plan: plan.name
+      plan: plan.name,
+      password: '',
+      confirmPassword: ''
     });
     setShowModal(true);
   };
@@ -54,6 +60,30 @@ const Membership = () => {
   const closeMembershipModal = () => {
     setShowModal(false);
     setSelectedPlan(null);
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      organization: '',
+      position: '',
+      country: '',
+      membershipType: '',
+      plan: '',
+      password: '',
+      confirmPassword: ''
+    });
+  };
+
+  const validatePassword = () => {
+    if (formData.password.length < 8) {
+      alert('Password must be at least 8 characters long');
+      return false;
+    }
+    if (formData.password !== formData.confirmPassword) {
+      alert('Passwords do not match');
+      return false;
+    }
+    return true;
   };
 
   const activateMembership = async (paymentReference) => {
@@ -68,6 +98,7 @@ const Membership = () => {
         country: formData.country,
         organization: formData.organization || '',
         position: formData.position || '',
+        password: formData.password,
         planId: selectedPlan.id,
         planName: selectedPlan.name,
         membershipType: formData.membershipType,
@@ -88,40 +119,34 @@ const Membership = () => {
       const data = await result.json();
       
       if (data.success) {
-        localStorage.setItem('gogmi_token', data.data.token);
-        localStorage.setItem('gogmi_user', JSON.stringify(data.data.user));
-        localStorage.setItem('gogmi_membership', JSON.stringify(data.data.membership));
-        
-        let message = `Payment successful!\n\nReference: ${paymentReference}\nCertificate Number: ${data.data.certificateNumber}\n\nWelcome to GoGMI!`;
-        
-        if (data.data.isNewAccount && data.data.temporaryPassword) {
-          message += `\n\nYour account has been created:\nEmail: ${data.data.user.email}\nTemporary Password: ${data.data.temporaryPassword}\n\nPlease save these credentials. You can change your password after logging in.`;
-        } else {
-          message += `\n\nYou can now access all member resources!`;
-        }
+        let message = `Payment successful!\n\nReference: ${paymentReference}\nCertificate Number: ${data.data.certificateNumber}\n\nYour account has been created successfully!\n\nEmail: ${formData.email}\nPassword: [Your chosen password]\n\nYou can now login and access all member resources.`;
         
         alert(message);
         
         closeMembershipModal();
         
         setTimeout(() => {
-          window.location.href = '/resources';
+          window.location.href = '/login';
         }, 1000);
       } else {
-        alert('Payment successful but membership activation failed. Please contact support with reference: ' + paymentReference + '\n\nError: ' + data.message);
+        alert('Payment successful but membership activation failed. Please contact support at info@gogmi.org.gh with reference: ' + paymentReference + '\n\nError: ' + data.message);
       }
       
     } catch (error) {
       console.error('Activation error:', error);
-      alert('Payment successful but there was an error activating your membership. Please contact support with reference: ' + paymentReference);
+      alert('Payment successful but there was an error activating your membership. Please contact support at info@gogmi.org.gh with reference: ' + paymentReference);
     }
   };
 
   const handlePayment = async (e) => {
     e.preventDefault();
     
-    if (!formData.fullName || !formData.email || !formData.phone || !formData.country) {
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.country || !formData.password || !formData.confirmPassword) {
       alert('Please fill in all required fields');
+      return;
+    }
+
+    if (!validatePassword()) {
       return;
     }
 
@@ -129,7 +154,7 @@ const Membership = () => {
     const amountUSD = priceMatch ? parseFloat(priceMatch.join('').replace(',', '')) : 0;
 
     if (amountUSD === 0 || selectedPlan.price === 'By Invitation Only') {
-      alert('Thank you for your interest! Our team will contact you regarding this membership tier.');
+      alert('Thank you for your interest! Our team will contact you at info@gogmi.org.gh regarding this membership tier.');
       closeMembershipModal();
       return;
     }
@@ -143,16 +168,15 @@ const Membership = () => {
       return;
     }
 
-    const paystackKey = 'pk_test_bcc51111bf5578e46e157a62180b11db89302000';
+    const paystackKey = 'pk_live_c4b85f73c7df60cde1d9fa5f72d2bc9afaec4d74';
     
-    // Convert USD to GHS (approximate rate: 1 USD = 15 GHS)
     const amountGHS = amountUSD * 15;
     
     try {
       const handler = window.PaystackPop.setup({
         key: paystackKey,
         email: formData.email,
-        amount: amountGHS * 100, // Paystack expects amount in pesewas
+        amount: amountGHS * 100,
         currency: 'GHS',
         ref: 'GOGMI-' + Math.floor((Math.random() * 1000000000) + 1),
         channels: ['card', 'mobile_money', 'bank', 'ussd', 'qr', 'bank_transfer'],
@@ -218,8 +242,7 @@ const Membership = () => {
   };
 
   const handleBrochureDownload = () => {
-    // Link to the membership brochure PDF
-    const brochureUrl = 'public/resources/pdfs/GoGMI-Membership-2026.pdf';
+    const brochureUrl = '/resources/pdfs/GoGMI-Membership-2026.pdf';
     const link = document.createElement('a');
     link.href = brochureUrl;
     link.download = 'GoGMI-Membership-2026.pdf';
@@ -253,7 +276,7 @@ const Membership = () => {
       price: 'USD 100',
       period: '/year',
       popular: true,
-      subtitle: '2-7 Years\' Experience',
+      subtitle: '2-7 Years Experience',
       description: 'For early-career professionals (1–5 years of experience) seeking skills development, visibility, and networking.',
       features: [
         'Official Certificate of Membership',
@@ -469,6 +492,60 @@ const Membership = () => {
                   </select>
                 </div>
 
+                <div className="border-t pt-4 mt-4">
+                  <h4 className="font-bold mb-3 text-sm" style={{ color: '#132552' }}>Create Account Password</h4>
+                  
+                  <div className="mb-4">
+                    <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
+                      Password <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        value={formData.password}
+                        onChange={handleFormChange}
+                        required
+                        minLength={8}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E3400] pr-12"
+                        placeholder="Minimum 8 characters"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold mb-2" style={{ color: '#132552' }}>
+                      Confirm Password <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        name="confirmPassword"
+                        value={formData.confirmPassword}
+                        onChange={handleFormChange}
+                        required
+                        minLength={8}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8E3400] pr-12"
+                        placeholder="Re-enter password"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <h4 className="font-bold mb-3" style={{ color: '#132552' }}>Membership Benefits:</h4>
                   <ul className="space-y-2">
@@ -514,7 +591,7 @@ const Membership = () => {
       <section className="relative pt-32 pb-20 overflow-hidden" style={{ backgroundColor: '#132552' }}>
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&fit=crop" 
+            src="/memb2.png" 
             alt="Membership"
             className="w-full h-full object-cover opacity-20"
           />
@@ -563,7 +640,7 @@ const Membership = () => {
             </div>
             <div className="relative h-96 rounded-xl overflow-hidden shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&fit=crop"
+                src="/memb1.png"
                 alt="Maritime Professionals"
                 className="w-full h-full object-cover"
               />
@@ -661,7 +738,6 @@ const Membership = () => {
                     {plan.description}
                   </p>
 
-                  {/* Only show benefits and apply button if NOT Fellow membership */}
                   {plan.id !== 'fellow' && (
                     <>
                       <div className="mb-3">
@@ -690,9 +766,6 @@ const Membership = () => {
                       </button>
                     </>
                   )}
-
-                  {/* Special message for Fellow membership */}
-                  
                 </div>
               </div>
             ))}
@@ -819,7 +892,7 @@ const Membership = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative h-96 rounded-xl overflow-hidden shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&fit=crop"
+                src="/memb3.png"
                 alt="Membership Brochure"
                 className="w-full h-full object-cover"
               />

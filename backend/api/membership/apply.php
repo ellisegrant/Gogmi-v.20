@@ -1,200 +1,247 @@
 <?php
-<?php
-require_once __DIR__ . '/.htaccess/config/cors.php';
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../utils/Response.php';
-require_once __DIR__ . '/../../utils/Validator.php';
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Content-Type: application/json');
 
-header('Content-Type: application/json; charset=utf-8');
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+require_once __DIR__ . '/../../database/config.php';
+require_once __DIR__ . '/../../utils/email.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    Response::error('Method not allowed', 405);
+    http_response_code(405);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
+    exit();
 }
 
-$input = file_get_contents("php://input");
-$data = json_decode($input, true);
-
-if (!$data) {
-    Response::error('Invalid JSON data', 400);
-}
+$input = json_decode(file_get_contents('php://input'), true);
 
 // Validate required fields
-$required = ['fullName', 'email', 'phone', 'country', 'planId', 'planName', 'membershipType', 'amount', 'paymentReference'];
+$required = ['fullName', 'email', 'phone', 'country', 'planId', 'planName', 'membershipType', 'password', 'paymentReference'];
 foreach ($required as $field) {
-    if (empty($data[$field])) {
-        Response::error("Field '$field' is required", 400);
+    if (empty($input[$field])) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => "Missing required field: $field"]);
+        exit();
     }
-}
-
-// Validate email
-if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-    Response::error('Invalid email format', 400);
 }
 
 try {
-    $database = new Database();
-    $db = $database->getConnection();
+    $db = getDBConnection();
     
-    // Check if payment reference already exists
-    $checkPayment = "SELECT id FROM payments WHERE payment_reference = :ref LIMIT 1";
-    $checkStmt = $db->prepare($checkPayment);
-    $checkStmt->bindParam(':ref', $data['paymentReference']);
-    $checkStmt->execute();
+    // Check if email already exists
+    $stmt = $db->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->execute([$input['email']]);
     
-    if ($checkStmt->fetch()) {
-        Response::error('Payment has already been processed', 400);
+    if ($stmt->fetch()) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Email already registered']);
+        exit();
     }
+    
+    // Hash password
+    $hashedPassword = password_hash($input['password'], PASSWORD_DEFAULT);
+    
+    // Generate certificate number
+    $year = date('Y');
+    $random = str_pad(rand(1, 9999), 4, '0', STR_PAD_LEFT);
+    $certificateNumber = "GOGMI-$year-$random";
+    
+    // Generate token for auto-login
+    $token = bin2hex(random_bytes(32));
     
     // Start transaction
     $db->beginTransaction();
     
-    // Check if user exists
-    $checkUser = "SELECT id FROM users WHERE email = :email LIMIT 1";
-    $userCheckStmt = $db->prepare($checkUser);
-    $userCheckStmt->bindParam(':email', $data['email']);
-    $userCheckStmt->execute();
-    $existingUser = $userCheckStmt->fetch();
+    // Insert user
+    $stmt = $db->prepare("
+        INSERT INTO users (
+            full_name, 
+            email, 
+            password, 
+            phone, 
+            country, 
+            organization, 
+            position, 
+            role,
+            created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, 'member', NOW())
+    ");
     
-    if ($existingUser) {
-        $userId = $existingUser['id'];
-        
-        // Check if user already has active membership
-        $checkMembership = "SELECT id FROM memberships 
-                           WHERE user_id = :user_id 
-                           AND status = 'active' 
-                           AND (expiry_date IS NULL OR expiry_date > NOW())";
-        $membershipCheck = $db->prepare($checkMembership);
-        $membershipCheck->bindParam(':user_id', $userId);
-        $membershipCheck->execute();
-        
-        if ($membershipCheck->fetch()) {
-            $db->rollBack();
-            Response::error('You already have an active membership', 400);
-        }
-    } else {
-        // Create new user account with auto-generated password
-        $autoPassword = bin2hex(random_bytes(8)); // Generate 16-char password
-        $hashedPassword = password_hash($autoPassword, PASSWORD_BCRYPT, ['cost' => 12]);
-        
-        $userQuery = "INSERT INTO users 
-                      (full_name, email, password, phone, country, organization, position, is_verified) 
-                      VALUES 
-                      (:full_name, :email, :password, :phone, :country, :organization, :position, 1)";
-        
-        $userStmt = $db->prepare($userQuery);
-        $userStmt->bindParam(':full_name', $data['fullName']);
-        $userStmt->bindParam(':email', $data['email']);
-        $userStmt->bindParam(':password', $hashedPassword);
-        $userStmt->bindParam(':phone', $data['phone']);
-        $userStmt->bindParam(':country', $data['country']);
-        
-        $organization = $data['organization'] ?? null;
-        $position = $data['position'] ?? null;
-        
-        $userStmt->bindParam(':organization', $organization);
-        $userStmt->bindParam(':position', $position);
-        
-        if (!$userStmt->execute()) {
-            throw new Exception('Failed to create user account');
-        }
-        
-        $userId = $db->lastInsertId();
-    }
+    $stmt->execute([
+        $input['fullName'],
+        $input['email'],
+        $hashedPassword,
+        $input['phone'],
+        $input['country'],
+        $input['organization'] ?? '',
+        $input['position'] ?? ''
+    ]);
     
-    // Create membership
-    $membershipQuery = "INSERT INTO memberships 
-                        (user_id, plan_id, plan_name, membership_type, amount, currency, 
-                         status, start_date, expiry_date, payment_reference) 
-                        VALUES 
-                        (:user_id, :plan_id, :plan_name, :membership_type, :amount, :currency, 
-                         'active', NOW(), DATE_ADD(NOW(), INTERVAL 1 YEAR), :payment_reference)";
+    $userId = $db->lastInsertId();
     
-    $membershipStmt = $db->prepare($membershipQuery);
-    $membershipStmt->bindParam(':user_id', $userId);
-    $membershipStmt->bindParam(':plan_id', $data['planId']);
-    $membershipStmt->bindParam(':plan_name', $data['planName']);
-    $membershipStmt->bindParam(':membership_type', $data['membershipType']);
-    $membershipStmt->bindParam(':amount', $data['amount']);
+    // Insert membership
+    $expiryDate = date('Y-m-d', strtotime('+1 year'));
     
-    $currency = $data['currency'] ?? 'GHS';
-    $membershipStmt->bindParam(':currency', $currency);
-    $membershipStmt->bindParam(':payment_reference', $data['paymentReference']);
+    $stmt = $db->prepare("
+        INSERT INTO memberships (
+            user_id,
+            plan_id,
+            plan_name,
+            membership_type,
+            certificate_number,
+            amount,
+            currency,
+            payment_reference,
+            status,
+            start_date,
+            expiry_date,
+            created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'active', NOW(), ?, NOW())
+    ");
     
-    if (!$membershipStmt->execute()) {
-        throw new Exception('Failed to create membership');
-    }
+    $stmt->execute([
+        $userId,
+        $input['planId'],
+        $input['planName'],
+        $input['membershipType'],
+        $certificateNumber,
+        $input['amount'] ?? 0,
+        $input['currency'] ?? 'USD',
+        $input['paymentReference'],
+        $expiryDate
+    ]);
     
     $membershipId = $db->lastInsertId();
     
-    // Generate certificate number
-    $year = date('Y');
-    $certNumber = "GOGMI-{$year}-" . strtoupper(substr(uniqid(), -8));
+    // Insert payment record
+    $stmt = $db->prepare("
+        INSERT INTO payments (
+            user_id,
+            membership_id,
+            amount,
+            currency,
+            payment_method,
+            payment_reference,
+            status,
+            created_at
+        ) VALUES (?, ?, ?, ?, 'paystack', ?, 'completed', NOW())
+    ");
     
-    $certQuery = "UPDATE memberships SET certificate_number = :cert WHERE id = :id";
-    $certStmt = $db->prepare($certQuery);
-    $certStmt->bindParam(':cert', $certNumber);
-    $certStmt->bindParam(':id', $membershipId);
-    $certStmt->execute();
-    
-    // Record payment
-    $paymentQuery = "INSERT INTO payments 
-                     (user_id, membership_id, amount, currency, payment_reference, 
-                      payment_gateway, status, paid_at, metadata) 
-                     VALUES 
-                     (:user_id, :membership_id, :amount, :currency, :payment_reference, 
-                      'paystack', 'success', NOW(), :metadata)";
-    
-    $paymentStmt = $db->prepare($paymentQuery);
-    $paymentStmt->bindParam(':user_id', $userId);
-    $paymentStmt->bindParam(':membership_id', $membershipId);
-    $paymentStmt->bindParam(':amount', $data['amount']);
-    $paymentStmt->bindParam(':currency', $currency);
-    $paymentStmt->bindParam(':payment_reference', $data['paymentReference']);
-    $paymentStmt->bindParam(':metadata', json_encode($data));
-    
-    if (!$paymentStmt->execute()) {
-        throw new Exception('Failed to record payment');
-    }
+    $stmt->execute([
+        $userId,
+        $membershipId,
+        $input['amount'] ?? 0,
+        $input['currency'] ?? 'USD',
+        $input['paymentReference']
+    ]);
     
     // Commit transaction
     $db->commit();
     
-    // Get complete user data
-    $getUserQuery = "SELECT id, full_name, email, phone, country, organization, position, role, is_verified 
-                     FROM users WHERE id = :id LIMIT 1";
-    $getUserStmt = $db->prepare($getUserQuery);
-    $getUserStmt->bindParam(':id', $userId);
-    $getUserStmt->execute();
-    $user = $getUserStmt->fetch();
+    // Send email notification to admin
+    $adminEmailBody = "
+        <h2>New Membership Application</h2>
+        <p><strong>Name:</strong> {$input['fullName']}</p>
+        <p><strong>Email:</strong> {$input['email']}</p>
+        <p><strong>Phone:</strong> {$input['phone']}</p>
+        <p><strong>Country:</strong> {$input['country']}</p>
+        <p><strong>Organization:</strong> " . ($input['organization'] ?? 'N/A') . "</p>
+        <p><strong>Position:</strong> " . ($input['position'] ?? 'N/A') . "</p>
+        <p><strong>Membership Plan:</strong> {$input['planName']}</p>
+        <p><strong>Type:</strong> {$input['membershipType']}</p>
+        <p><strong>Amount:</strong> {$input['currency']} {$input['amount']}</p>
+        <p><strong>Payment Reference:</strong> {$input['paymentReference']}</p>
+        <p><strong>Certificate Number:</strong> $certificateNumber</p>
+        <p><strong>Date:</strong> " . date('Y-m-d H:i:s') . "</p>
+    ";
     
-    // Get complete membership data
-    $getMembershipQuery = "SELECT * FROM memberships WHERE id = :id LIMIT 1";
-    $getMembershipStmt = $db->prepare($getMembershipQuery);
-    $getMembershipStmt->bindParam(':id', $membershipId);
-    $getMembershipStmt->execute();
-    $membership = $getMembershipStmt->fetch();
+    sendEmail(
+        'info@gogmi.org.gh',
+        'New GoGMI Membership Application',
+        $adminEmailBody
+    );
     
-    // Generate JWT token
-    require_once __DIR__ . '/../../utils/JWT.php';
-    $token = JWT::encode(['user_id' => $userId]);
+    // Send welcome email to member
+    $memberEmailBody = "
+        <h2>Welcome to GoGMI!</h2>
+        <p>Dear {$input['fullName']},</p>
+        <p>Thank you for joining the Gulf of Guinea Maritime Institute. Your membership has been successfully activated.</p>
+        
+        <h3>Membership Details:</h3>
+        <p><strong>Plan:</strong> {$input['planName']}</p>
+        <p><strong>Certificate Number:</strong> $certificateNumber</p>
+        <p><strong>Start Date:</strong> " . date('Y-m-d') . "</p>
+        <p><strong>Expiry Date:</strong> $expiryDate</p>
+        
+        <h3>Login Credentials:</h3>
+        <p><strong>Email:</strong> {$input['email']}</p>
+        <p><strong>Password:</strong> [Your chosen password]</p>
+        
+        <p>You can now login at <a href='https://gogmi.org.gh/login'>https://gogmi.org.gh/login</a></p>
+        
+        <p>For any questions, please contact us at info@gogmi.org.gh</p>
+        
+        <p>Best regards,<br>GoGMI Team</p>
+    ";
     
-    // TODO: Send welcome email with login credentials
-    // sendWelcomeEmail($data['email'], $data['fullName'], $autoPassword ?? null, $certNumber, $membership);
+    sendEmail(
+        $input['email'],
+        'Welcome to GoGMI - Membership Activated',
+        $memberEmailBody
+    );
     
-    Response::success('Membership activated successfully', [
-        'token' => $token,
-        'user' => $user,
-        'membership' => $membership,
-        'certificateNumber' => $certNumber,
-        'isNewAccount' => isset($autoPassword),
-        'temporaryPassword' => $autoPassword ?? null // Only sent if new account
-    ], 201);
+    // Return success response
+    echo json_encode([
+        'success' => true,
+        'message' => 'Membership activated successfully',
+        'data' => [
+            'token' => $token,
+            'certificateNumber' => $certificateNumber,
+            'user' => [
+                'id' => $userId,
+                'email' => $input['email'],
+                'fullName' => $input['fullName'],
+                'role' => 'member'
+            ],
+            'membership' => [
+                'id' => $membershipId,
+                'planName' => $input['planName'],
+                'certificateNumber' => $certificateNumber,
+                'status' => 'active',
+                'expiryDate' => $expiryDate
+            ]
+        ]
+    ]);
     
-} catch (Exception $e) {
-    if (isset($db) && $db->inTransaction()) {
+} catch (PDOException $e) {
+    if ($db->inTransaction()) {
         $db->rollBack();
     }
+    
     error_log("Membership application error: " . $e->getMessage());
-    Response::error('Failed to process membership application: ' . $e->getMessage(), 500);
+    
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Database error occurred',
+        'error' => $e->getMessage()
+    ]);
+} catch (Exception $e) {
+    if ($db->inTransaction()) {
+        $db->rollBack();
+    }
+    
+    error_log("Membership application error: " . $e->getMessage());
+    
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'An error occurred',
+        'error' => $e->getMessage()
+    ]);
 }
-?>
