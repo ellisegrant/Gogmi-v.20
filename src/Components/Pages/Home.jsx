@@ -604,19 +604,19 @@ const Home = () => {
           title: 'International Maritime Security Working Group',
           excerpt: 'The International Maritime Security Working Group (IMSWG), formed by the Gulf of Guinea Maritime Institute, is the Institute\'s flagship forum focused on stimulating dialogue and policy innovation.',
           date: 'December 9, 2025',
-          image: '/imswg.todat.jpg',
+          image: '/Main.jpg',
           link: '/blog?category=Events#imswg'
         },
         {
-          category: 'Training',
-          title: 'MARINE CASUALTY INVESTIGATION & SAFETY MANAGEMENT',
-          excerpt: 'Executive training on conducting credible marine casualty investigations aligned with IMO Casualty Investigation Code and SOLAS requirements for maritime administrators.',
-          date: 'TBA 2026',
-          image: '/marinecasuality.jpeg'
+          category: 'News & Blogs',
+          title: 'Past Naval Chief Endorses Ghana’s Arbitration Decision on Maritime Boundary ',
+          excerpt: 'Vice Admiral Issah Adam Yakubu (Rtd), immediate past Chief of the Naval Staff of the Ghana Navy, strongly endorsed the government of Ghana’s decision to submit the long-standing maritime boundary dispute with Togo to international arbitration. ',
+          link: 'https://www.gogmiconsult.com/post/why-the-ghana-togo-maritime-boundary-delimitation-must-go-for-international-arbitration ',
+          image: '/thumbnail.jpeg'
         },
         {
           category: 'Training',
-          title: 'Maritime Governance CourseA Focus on Africa',
+          title: 'Maritime Governance Course : A Focus on Africa',
           excerpt: 'This comprehensive course equips professionals, stakeholders, and decision-makers with the knowledge, skills, and tools necessary to develop and implement effective maritime strategies within the African context.',
           date: 'May 5 – 28, 2026',
           image: '/maritime.gov.jpeg'
