@@ -12,7 +12,7 @@ const Partners = () => {
       logo: '/AU Main.png',
       category: 'International',
       // type: 'Strategic Partner',
-      since: '2015',
+      // since: '2015',
       
       website: 'https://au.int/',
       // projects: 8
@@ -23,7 +23,7 @@ const Partners = () => {
       logo: '/ECOWAS Logo (1).png',
       category: 'International',
       // type: 'Strategic Partner',
-      since: '2016',
+      // since: '2016',
       
       // website: 'https://www.ecowas.int/about-ecowas/',
       // projects: 12
@@ -34,7 +34,7 @@ const Partners = () => {
       logo: '/DOTCAN LOGO.png',
       category: 'International',
       // type: 'Strategic Partner',
-      since: '2014',
+      // since: '2014',
       
       website: 'https://dotcan.institute/',
       // projects: 15
@@ -45,7 +45,7 @@ const Partners = () => {
       logo: '/APN.png',
       category: 'Regional',
       // type: 'Strategic Partner',
-      since: '2017',
+      // since: '2017',
       
       website: '#####',
       // projects: 6
@@ -56,7 +56,7 @@ const Partners = () => {
       logo: '/ECCAS_logo (1).jpg',
       category: 'International',
       // type: 'Funding Partner',
-      since: '2018',
+      // since: '2018',
       
       website: 'https://www.ceeac-eccas.org/2023/05/28/eccas-in-brief/',
       // projects: 10
@@ -67,7 +67,7 @@ const Partners = () => {
       logo: '/Enmar.png',
       category: 'International',
       // type: 'Implementation Partner',
-      since: '2013',
+      // since: '2013',
       
       website: 'https://www.expertisefrance.fr/en/projects/enmar-maritime-security-gulf-guinea',
       // projects: 20
@@ -78,7 +78,7 @@ const Partners = () => {
       logo: '/nigerian navy.png',
       category: 'Government',
       // type: 'Regulatory Partner',
-      since: '2016',
+      // since: '2016',
       
       website: 'https://navy.mil.ng/',
       // projects: 9
@@ -89,7 +89,7 @@ const Partners = () => {
       logo: '/GGC Logo (1).jpg',
       category: 'International',
       // type: 'Funding Partner',
-      since: '2019',
+      // since: '2019',
       
       website: 'https://luanda.mfa.gov.gh/ghana-and-the-gulf-of-guinea-commission/the-gulf-of-guinea-commission/',
       // projects: 5
@@ -100,7 +100,7 @@ const Partners = () => {
       logo: '/eyeonport.jpg',
       category: 'Private Sector',
       // type: 'Network Partner',
-      since: '2017',
+      // since: '2017',
       
       website: 'https://www.youtube.com/c/EyeOnPort',
       // projects: 7
@@ -111,7 +111,7 @@ const Partners = () => {
       logo: '/ICC Logo (1).png',
       category: 'International',
       // type: 'Network Partner',
-      since: '2017',
+      // since: '2017',
       
       website: '#',
       // projects: 7
@@ -123,7 +123,7 @@ const Partners = () => {
       logo: '/Maritimafrica.jpg',
       category: 'Private Sector',
       // type: 'Network Partner',
-      since: '2017',
+      // since: '2017',
     
       website: 'https://maritimafrica.com/en/',
       // projects: 7
@@ -135,9 +135,9 @@ const Partners = () => {
       logo: '/international-maritime-organization-vector-logo (1).png',
       category: 'Private Sector',
       // type: 'Network Partner',
-      since: '2017',
+      // since: '2017',
    
-      website: 'https://www.imo.org/',
+      website: 'https://www.imo.org/ ',
       //  projects: 7
      },
 
@@ -147,11 +147,52 @@ const Partners = () => {
     logo: '/nimasa.jpg',
     category: 'Private Sector',
     //  type: 'Network Partner',
-      since: '2017',
+      // since: '2017',
       // description: 'Women in maritime empowerment programs',
       website: 'https://nimasa.gov.ng/',
       // projects: 7
      },
+
+
+     {
+    id: 14,
+    name: 'GHANA NAVY',
+    logo: '/gh-navy.png',
+    category: 'Government',
+    //  type: 'Network Partner',
+      // since: '2017',
+      // description: 'Women in maritime empowerment programs',
+      website: 'https://navyonline.mil.gh/',
+      // projects: 7
+     },
+
+      {
+    id: 15,
+    name: 'NEXUS COASTAL',
+    logo: '/NEXUS COASTAL LOGO.png',
+    category: 'Private Sector',
+    //  type: 'Network Partner',
+      // since: '2017',
+      // description: 'Women in maritime empowerment programs',
+      website: ' https://nexuscoastal.com/',
+      // projects: 7
+     },
+
+
+
+     
+      {
+    id: 16,
+    name: 'CONSHIP',
+    logo: '/Conship.jpg',
+    category: 'Private Sector',
+    //  type: 'Network Partner',
+      // since: '2017',
+      // description: 'Women in maritime empowerment programs',
+      website: 'https://conship.com.gh/',
+      // projects: 7
+     },
+
 
     
   ];

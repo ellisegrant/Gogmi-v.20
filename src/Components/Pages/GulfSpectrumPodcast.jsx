@@ -80,7 +80,7 @@ const GulfSpectrumPodcast = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.youtube.com/watch?v=5KMyV26r8nc" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold transition-all hover:scale-105 shadow-xl" style={{ backgroundColor: '#8E3400', color: 'white' }}>
+              <a href="https://www.youtube.com/@gulfofguineamaritimeinstitute" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold transition-all hover:scale-105 shadow-xl" style={{ backgroundColor: '#8E3400', color: 'white' }}>
                 <Youtube className="w-6 h-6" />
                 <span>Watch Episodes</span>
               </a>

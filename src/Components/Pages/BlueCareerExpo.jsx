@@ -66,7 +66,7 @@ const BlueCareerExpo = () => {
             <div className="text-center">
               <p className="text-sm font-semibold mb-4" style={{ color: '#4B5563' }}>Hosted by</p>
               <div className="w-32 h-32 bg-gray-50 rounded-xl shadow-md border border-gray-200 flex items-center justify-center">
-                <img src="/bluecareer.webp" alt="BCBE Logo" className="w-full h-full object-contain p-4" />
+                <img src="/GoGMI_PNG.png" alt="BCBE Logo" className="w-full h-full object-contain p-4" />
               </div>
             </div>
             <div className="text-center">

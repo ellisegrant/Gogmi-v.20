@@ -82,9 +82,10 @@ const Advocacy = () => {
 
     {
       year: '2023',
-      title: 'Occean Career Fair – Ghana',
-      description: "The conference reflected on ten years of the Yaoundé Code of Conduct, uniting ECOWAS stakeholders to assess the Yaoundé Architecture's role in maritime safety, governance, and regional coordination, with discussions on operational challenges, regulations, and contributions from academia and community actors.",
-      image: '/DOTCAN LOGO.png'
+      title: 'Blue World Initiative',
+      description: "BWI is an Ocean literacy program for Basic and Second Cycle school students with the knowledge and tools to become informed and engaged ocean stewards. Our ocean covers over 70% of our planet and plays an essential role in regulating climate, providing food and resources, and supporting incredible biodiversity.",
+      image: '/GoGMI_PNG.png',
+      link: '/blue-world-initiative'
     },
 
 //  {

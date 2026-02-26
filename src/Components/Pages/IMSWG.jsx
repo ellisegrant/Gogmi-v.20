@@ -226,7 +226,7 @@ const IMSWG = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full"></div>
               <img 
-                src="/IMSWG2026flyer.jpg"
+                src="/Main.jpg"
                 alt="IMSWG 2026 Forum"
                 className="relative rounded-2xl shadow-2xl w-full hover:scale-105 transition-transform duration-300"
               />
@@ -253,7 +253,7 @@ const IMSWG = () => {
                   </p>
                   <p className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
-                    <span className="font-semibold text-white">Format:</span> Hybrid (Virtual & In-Person)
+                    <span className="font-semibold text-white">Format:</span> Virtual 
                   </p>
                   <p className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
@@ -276,88 +276,6 @@ const IMSWG = () => {
                 <p className="text-sm text-cyan-100 text-center">
                   📧 For sponsorship & inquiries: <a href="mailto:info@gogmi.org.gh" className="font-bold underline">info@gogmi.org.gh</a> | 📱 +233504953400
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Past Events Showcase */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest mb-4 block"
-                  style={{ color: '#64748b', letterSpacing: '0.15em' }}>
-              Previous Forums
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6"
-                style={{ color: '#1e293b', letterSpacing: '-0.01em', fontFamily: '"SF Pro Display", sans-serif' }}>
-              IMSWG Connect 2025
-            </h2>
-            <div className="w-20 h-1 bg-slate-900 rounded-full mx-auto"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* 2025 Flyer */}
-            <div className="order-2 md:order-1">
-              <img 
-                src="/imswg2025flyer.jpg"
-                alt="IMSWG Connect 2025"
-                className="rounded-2xl shadow-xl w-full hover:shadow-2xl transition-shadow"
-              />
-            </div>
-
-            {/* 2025 Event Info */}
-            <div className="order-1 md:order-2 space-y-6">
-              <div>
-                <h3 className="text-3xl font-bold mb-4" style={{ color: '#1e293b' }}>
-                  IMSWG Connect Event
-                </h3>
-                <p className="text-lg text-slate-600 leading-relaxed mb-6" style={{ fontFamily: 'Georgia, serif' }}>
-                  A successful networking and dialogue session featuring Vice Admiral Issah Adam Yakubu, Executive Chairman of GoGMI.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-5 h-5 text-slate-700" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-900">25th September 2025</p>
-                    <p className="text-sm text-slate-600">2:00 PM</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Users className="w-5 h-5 text-slate-700" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-900">Coconut Groove Hotel, Accra</p>
-                    <p className="text-sm text-slate-600">John Kasavubu Road</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Globe className="w-5 h-5 text-slate-700" />
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-900">Hybrid Format</p>
-                    <p className="text-sm text-slate-600">In-person & Virtual via Zoom</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <button 
-                  onClick={goToReports}
-                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-semibold transition-all cursor-pointer"
-                >
-                  <FileText className="w-5 h-5" />
-                  <span>View Event Report</span>
-                </button>
               </div>
             </div>
           </div>

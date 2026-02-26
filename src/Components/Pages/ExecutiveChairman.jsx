@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ExecutiveChairman = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const ExecutiveChairman = () => {
           {/* Breadcrumb */}
           <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
             <p className="text-sm" style={{ color: '#4B5563', fontWeight: 400 }}>
-              <span className="hover:text-[#8E3400] transition-colors cursor-pointer">Home</span>
+              <span className="hover:text-[#8E3400] transition-colors cursor-pointer" onClick={() => navigate('/')}>Home</span>
               <span className="mx-2">/</span>
               <span style={{ color: '#8E3400', fontWeight: 600 }}>Leadership</span>
             </p>
@@ -247,11 +249,13 @@ const ExecutiveChairman = () => {
           <p className="text-lg mb-8 leading-relaxed" style={{ color: '#4B5563', fontWeight: 400 }}>
             Partner with us to transform the future of maritime in the Gulf of Guinea
           </p>
-          <button className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:scale-105"
-                  style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}>
-            <span>Get Involved</span>
+          <button 
+            onClick={() => navigate('/contact')}
+            className="inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:scale-105"
+            style={{ backgroundColor: '#8E3400', color: 'white', fontWeight: 700 }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6B2700'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#8E3400'}>
+            <span>Get In Touch</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

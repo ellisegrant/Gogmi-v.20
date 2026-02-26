@@ -6,6 +6,7 @@ const Resources = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedType, setSelectedType] = useState('Strategic Documents');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [previewResource, setPreviewResource] = useState(null);
   const [showMembershipModal, setShowMembershipModal] = useState(false);
@@ -17,11 +18,9 @@ const Resources = () => {
     checkAuthStatus();
   }, []);
 
-  // Handle hash navigation (e.g., /library#internal-reports)
   useEffect(() => {
     if (location.hash === '#internal-reports') {
       setSelectedType('Internal Reports');
-      // Smooth scroll to the section after a short delay to ensure content is rendered
       setTimeout(() => {
         const element = document.getElementById('internal-reports');
         if (element) {
@@ -38,6 +37,11 @@ const Resources = () => {
     setIsAuthenticated(!!token);
     setIsMember(!!membership);
     setLoading(false);
+  };
+
+  // Check if resource requires membership
+  const requiresMembership = (resource) => {
+    return resource.type === 'Internal Reports';
   };
 
   const resources = [
@@ -184,6 +188,7 @@ const Resources = () => {
       description: "Comprehensive assessment of the Yaoundé Code of Conduct implementation and effectiveness in addressing maritime security challenges.",
       fullDescription: "This evaluation provides a comprehensive assessment of the Yaoundé Architecture's implementation and effectiveness in addressing maritime security challenges across West and Central Africa. It examines the operational structure, coordination mechanisms, and impact of the framework in combating transnational maritime crimes while identifying gaps and recommendations for improvement.",
       type: 'Internal Reports',
+      subcategory: 'Policy Briefs',
       category: 'Assessment',
       size: '5.6 MB',
       pages: 15,
@@ -206,6 +211,7 @@ const Resources = () => {
       description: "A briefing summarizing expert discussions on the implementation progress, challenges, and recommendations for strengthening the Yaoundé Code of Conduct Architecture.",
       fullDescription: "This briefing outlines the outcomes of expert-level Virtual Discussion Group meetings held between January and April 2021 on the status of implementing the Yaoundé Code of Conduct in the Gulf of Guinea. Organized by GoGMI and supported by the IMO, the meetings brought together regional, international, academic, and industry stakeholders to assess progress, address implementation gaps, and recommend strategies to enhance maritime safety and security.",
       type: 'Internal Reports',
+      subcategory: 'Policy Briefs',
       category: 'Assessment',
       size: '5.6 MB',
       pages: 4,
@@ -228,6 +234,7 @@ const Resources = () => {
       description: "A report on developing blue careers to drive sustainable economic growth in the Gulf of Guinea by strengthening human capital and maritime skills.",
       fullDescription: "This document presents insights from the GoGMI–International Maritime Security Working Group online event held on 25th February 2021, focused on developing blue careers to support the strategic growth of Gulf of Guinea maritime economies. The discussions highlighted Africa's vast blue economy potential, the urgent need for skilled human capital, and the role of innovation, education, and partnerships in unlocking economic opportunities.",
       type: 'Internal Reports',
+      subcategory: 'IMSWG Reports',
       category: 'Development',
       size: '5.6 MB',
       pages: 8,
@@ -250,6 +257,7 @@ const Resources = () => {
       description: "Detailed event report on the 2022 G7++ Friends of the Gulf of Guinea Plenary highlighting key discussions on maritime security and regional cooperation.",
       fullDescription: "This report captures the major presentations, discussions, and conclusions from the G7++FoGG Plenary held in Abidjan from 1–2 December 2022. As a multilateral platform supporting the Yaoundé Code of Conduct, the plenary brought together over 150 delegates, including government officials, naval leaders, civil society groups, private sector actors, and international partners.",
       type: 'Internal Reports',
+      subcategory: 'Quarterly Highlights',
       category: 'Events',
       size: '5.6 MB',
       pages: 8,
@@ -272,6 +280,7 @@ const Resources = () => {
       description: "Comprehensive seminar report examining maritime security interventions and governance in the Gulf of Guinea region.",
       fullDescription: "On October 21, 2022, GoGMI and the Atlantic Centre co-hosted a virtual seminar bringing together over 40 global participants to examine interventionism and maritime security governance in the Gulf of Guinea. The seminar featured expert panelists exploring the effectiveness of major maritime security initiatives including the Yaoundé Architecture, YARIS information system, GoG-MCF SHADE, and multilateral exercises.",
       type: 'Internal Reports',
+      subcategory: 'Maritime Governance',
       category: 'Analysis',
       size: '5.6 MB',
       pages: 8,
@@ -294,6 +303,7 @@ const Resources = () => {
       description: "In-depth analysis of the GoG-MCF/SHADE initiative, a regionally-owned platform to harmonize counter-piracy efforts across the Gulf of Guinea.",
       fullDescription: "The GoG-MCF/SHADE initiative represents a groundbreaking approach to maritime security in the Gulf of Guinea, born from a Memorandum of Understanding between the Government of Nigeria and the Inter-regional Coordination Centre representing 21 countries. Operating through structured plenary sessions and three specialized Working Groups, SHADE creates a vital platform for navies, industry partners, and maritime stakeholders to coordinate counter-piracy responses.",
       type: 'Internal Reports',
+      subcategory: 'Maritime Governance',
       category: 'Security',
       size: '5.6 MB',
       pages: 8,
@@ -316,6 +326,7 @@ const Resources = () => {
       description: "Analysis of the interconnected nature of maritime crimes including drug trafficking, piracy, and terrorism across the Atlantic.",
       fullDescription: "This policy brief examines the complex drivers behind the nexus of blue crime, drugs, piracy, and terror prevalent across the Atlantic. It analyzes the root causes, interconnections, and strategic approaches needed to address these transnational maritime security threats comprehensively.",
       type: 'Internal Reports',
+      subcategory: 'Policy Briefs',
       category: 'Security',
       size: '5.6 MB',
       pages: 12,
@@ -338,6 +349,7 @@ const Resources = () => {
       description: "Five-year consolidated report from all IMSWG forums 2020-2024.",
       fullDescription: "Comprehensive report consolidating insights from all IMSWG forums between 2020 and 2024.",
       type: 'Internal Reports',
+      subcategory: 'IMSWG Reports',
       category: 'IMSWG',
       size: '8.5 MB',
       pages: 120,
@@ -416,15 +428,39 @@ const Resources = () => {
   ];
 
   const types = ['Strategic Documents', 'Academic Papers', 'Internal Reports', 'Videos'];
+  const internalReportSubcategories = ['All', 'Policy Briefs', 'IMSWG Reports', 'Quarterly Highlights', 'Maritime Governance'];
 
   const filteredResources = resources.filter(resource => {
     const matchesType = resource.type === selectedType;
     const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          resource.description.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesType && matchesSearch;
+    
+    // For Internal Reports, also filter by subcategory
+    const matchesSubcategory = selectedType !== 'Internal Reports' || 
+                                selectedSubcategory === 'All' || 
+                                resource.subcategory === selectedSubcategory;
+    
+    return matchesType && matchesSearch && matchesSubcategory;
   });
 
   const handleDownload = async (resource) => {
+    // Check if resource requires membership
+    if (!requiresMembership(resource)) {
+      // Free download for Strategic Documents and Academic Papers
+      const link = document.createElement('a');
+      link.href = resource.downloadUrl;
+      link.download = resource.downloadUrl.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      setTimeout(() => {
+        alert(`Download complete!\n\nFile: ${resource.title}`);
+      }, 500);
+      return;
+    }
+
+    // For Internal Reports, check membership
     if (!isAuthenticated) {
       navigate('/membership');
       return;
@@ -435,47 +471,21 @@ const Resources = () => {
       return;
     }
 
+    // Member download
     try {
-      const token = localStorage.getItem('gogmi_token');
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost/backend/api';
-      
-      const response = await fetch(`${apiUrl}/resources/check-access.php`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          resourceId: resource.id,
-          resourceTitle: resource.title
-        })
-      });
+      const link = document.createElement('a');
+      link.href = resource.downloadUrl;
+      link.download = resource.downloadUrl.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
-      const data = await response.json();
-
-      if (data.success && data.data.canDownload) {
-        const link = document.createElement('a');
-        link.href = resource.downloadUrl;
-        link.download = resource.downloadUrl.split('/').pop();
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        setTimeout(() => {
-          alert(`Download complete!\n\nFile: ${resource.title}`);
-        }, 500);
-      } else {
-        throw new Error(data.message);
-      }
-
+      setTimeout(() => {
+        alert(`Download complete!\n\nFile: ${resource.title}`);
+      }, 500);
     } catch (error) {
       console.error('Download error:', error);
-      
-      if (error.message.includes('membership')) {
-        setShowMembershipModal(true);
-      } else {
-        alert(`Download failed: ${error.message}`);
-      }
+      alert(`Download failed: ${error.message}`);
     }
   };
 
@@ -497,7 +507,7 @@ const Resources = () => {
             </h2>
             
             <p className="text-lg text-[#1F2933] mb-6" style={{ fontWeight: 400 }}>
-              Downloads are exclusively available to our members. Preview the document to see what you'll get, then join us to unlock full access to our entire resource library.
+              Internal Reports are exclusively available to our members. Preview the document to see what you'll get, then join us to unlock full access.
             </p>
 
             <div className="bg-[#F5F7FA] rounded-xl p-6 mb-8">
@@ -507,15 +517,15 @@ const Resources = () => {
               <ul className="text-left space-y-2">
                 <li className="flex items-start gap-2 text-[#1F2933]" style={{ fontWeight: 400 }}>
                   <span className="text-[#8E3400] mt-1">✓</span>
-                  <span>Download all strategic documents and reports</span>
+                  <span>Download all internal reports and analysis</span>
                 </li>
                 <li className="flex items-start gap-2 text-[#1F2933]" style={{ fontWeight: 400 }}>
                   <span className="text-[#8E3400] mt-1">✓</span>
-                  <span>Access exclusive academic papers and research</span>
+                  <span>Access exclusive policy briefs and IMSWG reports</span>
                 </li>
                 <li className="flex items-start gap-2 text-[#1F2933]" style={{ fontWeight: 400 }}>
                   <span className="text-[#8E3400] mt-1">✓</span>
-                  <span>Receive updates on new publications</span>
+                  <span>Receive quarterly highlights and updates</span>
                 </li>
                 <li className="flex items-start gap-2 text-[#1F2933]" style={{ fontWeight: 400 }}>
                   <span className="text-[#8E3400] mt-1">✓</span>
@@ -549,6 +559,8 @@ const Resources = () => {
   const PreviewModal = ({ resource, onClose }) => {
     if (!resource) return null;
 
+    const needsMembership = requiresMembership(resource) && !isMember;
+
     return (
       <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
         <div className="bg-white rounded-2xl max-w-4xl w-full my-8 shadow-2xl" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -578,6 +590,11 @@ const Resources = () => {
                 <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 600 }}>
                   {resource.category}
                 </span>
+                {resource.subcategory && (
+                  <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 600 }}>
+                    {resource.subcategory}
+                  </span>
+                )}
               </div>
               <h2 className="text-3xl font-black text-white mb-2" style={{ fontWeight: 900 }}>
                 {resource.title}
@@ -607,7 +624,7 @@ const Resources = () => {
               </div>
             </div>
 
-            {!isMember && (
+            {needsMembership && (
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-start gap-3">
                 <Lock className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
                 <div>
@@ -615,7 +632,21 @@ const Resources = () => {
                     Download requires membership
                   </p>
                   <p className="text-sm text-amber-800" style={{ fontWeight: 400 }}>
-                    You can preview this document, but downloads are exclusive to members.
+                    This Internal Report is exclusive to members. You can preview it, but membership is required to download.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {!needsMembership && requiresMembership(resource) === false && (
+              <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+                <Download className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold text-green-900 mb-1" style={{ fontWeight: 600 }}>
+                    Free Download Available
+                  </p>
+                  <p className="text-sm text-green-800" style={{ fontWeight: 400 }}>
+                    This resource is freely available to all visitors. Click download to get instant access.
                   </p>
                 </div>
               </div>
@@ -648,15 +679,15 @@ const Resources = () => {
                 className="flex-1 bg-[#8E3400] text-white px-6 py-4 rounded-xl font-bold transition-all hover:bg-[#6B2700] flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:scale-105"
                 style={{ fontWeight: 700 }}
               >
-                {isMember ? (
-                  <>
-                    <Download className="w-5 h-5" />
-                    <span>Download Resource</span>
-                  </>
-                ) : (
+                {needsMembership ? (
                   <>
                     <Lock className="w-5 h-5" />
                     <span>Unlock Download</span>
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-5 h-5" />
+                    <span>Download Resource</span>
                   </>
                 )}
               </button>
@@ -716,14 +747,13 @@ const Resources = () => {
             Resources & Publications
           </h1>
           <p className="text-xl text-[#F5F7FA]/90 max-w-3xl mx-auto mb-4" style={{ fontWeight: 400 }}>
-            Access our library of strategic documents, academic papers, and research reports
+            Access strategic documents, academic papers, and internal reports
           </p>
-          {!isMember && (
-            <p className="text-sm text-[#F5F7FA]/70 flex items-center justify-center gap-2" style={{ fontWeight: 400 }}>
-              <Lock className="w-4 h-4" />
-              <span>Downloads require membership • Preview available for all</span>
-            </p>
-          )}
+          <p className="text-sm text-[#F5F7FA]/70 flex items-center justify-center gap-2" style={{ fontWeight: 400 }}>
+            <span>Strategic Documents & Academic Papers: Free for all</span>
+            <span>•</span>
+            <span>Internal Reports: Members only</span>
+          </p>
         </div>
       </section>
 
@@ -747,35 +777,60 @@ const Resources = () => {
 
       <section className="py-12 bg-[#F5F7FA] border-b sticky top-20 z-30">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#1F2933]/60" />
-              <input
-                type="text"
-                placeholder="Search resources..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400] focus:border-[#8E3400]"
-                style={{ fontWeight: 400 }}
-              />
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+              <div className="relative w-full md:w-96">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#1F2933]/60" />
+                <input
+                  type="text"
+                  placeholder="Search resources..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8E3400] focus:border-[#8E3400]"
+                  style={{ fontWeight: 400 }}
+                />
+              </div>
+
+              <div className="flex flex-wrap gap-2 justify-center">
+                {types.map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => {
+                      setSelectedType(type);
+                      setSelectedSubcategory('All');
+                    }}
+                    className={`px-5 py-2 rounded-lg font-medium transition-all ${
+                      selectedType === type
+                        ? 'bg-[#8E3400] text-[#F5F7FA] shadow-lg'
+                        : 'bg-white text-[#1F2933] hover:bg-[#8E3400]/10 border border-gray-200'
+                    }`}
+                    style={{ fontWeight: 600 }}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 justify-center">
-              {types.map((type) => (
-                <button
-                  key={type}
-                  onClick={() => setSelectedType(type)}
-                  className={`px-5 py-2 rounded-lg font-medium transition-all ${
-                    selectedType === type
-                      ? 'bg-[#8E3400] text-[#F5F7FA] shadow-lg'
-                      : 'bg-white text-[#1F2933] hover:bg-[#8E3400]/10 border border-gray-200'
-                  }`}
-                  style={{ fontWeight: 600 }}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
+            {/* Subcategory filters for Internal Reports */}
+            {selectedType === 'Internal Reports' && (
+              <div className="flex flex-wrap gap-2 justify-center pt-4 border-t border-gray-200">
+                {internalReportSubcategories.map((subcategory) => (
+                  <button
+                    key={subcategory}
+                    onClick={() => setSelectedSubcategory(subcategory)}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                      selectedSubcategory === subcategory
+                        ? 'bg-[#132552] text-white shadow-lg'
+                        : 'bg-white text-[#1F2933] hover:bg-[#132552]/10 border border-gray-200'
+                    }`}
+                    style={{ fontWeight: 600 }}
+                  >
+                    {subcategory}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -790,133 +845,146 @@ const Resources = () => {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredResources.map((resource) => (
-                <div 
-                  key={resource.id} 
-                  className={`group bg-[#F5F7FA] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100 ${resource.type === 'Videos' ? 'cursor-pointer' : ''}`}
-                  onClick={() => {
-                    if (resource.type === 'Videos' && resource.videoUrl) {
-                      window.open(resource.videoUrl, '_blank');
-                    }
-                  }}
-                >
-                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[#132552]/10 to-[#8E3400]/10">
-                    <img 
-                      src={resource.thumbnail} 
-                      alt={resource.title}
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                    
-                    {resource.type === 'Videos' && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="bg-[#8E3400]/90 rounded-full p-4 group-hover:scale-110 transition-transform">
-                          <Video className="w-8 h-8 text-white" />
+              {filteredResources.map((resource) => {
+                const needsMembership = requiresMembership(resource);
+                const canDownload = !needsMembership || isMember;
+
+                return (
+                  <div 
+                    key={resource.id} 
+                    className={`group bg-[#F5F7FA] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100 ${resource.type === 'Videos' ? 'cursor-pointer' : ''}`}
+                    onClick={() => {
+                      if (resource.type === 'Videos' && resource.videoUrl) {
+                        window.open(resource.videoUrl, '_blank');
+                      }
+                    }}
+                  >
+                    <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[#132552]/10 to-[#8E3400]/10">
+                      <img 
+                        src={resource.thumbnail} 
+                        alt={resource.title}
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                      
+                      {resource.type === 'Videos' && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="bg-[#8E3400]/90 rounded-full p-4 group-hover:scale-110 transition-transform">
+                            <Video className="w-8 h-8 text-white" />
+                          </div>
                         </div>
-                      </div>
-                    )}
-                    
-                    {!isMember && resource.type !== 'Videos' && (
-                      <div className="absolute top-4 left-4">
-                        <span className="bg-[#8E3400] text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1" style={{ fontWeight: 700 }}>
-                          <Lock className="w-3 h-3" />
-                          Members Only
+                      )}
+                      
+                      {needsMembership && !isMember && (
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-[#8E3400] text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1" style={{ fontWeight: 700 }}>
+                            <Lock className="w-3 h-3" />
+                            Members Only
+                          </span>
+                        </div>
+                      )}
+
+                      {!needsMembership && (
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 700 }}>
+                            Free Access
+                          </span>
+                        </div>
+                      )}
+                      
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 700 }}>
+                          {resource.fileType}
                         </span>
                       </div>
-                    )}
-                    
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-white/90 text-gray-800 px-3 py-1 rounded-full text-xs font-bold" style={{ fontWeight: 700 }}>
-                        {resource.fileType}
-                      </span>
                     </div>
-                  </div>
 
-                  <div className="p-6">
-                    <div className="flex items-center text-xs text-[#1F2933]/70 mb-3 space-x-4" style={{ fontWeight: 400 }}>
-                      <span className="flex items-center">
-                        <Calendar className="w-3 h-3 mr-1" />
-                        {resource.date}
-                      </span>
-                      <span className="flex items-center">
+                    <div className="p-6">
+                      <div className="flex items-center text-xs text-[#1F2933]/70 mb-3 space-x-4" style={{ fontWeight: 400 }}>
+                        <span className="flex items-center">
+                          <Calendar className="w-3 h-3 mr-1" />
+                          {resource.date}
+                        </span>
+                        <span className="flex items-center">
+                          {resource.type === 'Videos' ? (
+                            <>
+                              <Eye className="w-3 h-3 mr-1" />
+                              {resource.views} views
+                            </>
+                          ) : (
+                            <>
+                              <Download className="w-3 h-3 mr-1" />
+                              {resource.downloads}
+                            </>
+                          )}
+                        </span>
+                      </div>
+
+                      <h3 className="text-lg font-bold text-[#132552] mb-3 group-hover:text-[#8E3400] transition-colors line-clamp-2" style={{ fontWeight: 700 }}>
+                        {resource.title}
+                      </h3>
+                      
+                      <p className="text-[#1F2933] text-sm mb-4 line-clamp-3" style={{ fontWeight: 400 }}>
+                        {resource.description}
+                      </p>
+
+                      <div className="flex items-center justify-between text-sm text-[#1F2933]/70 mb-4 pb-4 border-b border-gray-200" style={{ fontWeight: 400 }}>
                         {resource.type === 'Videos' ? (
                           <>
-                            <Eye className="w-3 h-3 mr-1" />
-                            {resource.views} views
+                            <span className="font-medium" style={{ fontWeight: 600 }}>Duration: {resource.duration}</span>
+                            <span className="flex items-center">
+                              <Video className="w-3 h-3 mr-1" />
+                              Watch
+                            </span>
                           </>
                         ) : (
                           <>
-                            <Download className="w-3 h-3 mr-1" />
-                            {resource.downloads}
+                            <span className="font-medium" style={{ fontWeight: 600 }}>{resource.size}</span>
+                            {resource.pages && <span>{resource.pages} pages</span>}
                           </>
                         )}
-                      </span>
-                    </div>
+                      </div>
 
-                    <h3 className="text-lg font-bold text-[#132552] mb-3 group-hover:text-[#8E3400] transition-colors line-clamp-2" style={{ fontWeight: 700 }}>
-                      {resource.title}
-                    </h3>
-                    
-                    <p className="text-[#1F2933] text-sm mb-4 line-clamp-3" style={{ fontWeight: 400 }}>
-                      {resource.description}
-                    </p>
-
-                    <div className="flex items-center justify-between text-sm text-[#1F2933]/70 mb-4 pb-4 border-b border-gray-200" style={{ fontWeight: 400 }}>
                       {resource.type === 'Videos' ? (
-                        <>
-                          <span className="font-medium" style={{ fontWeight: 600 }}>Duration: {resource.duration}</span>
-                          <span className="flex items-center">
-                            <Video className="w-3 h-3 mr-1" />
-                            Watch
-                          </span>
-                        </>
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open(resource.videoUrl, '_blank');
+                          }}
+                          className="w-full bg-[#8E3400] text-white py-3 rounded-lg font-semibold hover:bg-[#6B2700] transition-all flex items-center justify-center space-x-2 shadow-lg"
+                          style={{ fontWeight: 700 }}
+                        >
+                          <Video className="w-5 h-5" />
+                          <span>Watch Video</span>
+                        </button>
                       ) : (
-                        <>
-                          <span className="font-medium" style={{ fontWeight: 600 }}>{resource.size}</span>
-                          {resource.pages && <span>{resource.pages} pages</span>}
-                        </>
+                        <div className="flex gap-2">
+                          <button 
+                            onClick={() => setPreviewResource(resource)}
+                            className="flex-1 bg-white border-2 border-[#8E3400] text-[#8E3400] py-3 rounded-lg font-semibold hover:bg-[#8E3400] hover:text-white transition-all flex items-center justify-center space-x-2"
+                            style={{ fontWeight: 700 }}
+                          >
+                            <Eye className="w-5 h-5" />
+                            <span>Preview</span>
+                          </button>
+                          <button 
+                            onClick={() => handleDownload(resource)}
+                            className={`flex-1 py-3 rounded-lg font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg ${
+                              canDownload
+                                ? 'bg-[#8E3400] text-white hover:bg-[#6B2700]'
+                                : 'bg-gray-400 text-white cursor-not-allowed hover:bg-gray-500'
+                            }`}
+                            style={{ fontWeight: 700 }}
+                          >
+                            {canDownload ? <Download className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
+                            <span>{canDownload ? 'Download' : 'Locked'}</span>
+                          </button>
+                        </div>
                       )}
                     </div>
-
-                    {resource.type === 'Videos' ? (
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(resource.videoUrl, '_blank');
-                        }}
-                        className="w-full bg-[#8E3400] text-white py-3 rounded-lg font-semibold hover:bg-[#6B2700] transition-all flex items-center justify-center space-x-2 shadow-lg"
-                        style={{ fontWeight: 700 }}
-                      >
-                        <Video className="w-5 h-5" />
-                        <span>Watch Video</span>
-                      </button>
-                    ) : (
-                      <div className="flex gap-2">
-                        <button 
-                          onClick={() => setPreviewResource(resource)}
-                          className="flex-1 bg-white border-2 border-[#8E3400] text-[#8E3400] py-3 rounded-lg font-semibold hover:bg-[#8E3400] hover:text-white transition-all flex items-center justify-center space-x-2"
-                          style={{ fontWeight: 700 }}
-                        >
-                          <Eye className="w-5 h-5" />
-                          <span>Preview</span>
-                        </button>
-                        <button 
-                          onClick={() => handleDownload(resource)}
-                          className={`flex-1 py-3 rounded-lg font-semibold transition-all flex items-center justify-center space-x-2 shadow-lg ${
-                            isMember 
-                              ? 'bg-[#8E3400] text-white hover:bg-[#6B2700]'
-                              : 'bg-gray-400 text-white cursor-not-allowed hover:bg-gray-500'
-                          }`}
-                          style={{ fontWeight: 700 }}
-                        >
-                          {isMember ? <Download className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
-                          <span>{isMember ? 'Download' : 'Locked'}</span>
-                        </button>
-                      </div>
-                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
@@ -930,10 +998,10 @@ const Resources = () => {
                 <Lock className="w-8 h-8 text-[#8E3400]" />
               </div>
               <h2 className="text-4xl font-bold text-white mb-6" style={{ fontWeight: 900 }}>
-                Unlock Full Access
+                Unlock Internal Reports
               </h2>
               <p className="text-xl text-white/90 mb-10" style={{ fontWeight: 400 }}>
-                Join our community and get unlimited access to all resources, reports, and exclusive content
+                Join our community and get access to exclusive internal reports, policy briefs, and IMSWG publications
               </p>
               <button 
                 onClick={() => navigate('/membership')}
