@@ -286,7 +286,7 @@ const Home = () => {
             and environmental stewardship across the Gulf of Guinea
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center items-center">
+          {/* <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center items-center">
             <a
               href="http://ourjourney.gogmi.org.gh/"
               target="_blank"
@@ -299,7 +299,7 @@ const Home = () => {
               <span>Discover Our Journey</span>
               <ArrowRight className="w-5 h-5" />
             </a>
-          </div>
+          </div> */}
         </div>
       </header>
 
@@ -603,7 +603,7 @@ const Home = () => {
           category: 'Events',
           title: 'International Maritime Security Working Group',
           excerpt: 'The International Maritime Security Working Group (IMSWG), formed by the Gulf of Guinea Maritime Institute, is the Institute\'s flagship forum focused on stimulating dialogue and policy innovation.',
-          date: 'December 9, 2025',
+          date: 'March 17, 2026',
           image: '/Main.jpg',
           link: '/blog?category=Events#imswg'
         },
