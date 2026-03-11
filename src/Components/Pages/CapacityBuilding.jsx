@@ -112,6 +112,58 @@ const CapacityBuilding = () => {
       features: ['Panel Discussions', 'Network Sessions', 'Career Fair'],
       impact: 'Launched Ghana\'s Blue Business Directory',
       nextIntake: 'November 2025'
+    },
+     {
+      category: 'Onsite',
+      status: 'Completed',
+      title: 'Blue Career & Business Expo',
+      description: 'Platform connecting young people with maritime industry leaders to explore careers and opportunities.',
+      duration: '2 days',
+      format: 'In-Person',
+      level: 'All Levels',
+      image: '/bluecareer.webp',
+      features: ['Panel Discussions', 'Network Sessions', 'Career Fair'],
+      impact: 'Launched Ghana\'s Blue Business Directory',
+      nextIntake: 'November 2025'
+    },
+     {
+      category: 'Onsite',
+      status: 'Completed',
+      title: 'Blue Career & Business Expo',
+      description: 'Platform connecting young people with maritime industry leaders to explore careers and opportunities.',
+      duration: '2 days',
+      format: 'In-Person',
+      level: 'All Levels',
+      image: '/bluecareer.webp',
+      features: ['Panel Discussions', 'Network Sessions', 'Career Fair'],
+      impact: 'Launched Ghana\'s Blue Business Directory',
+      nextIntake: 'November 2025'
+    },
+     {
+      category: 'Onsite',
+      status: 'Completed',
+      title: 'Blue Career & Business Expo',
+      description: 'Platform connecting young people with maritime industry leaders to explore careers and opportunities.',
+      duration: '2 days',
+      format: 'In-Person',
+      level: 'All Levels',
+      image: '/bluecareer.webp',
+      features: ['Panel Discussions', 'Network Sessions', 'Career Fair'],
+      impact: 'Launched Ghana\'s Blue Business Directory',
+      nextIntake: 'November 2025'
+    },
+     {
+      category: 'Onsite',
+      status: 'Completed',
+      title: 'Blue Career & Business Expo',
+      description: 'Platform connecting young people with maritime industry leaders to explore careers and opportunities.',
+      duration: '2 days',
+      format: 'In-Person',
+      level: 'All Levels',
+      image: '/bluecareer.webp',
+      features: ['Panel Discussions', 'Network Sessions', 'Career Fair'],
+      impact: 'Launched Ghana\'s Blue Business Directory',
+      nextIntake: 'November 2025'
     }
   ];
 
